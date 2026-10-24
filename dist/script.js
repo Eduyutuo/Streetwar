@@ -1,4 +1,5 @@
 const nav=document.querySelector('.main-nav');
+document.querySelectorAll('img[src^="assets/"]').forEach(img=>{const url=new URL(img.src);url.searchParams.set('v','325854a');img.src=url.href;});
 const toggle=document.querySelector('.menu-toggle');
 const mega=document.querySelector('.mega-menu');
 const bag=document.querySelector('.bag');

@@ -1,5 +1,5 @@
 const nav=document.querySelector('.main-nav');
-document.querySelectorAll('img[src^="assets/"]').forEach(img=>{const url=new URL(img.src);url.searchParams.set('v','20261023-shoes');img.src=url.href;});
+document.querySelectorAll('img[src^="assets/"]').forEach(img=>{const url=new URL(img.src);url.searchParams.set('v','20261030-catalog');img.src=url.href;});
 const toggle=document.querySelector('.menu-toggle');
 const mega=document.querySelector('.mega-menu');
 const bag=document.querySelector('.bag');

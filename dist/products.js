@@ -1,59 +1,42 @@
-const inventory = [
-  ['Air Jordan 1 High OG "Royal"','Air Jordan 1','unisex','jordan-1-royal-product.webp'],
-  ['Air Jordan 1 Retro High OG "Shattered Backboard"','Air Jordan 1','unisex','jordan-1-royal-product.webp'],
-  ['Air Jordan 1 Mid SE Black/Gold/Pink','Air Jordan 1','women','jordan-1-royal-product.webp'],
-  ['Air Jordan 3 Retro "True Blue" (White/Blue)','Air Jordan 3','unisex','jordan-3-spring-flowers-product.webp'],
-  ['Air Jordan 3 Retro GS "Spring Flowers"','Air Jordan 3','kids','jordan-3-spring-flowers-product.webp'],
-  ['Air Jordan 3 Retro Green/White/Red','Air Jordan 3','unisex','jordan-3-spring-flowers-product.webp'],
-  ['Air Jordan 4 Retro x J Balvin "Amazonas"','Air Jordan 4','unisex','jordan-4-amazonas-product.webp'],
-  ['Air Jordan 4 Retro "Tour Yellow" (Lightning)','Air Jordan 4','unisex','jordan-4-amazonas-product.webp'],
-  ['Air Jordan 6 Retro "Oreo"','Air Jordan 6','unisex','jordan-1-royal-product.webp'],
-  ['Air Jordan 9 Retro "Space Jam"','Air Jordan 9','unisex','jordan-1-royal-product.webp'],
-  ['Air Jordan 12 Retro "Bucks"','Air Jordan 12','unisex','jordan-4-amazonas-product.webp'],
-  ['Air Jordan Access "Black Gym Red"','Jordan Hybrid / Otros','unisex','jordan-1-royal-product.webp'],
-  ['Jordan Max Aura Black/White','Jordan Hybrid / Otros','unisex','jordan-1-royal-product.webp'],
-  ['Jordan Max Aura Black/Black/Gym Red','Jordan Hybrid / Otros','unisex','jordan-4-amazonas-product.webp'],
-  ['Jordan Son of Mars Low — White/Red/Black','Jordan Hybrid / Otros','unisex','jordan-4-amazonas-product.webp'],
-  ["Nike Air Force 1 '07 Black/White/Orange Peel",'Nike Air Force 1','unisex','nike-air-force-air-max-product.webp'],
-  ["Nike Air Force 1 '07 WNBA 30th Anniversary",'Nike Air Force 1','women','nike-air-force-air-max-product.webp'],
-  ["Nike Air Force 1 '07 LV8 \"Mexico\"",'Nike Air Force 1','unisex','nike-air-force-air-max-product.webp'],
-  ['Nike Air Max Bolt (Mujer)','Nike Air Max','women','nike-air-force-air-max-product.webp'],
-  ['Nike Air Max Correlate White/New Green/Bright Mango/Black','Nike Air Max','unisex','nike-air-force-air-max-product.webp'],
-  ['Nike Air Max Correlate Black/White/Grey','Nike Air Max','unisex','nike-air-force-air-max-product.webp'],
-  ['Nike Air Max 95 White/Pink/Brown','Nike Air Max','women','nike-air-force-air-max-product.webp'],
-  ['Nike Air Max Command PRM "Light Taupe"','Nike Air Max','unisex','nike-air-force-air-max-product.webp'],
-  ['Nike Air Diamond Turf II "Royals"','Nike Diamond / DT / Griffey','men','nike-air-force-air-max-product.webp'],
-  ["Nike Air DT Max '96 Low White/Metallic",'Nike Diamond / DT / Griffey','men','nike-air-force-air-max-product.webp'],
-  ['Nike Air Griffey Max 1','Nike Diamond / DT / Griffey','men','nike-air-force-air-max-product.webp'],
-  ['Nike Zoom LeBron NXXT Gen "Black Wolf Grey"','Nike Basketball / Performance','men','nike-air-force-air-max-product.webp'],
-  ['Nike Flight Legacy "Black/White"','Nike Basketball / Performance','men','nike-air-force-air-max-product.webp']
+const inventory=[
+{group:'A',category:'Jordan Retro 9',name:'Air Jordan 9 Retro OG “Space Jam”',sizes:'36–38 / 40–42',price:1200,audience:'Unisex',image:'real/jordan-9.webp',source:'https://www.nike.com/mx/launch/t/air-jordan-9-retro-og-white-and-black'},
+{group:'A',category:'Jordan Retro 3',name:'Air Jordan 3 Green / White / Red',sizes:'36–41',price:790,audience:'Unisex',image:'jordan-3-spring-flowers-product.webp',source:'https://www.nike.com/launch/t/air-jordan-3-hall-of-fame'},
+{group:'A',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Black / Black / Gym Red',sizes:'39–42',price:685,audience:'Hombre',image:'real/max-aura.webp',source:'https://novelship.com/air-jordan-max-aura-black-infrared'},
+{group:'A',category:'Nike Air Max',name:'Nike Air Max 95 White / Pink / Brown',sizes:'37–39',price:695,audience:'Mujer',image:'real/air-max-95.webp',source:'https://stockx.com/es-us/nike-air-max-95-cuban-link-velvet-brown-w'},
+{group:'A',category:'Nike Flight Legacy',name:'Nike Flight Legacy Black / White',sizes:'39–41',price:500,audience:'Hombre',image:'real/flight-legacy.webp',source:'https://stockx.com/nike-flight-legacy-black-white'},
+{group:'A',category:'Nike Air Max',name:'Nike Air Max Command Premium Light Taupe',sizes:'40–42',price:695,audience:'Hombre',image:'real/air-max-command.webp',source:'https://www.nike.com/jp/en/t/air-max-command-womens-shoes-JfvPvR'},
+{group:'A',category:'Nike Air Max',name:'Nike Air Max Correlate Black / White / Grey',sizes:'36–41',price:450,audience:'Unisex',image:'real/air-max-correlate.webp',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
+{group:'B',category:'Jordan Hybrid / Otros',name:'Jordan Son of Mars Low White / Red / Black',sizes:'39–41',price:700,audience:'Hombre',image:'real/son-of-mars.webp',source:'https://www.shopwss.com/products/580603_101'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 Black / White / Orange Peel',sizes:'36–38 / 39–42',price:584,audience:'Unisex',image:'nike-air-force-air-max-product.webp',source:'https://www.nike.com/es/t/air-force-1-07-zapatillas-hombre-CcXoUHU9/IX6731-010'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 WNBA 30th Anniversary',sizes:'36–40',price:595,audience:'Unisex',image:'nike-air-force-air-max-product.webp',source:'https://www.nike.com/w/complete-the-wnba-fan-look-shoes-4cbgmzom6bzy7ok'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 LV8 “Mexico”',sizes:'39–41',price:595,audience:'Hombre',image:'nike-air-force-air-max-product.webp',source:'https://www.nike.com/mx/t/tenis-para-hombre-nike-air-force-1-07-lv8-mkYmss6V'},
+{group:'B',category:'Nike Diamond / DT / Griffey',name:'Nike Air Griffey Max 1',sizes:'39–42',price:650,audience:'Hombre',image:'real/griffey-max-1.webp',source:'https://www.shiekh.com/nike-air-griffey-max-1-white-black-fresh-water.html'},
+{group:'B',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low Summit White / Black',sizes:'36–42',price:584,audience:'Unisex',image:'real/aj1-low-shattered.webp',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 Blanco / Negro',sizes:'37–40',price:413,audience:'Mujer',image:'nike-air-force-air-max-product.webp',source:'https://www.nike.com/mx/w/air-force-1-1ef98z2eqihz5sj3yzom6b'},
+{group:'C',category:'Jordan Retro 4',name:'Air Jordan 4 x J Balvin “Amazonas”',sizes:'40–42',price:1300,audience:'Hombre',image:'real/jordan-4-amazonas.webp',source:'https://www.nike.com/mx/launch/t/air-jordan-4-j-balvin-amazonas'},
+{group:'C',category:'Jordan Retro 1',name:'Air Jordan 1 High OG “Shattered Backboard”',sizes:'39–42',price:740,audience:'Hombre',image:'jordan-1-royal-product.webp',source:'https://www.nike.com/mx/w/air-jordan-1-zapatillas-aj85gzy7ok'},
+{group:'C',category:'Jordan Retro 4',name:'Air Jordan 4 Retro “Tour Yellow”',sizes:'36–38 / 40–42',price:1100,audience:'Unisex',image:'real/jordan-4-amazonas.webp',source:'https://www.nike.com/mx/w/jordan-jordan-4-37eefz6ymx6zcsxjzy7ok'},
+{group:'C',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Black / White',sizes:'39–42',price:685,audience:'Hombre',image:'real/max-aura.webp',source:'https://novelship.com/air-jordan-max-aura-black-infrared'},
+{group:'C',category:'Jordan Retro 1',name:'Air Jordan 1 Mid SE Black / Gold / Pink',sizes:'35–38',price:514,audience:'Mujer',image:'jordan-1-royal-product.webp',source:'https://www.nike.com/mx/w/air-jordan-1-zapatillas-aj85gzy7ok'},
+{group:'C',category:'Jordan Retro 3',name:'Air Jordan 3 Retro GS “Spring Flowers”',sizes:'35–39',price:617,audience:'Mujer',image:'jordan-3-spring-flowers-product.webp',source:'https://www.nike.com/mx/w/jordan-calzado-37eefz98pddzj5jwzy7ok'},
+{group:'C',category:'Nike Air Max',name:'Nike Air Max Correlate White / New Green / Bright Mango / Black',sizes:'35–38',price:583,audience:'Mujer',image:'real/air-max-correlate.webp',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
+{group:'D',category:'Jordan 6 Rings',name:'Jordan 6 Rings White / University Red / Black',sizes:'36–38 / 39–42',price:686,audience:'Unisex',image:'real/jordan-6-rings.webp',source:'https://www.shoepalace.com/products/jordan-322992-164-6-rings-mens-basketball-shoes-white-varsity-red-black'},
+{group:'D',category:'Nike Diamond / DT / Griffey',name:'Nike Air Diamond Turf II',sizes:'36–38 / 39–42',price:583,audience:'Unisex',image:'real/diamond-turf.webp',source:'https://www.dtlr.com/products/nike-air-diamond-turf-ii-prime-red-mf-red-hq2631-600'},
+{group:'D',category:'Nike Diamond / DT / Griffey',name:'Nike Air DT Max ’96 Low White / Metallic',sizes:'36–42',price:686,audience:'Unisex',image:'real/diamond-turf.webp',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
+{group:'D',category:'Nike Basketball / Performance',name:'Nike Zoom LeBron NXXT Gen “Black Wolf Grey”',sizes:'40 / 40.5',price:630,audience:'Hombre',image:'real/lebron-witness-9.webp',source:'https://www.nike.com/t/lebron-nxxt-gen-basketball-shoes-55g4w1/DR8784-004'},
+{group:'D',category:'Jordan Hybrid / Otros',name:'Air Jordan Access “Black Gym Red”',sizes:'40–42',price:583,audience:'Hombre',image:'real/jordan-access.webp',source:'https://item.rakuten.co.jp/limited-edt/ar3762-001/'},
+{group:'D',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 Light British Tan / Sail / Hemp / Metallic Gold',sizes:'36–39',price:685,audience:'Mujer',image:'nike-air-force-air-max-product.webp',source:'https://www.nike.com/mx/w/air-force-1-1ef98z2eqihz5sj3yzom6b'},
+{group:'D',category:'Nike Air Max',name:'Nike Air Max Bolt',sizes:'36–39',price:411,audience:'Mujer',image:'real/air-max-correlate.webp',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
+{group:'E',category:'Jordan Hybrid / Otros',name:'Jordan Lift Off White / Black / Wolf Grey',sizes:'40–42',price:650,audience:'Hombre',image:'real/jordan-lift-off.webp',source:'https://stockx.com/air-jordan-lift-off-white'},
+{group:'E',category:'Jordan Retro 3',name:'Air Jordan 3 “Pure Money” White / Metallic Silver',sizes:'36–40',price:650,audience:'Unisex',image:'jordan-3-spring-flowers-product.webp',source:'https://www.nike.com/mx/w/jordan-calzado-37eefz98pddzj5jwzy7ok'},
+{group:'E',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low “Shattered Backboard Alternate”',sizes:'36–41',price:584,audience:'Unisex',image:'real/aj1-low-shattered.webp',source:'https://www.topsandbottomsusa.com/products/jordan-mens-air-jordan-1-low-shattered-backboard-alternate-shoes-553558-081'},
+{group:'E',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low “Inner Beast”',sizes:'35–37',price:514,audience:'Mujer',image:'real/aj1-low-shattered.webp',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
+{group:'E',category:'Nike Basketball',name:'Nike LeBron Witness 9',sizes:'40–41',price:360,audience:'Hombre',image:'real/lebron-witness-9.webp',source:'https://www.nike.com/t/lebron-witness-9-basketball-shoes-h9SkAFPT'},
+{group:'E',category:'Nike Air Force 1',name:'Nike Air Force 1 Rust Pink / Metallic Red',sizes:'36–38',price:446,audience:'Mujer',image:'nike-air-force-air-max-product.webp',source:'https://www.nike.com/w/complete-the-wnba-fan-look-shoes-4cbgmzom6bzy7ok'},
+{group:'E',category:'Nike Shox',name:'Nike Shox R4 College Grey / Volt',sizes:'35–38',price:514,audience:'Unisex',image:'real/air-max-correlate.webp',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
+{group:'F',category:'Air Jordan 1 Low',name:'Air Jordan 1 Retro Low OG “Banned”',sizes:'36–38',price:446,audience:'Unisex',image:'real/aj1-low-shattered.webp',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'}
 ];
-
-const sets = {
-  default: inventory,
-  men: inventory.filter(([, , audience]) => audience !== 'women' && audience !== 'kids'),
-  women: inventory.filter(([, , audience]) => audience === 'women' || audience === 'unisex').slice(0, 12),
-  kids: inventory.filter(([, , audience]) => audience === 'kids'),
-  sale: inventory.slice(0, 8)
-};
-
-const grid = document.querySelector('[data-products]');
-if (grid) {
-  const key = grid.dataset.products || 'default';
-  const products = sets[key] || sets.default;
-  const render = (items) => {
-    grid.innerHTML = items.map((p, i) => `<article class="product" data-category="${p[1]}"><div class="product-media shoe"><img src="assets/${p[3]}?v=20261023-shoes" alt="Fotografía de zapatillas de la familia ${p[1]}"><span class="pill">${i < 4 ? 'DESTACADO' : p[1].toUpperCase()}</span><button class="heart" aria-label="Guardar producto" style="border:0;background:none">♡</button></div><h3>${p[0]}</h3><p>${p[1]} · Talla y stock: consultar</p><strong>Precio por confirmar</strong></article>`).join('');
-    document.querySelectorAll('.heart').forEach(btn => btn.addEventListener('click', () => {
-      const toast = document.querySelector('.toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 1800);
-    }));
-  };
-  render(products);
-  document.querySelectorAll('.filter-bar button[data-filter]').forEach(btn => btn.addEventListener('click', () => {
-    btn.parentElement.querySelectorAll('button').forEach(x => x.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    render(filter === 'all' ? products : products.filter(p => p[1].includes(filter)));
-  }));
-}
+const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:[...inventory].sort((a,b)=>a.price-b.price).slice(0,8)};
+const money=value=>`S/ ${value.toLocaleString('es-PE')}`;
+const grid=document.querySelector('[data-products]');
+if(grid){const key=grid.dataset.products||'default';const products=sets[key]||sets.default;const count=key==='default'?document.querySelector('.shop-section .title-row h1'):document.querySelector('.shop-section .title-row p');const render=items=>{if(count)count.textContent=`${items.length} MODELOS`;grid.innerHTML=items.map((p,i)=>`<article class="product" data-category="${p.category}"><a class="product-media shoe" href="${p.source}" target="_blank" rel="noopener"><img src="assets/${p.image}?v=20261030-catalog" alt="Imagen de referencia de ${p.name}" loading="lazy"><span class="pill">${i<4?'DESTACADO':p.category.toUpperCase()}</span><span class="source-badge">VER FUENTE ↗</span></a><button class="heart" aria-label="Guardar producto" style="border:0;background:none">♡</button><h3>${p.name}</h3><p>${p.category} · ${p.audience}</p><p class="product-sizes">Tallas: ${p.sizes}</p><strong>${money(p.price)}</strong></article>`).join('');document.querySelectorAll('.heart').forEach(btn=>btn.addEventListener('click',()=>{const toast=document.querySelector('.toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}))};render(products);document.querySelectorAll('.filter-bar button[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const filter=btn.dataset.filter;const matches=p=>filter==='Air Jordan'?p.category.includes('Jordan'):p.category.includes(filter);render(filter==='all'?products:products.filter(matches))}))}

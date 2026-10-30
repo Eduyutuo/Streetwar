@@ -25,18 +25,18 @@ if(detailRoot){
   const product=inventory[id];
   const sizes=expandSizes(product.sizes);
   const brand=brandFor(product);
+  const gallery=typeof galleries!=='undefined'&&galleries[id]?.length?galleries[id]:[product.image];
   document.title=`${product.name} — Streetwar`;
   detailRoot.innerHTML=`
     <div class="detail-gallery">
       <div class="detail-thumbs" aria-label="Galería del producto">
-        <button class="thumb active" type="button" data-view="contain" aria-label="Vista completa"><img src="assets/${product.image}?v=20261030-whatsapp" alt=""></button>
-        <button class="thumb" type="button" data-view="zoom" aria-label="Vista ampliada"><img src="assets/${product.image}?v=20261030-whatsapp" alt=""></button>
-        <button class="thumb" type="button" data-view="detail" aria-label="Detalle lateral"><img src="assets/${product.image}?v=20261030-whatsapp" alt=""></button>
+        ${gallery.map((image,index)=>`<button class="thumb ${index===0?'active':''}" type="button" data-gallery-index="${index}" aria-label="Ver imagen ${index+1}"><img src="assets/${image}?v=20261030-angles" alt="Vista ${index+1} de ${product.name}"></button>`).join('')}
       </div>
-      <div class="detail-main" data-main-view="contain">
+      <div class="detail-main">
         <span class="detail-tag">STREETWAR SELECT</span>
-        <img src="assets/${product.image}?v=20261030-whatsapp" alt="${product.name}">
-        <small>IMAGEN REFERENCIAL DEL MODELO</small>
+        <img data-main-image src="assets/${gallery[0]}?v=20261030-angles" alt="Vista 1 de ${product.name}">
+        ${gallery.length>1?'<div class="gallery-controls"><button type="button" data-gallery-nav="previous" aria-label="Imagen anterior">‹</button><button type="button" data-gallery-nav="next" aria-label="Imagen siguiente">›</button></div>':''}
+        <small>${gallery.length>1?`${gallery.length} TOMAS DEL MODELO`:'IMAGEN REFERENCIAL DEL MODELO'}</small>
       </div>
     </div>
     <div class="detail-info">
@@ -71,11 +71,16 @@ if(detailRoot){
     addButton.disabled=false;
     addButton.textContent=`COMPRAR POR WHATSAPP · EU ${selected}`;
   }));
-  detailRoot.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{
-    detailRoot.querySelectorAll('[data-view]').forEach(option=>option.classList.remove('active'));
-    button.classList.add('active');
-    detailRoot.querySelector('.detail-main').dataset.mainView=button.dataset.view;
-  }));
+  let galleryIndex=0;
+  const mainImage=detailRoot.querySelector('[data-main-image]');
+  const showGalleryImage=index=>{
+    galleryIndex=(index+gallery.length)%gallery.length;
+    mainImage.src=`assets/${gallery[galleryIndex]}?v=20261030-angles`;
+    mainImage.alt=`Vista ${galleryIndex+1} de ${product.name}`;
+    detailRoot.querySelectorAll('[data-gallery-index]').forEach(button=>button.classList.toggle('active',Number(button.dataset.galleryIndex)===galleryIndex));
+  };
+  detailRoot.querySelectorAll('[data-gallery-index]').forEach(button=>button.addEventListener('click',()=>showGalleryImage(Number(button.dataset.galleryIndex))));
+  detailRoot.querySelectorAll('[data-gallery-nav]').forEach(button=>button.addEventListener('click',()=>showGalleryImage(galleryIndex+(button.dataset.galleryNav==='next'?1:-1))));
   addButton.addEventListener('click',()=>{
     const message=`Hola Streetwar, quiero comprar este modelo:\n\n*${product.name}*\nTalla: *EU ${selected}*\nPrecio: *${money(product.price)}*\nCategoría: ${product.category}\n\n¿Está disponible?`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,'_blank','noopener');

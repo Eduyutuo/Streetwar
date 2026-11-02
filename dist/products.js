@@ -4,7 +4,7 @@ const inventory=[
 {group:'A',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Black / Black / Gym Red',sizes:'39–42',price:685,audience:'Hombre',image:'products/max-aura-black-gym-red.jpg',source:'https://novelship.com/air-jordan-max-aura-black-infrared'},
 {group:'A',category:'Nike Air Max',name:'Nike Air Max 95 White / Pink / Brown',sizes:'37–39',price:695,audience:'Mujer',image:'real/air-max-95.webp',source:'https://stockx.com/es-us/nike-air-max-95-cuban-link-velvet-brown-w'},
 {group:'A',category:'Nike Flight Legacy',name:'Nike Flight Legacy Black / White',sizes:'39–41',price:500,audience:'Hombre',image:'real/flight-legacy.webp',source:'https://stockx.com/nike-flight-legacy-black-white'},
-{group:'A',category:'Nike Air Max',name:'Nike Air Max Command Premium Light Taupe',sizes:'40–42',price:695,audience:'Hombre',image:'real/air-max-command.webp',source:'https://www.nike.com/jp/en/t/air-max-command-womens-shoes-JfvPvR'},
+{group:'A',category:'Nike Air Max',name:'Nike Air Max Command Premium Light Taupe',sizes:'40–42',price:695,audience:'Hombre',image:'products/air-max-command-hq.png',source:'https://www.nike.com/jp/en/t/air-max-command-womens-shoes-JfvPvR'},
 {group:'A',category:'Nike Air Max',name:'Nike Air Max Correlate Black / White / Grey',sizes:'36–41',price:450,audience:'Unisex',image:'products/air-max-correlate-black-grey.png',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
 {group:'B',category:'Jordan Hybrid / Otros',name:'Jordan Son of Mars Low White / Red / Black',sizes:'39–41',price:700,audience:'Hombre',image:'real/son-of-mars.webp',source:'https://www.shopwss.com/products/580603_101'},
 {group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 Black / White / Orange Peel',sizes:'36–38 / 39–42',price:584,audience:'Unisex',image:'products/air-force-1-orange-peel.png',source:'https://www.nike.com/es/t/air-force-1-07-zapatillas-hombre-CcXoUHU9/IX6731-010'},
@@ -37,7 +37,7 @@ const inventory=[
 {group:'F',category:'Air Jordan 1 Low',name:'Air Jordan 1 Retro Low OG “Banned”',sizes:'36–38',price:446,audience:'Unisex',image:'products/jordan-1-low-banned.jpg',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'}
 ];
 // La tarjeta y la ficha comienzan con la misma primera toma del modelo.
-const cardPrimaryImages={0:'galleries/1-1.jpg',1:'galleries/2-1.jpg',7:'galleries/8-1.webp',11:'galleries/12-1.jpg',14:'galleries/15-1.jpg',21:'galleries/22-1.webp',22:'galleries/23-1.webp',24:'galleries/25-1.png',25:'galleries/26-1.webp',30:'real/aj1-low-shattered.webp',32:'galleries/33-1.png'};
+const cardPrimaryImages={0:'galleries/1-1.jpg',1:'galleries/2-1.jpg',7:'galleries/8-1.webp',11:'galleries/12-1.jpg',14:'galleries/15-1.jpg',21:'galleries/22-1.webp',22:'products/diamond-turf-hq.png',24:'galleries/25-1.png',25:'galleries/26-1.webp',30:'real/aj1-low-shattered.webp',32:'galleries/33-1.png'};
 Object.entries(cardPrimaryImages).forEach(([index,image])=>{inventory[Number(index)].image=image});
 const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:[...inventory].sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>`S/ ${value.toLocaleString('es-PE')}`;

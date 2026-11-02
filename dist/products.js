@@ -48,6 +48,8 @@ inventory[4].image='products/flight-legacy-2.jpg';
 inventory[6].image='products/air-max-correlate-1.png';
 inventory[7].image='products/son-of-mars-1.png';
 inventory[1].image='generated/jordan-3-green-white-red/angle-1.png';
+// Todas las tarjetas del catálogo usan la primera toma generada sobre fondo blanco.
+for(let index=0;index<inventory.length;index+=1){inventory[index].image=`generated/product-${index}/angle-1.png`;}
 const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:[...inventory].sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>`S/ ${value.toLocaleString('es-PE')}`;
 const detailUrl=p=>`producto.html?id=${inventory.indexOf(p)}`;

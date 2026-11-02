@@ -9,3 +9,5 @@ galleries[6]=["products/air-max-correlate-1.png","products/air-max-correlate-2.p
 galleries[7]=["products/son-of-mars-1.png","products/son-of-mars-2.png","products/son-of-mars-3.png","products/son-of-mars-4.png","products/son-of-mars-5.png"];
 galleries[3]=["hq/product-3.webp","generated/air-max-95-pink-brown-angle-2.png"];
 galleries[1]=["generated/jordan-3-green-white-red/angle-1.png","generated/jordan-3-green-white-red/angle-2.png","generated/jordan-3-green-white-red/angle-3.png","generated/jordan-3-green-white-red/angle-4.png","generated/jordan-3-green-white-red/angle-5.png"];
+// Cinco ángulos distintos, generados desde la referencia de cada modelo y separados para la galería.
+for(let index=0;index<inventory.length;index+=1){galleries[index]=Array.from({length:5},(_,angle)=>`generated/product-${index}/angle-${angle+1}.png`);}

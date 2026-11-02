@@ -4,6 +4,6 @@ galleries[2]=["products/max-aura-official-1.jpg","products/max-aura-official-2.j
 // La fuente de la galería 2 incluyó prendas ajenas al modelo; usamos la foto HQ del producto.
 delete galleries[1];
 // Cinco ángulos reales por modelo, sin prendas ni imágenes repetidas.
-galleries[4]=["products/flight-legacy-1.jpg","products/flight-legacy-2.jpg","products/flight-legacy-3.jpg","products/flight-legacy-4.jpg","products/flight-legacy-5.jpg"];
+galleries[4]=["products/flight-legacy-2.jpg","products/flight-legacy-3.jpg","products/flight-legacy-4.jpg","products/flight-legacy-5.jpg","products/flight-legacy-1.jpg"];
 galleries[6]=["products/air-max-correlate-1.png","products/air-max-correlate-2.png","products/air-max-correlate-3.png","products/air-max-correlate-4.png","products/air-max-correlate-5.png"];
 galleries[7]=["products/son-of-mars-1.png","products/son-of-mars-2.png","products/son-of-mars-3.png","products/son-of-mars-4.png","products/son-of-mars-5.png"];

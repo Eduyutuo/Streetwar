@@ -31,11 +31,11 @@ if(detailRoot){
   detailRoot.innerHTML=`
     <div class="detail-gallery">
       <div class="detail-thumbs" aria-label="Galería del producto">
-        ${gallery.map((image,index)=>`<button class="thumb ${index===0?'active':''}" type="button" data-gallery-index="${index}" aria-label="Ver imagen ${index+1}"><img src="assets/${image}?v=20261030-angles" alt="Vista ${index+1} de ${product.name}"></button>`).join('')}
+        ${gallery.map((image,index)=>`<button class="thumb ${index===0?'active':''}" type="button" data-gallery-index="${index}" aria-label="Ver imagen ${index+1}"><img src="assets/${image}?v=20261102-clean" alt="Vista ${index+1} de ${product.name}"></button>`).join('')}
       </div>
       <div class="detail-main">
         <span class="detail-tag">STREETWAR SELECT</span>
-        <img data-main-image src="assets/${gallery[0]}?v=20261030-angles" alt="Vista 1 de ${product.name}">
+        <img data-main-image src="assets/${gallery[0]}?v=20261102-clean" alt="Vista 1 de ${product.name}">
         ${gallery.length>1?'<div class="gallery-controls"><button type="button" data-gallery-nav="previous" aria-label="Imagen anterior">‹</button><button type="button" data-gallery-nav="next" aria-label="Imagen siguiente">›</button></div>':''}
         <small>${gallery.length>1?`${gallery.length} TOMAS DEL MODELO`:'IMAGEN REFERENCIAL DEL MODELO'}</small>
       </div>
@@ -77,7 +77,7 @@ if(detailRoot){
   const mainImage=detailRoot.querySelector('[data-main-image]');
   const showGalleryImage=index=>{
     galleryIndex=(index+gallery.length)%gallery.length;
-    mainImage.src=`assets/${gallery[galleryIndex]}?v=20261030-angles`;
+    mainImage.src=`assets/${gallery[galleryIndex]}?v=20261102-clean`;
     mainImage.alt=`Vista ${galleryIndex+1} de ${product.name}`;
     detailRoot.querySelectorAll('[data-gallery-index]').forEach(button=>button.classList.toggle('active',Number(button.dataset.galleryIndex)===galleryIndex));
   };

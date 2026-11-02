@@ -26,7 +26,7 @@ if(detailRoot){
   const sizes=expandSizes(product.sizes);
   const brand=brandFor(product);
   const audienceLabel=product.audience==='Mujer'?'PARA MUJER':product.audience==='Hombre'?'PARA HOMBRE':'UNISEX';
-  const gallery=typeof galleries!=='undefined'&&galleries[id]?.length?[product.image,...galleries[id].filter(image=>image!==product.image)]:[product.image];
+  const gallery=typeof galleries!=='undefined'&&galleries[id]?.length?[product.image,...galleries[id].slice(1).filter(image=>image!==product.image)]:[product.image];
   document.title=`${product.name} — Streetwar`;
   detailRoot.innerHTML=`
     <div class="detail-gallery">

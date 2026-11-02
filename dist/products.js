@@ -41,6 +41,7 @@ const cardPrimaryImages={0:'galleries/1-1.jpg',1:'galleries/2-1.jpg',7:'gallerie
 Object.entries(cardPrimaryImages).forEach(([index,image])=>{inventory[Number(index)].image=image});
 // Todas las tarjetas cargan una versión de alta resolución del mismo ángulo principal.
 inventory.forEach((product,index)=>{product.image=`hq/product-${index}.webp`});
+inventory[16].image='products/tour-yellow-main.webp';
 const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:[...inventory].sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>`S/ ${value.toLocaleString('es-PE')}`;
 const detailUrl=p=>`producto.html?id=${inventory.indexOf(p)}`;

@@ -25,6 +25,7 @@ if(detailRoot){
   const product=inventory[id];
   const sizes=expandSizes(product.sizes);
   const brand=brandFor(product);
+  const audienceLabel=product.audience==='Mujer'?'PARA MUJER':product.audience==='Hombre'?'PARA HOMBRE':'UNISEX';
   const gallery=typeof galleries!=='undefined'&&galleries[id]?.length?galleries[id]:[product.image];
   document.title=`${product.name} — Streetwar`;
   detailRoot.innerHTML=`
@@ -47,6 +48,7 @@ if(detailRoot){
       <p class="availability"><span></span> Disponible para pedido</p>
       <div class="auth-card"><strong>STREETWAR</strong><span>Producto seleccionado para nuestro catálogo 2026</span></div>
       <div class="detail-rule"></div>
+      <div class="audience-card"><span>ESTE MODELO ES</span><strong>${audienceLabel}</strong><small>${product.audience==='Unisex'?'Diseñado para mujer y hombre':'Según el inventario Streetwar'}</small></div>
       <div class="size-heading"><h2>SELECCIONA TU TALLA</h2><span>TALLA EU</span></div>
       <div class="size-grid">${sizes.map(size=>`<button type="button" data-size="${size}" aria-pressed="false">EU ${size}</button>`).join('')}</div>
       <p class="size-copy">Tallas registradas en inventario: <strong>${product.sizes}</strong></p>

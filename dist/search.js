@@ -21,7 +21,7 @@
         const found=inventory.filter(product=>terms.every(term=>normalize(`${product.name} ${product.category} ${product.audience} ${product.sizes}`).includes(term))).slice(0,6);
         results.innerHTML=found.length?found.map(product=>{
           const id=inventory.indexOf(product);
-          return `<a role="option" href="producto.html?id=${id}"><img src="assets/${product.image}?v=20261102-search" alt=""><span><strong>${escapeHtml(product.name)}</strong><small>${escapeHtml(product.category)} · ${escapeHtml(product.sizes)} EU</small></span><b>S/ ${product.price.toLocaleString('es-PE')}</b></a>`;
+          return `<a role="option" href="producto.html?id=${id}"><img src="assets/${product.image}?v=20261102-search" alt=""><span><strong>${escapeHtml(product.name)}</strong><small>${escapeHtml(product.category)} · ${escapeHtml(product.audience)} · ${escapeHtml(product.sizes)} EU</small></span><b>S/ ${product.price.toLocaleString('es-PE')}</b></a>`;
         }).join(''):`<p>No encontramos resultados para “${escapeHtml(query)}”.</p>`;
         results.classList.add('open');
       };

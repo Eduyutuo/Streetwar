@@ -8,3 +8,4 @@ galleries[4]=["products/flight-legacy-2.jpg","products/flight-legacy-3.jpg","pro
 galleries[6]=["products/air-max-correlate-1.png","products/air-max-correlate-2.png","products/air-max-correlate-3.png","products/air-max-correlate-4.png","products/air-max-correlate-5.png"];
 galleries[7]=["products/son-of-mars-1.png","products/son-of-mars-2.png","products/son-of-mars-3.png","products/son-of-mars-4.png","products/son-of-mars-5.png"];
 galleries[3]=["hq/product-3.webp","generated/air-max-95-pink-brown-angle-2.png"];
+galleries[1]=["generated/jordan-3-green-white-red/angle-1.png","generated/jordan-3-green-white-red/angle-2.png","generated/jordan-3-green-white-red/angle-3.png","generated/jordan-3-green-white-red/angle-4.png","generated/jordan-3-green-white-red/angle-5.png"];

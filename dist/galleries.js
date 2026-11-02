@@ -3,3 +3,5 @@ galleries[16]=["products/tour-yellow-main.webp","products/tour-yellow-angle-2.jp
 galleries[2]=["products/max-aura-official-1.jpg","products/max-aura-official-2.jpg","products/max-aura-official-3.jpg","products/max-aura-official-4.jpg","products/max-aura-official-5.jpg"];
 // La fuente de la galería 2 incluyó prendas ajenas al modelo; usamos la foto HQ del producto.
 delete galleries[1];
+// La galería importada mezclaba polos y otro modelo; conservamos solo la toma correcta.
+delete galleries[7];

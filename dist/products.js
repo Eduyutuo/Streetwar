@@ -36,6 +36,9 @@ const inventory=[
 {group:'E',category:'Nike Shox',name:'Nike Shox R4 College Grey / Volt',sizes:'35–38',price:514,audience:'Unisex',image:'products/shox-r4-college-grey.jpg',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
 {group:'F',category:'Air Jordan 1 Low',name:'Air Jordan 1 Retro Low OG “Banned”',sizes:'36–38',price:446,audience:'Unisex',image:'products/jordan-1-low-banned.jpg',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'}
 ];
+// La tarjeta y la ficha comienzan con la misma primera toma del modelo.
+const cardPrimaryImages={0:'galleries/1-1.jpg',1:'galleries/2-1.jpg',7:'galleries/8-1.webp',11:'galleries/12-1.jpg',14:'galleries/15-1.jpg',21:'galleries/22-1.webp',22:'galleries/23-1.webp',24:'galleries/25-1.png',25:'galleries/26-1.webp',30:'galleries/31-1.webp',32:'galleries/33-1.png'};
+Object.entries(cardPrimaryImages).forEach(([index,image])=>{inventory[Number(index)].image=image});
 const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:[...inventory].sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>`S/ ${value.toLocaleString('es-PE')}`;
 const detailUrl=p=>`producto.html?id=${inventory.indexOf(p)}`;

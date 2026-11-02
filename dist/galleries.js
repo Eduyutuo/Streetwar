@@ -3,5 +3,7 @@ galleries[16]=["products/tour-yellow-main.webp","products/tour-yellow-angle-2.jp
 galleries[2]=["products/max-aura-official-1.jpg","products/max-aura-official-2.jpg","products/max-aura-official-3.jpg","products/max-aura-official-4.jpg","products/max-aura-official-5.jpg"];
 // La fuente de la galería 2 incluyó prendas ajenas al modelo; usamos la foto HQ del producto.
 delete galleries[1];
-// La galería importada mezclaba polos y otro modelo; conservamos solo la toma correcta.
-delete galleries[7];
+// Cinco ángulos reales por modelo, sin prendas ni imágenes repetidas.
+galleries[4]=["products/flight-legacy-1.jpg","products/flight-legacy-2.jpg","products/flight-legacy-3.jpg","products/flight-legacy-4.jpg","products/flight-legacy-5.jpg"];
+galleries[6]=["products/air-max-correlate-1.png","products/air-max-correlate-2.png","products/air-max-correlate-3.png","products/air-max-correlate-4.png","products/air-max-correlate-5.png"];
+galleries[7]=["products/son-of-mars-1.png","products/son-of-mars-2.png","products/son-of-mars-3.png","products/son-of-mars-4.png","products/son-of-mars-5.png"];

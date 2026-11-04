@@ -14,5 +14,5 @@ for(let index=0;index<inventory.length;index+=1){galleries[index]=Array.from({le
 
 // Tomas reales, en el orden de cada modelo recibido.
 Object.entries(catalogPhotos).forEach(([index,photos])=>{
-  galleries[Number(index)]=photos.map(photo=>`catalog-photos/${photo}`);
+  galleries[Number(index)]=photos.map(catalogPhotoPath);
 });

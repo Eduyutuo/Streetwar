@@ -109,8 +109,13 @@ const catalogPhotos={
   43:['IMG_0276.jpeg','IMG_0277.jpeg','IMG_0278.jpeg','IMG_0279.jpeg','IMG_0280.jpeg'],
   44:['IMG_0281.jpeg','IMG_0282.jpeg','IMG_0283.jpeg','IMG_0284.jpeg','IMG_0285.jpeg','IMG_0286.jpeg']
 };
+const catalogPhotoPath=photo=>{
+  const number=Number((photo.match(/IMG_(\d{4})/)||[])[1]);
+  const group=number<=83?'A':number<=119?'B':number<=158?'C':number<=195?'D':number<=230?'E':number<=263?'F':'G';
+  return `catalog-photos/Grupo ${group}/${photo}`;
+};
 Object.entries(catalogPhotos).forEach(([index,photos])=>{
-  inventory[Number(index)].image=`catalog-photos/${photos[0]}`;
+  inventory[Number(index)].image=catalogPhotoPath(photos[0]);
 });
 const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:inventory.filter(p=>p.price!==null).sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>value===null?'CONSULTAR':`S/ ${value.toLocaleString('es-PE')}`;

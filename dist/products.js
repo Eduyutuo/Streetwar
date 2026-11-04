@@ -112,7 +112,7 @@ const catalogPhotos={
 const catalogPhotoPath=photo=>{
   const number=Number((photo.match(/IMG_(\d{4})/)||[])[1]);
   const group=number<=83?'A':number<=119?'B':number<=158?'C':number<=195?'D':number<=230?'E':number<=263?'F':'G';
-  return `catalog-photos/Grupo ${group}/${photo}`;
+  return `galleries/Grupo ${group}/${photo}`;
 };
 Object.entries(catalogPhotos).forEach(([index,photos])=>{
   inventory[Number(index)].image=catalogPhotoPath(photos[0]);

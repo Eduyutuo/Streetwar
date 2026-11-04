@@ -1,5 +1,3 @@
-/* Número peruano de demostración. Reemplazar por el WhatsApp real sin + ni espacios. */
-const WHATSAPP_NUMBER='51999999999';
 const detailRoot=document.querySelector('#product-detail');
 
 const expandSizes=label=>{
@@ -24,6 +22,7 @@ if(detailRoot){
   const id=Number.isInteger(requested)&&requested>=0&&requested<inventory.length?requested:0;
   const product=inventory[id];
   const sizes=expandSizes(product.sizes);
+  const hasListedSizes=sizes.length>0;
   const brand=brandFor(product);
   const audienceLabel=product.audience==='Mujer'?'PARA MUJER':product.audience==='Hombre'?'PARA HOMBRE':'UNISEX';
   const gallery=typeof galleries!=='undefined'&&galleries[id]?.length?[product.image,...galleries[id].slice(1).filter(image=>image!==product.image)]:[product.image];
@@ -49,11 +48,9 @@ if(detailRoot){
       <div class="auth-card"><strong>STREETWAR</strong><span>Producto seleccionado para nuestro catálogo 2026</span></div>
       <div class="detail-rule"></div>
       <div class="audience-card"><span>ESTE MODELO ES</span><strong>${audienceLabel}</strong><small>${product.audience==='Unisex'?'Diseñado para mujer y hombre':'Según el inventario Streetwar'}</small></div>
-      <div class="size-heading"><h2>SELECCIONA TU TALLA</h2><span>TALLA EU</span></div>
-      <div class="size-grid">${sizes.map(size=>`<button type="button" data-size="${size}" aria-pressed="false">EU ${size}</button>`).join('')}</div>
-      <p class="size-copy">Tallas registradas en inventario: <strong>${product.sizes}</strong></p>
-      <button class="detail-add whatsapp-buy" type="button" disabled>SELECCIONA UNA TALLA</button>
-      <p class="whatsapp-note">La compra se coordina directamente por WhatsApp. Número de demostración.</p>
+      ${hasListedSizes?`<div class="size-heading"><h2>SELECCIONA TU TALLA</h2><span>TALLA EU</span></div><div class="size-grid">${sizes.map(size=>`<button type="button" data-size="${size}" aria-pressed="false">EU ${size}</button>`).join('')}</div><p class="size-copy">Tallas registradas en inventario: <strong>${product.sizes}</strong></p>`:`<p class="size-copy">Tallas por confirmar. Escríbenos para consultar disponibilidad.</p>`}
+      <button class="detail-add whatsapp-buy" type="button" ${hasListedSizes?'disabled':''}>${hasListedSizes?'SELECCIONA UNA TALLA':'CONSULTAR DISPONIBILIDAD'}</button>
+      <p class="whatsapp-note">Elige Contacto 1 o Contacto 2 en el radar de WhatsApp para coordinar tu pedido.</p>
       <div class="purchase-benefits"><p><b>✓</b><span><strong>Atención directa</strong>Confirma stock, entrega y forma de pago con un asesor.</span></p><p><b>✓</b><span><strong>Pedido preparado</strong>Enviaremos el modelo, precio y talla elegida.</span></p></div>
       <div class="product-facts">
         <h2>DETALLES DEL PRODUCTO</h2>
@@ -84,8 +81,9 @@ if(detailRoot){
   detailRoot.querySelectorAll('[data-gallery-index]').forEach(button=>button.addEventListener('click',()=>showGalleryImage(Number(button.dataset.galleryIndex))));
   detailRoot.querySelectorAll('[data-gallery-nav]').forEach(button=>button.addEventListener('click',()=>showGalleryImage(galleryIndex+(button.dataset.galleryNav==='next'?1:-1))));
   addButton.addEventListener('click',()=>{
-    const message=`Hola Streetwar, quiero comprar este modelo:\n\n*${product.name}*\nTalla: *EU ${selected}*\nPrecio: *${money(product.price)}*\nCategoría: ${product.category}\n\n¿Está disponible?`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,'_blank','noopener');
+    const sizeLine=selected?`Talla: *EU ${selected}*`:'Talla: *Por confirmar*';
+    const message=`Hola Streetwar, quiero comprar este modelo:\n\n*${product.name}*\n${sizeLine}\nPrecio: *${money(product.price)}*\nCategoría: ${product.category}\n\n¿Está disponible?`;
+    window.dispatchEvent(new CustomEvent('open-whatsapp-picker',{detail:{message}}));
   });
 
   const relatedRoot=document.querySelector('#related-products');

@@ -1,5 +1,18 @@
 (()=>{
-  const WHATSAPP_NUMBER='51999999999';
+  const WHATSAPP_CONTACTS=[
+    {label:'Contacto 1',number:'13017933122',display:'+1 301 793 3122'},
+    {label:'Contacto 2',number:'51940640679',display:'+51 940 640 679'}
+  ];
+  const defaultMessage='Hola Streetwar, quiero consultar por una zapatilla.';
+  const openContact=(number,message)=>window.open(`https://wa.me/${number}?text=${encodeURIComponent(message||defaultMessage)}`,'_blank','noopener');
+  const openPicker=message=>{
+    const radar=document.querySelector('.whatsapp-radar');
+    if(!radar)return;
+    radar.dataset.message=message||defaultMessage;
+    radar.classList.add('is-open');
+    radar.querySelector('.whatsapp-radar-toggle')?.focus();
+  };
+  window.openWhatsAppPicker=openPicker;
   const normalize=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const escapeHtml=value=>String(value).replace(/[&<>"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
   const init=()=>{
@@ -30,17 +43,20 @@
       input.addEventListener('keydown',event=>{if(event.key==='Escape'){close();input.blur()}});
       document.addEventListener('click',event=>{if(!form.contains(event.target))close()});
     });
-    if(!document.querySelector('.whatsapp-float')){
-      const whatsapp=document.createElement('a');
-      whatsapp.className='whatsapp-float';
-      whatsapp.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Streetwar, quiero consultar por una zapatilla.')}`;
-      whatsapp.target='_blank';
-      whatsapp.rel='noopener';
-      whatsapp.setAttribute('aria-label','Consultar por WhatsApp');
-      whatsapp.title='Comprar por WhatsApp';
-      whatsapp.innerHTML='<img src="assets/icono-whastapp.png" alt=""><span>WHATSAPP</span>';
-      document.body.append(whatsapp);
+    if(!document.querySelector('.whatsapp-radar')){
+      const radar=document.createElement('div');
+      radar.className='whatsapp-radar';
+      radar.dataset.message=defaultMessage;
+      radar.innerHTML=`<div class="whatsapp-radar-menu" aria-label="Contactos de WhatsApp"><b>SOPORTE WHATSAPP</b>${WHATSAPP_CONTACTS.map(contact=>`<button type="button" data-whatsapp-number="${contact.number}"><strong>${contact.label}</strong><small>${contact.display}</small></button>`).join('')}</div><button class="whatsapp-radar-toggle" type="button" aria-label="Elegir contacto de WhatsApp" aria-expanded="false"><img src="assets/icono-whastapp.png" alt=""><span>WHATSAPP</span></button>`;
+      radar.querySelector('.whatsapp-radar-toggle').addEventListener('click',()=>{
+        const open=radar.classList.toggle('is-open');
+        radar.querySelector('.whatsapp-radar-toggle').setAttribute('aria-expanded',String(open));
+      });
+      radar.querySelectorAll('[data-whatsapp-number]').forEach(button=>button.addEventListener('click',()=>openContact(button.dataset.whatsappNumber,radar.dataset.message)));
+      document.addEventListener('click',event=>{if(!radar.contains(event.target)){radar.classList.remove('is-open');radar.querySelector('.whatsapp-radar-toggle').setAttribute('aria-expanded','false')}});
+      document.body.append(radar);
     }
+    window.addEventListener('open-whatsapp-picker',event=>openPicker(event.detail?.message));
   };
   init();
 })();

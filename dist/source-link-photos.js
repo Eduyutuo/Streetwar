@@ -74,7 +74,7 @@ const sourceLinkPhotos={
     "source-links/IR0519-101/06.webp"
   ],
   "8": [
-    "source-links/IQ0205-100/01.png",
+    "source-links/IQ0205-100/studio-01-white.png",
     "source-links/IQ0205-100/02.avif",
     "source-links/IQ0205-100/03.avif",
     "source-links/IQ0205-100/04.avif"

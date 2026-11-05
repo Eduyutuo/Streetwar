@@ -55,7 +55,7 @@ if(detailRoot){
       <div class="product-facts">
         <h2>DETALLES DEL PRODUCTO</h2>
         <p>${descriptionFor(product)}</p>
-        <dl><div><dt>MARCA</dt><dd>${brand}</dd></div><div><dt>SILUETA</dt><dd>${product.category}</dd></div><div><dt>MODELO</dt><dd>${product.name}</dd></div><div><dt>TALLAS</dt><dd>${product.sizes} EU</dd></div><div><dt>PÚBLICO</dt><dd>${product.audience}</dd></div></dl>
+        <dl><div><dt>MARCA</dt><dd>${brand}</dd></div><div><dt>SILUETA</dt><dd>${product.category}</dd></div><div><dt>MODELO</dt><dd>${product.name}</dd></div>${product.sku?`<div><dt>CÓDIGO</dt><dd>${product.sku}</dd></div>`:''}<div><dt>TALLAS</dt><dd>${product.sizes} EU</dd></div><div><dt>PÚBLICO</dt><dd>${product.audience}</dd></div></dl>
       </div>
       <a class="back-catalog" href="novedades.html">← VOLVER AL CATÁLOGO</a>
     </div>`;

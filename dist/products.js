@@ -34,17 +34,56 @@ const inventory=[
 {group:'E',category:'Nike Basketball',name:'Nike LeBron Witness 9',sizes:'40–41',price:360,audience:'Hombre',image:'galleries/33-1.png',source:'https://www.nike.com/t/lebron-witness-9-basketball-shoes-h9SkAFPT'},
 {group:'E',category:'Nike Air Force 1',name:'Nike Air Force 1 Rust Pink / Metallic Red',sizes:'36–38',price:446,audience:'Mujer',image:'products/air-force-1-rust-pink.webp',source:'https://www.nike.com/w/complete-the-wnba-fan-look-shoes-4cbgmzom6bzy7ok'},
 {group:'E',category:'Nike Shox',name:'Nike Shox R4 College Grey / Volt',sizes:'35–38',price:514,audience:'Unisex',image:'products/shox-r4-college-grey.jpg',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
-{group:'F',category:'Jordan Retro',name:'Jordan Retro Black / Red',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'F',category:'Jordan Retro',name:'Jordan Retro White / Black',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'F',category:'Jordan Retro',name:'Jordan Retro Burgundy',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'F',category:'Jordan Retro',name:'Jordan Retro Black / Yellow',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'F',category:'Air Jordan 3',name:'Air Jordan 3 Red / Elephant Print',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'F',category:'Air Jordan 1 Low',name:'Air Jordan 1 Retro Low OG “Banned”',sizes:'36–38',price:446,audience:'Unisex',image:'products/jordan-1-low-banned.jpg',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
-{group:'G',category:'Air Jordan 3',name:'Air Jordan 3 Black / Elephant Print',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'G',category:'Jordan Retro',name:'Jordan Retro Grey / Black',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'G',category:'Nike Air Force 1',name:'Nike Air Force 1 Black',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''},
-{group:'G',category:'Nike Air Force 1',name:'Nike Air Force 1 Navy / White',sizes:'Consultar disponibilidad',price:null,audience:'Unisex',image:'',source:''}
+{group:'F',category:'Jordan Retro 5',name:'Halloween',sizes:'36–38 / 39–41',price:null,audience:'Unisex',image:'',sku:'HQ7980-001',source:'http://nike.com.pe/air-jordan-5-retro-haloween-zapatillas-para-hombre/hq7978-001/11112211015.html',note:'No tomar en cuenta la última imagen. Poner fondo blanco.'},
+{group:'F',category:'Jordan Retro 4',name:'Flight Club',sizes:'36–38 / 40–43',price:null,audience:'Unisex',image:'',sku:'IM4026-100',source:'https://www.ebay.com/itm/287072006055',note:'No tomar en cuenta las últimas 4 imágenes.'},
+{group:'F',category:'Jordan Retro 4',name:'She’s A Star',sizes:'36–37.5 / 36–38',price:null,audience:'Mujer',image:'',sku:'IO2829-600',source:'https://thesolesupplier.co.uk/release-dates/nike/air-jordan-4/air-jordan-4-retro-gs-shes-a-star/',note:''},
+{group:'F',category:'Jordan 1',name:'Air Jordan 1 Mid SE Black / Opti Yellow / Silver',sizes:'36–38',price:null,audience:'Mujer',image:'',sku:'IV6811-001',source:'https://www.bbbranded.com/products/y-air-jordan-1-mid-se-iv6811-001',note:''},
+{group:'F',category:'Jordan Hybrid / Otros',name:'Jordan Son Of Mars Low Rojo Pasión / Neblina Gris / White / Black',sizes:'39–41',price:null,audience:'Hombre',image:'',sku:'IR0519-600',source:'https://www.nike.com.pe/air-jordan-4-retro-zapatillas-para-hombre/fq8138-600/11084881021.html',note:''},
+{group:'F',category:'Air Jordan 1 Low',name:'Retro Low OG “Banned”',sizes:'36–38 / 37–38',price:null,audience:'Unisex',image:'',sku:'IW6277-001',source:'https://www.shiekh.com/jordan-grade-school-air-jordan-1-low-og-black-red-iw6277-001.html',note:''},
+{group:'F',category:'Jordan Hybrid / Otros',name:'Jordan Son Of Mars Low Black / University Red',sizes:'39–42',price:null,audience:'Hombre',image:'',sku:'IR0519-003',source:'https://www.kickscrew.com/products/gs-air-jordan-son-of-mars-low-black-university-red-ir0519-003',note:''},
+{group:'G',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Cool Grey / Gym Red / Black / White',sizes:'38–40',price:null,audience:'Hombre',image:'',sku:'AQ9214-012',source:'https://zapatos.es/p/zapatos-nike-jordan-max-aura-gs-aq9214-012-cool-grey-gym-red-black-white',note:''},
+{group:'G',category:'Nike Force 1',name:'Nike Force 1 ’07 Premium Flowers',sizes:'36–39',price:null,audience:'Mujer',image:'',sku:'IB6644-001',source:'https://skstore.eu/en/nike-air-force-1-07-premium-black-shoes.html',note:''},
+{group:'G',category:'Nike Force 1',name:'Obsidiana / Azul Difuso / Perla Suave / Aluminio',sizes:'36–39',price:null,audience:'Mujer',image:'',sku:'IM6969-451',source:'https://www.nike.com/us/es/t/tenis-para-ninos-grandes-nike-air-force-1-3JNSvS/IM6969-451',note:'Poner fondo blanco.'}
 ];
+// Códigos, enlaces y observaciones tomados exclusivamente de SNKRS (1).xlsx.
+const spreadsheetMetadata=[
+  ['IX6180-100','https://samtabak.com/products/gs-air-jordan-9-retro-og-space-jam-ix6180-100',''],
+  ['IO2076-100','https://samtabak.com/products/gs-air-jordan-3-retro-play-your-way-io2076-100',''],
+  ['AQ9214-006','https://novelship.com/es-us/air-jordan-max-aura-black-gym-red-gs',''],
+  ['HF7054-012','https://www.footy.com/p/nike-air-max-95-older-kids-shoes-grey/694a2a0f4f62009b36685a23/',''],
+  ['BQ4212-002','https://www.goat.com/sneakers/flight-legacy-black-white-bq4212-002',''],
+  ['694862-200','https://www.n-sport.net/lifestyle-patike/muske-patike-nike-air-max-command-20.html',''],
+  ['511416-011','https://articulo.mercadolibre.com.pe/MPE-655050748-zapatillas-nike-air-max-correlate-black-white-511416-011--_JM',''],
+  ['IR0519-101','https://www.nike.com.pe/jordan-son-of-mars-low-zapatillas-para-hombre/580603-101/11084738017.html','No tomar en cuenta la séptima ni la última imagen.'],
+  ['IQ0205-100','https://www.nike.com/us/es/t/tenis-para-ninos-grandes-nike-air-force-1-XfzEDzQ5/IQ0205-100','Poner fondo blanco.'],
+  ['IR1968-133','https://www.kickscrew.com/products/wmns-nike-air-force-1-low-wnba-30th-anniversary-ir1968-133',''],
+  ['IR5896-030','https://www.headquarterstore.com/es/products/nike-air-force-1-mexico-ir5896-030',''],
+  ['IV6222-410','https://reynoldsandsons.com/products/nike-air-griffey-max-1-hbcu-swingman-gs-iv6222-410',''],
+  ['553560-045','https://simple.ripley.com.pe/zapatillas-nike-air-jordan-1-low-553560-045-ninos-pmp20001533854',''],
+  ['CT3839-100','https://simple.ripley.com.pe/zapatillas-hombre-nike-urbanas-blanco-dh2987-101-court-vis-2025280147540','No tomar en cuenta las dos últimas imágenes.'],
+  ['IW2872-700','https://cityjeans.com/products/mens-air-jordan-4-retro-x-j-balvin-amazonas-lemonade-multicolor-iw2872-700-iw2872-700',''],
+  ['FD1437-008','https://www.futurevisions.pe/futurevisions-pe/product/80200745/zap-dz5485-201-air-jordan-1-re/80200765','No tomar en cuenta la segunda ni la última imagen.'],
+  ['408452-102','https://cityjeans.com/products/big-kids-air-jordan-4-retro-tour-yellow-white-tour-yellow-dark-blue-grey-black-408452-102-408452-102',''],
+  ['AQ9214-011','https://www.zakcret.gr/en/jordan-max-aura-aq9214-011-leyko-mayro',''],
+  ['II1254-001','https://thesolesupplier.co.uk/release-dates/nike/air-jordan-1/air-jordan-1-mid-se-gs-world-tour-multi/',''],
+  ['II0599-600','https://www.sneakersnstuff.com/products/jordan-air-jordan-3-retro-spring-flowers-big-kids-gs-ii0599-600','Poner fondo blanco.'],
+  ['511417-136','https://www.nike.com.pe/nike-air-max-correlate-zapatillas-para-mujer/511417-136/10677147014.html','Poner fondo blanco.'],
+  ['323419-164','https://www.kickscrew.com/products/gs-air-jordan-6-rings-white-varsity-red-black-323419-164',''],
+  ['IR4727-100','https://www.bbbranded.com/products/y-nike-air-diamond-turf-ii-ir4727-100',''],
+  ['IR4714-100','https://www.shiekh.com/nike-grade-school-air-dt-max-96-low-white-metallic-silver-white-ir4714-100.html','Poner fondo blanco. No tomar en cuenta la última imagen.'],
+  ['DR8784-005','https://articulo.mercadolibre.com.pe/MPE-655104518-zapatillas-nike-zoom-lebron-nxxt-gen-urbano-dr8784-005--_JM','Poner fondo blanco.'],
+  ['AR3762-001','https://tiendamia.com.pe/p/amz/b07slnlp6g/nike-zapatillas-hombre-air-force-1-07-lv8-zapatos',''],
+  ['IV5197-201','http://bbbranded.com/products/w-nike-air-force-1-07-iv5197-201',''],
+  ['CU4152-101','https://articulo.mercadolibre.com.pe/MPE-621254943-zapatilla-nike-air-max-bolt-urbano-original-cu4152101--_JM','Poner fondo blanco.'],
+  ['AR4430-101','https://pe.ebay.com/b/Jordan-Lift-Off-White-Grey/15709/bn_7117641379',''],
+  ['DM0967-111','https://noirfonce.eu/es-es/products/air-jordan-3-retro-pure-money-dm0967-111',''],
+  ['553560-081','https://www.shiekh.com/jordan-grade-school-air-jordan-1-low-black-starfish-white-sail-553560-081.html',''],
+  ['HV4775-001','https://www.kickscrew.com/products/gs-air-jordan-1-low-inner-beast-hv4775-001',''],
+  ['HQ8034-700','https://www.nike.com.pe/lebron-witness%C2%A09-zapatillas-de-basquet/hq8034-700/11058724019.html','Poner fondo blanco.'],
+  ['IQ0213-685','https://www.nike.com/t/air-force-1-big-kids-shoes-XfzEDzQ5/IQ0213-685','Poner fondo blanco.'],
+  ['CW2626-008','https://www.footlocker.com/product/~/W2626008.html','Poner fondo blanco.']
+];
+spreadsheetMetadata.forEach(([sku,source,note],index)=>Object.assign(inventory[index],{sku,source,note}));
 // La tarjeta y la ficha comienzan con la misma primera toma del modelo.
 const cardPrimaryImages={0:'galleries/1-1.jpg',1:'galleries/2-1.jpg',7:'galleries/8-1.webp',11:'galleries/12-1.jpg',14:'galleries/15-1.jpg',21:'galleries/22-1.webp',22:'products/diamond-turf-hq.png',24:'galleries/25-1.png',25:'galleries/26-1.webp',30:'real/aj1-low-shattered.webp',32:'galleries/33-1.png'};
 Object.entries(cardPrimaryImages).forEach(([index,image])=>{inventory[Number(index)].image=image});
@@ -111,7 +150,7 @@ const catalogPhotos={
 };
 const catalogPhotoPath=photo=>{
   const number=Number((photo.match(/IMG_(\d{4})/)||[])[1]);
-  const group=number<=83?'A':number<=119?'B':number<=158?'C':number<=195?'D':number<=230?'E':number<=263?'F':'G';
+  const group=number<=83?'A':number<=119?'B':number<=158?'C':number<=195?'D':number<=230?'E':number<=269?'F':'G';
   return `galleries/Grupo ${group}/${photo}`;
 };
 Object.entries(catalogPhotos).forEach(([index,photos])=>{

@@ -34,6 +34,16 @@ const sourceLinkPhotos={
     "source-links/HF7054-012/03.webp",
     "source-links/HF7054-012/04.webp"
   ],
+  "4": [
+    "source-links/BQ4212-002/official-01.webp",
+    "source-links/BQ4212-002/official-02.webp",
+    "source-links/BQ4212-002/official-03.webp",
+    "source-links/BQ4212-002/official-04.webp",
+    "source-links/BQ4212-002/official-05.webp",
+    "source-links/BQ4212-002/official-06.webp",
+    "source-links/BQ4212-002/official-07.webp",
+    "source-links/BQ4212-002/official-08.webp"
+  ],
   "5": [
     "source-links/694862-200/01.jpg",
     "source-links/694862-200/02.jpg",

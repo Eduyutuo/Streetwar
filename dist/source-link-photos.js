@@ -1,16 +1,24 @@
 // Generado desde los enlaces de SNKRS (1).xlsx.
 const sourceLinkPhotos={
   "0": [
-    "source-links/IX6180-100/01.webp",
-    "source-links/IX6180-100/02.webp",
-    "source-links/IX6180-100/03.webp",
-    "source-links/IX6180-100/04.webp"
+    "source-links/IX6180-100/official-01.jpg",
+    "source-links/IX6180-100/official-02.jpg",
+    "source-links/IX6180-100/official-03.jpg",
+    "source-links/IX6180-100/official-04.jpg",
+    "source-links/IX6180-100/official-05.jpg",
+    "source-links/IX6180-100/official-06.jpg",
+    "source-links/IX6180-100/official-07.jpg",
+    "source-links/IX6180-100/official-08.jpg"
   ],
   "1": [
-    "source-links/IO2076-100/01.webp",
-    "source-links/IO2076-100/02.webp",
-    "source-links/IO2076-100/03.webp",
-    "source-links/IO2076-100/04.webp"
+    "source-links/IO2076-100/official-01.jpg",
+    "source-links/IO2076-100/official-02.jpg",
+    "source-links/IO2076-100/official-03.jpg",
+    "source-links/IO2076-100/official-04.jpg",
+    "source-links/IO2076-100/official-05.jpg",
+    "source-links/IO2076-100/official-06.jpg",
+    "source-links/IO2076-100/official-07.jpg",
+    "source-links/IO2076-100/official-08.jpg"
   ],
   "2": [
     "source-links/AQ9214-006/01.webp",
@@ -74,7 +82,8 @@ const sourceLinkPhotos={
     "source-links/IW2872-700/09.webp"
   ],
   "15": [
-    "source-links/FD1437-008/01.jpg"
+    "source-links/FD1437-008/01.jpg",
+    "source-links/FD1437-008/02.webp"
   ],
   "16": [
     "source-links/408452-102/01.webp",
@@ -106,8 +115,8 @@ const sourceLinkPhotos={
     "source-links/511417-136/05.webp",
     "source-links/511417-136/06.webp",
     "source-links/511417-136/07.webp",
-    "source-links/511417-136/08.jpg",
-    "source-links/511417-136/09.jpg"
+    "source-links/511417-136/08.webp",
+    "source-links/511417-136/09.webp"
   ],
   "22": [
     "source-links/IR4727-100/01.webp",

@@ -65,6 +65,13 @@ function imageUrls(html,source,product){
       add(url,tagScore+relevance(url));
     }
   }
+  // Algunas fichas Shopify guardan las vistas del producto dentro de datos
+  // serializados en lugar de etiquetas <img>. Extraemos esas URLs por SKU.
+  for(const raw of html.match(/(?:https?:)?(?:\\?\/){0,2}[^"'\s<>]+\.(?:jpe?g|png|webp|avif)(?:\?[^"'\s<>]*)?/gi)||[]){
+    const decoded=raw.replace(/\\u0026/g,'&').replace(/\\\//g,'/');
+    const normalized=decoded.replace(/[^a-z0-9]/gi,'').toLowerCase();
+    if(sku&&normalized.includes(sku))add(absolute(decoded.replace(/^\/\//,'https://'),source),120);
+  }
   const ordered=[...candidates.entries()].sort((a,b)=>b[1]-a[1]).map(([url])=>url);
   const relevant=ordered.filter(url=>(candidates.get(url)||0)>0);
   return (relevant.length?relevant:ordered).slice(0,10);

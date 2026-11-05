@@ -84,10 +84,20 @@ const sourceLinkPhotos={
     "source-links/IQ0205-100/official-08.png",
     "source-links/IQ0205-100/official-09.png"
   ],
+  "9": [
+    "source-links/IR1968-133/01.webp",
+    "source-links/IR1968-133/02.webp",
+    "source-links/IR1968-133/03.webp",
+    "source-links/IR1968-133/04.webp",
+    "source-links/IR1968-133/05.webp"
+  ],
   "10": [
-    "source-links/IR5896-030/01.webp",
-    "source-links/IR5896-030/02.webp",
-    "source-links/IR5896-030/03.webp"
+    "source-links/IR5896-030/official-01.jpg",
+    "source-links/IR5896-030/official-02.jpg",
+    "source-links/IR5896-030/official-03.jpg",
+    "source-links/IR5896-030/official-04.jpg",
+    "source-links/IR5896-030/official-05.jpg",
+    "source-links/IR5896-030/official-06.jpg"
   ],
   "11": [
     "source-links/IV6222-410/01.webp",

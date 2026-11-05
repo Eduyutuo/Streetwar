@@ -32,7 +32,8 @@ const sourceLinkPhotos={
     "source-links/HF7054-012/01.webp",
     "source-links/HF7054-012/02.webp",
     "source-links/HF7054-012/03.webp",
-    "source-links/HF7054-012/04.webp"
+    "source-links/HF7054-012/04.webp",
+    "source-links/HF7054-012/official-extra-05.webp"
   ],
   "4": [
     "source-links/BQ4212-002/official-01.webp",

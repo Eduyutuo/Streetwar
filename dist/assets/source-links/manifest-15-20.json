@@ -1,0 +1,59 @@
+[
+  {
+    "index": 15,
+    "sku": "FD1437-008",
+    "status": "ok",
+    "images": [
+      "source-links/FD1437-008/01.jpg",
+      "source-links/FD1437-008/02.webp"
+    ],
+    "source": "https://www.futurevisions.pe/futurevisions-pe/product/80200745/zap-dz5485-201-air-jordan-1-re/80200765"
+  },
+  {
+    "index": 16,
+    "sku": "408452-102",
+    "status": "ok",
+    "images": [
+      "source-links/408452-102/01.webp",
+      "source-links/408452-102/02.webp",
+      "source-links/408452-102/03.webp",
+      "source-links/408452-102/04.webp",
+      "source-links/408452-102/05.webp",
+      "source-links/408452-102/06.webp",
+      "source-links/408452-102/07.webp",
+      "source-links/408452-102/08.webp",
+      "source-links/408452-102/09.webp"
+    ],
+    "source": "https://cityjeans.com/products/big-kids-air-jordan-4-retro-tour-yellow-white-tour-yellow-dark-blue-grey-black-408452-102-408452-102"
+  },
+  {
+    "index": 17,
+    "sku": "AQ9214-011",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 18,
+    "sku": "II1254-001",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://thesolesupplier.co.uk/release-dates/nike/air-jordan-1/air-jordan-1-mid-se-gs-world-tour-multi/"
+  },
+  {
+    "index": 19,
+    "sku": "II0599-600",
+    "status": "ok",
+    "images": [
+      "source-links/II0599-600/01.webp",
+      "source-links/II0599-600/02.webp",
+      "source-links/II0599-600/03.webp",
+      "source-links/II0599-600/04.webp",
+      "source-links/II0599-600/05.webp",
+      "source-links/II0599-600/06.webp",
+      "source-links/II0599-600/07.webp",
+      "source-links/II0599-600/08.webp",
+      "source-links/II0599-600/09.webp"
+    ],
+    "source": "https://www.sneakersnstuff.com/products/jordan-air-jordan-3-retro-spring-flowers-big-kids-gs-ii0599-600"
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "index": 30,
+    "sku": "553560-081",
+    "status": "error: page 405",
+    "images": []
+  },
+  {
+    "index": 31,
+    "sku": "HV4775-001",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 32,
+    "sku": "HQ8034-700",
+    "status": "ok",
+    "images": [
+      "source-links/HQ8034-700/01.webp",
+      "source-links/HQ8034-700/02.webp",
+      "source-links/HQ8034-700/03.webp",
+      "source-links/HQ8034-700/04.webp",
+      "source-links/HQ8034-700/05.webp",
+      "source-links/HQ8034-700/06.webp",
+      "source-links/HQ8034-700/07.webp",
+      "source-links/HQ8034-700/08.webp"
+    ],
+    "source": "https://www.nike.com.pe/lebron-witness%C2%A09-zapatillas-de-basquet/hq8034-700/11058724019.html"
+  },
+  {
+    "index": 33,
+    "sku": "IQ0213-685",
+    "status": "ok",
+    "images": [
+      "source-links/IQ0213-685/01.png",
+      "source-links/IQ0213-685/02.avif",
+      "source-links/IQ0213-685/03.avif",
+      "source-links/IQ0213-685/04.avif"
+    ],
+    "source": "https://www.nike.com/t/air-force-1-big-kids-shoes-XfzEDzQ5/IQ0213-685"
+  },
+  {
+    "index": 34,
+    "sku": "CW2626-008",
+    "status": "ok",
+    "images": [
+      "source-links/CW2626-008/01.avif",
+      "source-links/CW2626-008/02.webp",
+      "source-links/CW2626-008/03.webp",
+      "source-links/CW2626-008/04.webp",
+      "source-links/CW2626-008/05.webp",
+      "source-links/CW2626-008/06.webp",
+      "source-links/CW2626-008/07.webp",
+      "source-links/CW2626-008/08.webp"
+    ],
+    "source": "https://www.footlocker.com/product/~/W2626008.html"
+  },
+  {
+    "index": 35,
+    "sku": "HQ7980-001",
+    "status": "ok",
+    "images": [
+      "source-links/HQ7980-001/01.webp",
+      "source-links/HQ7980-001/02.webp",
+      "source-links/HQ7980-001/03.webp",
+      "source-links/HQ7980-001/04.webp",
+      "source-links/HQ7980-001/05.webp",
+      "source-links/HQ7980-001/06.webp",
+      "source-links/HQ7980-001/07.webp"
+    ],
+    "source": "https://www.nike.com.pe/air-jordan-5-retro-haloween-zapatillas-para-hombre/hq7978-001/11112211015.html"
+  },
+  {
+    "index": 36,
+    "sku": "IM4026-100",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 37,
+    "sku": "IO2829-600",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://thesolesupplier.co.uk/release-dates/nike/air-jordan-4/air-jordan-4-retro-gs-shes-a-star/"
+  },
+  {
+    "index": 38,
+    "sku": "IV6811-001",
+    "status": "ok",
+    "images": [
+      "source-links/IV6811-001/01.webp",
+      "source-links/IV6811-001/02.webp",
+      "source-links/IV6811-001/03.avif",
+      "source-links/IV6811-001/04.avif",
+      "source-links/IV6811-001/05.avif",
+      "source-links/IV6811-001/06.avif",
+      "source-links/IV6811-001/07.avif",
+      "source-links/IV6811-001/08.webp"
+    ],
+    "source": "https://www.bbbranded.com/products/y-air-jordan-1-mid-se-iv6811-001"
+  },
+  {
+    "index": 39,
+    "sku": "IR0519-600",
+    "status": "ok",
+    "images": [
+      "source-links/IR0519-600/01.webp",
+      "source-links/IR0519-600/02.webp",
+      "source-links/IR0519-600/03.webp",
+      "source-links/IR0519-600/04.webp",
+      "source-links/IR0519-600/05.webp",
+      "source-links/IR0519-600/06.webp",
+      "source-links/IR0519-600/07.webp",
+      "source-links/IR0519-600/08.webp"
+    ],
+    "source": "https://www.nike.com.pe/air-jordan-4-retro-zapatillas-para-hombre/fq8138-600/11084881021.html"
+  }
+]

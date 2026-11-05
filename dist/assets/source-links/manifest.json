@@ -1,0 +1,499 @@
+[
+  {
+    "index": 0,
+    "sku": "IX6180-100",
+    "status": "ok",
+    "images": [
+      "source-links/IX6180-100/01.webp",
+      "source-links/IX6180-100/02.webp",
+      "source-links/IX6180-100/03.webp",
+      "source-links/IX6180-100/04.webp",
+      "source-links/IX6180-100/05.webp",
+      "source-links/IX6180-100/06.webp",
+      "source-links/IX6180-100/07.webp"
+    ],
+    "source": "https://samtabak.com/products/gs-air-jordan-9-retro-og-space-jam-ix6180-100"
+  },
+  {
+    "index": 1,
+    "sku": "IO2076-100",
+    "status": "ok",
+    "images": [
+      "source-links/IO2076-100/01.webp",
+      "source-links/IO2076-100/02.webp",
+      "source-links/IO2076-100/03.webp",
+      "source-links/IO2076-100/04.webp",
+      "source-links/IO2076-100/05.webp",
+      "source-links/IO2076-100/06.webp",
+      "source-links/IO2076-100/07.webp"
+    ],
+    "source": "https://samtabak.com/products/gs-air-jordan-3-retro-play-your-way-io2076-100"
+  },
+  {
+    "index": 2,
+    "sku": "AQ9214-006",
+    "status": "ok",
+    "images": [
+      "source-links/AQ9214-006/01.webp",
+      "source-links/AQ9214-006/02.jpg",
+      "source-links/AQ9214-006/03.jpg",
+      "source-links/AQ9214-006/04.avif",
+      "source-links/AQ9214-006/05.avif",
+      "source-links/AQ9214-006/06.jpg",
+      "source-links/AQ9214-006/07.avif"
+    ],
+    "source": "https://novelship.com/es-us/air-jordan-max-aura-black-gym-red-gs"
+  },
+  {
+    "index": 3,
+    "sku": "HF7054-012",
+    "status": "ok",
+    "images": [
+      "source-links/HF7054-012/01.webp",
+      "source-links/HF7054-012/02.webp",
+      "source-links/HF7054-012/03.webp",
+      "source-links/HF7054-012/04.webp",
+      "source-links/HF7054-012/05.webp",
+      "source-links/HF7054-012/06.jpg",
+      "source-links/HF7054-012/07.jpg"
+    ],
+    "source": "https://www.footy.com/p/nike-air-max-95-older-kids-shoes-grey/694a2a0f4f62009b36685a23/"
+  },
+  {
+    "index": 4,
+    "sku": "BQ4212-002",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 5,
+    "sku": "694862-200",
+    "status": "ok",
+    "images": [
+      "source-links/694862-200/01.jpg",
+      "source-links/694862-200/02.png",
+      "source-links/694862-200/03.png",
+      "source-links/694862-200/04.jpg",
+      "source-links/694862-200/05.jpg",
+      "source-links/694862-200/06.jpg"
+    ],
+    "source": "https://www.n-sport.net/lifestyle-patike/muske-patike-nike-air-max-command-20.html"
+  },
+  {
+    "index": 6,
+    "sku": "511416-011",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-655050748-zapatillas-nike-air-max-correlate-black-white-511416-011--_JM&tid=21e16a4d-bde0-4370-ae73-53880494ec00"
+  },
+  {
+    "index": 7,
+    "sku": "IR0519-101",
+    "status": "ok",
+    "images": [
+      "source-links/IR0519-101/01.jpg",
+      "source-links/IR0519-101/02.webp",
+      "source-links/IR0519-101/03.webp",
+      "source-links/IR0519-101/04.webp",
+      "source-links/IR0519-101/05.webp",
+      "source-links/IR0519-101/06.webp"
+    ],
+    "source": "https://www.nike.com.pe/jordan-son-of-mars-low-zapatillas-para-hombre/580603-101/11084738017.html"
+  },
+  {
+    "index": 8,
+    "sku": "IQ0205-100",
+    "status": "ok",
+    "images": [
+      "source-links/IQ0205-100/01.png",
+      "source-links/IQ0205-100/02.avif",
+      "source-links/IQ0205-100/03.avif",
+      "source-links/IQ0205-100/04.avif"
+    ],
+    "source": "https://www.nike.com/us/es/t/tenis-para-ninos-grandes-nike-air-force-1-XfzEDzQ5/IQ0205-100"
+  },
+  {
+    "index": 9,
+    "sku": "IR1968-133",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 10,
+    "sku": "IR5896-030",
+    "status": "ok",
+    "images": [
+      "source-links/IR5896-030/01.webp",
+      "source-links/IR5896-030/02.webp",
+      "source-links/IR5896-030/03.webp",
+      "source-links/IR5896-030/04.webp",
+      "source-links/IR5896-030/05.webp",
+      "source-links/IR5896-030/06.webp",
+      "source-links/IR5896-030/07.jpg"
+    ],
+    "source": "https://www.headquarterstore.com/es/products/nike-air-force-1-mexico-ir5896-030"
+  },
+  {
+    "index": 11,
+    "sku": "IV6222-410",
+    "status": "ok",
+    "images": [
+      "source-links/IV6222-410/01.webp",
+      "source-links/IV6222-410/02.webp",
+      "source-links/IV6222-410/03.webp",
+      "source-links/IV6222-410/04.webp",
+      "source-links/IV6222-410/05.webp",
+      "source-links/IV6222-410/06.webp",
+      "source-links/IV6222-410/07.webp",
+      "source-links/IV6222-410/08.webp"
+    ],
+    "source": "https://reynoldsandsons.com/products/nike-air-griffey-max-1-hbcu-swingman-gs-iv6222-410"
+  },
+  {
+    "index": 12,
+    "sku": "553560-045",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 13,
+    "sku": "CT3839-100",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 14,
+    "sku": "IW2872-700",
+    "status": "ok",
+    "images": [
+      "source-links/IW2872-700/01.webp",
+      "source-links/IW2872-700/02.webp",
+      "source-links/IW2872-700/03.webp",
+      "source-links/IW2872-700/04.webp",
+      "source-links/IW2872-700/05.webp",
+      "source-links/IW2872-700/06.webp",
+      "source-links/IW2872-700/07.webp",
+      "source-links/IW2872-700/08.webp"
+    ],
+    "source": "https://cityjeans.com/products/mens-air-jordan-4-retro-x-j-balvin-amazonas-lemonade-multicolor-iw2872-700-iw2872-700"
+  },
+  {
+    "index": 15,
+    "sku": "FD1437-008",
+    "status": "ok",
+    "images": [
+      "source-links/FD1437-008/01.jpg",
+      "source-links/FD1437-008/02.webp",
+      "source-links/FD1437-008/03.webp"
+    ],
+    "source": "https://www.futurevisions.pe/futurevisions-pe/product/80200745/zap-dz5485-201-air-jordan-1-re/80200765"
+  },
+  {
+    "index": 16,
+    "sku": "408452-102",
+    "status": "ok",
+    "images": [
+      "source-links/408452-102/01.webp",
+      "source-links/408452-102/02.webp",
+      "source-links/408452-102/03.webp",
+      "source-links/408452-102/04.webp",
+      "source-links/408452-102/05.webp",
+      "source-links/408452-102/06.webp",
+      "source-links/408452-102/07.webp",
+      "source-links/408452-102/08.webp"
+    ],
+    "source": "https://cityjeans.com/products/big-kids-air-jordan-4-retro-tour-yellow-white-tour-yellow-dark-blue-grey-black-408452-102-408452-102"
+  },
+  {
+    "index": 17,
+    "sku": "AQ9214-011",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 18,
+    "sku": "II1254-001",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://thesolesupplier.co.uk/release-dates/nike/air-jordan-1/air-jordan-1-mid-se-gs-world-tour-multi/"
+  },
+  {
+    "index": 19,
+    "sku": "II0599-600",
+    "status": "ok",
+    "images": [
+      "source-links/II0599-600/01.webp",
+      "source-links/II0599-600/02.webp",
+      "source-links/II0599-600/03.webp",
+      "source-links/II0599-600/04.webp",
+      "source-links/II0599-600/05.webp",
+      "source-links/II0599-600/06.webp",
+      "source-links/II0599-600/07.webp",
+      "source-links/II0599-600/08.webp"
+    ],
+    "source": "https://www.sneakersnstuff.com/products/jordan-air-jordan-3-retro-spring-flowers-big-kids-gs-ii0599-600"
+  },
+  {
+    "index": 20,
+    "sku": "511417-136",
+    "status": "ok",
+    "images": [
+      "source-links/511417-136/01.jpg",
+      "source-links/511417-136/02.jpg",
+      "source-links/511417-136/03.jpg",
+      "source-links/511417-136/04.jpg",
+      "source-links/511417-136/05.jpg",
+      "source-links/511417-136/06.jpg",
+      "source-links/511417-136/07.jpg",
+      "source-links/511417-136/08.jpg"
+    ],
+    "source": "https://www.nike.com.pe/nike-air-max-correlate-zapatillas-para-mujer/511417-136/10677147014.html"
+  },
+  {
+    "index": 21,
+    "sku": "323419-164",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 22,
+    "sku": "IR4727-100",
+    "status": "ok",
+    "images": [
+      "source-links/IR4727-100/01.webp",
+      "source-links/IR4727-100/02.webp",
+      "source-links/IR4727-100/03.avif",
+      "source-links/IR4727-100/04.avif",
+      "source-links/IR4727-100/05.avif",
+      "source-links/IR4727-100/06.avif",
+      "source-links/IR4727-100/07.avif",
+      "source-links/IR4727-100/08.webp"
+    ],
+    "source": "https://www.bbbranded.com/products/y-nike-air-diamond-turf-ii-ir4727-100"
+  },
+  {
+    "index": 23,
+    "sku": "IR4714-100",
+    "status": "error: page 405",
+    "images": []
+  },
+  {
+    "index": 24,
+    "sku": "DR8784-005",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-655104518-zapatillas-nike-zoom-lebron-nxxt-gen-urbano-dr8784-005--_JM&tid=bb7cfdab-df27-48a5-b709-220b834e9991"
+  },
+  {
+    "index": 25,
+    "sku": "AR3762-001",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 26,
+    "sku": "IV5197-201",
+    "status": "ok",
+    "images": [
+      "source-links/IV5197-201/01.webp",
+      "source-links/IV5197-201/02.webp",
+      "source-links/IV5197-201/03.avif",
+      "source-links/IV5197-201/04.avif",
+      "source-links/IV5197-201/05.avif",
+      "source-links/IV5197-201/06.avif",
+      "source-links/IV5197-201/07.avif",
+      "source-links/IV5197-201/08.webp"
+    ],
+    "source": "https://www.bbbranded.com/products/w-nike-air-force-1-07-iv5197-201"
+  },
+  {
+    "index": 27,
+    "sku": "CU4152-101",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-621254943-zapatilla-nike-air-max-bolt-urbano-original-cu4152101--_JM&tid=6f7ecb35-48d2-48d5-be46-ab48fbeb7540"
+  },
+  {
+    "index": 28,
+    "sku": "AR4430-101",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 29,
+    "sku": "DM0967-111",
+    "status": "ok",
+    "images": [
+      "source-links/DM0967-111/01.jpg",
+      "source-links/DM0967-111/02.jpg",
+      "source-links/DM0967-111/03.jpg",
+      "source-links/DM0967-111/04.webp",
+      "source-links/DM0967-111/05.webp",
+      "source-links/DM0967-111/06.webp",
+      "source-links/DM0967-111/07.webp",
+      "source-links/DM0967-111/08.webp"
+    ],
+    "source": "https://noirfonce.eu/es-es/products/air-jordan-3-retro-pure-money-dm0967-111"
+  },
+  {
+    "index": 30,
+    "sku": "553560-081",
+    "status": "error: page 405",
+    "images": []
+  },
+  {
+    "index": 31,
+    "sku": "HV4775-001",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 32,
+    "sku": "HQ8034-700",
+    "status": "ok",
+    "images": [
+      "source-links/HQ8034-700/01.jpg",
+      "source-links/HQ8034-700/02.webp",
+      "source-links/HQ8034-700/03.webp",
+      "source-links/HQ8034-700/04.webp",
+      "source-links/HQ8034-700/05.webp",
+      "source-links/HQ8034-700/06.webp",
+      "source-links/HQ8034-700/07.webp",
+      "source-links/HQ8034-700/08.webp"
+    ],
+    "source": "https://www.nike.com.pe/lebron-witness%C2%A09-zapatillas-de-basquet/hq8034-700/11058724019.html"
+  },
+  {
+    "index": 33,
+    "sku": "IQ0213-685",
+    "status": "ok",
+    "images": [
+      "source-links/IQ0213-685/01.png",
+      "source-links/IQ0213-685/02.avif",
+      "source-links/IQ0213-685/03.avif",
+      "source-links/IQ0213-685/04.avif"
+    ],
+    "source": "https://www.nike.com/t/air-force-1-big-kids-shoes-XfzEDzQ5/IQ0213-685"
+  },
+  {
+    "index": 34,
+    "sku": "CW2626-008",
+    "status": "ok",
+    "images": [
+      "source-links/CW2626-008/01.avif",
+      "source-links/CW2626-008/02.webp",
+      "source-links/CW2626-008/03.webp",
+      "source-links/CW2626-008/04.webp",
+      "source-links/CW2626-008/05.webp",
+      "source-links/CW2626-008/06.webp",
+      "source-links/CW2626-008/07.webp",
+      "source-links/CW2626-008/08.webp"
+    ],
+    "source": "https://www.footlocker.com/product/~/W2626008.html"
+  },
+  {
+    "index": 35,
+    "sku": "HQ7980-001",
+    "status": "ok",
+    "images": [
+      "source-links/HQ7980-001/01.jpg",
+      "source-links/HQ7980-001/02.webp",
+      "source-links/HQ7980-001/03.webp",
+      "source-links/HQ7980-001/04.webp",
+      "source-links/HQ7980-001/05.webp",
+      "source-links/HQ7980-001/06.webp",
+      "source-links/HQ7980-001/07.webp"
+    ],
+    "source": "https://www.nike.com.pe/air-jordan-5-retro-haloween-zapatillas-para-hombre/hq7978-001/11112211015.html"
+  },
+  {
+    "index": 36,
+    "sku": "IM4026-100",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 37,
+    "sku": "IO2829-600",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://thesolesupplier.co.uk/release-dates/nike/air-jordan-4/air-jordan-4-retro-gs-shes-a-star/"
+  },
+  {
+    "index": 38,
+    "sku": "IV6811-001",
+    "status": "ok",
+    "images": [
+      "source-links/IV6811-001/01.webp",
+      "source-links/IV6811-001/02.webp",
+      "source-links/IV6811-001/03.avif",
+      "source-links/IV6811-001/04.avif",
+      "source-links/IV6811-001/05.avif",
+      "source-links/IV6811-001/06.avif",
+      "source-links/IV6811-001/07.avif",
+      "source-links/IV6811-001/08.webp"
+    ],
+    "source": "https://www.bbbranded.com/products/y-air-jordan-1-mid-se-iv6811-001"
+  },
+  {
+    "index": 39,
+    "sku": "IR0519-600",
+    "status": "ok",
+    "images": [
+      "source-links/IR0519-600/01.jpg",
+      "source-links/IR0519-600/02.webp",
+      "source-links/IR0519-600/03.webp",
+      "source-links/IR0519-600/04.webp",
+      "source-links/IR0519-600/05.webp",
+      "source-links/IR0519-600/06.webp",
+      "source-links/IR0519-600/07.webp",
+      "source-links/IR0519-600/08.webp"
+    ],
+    "source": "https://www.nike.com.pe/air-jordan-4-retro-zapatillas-para-hombre/fq8138-600/11084881021.html"
+  },
+  {
+    "index": 40,
+    "sku": "IW6277-001",
+    "status": "error: page 405",
+    "images": []
+  },
+  {
+    "index": 41,
+    "sku": "IR0519-003",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 42,
+    "sku": "AQ9214-012",
+    "status": "ok",
+    "images": [
+      "source-links/AQ9214-012/01.jpg",
+      "source-links/AQ9214-012/02.jpg",
+      "source-links/AQ9214-012/03.jpg",
+      "source-links/AQ9214-012/04.jpg",
+      "source-links/AQ9214-012/05.jpg",
+      "source-links/AQ9214-012/06.jpg",
+      "source-links/AQ9214-012/07.jpg"
+    ],
+    "source": "https://zapatos.es/p/zapatos-nike-jordan-max-aura-gs-aq9214-012-cool-grey-gym-red-black-white"
+  },
+  {
+    "index": 43,
+    "sku": "IB6644-001",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 44,
+    "sku": "IM6969-451",
+    "status": "ok",
+    "images": [
+      "source-links/IM6969-451/01.png",
+      "source-links/IM6969-451/02.avif",
+      "source-links/IM6969-451/03.avif",
+      "source-links/IM6969-451/04.avif"
+    ],
+    "source": "https://www.nike.com/us/es/t/tenis-para-ninos-grandes-nike-air-force-1-3JNSvS/IM6969-451"
+  }
+]

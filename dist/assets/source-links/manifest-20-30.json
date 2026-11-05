@@ -1,0 +1,104 @@
+[
+  {
+    "index": 20,
+    "sku": "511417-136",
+    "status": "ok",
+    "images": [
+      "source-links/511417-136/01.webp",
+      "source-links/511417-136/02.webp",
+      "source-links/511417-136/03.webp",
+      "source-links/511417-136/04.webp",
+      "source-links/511417-136/05.webp",
+      "source-links/511417-136/06.webp",
+      "source-links/511417-136/07.webp",
+      "source-links/511417-136/08.webp"
+    ],
+    "source": "https://www.nike.com.pe/nike-air-max-correlate-zapatillas-para-mujer/511417-136/10677147014.html"
+  },
+  {
+    "index": 21,
+    "sku": "323419-164",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 22,
+    "sku": "IR4727-100",
+    "status": "ok",
+    "images": [
+      "source-links/IR4727-100/01.webp",
+      "source-links/IR4727-100/02.webp",
+      "source-links/IR4727-100/03.avif",
+      "source-links/IR4727-100/04.avif",
+      "source-links/IR4727-100/05.avif",
+      "source-links/IR4727-100/06.avif",
+      "source-links/IR4727-100/07.avif",
+      "source-links/IR4727-100/08.webp"
+    ],
+    "source": "https://www.bbbranded.com/products/y-nike-air-diamond-turf-ii-ir4727-100"
+  },
+  {
+    "index": 23,
+    "sku": "IR4714-100",
+    "status": "error: page 405",
+    "images": []
+  },
+  {
+    "index": 24,
+    "sku": "DR8784-005",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-655104518-zapatillas-nike-zoom-lebron-nxxt-gen-urbano-dr8784-005--_JM&tid=abdda29e-d41f-4e4a-a9f3-fab8700c39b2"
+  },
+  {
+    "index": 25,
+    "sku": "AR3762-001",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 26,
+    "sku": "IV5197-201",
+    "status": "ok",
+    "images": [
+      "source-links/IV5197-201/01.webp",
+      "source-links/IV5197-201/02.webp",
+      "source-links/IV5197-201/03.avif",
+      "source-links/IV5197-201/04.avif",
+      "source-links/IV5197-201/05.avif",
+      "source-links/IV5197-201/06.avif",
+      "source-links/IV5197-201/07.avif",
+      "source-links/IV5197-201/08.webp"
+    ],
+    "source": "https://www.bbbranded.com/products/w-nike-air-force-1-07-iv5197-201"
+  },
+  {
+    "index": 27,
+    "sku": "CU4152-101",
+    "status": "no-downloadable-images",
+    "images": [],
+    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-621254943-zapatilla-nike-air-max-bolt-urbano-original-cu4152101--_JM&tid=fcbb825f-425b-42b9-a8c3-92608b998559"
+  },
+  {
+    "index": 28,
+    "sku": "AR4430-101",
+    "status": "error: page 403",
+    "images": []
+  },
+  {
+    "index": 29,
+    "sku": "DM0967-111",
+    "status": "ok",
+    "images": [
+      "source-links/DM0967-111/01.jpg",
+      "source-links/DM0967-111/02.jpg",
+      "source-links/DM0967-111/03.jpg",
+      "source-links/DM0967-111/04.webp",
+      "source-links/DM0967-111/05.webp",
+      "source-links/DM0967-111/06.webp",
+      "source-links/DM0967-111/07.webp",
+      "source-links/DM0967-111/08.webp"
+    ],
+    "source": "https://noirfonce.eu/es-es/products/air-jordan-3-retro-pure-money-dm0967-111"
+  }
+]

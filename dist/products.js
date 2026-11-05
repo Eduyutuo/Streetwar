@@ -156,6 +156,11 @@ const catalogPhotoPath=photo=>{
 Object.entries(catalogPhotos).forEach(([index,photos])=>{
   inventory[Number(index)].image=catalogPhotoPath(photos[0]);
 });
+if(typeof sourceLinkPhotos!=='undefined'){
+  Object.entries(sourceLinkPhotos).forEach(([index,photos])=>{
+    if(photos.length)inventory[Number(index)].image=photos[0];
+  });
+}
 const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:inventory.filter(p=>p.price!==null).sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>value===null?'CONSULTAR':`S/ ${value.toLocaleString('es-PE')}`;
 const detailUrl=p=>`producto.html?id=${inventory.indexOf(p)}`;

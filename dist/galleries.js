@@ -16,3 +16,8 @@ for(let index=0;index<inventory.length;index+=1){galleries[index]=Array.from({le
 Object.entries(catalogPhotos).forEach(([index,photos])=>{
   galleries[Number(index)]=photos.map(catalogPhotoPath);
 });
+if(typeof sourceLinkPhotos!=='undefined'){
+  Object.entries(sourceLinkPhotos).forEach(([index,photos])=>{
+    if(photos.length)galleries[Number(index)]=photos;
+  });
+}

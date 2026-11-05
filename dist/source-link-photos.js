@@ -205,25 +205,25 @@ const sourceLinkPhotos={
     "source-links/DM0967-111/02.jpg"
   ],
   "32": [
-    "source-links/HQ8034-700/01.webp",
-    "source-links/HQ8034-700/02.webp",
-    "source-links/HQ8034-700/03.webp",
-    "source-links/HQ8034-700/04.webp",
-    "source-links/HQ8034-700/05.webp",
-    "source-links/HQ8034-700/06.webp",
-    "source-links/HQ8034-700/07.webp",
-    "source-links/HQ8034-700/08.webp",
-    "source-links/HQ8034-700/09.webp"
+    "source-links/HQ8034-700/01-white.webp",
+    "source-links/HQ8034-700/02-white.webp",
+    "source-links/HQ8034-700/03-white.webp",
+    "source-links/HQ8034-700/04-white.webp",
+    "source-links/HQ8034-700/05-white.webp",
+    "source-links/HQ8034-700/06-white.webp",
+    "source-links/HQ8034-700/07-white.webp",
+    "source-links/HQ8034-700/08-white.webp",
+    "source-links/HQ8034-700/09-white.webp"
   ],
   "33": [
-    "source-links/IQ0213-685/official-01.png",
-    "source-links/IQ0213-685/official-02.png",
-    "source-links/IQ0213-685/official-03.png",
-    "source-links/IQ0213-685/official-04.png",
-    "source-links/IQ0213-685/official-05.png",
-    "source-links/IQ0213-685/official-06.png",
-    "source-links/IQ0213-685/official-07.png",
-    "source-links/IQ0213-685/official-08.png"
+    "source-links/IQ0213-685/official-01-white.png",
+    "source-links/IQ0213-685/official-02-white.png",
+    "source-links/IQ0213-685/official-03-white.png",
+    "source-links/IQ0213-685/official-04-white.png",
+    "source-links/IQ0213-685/official-05-white.png",
+    "source-links/IQ0213-685/official-06-white.png",
+    "source-links/IQ0213-685/official-07-white.png",
+    "source-links/IQ0213-685/official-08-white.png"
   ],
   "34": [
     "source-links/CW2626-008/01.avif",
@@ -233,12 +233,12 @@ const sourceLinkPhotos={
     "source-links/CW2626-008/05.avif"
   ],
   "35": [
-    "source-links/HQ7980-001/01.webp",
-    "source-links/HQ7980-001/02.webp",
-    "source-links/HQ7980-001/03.webp",
-    "source-links/HQ7980-001/04.webp",
-    "source-links/HQ7980-001/05.webp",
-    "source-links/HQ7980-001/06.webp"
+    "source-links/HQ7980-001/01-white.webp",
+    "source-links/HQ7980-001/02-white.webp",
+    "source-links/HQ7980-001/03-white.webp",
+    "source-links/HQ7980-001/04-white.webp",
+    "source-links/HQ7980-001/05-white.webp",
+    "source-links/HQ7980-001/06-white.webp"
   ],
   "38": [
     "source-links/IV6811-001/01.webp",

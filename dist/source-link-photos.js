@@ -55,6 +55,16 @@ const sourceLinkPhotos={
     "source-links/694862-200/07.jpg",
     "source-links/694862-200/08.jpg"
   ],
+  "6": [
+    "source-links/511416-011/official-01.webp",
+    "source-links/511416-011/official-02.webp",
+    "source-links/511416-011/official-03.webp",
+    "source-links/511416-011/official-04.webp",
+    "source-links/511416-011/official-05.webp",
+    "source-links/511416-011/official-06.webp",
+    "source-links/511416-011/official-07.webp",
+    "source-links/511416-011/official-08.webp"
+  ],
   "7": [
     "source-links/IR0519-101/01.webp",
     "source-links/IR0519-101/02.webp",

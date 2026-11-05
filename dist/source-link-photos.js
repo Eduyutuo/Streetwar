@@ -216,11 +216,14 @@ const sourceLinkPhotos={
     "source-links/HQ8034-700/09.webp"
   ],
   "33": [
-    "source-links/IQ0213-685/01.png",
-    "source-links/IQ0213-685/02.avif",
-    "source-links/IQ0213-685/03.avif",
-    "source-links/IQ0213-685/04.avif",
-    "source-links/IQ0213-685/05.avif"
+    "source-links/IQ0213-685/official-01.png",
+    "source-links/IQ0213-685/official-02.png",
+    "source-links/IQ0213-685/official-03.png",
+    "source-links/IQ0213-685/official-04.png",
+    "source-links/IQ0213-685/official-05.png",
+    "source-links/IQ0213-685/official-06.png",
+    "source-links/IQ0213-685/official-07.png",
+    "source-links/IQ0213-685/official-08.png"
   ],
   "34": [
     "source-links/CW2626-008/01.avif",

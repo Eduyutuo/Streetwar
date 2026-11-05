@@ -2,8 +2,17 @@
   {
     "index": 40,
     "sku": "IW6277-001",
-    "status": "error: page 405",
-    "images": []
+    "status": "ok",
+    "images": [
+      "source-links/IW6277-001/01.jpg",
+      "source-links/IW6277-001/02.jpg",
+      "source-links/IW6277-001/03.jpg",
+      "source-links/IW6277-001/04.jpg",
+      "source-links/IW6277-001/05.jpg",
+      "source-links/IW6277-001/06.jpg",
+      "source-links/IW6277-001/07.jpg"
+    ],
+    "source": "https://www.shiekh.com/jordan-grade-school-air-jordan-1-low-og-black-red-iw6277-001.html"
   },
   {
     "index": 41,
@@ -37,7 +46,10 @@
     "sku": "IM6969-451",
     "status": "ok",
     "images": [
-      "source-links/IM6969-451/01.png"
+      "source-links/IM6969-451/01.png",
+      "source-links/IM6969-451/02.avif",
+      "source-links/IM6969-451/03.avif",
+      "source-links/IM6969-451/04.avif"
     ],
     "source": "https://www.nike.com/us/es/t/tenis-para-ninos-grandes-nike-air-force-1-3JNSvS/IM6969-451"
   }

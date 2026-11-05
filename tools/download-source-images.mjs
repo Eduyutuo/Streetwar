@@ -24,14 +24,24 @@ const absolute=(value,base)=>{try{return new URL(value.replaceAll('&amp;','&'),b
 const useful=url=>url&&/^https?:/i.test(url)&&!/\.(svg|gif)(?:\?|$)/i.test(url)&&!/logo|icon|favicon|placeholder/i.test(url);
 const unique=items=>[...new Set(items.filter(useful))];
 
-function imageUrls(html,source){
-  const meta=[];
+function imageUrls(html,source,product){
+  const candidates=new Map();
+  const add=(url,score=0)=>{
+    if(!useful(url))return;
+    candidates.set(url,Math.max(score,candidates.get(url)??-Infinity));
+  };
+  const sku=(product.sku||'').replace(/[^a-z0-9]/gi,'').toLowerCase();
+  const terms=product.name.toLowerCase().split(/[^a-z0-9]+/).filter(term=>term.length>=4&&!['nike','jordan','retro','white','black','para','with'].includes(term));
+  const relevance=text=>{
+    const value=(text||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const words=(text||'').toLowerCase();
+    return (sku&&value.includes(sku)?20:0)+terms.filter(term=>words.includes(term)).length;
+  };
   for(const tag of html.match(/<meta\b[^>]*>/gi)||[]){
     const attr=attributes(tag);
     const key=(attr.property||attr.name||'').toLowerCase();
-    if(['og:image','og:image:secure_url','twitter:image','twitter:image:src'].includes(key))meta.push(absolute(attr.content,source));
+    if(['og:image','og:image:secure_url','twitter:image','twitter:image:src'].includes(key))add(absolute(attr.content,source),100);
   }
-  const schema=[];
   for(const script of html.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)||[]){
     const text=script.replace(/^.*?>/,'').replace(/<\/script>$/i,'').trim();
     try{
@@ -39,23 +49,25 @@ function imageUrls(html,source){
         if(Array.isArray(value))return value.forEach(visit);
         if(value&&typeof value==='object'){
           const images=value.image||value.images;
-          if(Array.isArray(images))images.forEach(image=>schema.push(absolute(typeof image==='string'?image:image?.url,source)));
-          else if(images)schema.push(absolute(typeof images==='string'?images:images?.url,source));
+          if(Array.isArray(images))images.forEach(image=>add(absolute(typeof image==='string'?image:image?.url,source),90));
+          else if(images)add(absolute(typeof images==='string'?images:images?.url,source),90);
           if(value['@graph'])visit(value['@graph']);
         }
       };
       visit(JSON.parse(text));
     }catch{}
   }
-  const pageImages=[];
   for(const tag of html.match(/<(?:img|source)\b[^>]*>/gi)||[]){
     const attr=attributes(tag);
-    for(const candidate of [attr['data-zoom-image'],attr['data-src'],attr.src,attr.srcset?.split(',').at(-1)?.trim().split(/\s+/)[0]])pageImages.push(absolute(candidate,source));
+    const tagScore=relevance(`${tag} ${attr.alt||''} ${attr.title||''}`);
+    for(const candidate of [attr['data-zoom-image'],attr['data-src'],attr.src,attr.srcset?.split(',').at(-1)?.trim().split(/\s+/)[0]]){
+      const url=absolute(candidate,source);
+      add(url,tagScore+relevance(url));
+    }
   }
-  const productImages=unique([...meta,...schema]);
-  // Solo usamos imágenes declaradas por la ficha del producto. Si la página
-  // no las declara, recurrimos a sus imágenes visibles como último recurso.
-  return (productImages.length?productImages:unique(pageImages)).slice(0,8);
+  const ordered=[...candidates.entries()].sort((a,b)=>b[1]-a[1]).map(([url])=>url);
+  const relevant=ordered.filter(url=>(candidates.get(url)||0)>0);
+  return (relevant.length?relevant:ordered).slice(0,10);
 }
 
 function exclusions(note,count){
@@ -82,7 +94,7 @@ async function download(product){
   if(!product.source)return {index:product.index,sku:product.sku,status:'missing-source',images:[]};
   const response=await fetch(product.source,{headers:{'user-agent':userAgent,'accept':'text/html,application/xhtml+xml'}});
   if(!response.ok)throw new Error(`page ${response.status}`);
-  const urls=imageUrls(await response.text(),response.url);
+  const urls=imageUrls(await response.text(),response.url,product);
   const omit=exclusions(product.note,urls.length);
   const dir=path.join(assetRoot,product.sku||`product-${product.index}`);
   await fs.rm(dir,{recursive:true,force:true});

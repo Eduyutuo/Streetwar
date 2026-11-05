@@ -21,6 +21,7 @@ if(detailRoot){
   const requested=Number(new URLSearchParams(location.search).get('id'));
   const id=Number.isInteger(requested)&&requested>=0&&requested<inventory.length?requested:0;
   const product=inventory[id];
+  detailRoot.dataset.productId=id;
   const sizes=expandSizes(product.sizes);
   const hasListedSizes=sizes.length>0;
   const brand=brandFor(product);

@@ -192,14 +192,9 @@ const sourceLinkPhotos={
   ],
   "26": [
     "source-links/IV5197-201/01.webp",
-    "source-links/IV5197-201/02.webp",
-    "source-links/IV5197-201/03.webp",
     "source-links/IV5197-201/04.webp",
-    "source-links/IV5197-201/05.webp",
     "source-links/IV5197-201/06.webp",
-    "source-links/IV5197-201/07.webp",
-    "source-links/IV5197-201/08.webp",
-    "source-links/IV5197-201/09.webp"
+    "source-links/IV5197-201/08.webp"
   ],
   "29": [
     "source-links/DM0967-111/01.jpg",

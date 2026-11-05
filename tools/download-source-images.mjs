@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import vm from 'node:vm';
+import {createHash} from 'node:crypto';
 
 const root=path.resolve(process.cwd());
 const productsPath=path.join(root,'dist','products.js');
@@ -51,7 +52,10 @@ function imageUrls(html,source){
     const attr=attributes(tag);
     for(const candidate of [attr['data-zoom-image'],attr['data-src'],attr.src,attr.srcset?.split(',').at(-1)?.trim().split(/\s+/)[0]])pageImages.push(absolute(candidate,source));
   }
-  return unique([...meta,...schema,...pageImages]).slice(0,8);
+  const productImages=unique([...meta,...schema]);
+  // Solo usamos imágenes declaradas por la ficha del producto. Si la página
+  // no las declara, recurrimos a sus imágenes visibles como último recurso.
+  return (productImages.length?productImages:unique(pageImages)).slice(0,8);
 }
 
 function exclusions(note,count){
@@ -84,6 +88,7 @@ async function download(product){
   await fs.rm(dir,{recursive:true,force:true});
   await fs.mkdir(dir,{recursive:true});
   const images=[];
+  const hashes=new Set();
   for(let position=0;position<urls.length;position++){
     if(omit.has(position))continue;
     try{
@@ -91,8 +96,14 @@ async function download(product){
       if(!image.ok)continue;
       const type=image.headers.get('content-type')||'';
       if(!type.startsWith('image/'))continue;
+      const bytes=Buffer.from(await image.arrayBuffer());
+      // Evita iconos, respuestas de error disfrazadas de imagen y duplicados.
+      if(bytes.length<15_000)continue;
+      const hash=createHash('sha256').update(bytes).digest('hex');
+      if(hashes.has(hash))continue;
+      hashes.add(hash);
       const file=`${String(images.length+1).padStart(2,'0')}.${extension(type,urls[position])}`;
-      await fs.writeFile(path.join(dir,file),Buffer.from(await image.arrayBuffer()));
+      await fs.writeFile(path.join(dir,file),bytes);
       images.push(`source-links/${product.sku||`product-${product.index}`}/${file}`);
     }catch{}
   }

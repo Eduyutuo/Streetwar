@@ -4,13 +4,7 @@
     "sku": "IX6180-100",
     "status": "ok",
     "images": [
-      "source-links/IX6180-100/01.webp",
-      "source-links/IX6180-100/02.webp",
-      "source-links/IX6180-100/03.webp",
-      "source-links/IX6180-100/04.webp",
-      "source-links/IX6180-100/05.webp",
-      "source-links/IX6180-100/06.webp",
-      "source-links/IX6180-100/07.webp"
+      "source-links/IX6180-100/01.webp"
     ],
     "source": "https://samtabak.com/products/gs-air-jordan-9-retro-og-space-jam-ix6180-100"
   },
@@ -19,13 +13,7 @@
     "sku": "IO2076-100",
     "status": "ok",
     "images": [
-      "source-links/IO2076-100/01.webp",
-      "source-links/IO2076-100/02.webp",
-      "source-links/IO2076-100/03.webp",
-      "source-links/IO2076-100/04.webp",
-      "source-links/IO2076-100/05.webp",
-      "source-links/IO2076-100/06.webp",
-      "source-links/IO2076-100/07.webp"
+      "source-links/IO2076-100/01.webp"
     ],
     "source": "https://samtabak.com/products/gs-air-jordan-3-retro-play-your-way-io2076-100"
   },
@@ -34,13 +22,7 @@
     "sku": "AQ9214-006",
     "status": "ok",
     "images": [
-      "source-links/AQ9214-006/01.webp",
-      "source-links/AQ9214-006/02.jpg",
-      "source-links/AQ9214-006/03.jpg",
-      "source-links/AQ9214-006/04.avif",
-      "source-links/AQ9214-006/05.avif",
-      "source-links/AQ9214-006/06.jpg",
-      "source-links/AQ9214-006/07.avif"
+      "source-links/AQ9214-006/01.webp"
     ],
     "source": "https://novelship.com/es-us/air-jordan-max-aura-black-gym-red-gs"
   },
@@ -52,10 +34,7 @@
       "source-links/HF7054-012/01.webp",
       "source-links/HF7054-012/02.webp",
       "source-links/HF7054-012/03.webp",
-      "source-links/HF7054-012/04.webp",
-      "source-links/HF7054-012/05.webp",
-      "source-links/HF7054-012/06.jpg",
-      "source-links/HF7054-012/07.jpg"
+      "source-links/HF7054-012/04.webp"
     ],
     "source": "https://www.footy.com/p/nike-air-max-95-older-kids-shoes-grey/694a2a0f4f62009b36685a23/"
   },
@@ -70,12 +49,7 @@
     "sku": "694862-200",
     "status": "ok",
     "images": [
-      "source-links/694862-200/01.jpg",
-      "source-links/694862-200/02.png",
-      "source-links/694862-200/03.png",
-      "source-links/694862-200/04.jpg",
-      "source-links/694862-200/05.jpg",
-      "source-links/694862-200/06.jpg"
+      "source-links/694862-200/01.jpg"
     ],
     "source": "https://www.n-sport.net/lifestyle-patike/muske-patike-nike-air-max-command-20.html"
   },
@@ -84,7 +58,7 @@
     "sku": "511416-011",
     "status": "no-downloadable-images",
     "images": [],
-    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-655050748-zapatillas-nike-air-max-correlate-black-white-511416-011--_JM&tid=14ebabc5-15be-47b7-b55f-fefabb4a5a8f"
+    "source": "https://www.mercadolibre.com.pe/gz/account-verification?go=https%3A%2F%2Farticulo.mercadolibre.com.pe%2FMPE-655050748-zapatillas-nike-air-max-correlate-black-white-511416-011--_JM&tid=5d702e4a-0636-4843-9bfd-bdd7dd58e870"
   },
   {
     "index": 7,
@@ -95,8 +69,7 @@
       "source-links/IR0519-101/02.webp",
       "source-links/IR0519-101/03.webp",
       "source-links/IR0519-101/04.webp",
-      "source-links/IR0519-101/05.webp",
-      "source-links/IR0519-101/06.webp"
+      "source-links/IR0519-101/05.webp"
     ],
     "source": "https://www.nike.com.pe/jordan-son-of-mars-low-zapatillas-para-hombre/580603-101/11084738017.html"
   },
@@ -105,10 +78,7 @@
     "sku": "IQ0205-100",
     "status": "ok",
     "images": [
-      "source-links/IQ0205-100/01.png",
-      "source-links/IQ0205-100/02.avif",
-      "source-links/IQ0205-100/03.avif",
-      "source-links/IQ0205-100/04.avif"
+      "source-links/IQ0205-100/01.png"
     ],
     "source": "https://www.nike.com/us/es/t/tenis-para-ninos-grandes-nike-air-force-1-XfzEDzQ5/IQ0205-100"
   },

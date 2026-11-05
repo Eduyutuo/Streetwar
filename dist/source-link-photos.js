@@ -75,9 +75,14 @@ const sourceLinkPhotos={
   ],
   "8": [
     "source-links/IQ0205-100/studio-01-white.png",
-    "source-links/IQ0205-100/02.avif",
-    "source-links/IQ0205-100/03.avif",
-    "source-links/IQ0205-100/04.avif"
+    "source-links/IQ0205-100/studio-02-white.png",
+    "source-links/IQ0205-100/studio-03-white.png",
+    "source-links/IQ0205-100/studio-04-white.png",
+    "source-links/IQ0205-100/official-05.png",
+    "source-links/IQ0205-100/official-06.png",
+    "source-links/IQ0205-100/official-07.png",
+    "source-links/IQ0205-100/official-08.png",
+    "source-links/IQ0205-100/official-09.png"
   ],
   "10": [
     "source-links/IR5896-030/01.webp",

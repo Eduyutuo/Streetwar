@@ -287,3 +287,31 @@ const sourceLinkPhotos={
     "source-links/IM6969-451/04.avif"
   ]
 };
+
+// Fotos de reemplazo recibidas en Descargas, conservadas por SKU y en su orden de origen.
+const downloadedPhotoPaths=(sku,count,extension)=>Array.from(
+  {length:count},
+  (_,index)=>`source-links/${sku}/downloaded-${String(index+1).padStart(2,'0')}.${extension}`
+);
+const downloadedReplacementPhotos={
+  18:downloadedPhotoPaths('II1254-001',5,'webp'),
+  21:downloadedPhotoPaths('323419-164',5,'webp'),
+  22:downloadedPhotoPaths('IR4727-100',11,'webp'),
+  23:downloadedPhotoPaths('IR4714-100',8,'jpg'),
+  24:downloadedPhotoPaths('DR8784-005',8,'webp'),
+  25:downloadedPhotoPaths('AR3762-001',5,'jpg'),
+  26:downloadedPhotoPaths('IV5197-201',11,'webp'),
+  27:downloadedPhotoPaths('CU4152-101',8,'webp'),
+  28:downloadedPhotoPaths('AR4430-101',6,'webp'),
+  29:downloadedPhotoPaths('DM0967-111',5,'jpg'),
+  30:downloadedPhotoPaths('553560-081',8,'jpg'),
+  31:downloadedPhotoPaths('HV4775-001',6,'webp'),
+  34:downloadedPhotoPaths('CW2626-008',4,'avif'),
+  36:downloadedPhotoPaths('IM4026-100',10,'webp'),
+  37:downloadedPhotoPaths('IO2829-600',5,'webp'),
+  38:downloadedPhotoPaths('IV6811-001',11,'webp'),
+  41:downloadedPhotoPaths('IR0519-003',6,'webp'),
+  43:downloadedPhotoPaths('IB6644-001',5,'webp'),
+  44:downloadedPhotoPaths('IM6969-451',8,'avif')
+};
+Object.assign(sourceLinkPhotos,downloadedReplacementPhotos);

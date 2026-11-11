@@ -8,4 +8,5 @@ document.querySelectorAll('.heart').forEach(btn=>btn.addEventListener('click',()
 document.querySelectorAll('.filter-bar button').forEach(btn=>btn.addEventListener('click',()=>{btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}));
 if(current==='hombre.html'){const copy=document.querySelector('.split-copy p:not(.kicker)');const link=document.querySelector('.split-copy .btn');if(copy)copy.textContent='Consulta modelos, tallas y precios actualizados en soles.';if(link)link.textContent='VER LOS 36 MODELOS'}
 if(current==='ofertas.html'){const notes=document.querySelectorAll('.title-row>p');if(notes[0])notes[0].textContent='TALLAS Y PRECIOS ACTUALIZADOS';if(notes[1])notes[1].textContent='LOS 8 PRECIOS MÁS BAJOS'}
+const productShadows=document.createElement('link');productShadows.rel='stylesheet';productShadows.href='product-shadows.css?v=20261111';document.head.append(productShadows);
 const searchScript=document.createElement('script');searchScript.src='search.js?v=20261103-contacts';document.head.append(searchScript);

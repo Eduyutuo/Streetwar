@@ -193,8 +193,11 @@ if(grid){
   const filterProducts=filter=>{
     if(filter==='all')return products;
     if(filter==='exclusive')return products.filter(p=>exclusiveProducts.has(p.name));
+    if(filter==='kids')return products.filter(p=>p.name.includes('GS'));
     if(filter==='men')return products.filter(p=>p.audience!=='Mujer');
     if(filter==='women')return products.filter(p=>p.audience!=='Hombre');
+    if(filter==='adult')return products.filter(p=>!p.name.includes('GS'));
+    if(filter==='accessories'||filter==='shirts')return [];
     return products.filter(p=>filter==='Air Jordan'?p.category.includes('Jordan'):p.category.includes(filter));
   };
   if(query){
@@ -204,11 +207,11 @@ if(grid){
     if(row){const note=document.createElement('p');note.className='search-result-note';note.innerHTML=`Resultados para <strong>“${query.replace(/[<>&]/g,char=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[char]))}”</strong>`;row.after(note)}
     render(found);
   }else render(products);
-  document.querySelectorAll('.filter-bar button[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('button[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
     btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
     btn.classList.add('active');
     const filter=btn.dataset.filter;
-    const labels={all:'VER TODO',exclusive:'EXCLUSIVAS',men:'PARA HOMBRE',women:'PARA MUJER'};
+    const labels={all:'VER TODO',exclusive:'EXCLUSIVAS',kids:'NIÑO',men:'HOMBRE',women:'MUJER',adult:'ADULTO',accessories:'ACCESORIOS · PRÓXIMAMENTE',shirts:'POLOS · PRÓXIMAMENTE'};
     const selection=document.querySelector('.catalog-selection');
     if(selection&&labels[filter])selection.textContent=labels[filter];
     render(filterProducts(filter));

@@ -20,15 +20,24 @@
     </section>
     <div class="breadcrumb">INICIO / NOVEDADES</div>
     <section class="shop-section">
-      <div class="title-row"><h1>CATÁLOGO</h1><p class="catalog-selection">VER TODO</p></div>
-      <p class="collection-intro">Explora las colecciones exclusivas o encuentra zapatillas para hombre y mujer.</p>
-      <div class="filter-bar collection-tabs" aria-label="Secciones del catálogo">
-        <button data-filter="exclusive">EXCLUSIVAS</button>
-        <button data-filter="men">PARA HOMBRE</button>
-        <button data-filter="women">PARA MUJER</button>
-        <button class="active" data-filter="all">VER TODO</button>
+      <div class="catalog-layout">
+        <aside class="catalog-sidebar" aria-label="Secciones del catálogo">
+          <p>SECCIONES</p>
+          <button class="active" data-filter="all">VER TODO</button>
+          <button data-filter="exclusive">EXCLUSIVAS</button>
+          <button data-filter="kids">NIÑO</button>
+          <button data-filter="men">HOMBRE</button>
+          <button data-filter="women">MUJER</button>
+          <button data-filter="adult">ADULTO</button>
+          <button data-filter="accessories">ACCESORIOS</button>
+          <button data-filter="shirts">POLOS</button>
+        </aside>
+        <div class="catalog-content">
+          <div class="title-row"><h1>CATÁLOGO</h1><p class="catalog-selection">VER TODO</p></div>
+          <p class="collection-intro">Explora las colecciones exclusivas o encuentra zapatillas para hombre y mujer.</p>
+          <div class="product-grid" data-products></div>
+        </div>
       </div>
-      <div class="product-grid" data-products></div>
     </section>
   </main>
   <div id="site-footer"></div>

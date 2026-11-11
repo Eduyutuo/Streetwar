@@ -161,9 +161,56 @@ if(typeof sourceLinkPhotos!=='undefined'){
     if(photos.length)inventory[Number(index)].image=photos[0];
   });
 }
-const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),kids:inventory.filter(p=>p.name.includes('GS')),sale:inventory.filter(p=>p.price!==null).sort((a,b)=>a.price-b.price).slice(0,8)};
+const exclusiveProducts=new Set([
+  'Air Jordan 9 Retro OG “Space Jam”',
+  'Air Jordan 4 x J Balvin “Amazonas”',
+  'Air Jordan 1 High OG “Shattered Backboard”',
+  'Air Jordan 4 Retro “Tour Yellow”',
+  'Air Jordan 3 Retro “Spring Flowers”',
+  'Air Jordan 3 Retro “Pure Money”',
+  'Air Jordan 1 Low “Shattered Backboard Alternate”',
+  'Air Jordan 5 Retro “Halloween”',
+  'Air Jordan 4 Retro “Flight Club”',
+  'Air Jordan 4 Retro “She’s A Star”',
+  'Air Jordan 1 Retro Low OG “Banned”'
+]);
+const sets={default:inventory,men:inventory.filter(p=>p.audience!=='Mujer'),women:inventory.filter(p=>p.audience!=='Hombre'),exclusive:inventory.filter(p=>exclusiveProducts.has(p.name)),kids:inventory.filter(p=>p.name.includes('GS')),sale:inventory.filter(p=>p.price!==null).sort((a,b)=>a.price-b.price).slice(0,8)};
 const money=value=>value===null?'CONSULTAR':`S/ ${value.toLocaleString('es-PE')}`;
 const detailUrl=p=>`producto.html?id=${inventory.indexOf(p)}`;
 document.dispatchEvent(new Event('inventoryready'));
 const grid=document.querySelector('[data-products]');
-if(grid){const key=grid.dataset.products||'default';const products=sets[key]||sets.default;const count=key==='default'?document.querySelector('.shop-section .title-row h1'):document.querySelector('.shop-section .title-row p');const query=(new URLSearchParams(location.search).get('q')||'').trim();const render=items=>{if(count)count.textContent=`${items.length} MODELOS`;grid.innerHTML=items.length?items.map((p,i)=>`<article class="product" data-category="${p.category}"><a class="product-media shoe" href="${detailUrl(p)}"><img src="assets/${p.image}?v=20261102-clean" alt="${p.name}" loading="lazy"><span class="pill">${i<4?'DESTACADO':p.category.toUpperCase()}</span><span class="audience-pill">${p.audience==='Unisex'?'UNISEX':`PARA ${p.audience.toUpperCase()}`}</span><span class="source-badge">VER DETALLES →</span></a><button class="heart" aria-label="Guardar producto" style="border:0;background:none">♡</button><h3><a href="${detailUrl(p)}">${p.name}</a></h3><p>${p.category} · ${p.audience}</p><p class="product-sizes">Tallas: ${p.sizes}</p><strong>${money(p.price)}</strong></article>`).join(''):'<p class="search-empty">No encontramos modelos con esa búsqueda. Prueba con Jordan, Nike, Air Max o una talla.</p>';document.querySelectorAll('.heart').forEach(btn=>btn.addEventListener('click',()=>{const toast=document.querySelector('.toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}))};const normalized=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();if(query){const terms=normalized(query).split(/\s+/).filter(Boolean);const found=products.filter(product=>terms.every(term=>normalized(`${product.name} ${product.category} ${product.audience} ${product.sizes}`).includes(term)));const row=document.querySelector('.shop-section .title-row');if(row){const note=document.createElement('p');note.className='search-result-note';note.innerHTML=`Resultados para <strong>“${query.replace(/[<>&]/g,char=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[char]))}”</strong>`;row.after(note)}render(found)}else render(products);document.querySelectorAll('.filter-bar button[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const filter=btn.dataset.filter;const matches=p=>filter==='Air Jordan'?p.category.includes('Jordan'):p.category.includes(filter);render(filter==='all'?products:products.filter(matches))}))}
+if(grid){
+  const key=grid.dataset.products||'default';
+  const products=sets[key]||sets.default;
+  const count=key==='default'?document.querySelector('.shop-section .title-row h1'):document.querySelector('.shop-section .title-row p');
+  const query=(new URLSearchParams(location.search).get('q')||'').trim();
+  const render=items=>{
+    if(count)count.textContent=`${items.length} MODELOS`;
+    grid.innerHTML=items.length?items.map((p,i)=>`<article class="product" data-category="${p.category}"><a class="product-media shoe" href="${detailUrl(p)}"><img src="assets/${p.image}?v=20261102-clean" alt="${p.name}" loading="lazy"><span class="pill">${i<4?'DESTACADO':p.category.toUpperCase()}</span><span class="audience-pill">${p.audience==='Unisex'?'UNISEX':`PARA ${p.audience.toUpperCase()}`}</span><span class="source-badge">VER DETALLES →</span></a><button class="heart" aria-label="Guardar producto" style="border:0;background:none">♡</button><h3><a href="${detailUrl(p)}">${p.name}</a></h3><p>${p.category} · ${p.audience}</p><p class="product-sizes">Tallas: ${p.sizes}</p><strong>${money(p.price)}</strong></article>`).join(''):'<p class="search-empty">No encontramos modelos con esa búsqueda. Prueba con Jordan, Nike, Air Max o una talla.</p>';
+    document.querySelectorAll('.heart').forEach(btn=>btn.addEventListener('click',()=>{const toast=document.querySelector('.toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}));
+  };
+  const normalized=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const filterProducts=filter=>{
+    if(filter==='all')return products;
+    if(filter==='exclusive')return products.filter(p=>exclusiveProducts.has(p.name));
+    if(filter==='men')return products.filter(p=>p.audience!=='Mujer');
+    if(filter==='women')return products.filter(p=>p.audience!=='Hombre');
+    return products.filter(p=>filter==='Air Jordan'?p.category.includes('Jordan'):p.category.includes(filter));
+  };
+  if(query){
+    const terms=normalized(query).split(/\s+/).filter(Boolean);
+    const found=products.filter(product=>terms.every(term=>normalized(`${product.name} ${product.category} ${product.audience} ${product.sizes}`).includes(term)));
+    const row=document.querySelector('.shop-section .title-row');
+    if(row){const note=document.createElement('p');note.className='search-result-note';note.innerHTML=`Resultados para <strong>“${query.replace(/[<>&]/g,char=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[char]))}”</strong>`;row.after(note)}
+    render(found);
+  }else render(products);
+  document.querySelectorAll('.filter-bar button[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
+    btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    const labels={all:'VER TODO',exclusive:'EXCLUSIVAS',men:'PARA HOMBRE',women:'PARA MUJER'};
+    const selection=document.querySelector('.catalog-selection');
+    if(selection&&labels[filter])selection.textContent=labels[filter];
+    render(filterProducts(filter));
+  }));
+}

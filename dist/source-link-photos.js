@@ -252,15 +252,15 @@ const sourceLinkPhotos={
     "source-links/IV6811-001/09.webp"
   ],
   "39": [
-    "source-links/IR0519-600/01.webp",
-    "source-links/IR0519-600/02.webp",
-    "source-links/IR0519-600/03.webp",
-    "source-links/IR0519-600/04.webp",
-    "source-links/IR0519-600/05.webp",
-    "source-links/IR0519-600/06.webp",
-    "source-links/IR0519-600/07.webp",
-    "source-links/IR0519-600/08.webp",
-    "source-links/IR0519-600/09.webp"
+    "source-links/IR0519-600/nike-peru-01.jpg",
+    "source-links/IR0519-600/nike-peru-02.jpg",
+    "source-links/IR0519-600/nike-peru-03.jpg",
+    "source-links/IR0519-600/nike-peru-04.jpg",
+    "source-links/IR0519-600/nike-peru-05.jpg",
+    "source-links/IR0519-600/nike-peru-06.jpg",
+    "source-links/IR0519-600/nike-peru-07.jpg",
+    "source-links/IR0519-600/nike-peru-08.jpg",
+    "source-links/IR0519-600/nike-peru-09.jpg"
   ],
   "40": [
     "source-links/IW6277-001/01.jpg",

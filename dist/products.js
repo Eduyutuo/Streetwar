@@ -197,8 +197,9 @@ if(grid){
         const image=media.querySelector('img');
         const original=image.src;
         const slides=photos.map(photo=>`assets/${photo}?v=20261111-carousel`);
+        slides.forEach(src=>{const preload=new Image();preload.src=src});
         let interval;
-        const changeTo=src=>{image.style.opacity='.18';window.setTimeout(()=>{image.src=src;image.style.opacity='1'},110)};
+        const changeTo=src=>{if(image.src!==new URL(src,location.href).href)image.src=src};
         media.addEventListener('mouseenter',()=>{
           let position=0;
           changeTo(slides[position]);

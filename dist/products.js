@@ -188,6 +188,25 @@ if(grid){
     if(count)count.textContent=`${items.length} MODELOS`;
     grid.innerHTML=items.length?items.map((p,i)=>`<article class="product" data-category="${p.category}"><a class="product-media shoe" href="${detailUrl(p)}"><img src="assets/${p.image}?v=20261102-clean" alt="${p.name}" loading="lazy"><span class="pill">${i<4?'DESTACADO':p.category.toUpperCase()}</span><span class="audience-pill">${p.audience==='Unisex'?'UNISEX':`PARA ${p.audience.toUpperCase()}`}</span><span class="source-badge">VER DETALLES →</span></a><button class="heart" aria-label="Guardar producto" style="border:0;background:none">♡</button><h3><a href="${detailUrl(p)}">${p.name}</a></h3><p>${p.category} · ${p.audience}</p><p class="product-sizes">Tallas: ${p.sizes}</p><strong>${money(p.price)}</strong></article>`).join(''):'<p class="search-empty">No encontramos modelos con esa búsqueda. Prueba con Jordan, Nike, Air Max o una talla.</p>';
     document.querySelectorAll('.heart').forEach(btn=>btn.addEventListener('click',()=>{const toast=document.querySelector('.toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}));
+    if(window.matchMedia('(hover:hover)').matches){
+      document.querySelectorAll('.product-media').forEach(media=>{
+        const productId=new URL(media.href,location.href).searchParams.get('id');
+        const sourcePhotos=typeof sourceLinkPhotos!=='undefined'?sourceLinkPhotos[productId]:null;
+        const photos=(sourcePhotos||catalogPhotos[productId]?.map(catalogPhotoPath)||[]).slice(0,3);
+        if(photos.length<2)return;
+        const image=media.querySelector('img');
+        const original=image.src;
+        const slides=photos.map(photo=>`assets/${photo}?v=20261111-carousel`);
+        let interval;
+        const changeTo=src=>{image.style.opacity='.18';window.setTimeout(()=>{image.src=src;image.style.opacity='1'},110)};
+        media.addEventListener('mouseenter',()=>{
+          let position=0;
+          changeTo(slides[position]);
+          interval=window.setInterval(()=>{position=(position+1)%slides.length;changeTo(slides[position])},750);
+        });
+        media.addEventListener('mouseleave',()=>{window.clearInterval(interval);changeTo(original)});
+      });
+    }
   };
   const normalized=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const filterProducts=filter=>{

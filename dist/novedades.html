@@ -1,48 +1,289 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Novedades — RITMO</title>
-  <link rel="stylesheet" href="catalog.css?v=20261111-collections">
-  <link rel="stylesheet" href="collections.css?v=20261111-collections">
-</head>
-<body>
-  <div id="site-header"></div>
-  <main>
-    <section class="page-hero catalog-hero">
-      <img src="assets/hero-catalog-2026.png?v=20261102" alt="Campaña de zapatillas Jordan">
-      <div class="hero-text">
-        <p class="kicker">INVENTARIO / OCTUBRE 2026</p>
-        <h1>CATÁLOGO<br><em>ACTUAL</em></h1>
-        <p>La selección registrada de siluetas Jordan y Nike, reunida en un solo lugar.</p>
-      </div>
-    </section>
-    <div class="breadcrumb">INICIO / NOVEDADES</div>
-    <section class="shop-section">
-      <div class="catalog-layout">
-        <aside class="catalog-sidebar" aria-label="Secciones del catálogo">
-          <p>SECCIONES</p>
-          <button class="active" data-filter="all">VER TODO</button>
-          <button data-filter="exclusive">EXCLUSIVAS</button>
-          <button data-filter="kids">NIÑO</button>
-          <button data-filter="men">HOMBRE</button>
-          <button data-filter="women">MUJER</button>
-          <button data-filter="adult">ADULTO</button>
-          <button data-filter="accessories">ACCESORIOS</button>
-          <button data-filter="shirts">POLOS</button>
-        </aside>
-        <div class="catalog-content">
-          <div class="title-row"><h1>CATÁLOGO</h1><p class="catalog-selection">VER TODO</p></div>
-          <p class="collection-intro">Explora las colecciones exclusivas o encuentra zapatillas para hombre y mujer.</p>
-          <div class="product-grid" data-products></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Novedades — RITMO</title>
+    <link rel="stylesheet" href="css/catalog.css?v=20261111-collections" />
+    <link rel="stylesheet" href="css/collections.css?v=20261111-collections" />
+    <link rel="stylesheet" href="css/brand-filter.css?v=20261117" />
+    <link rel="stylesheet" href="css/card-style.css?v=20261117-static" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main>
+      <section class="page-hero catalog-hero">
+        <img
+          src="assets/hero-catalog-2026.png?v=20261102"
+          alt="Campaña de zapatillas Jordan"
+        />
+        <div class="hero-text">
+          <p class="kicker">INVENTARIO / OCTUBRE 2026</p>
+          <h1>CATÁLOGO<br /><em>ACTUAL</em></h1>
+          <p>
+            La selección registrada de siluetas Jordan y Nike, reunida en un
+            solo lugar.
+          </p>
         </div>
-      </div>
-    </section>
-  </main>
-  <div id="site-footer"></div>
-  <script src="catalog.js?v=20261111-collections"></script>
-  <script src="source-link-photos.js?v=20261105-sources"></script>
-  <script src="products.js?v=20261111-collections"></script>
-</body>
+      </section>
+      <div class="breadcrumb">INICIO / NOVEDADES</div>
+      <section class="shop-section">
+        <div class="catalog-layout">
+          <aside class="catalog-sidebar" aria-label="Secciones del catálogo">
+            <!-- Widget de filtro por marcas estilo interactivo -->
+            <div class="brand-filter-widget" id="brand-filter-widget">
+              <div class="brand-filter-header" title="Alternar panel de marcas">
+                <h3 data-i18n-brands-title>MARCAS</h3>
+                <span class="brand-total-pill"
+                  >45 <span class="brand-header-chevron">▼</span></span
+                >
+              </div>
+              <div class="brand-filter-body">
+                <div class="brand-body-toolbar">
+                  <button
+                    type="button"
+                    class="brand-pill-all active"
+                    data-filter="all"
+                    data-i18n-brands-all
+                  >
+                    TODOS
+                  </button>
+                  <button
+                    type="button"
+                    class="brand-clear-link"
+                    data-clear="brand"
+                    title="Limpiar filtro de marcas"
+                  >
+                    LIMPIAR
+                  </button>
+                </div>
+                <div class="brand-cards-grid">
+                  <div
+                    class="brand-card-item"
+                    data-filter="brand-jordan"
+                    title="Ver modelos Jordan"
+                  >
+                    <span class="brand-item-badge">25</span>
+                    <img
+                      src="assets/logos/brand-jordan-card.png"
+                      alt="Jordan"
+                    />
+                  </div>
+                  <div
+                    class="brand-card-item"
+                    data-filter="brand-nike"
+                    title="Ver modelos Nike"
+                  >
+                    <span class="brand-item-badge">20</span>
+                    <img src="assets/logos/brand-nike-card.png" alt="Nike" />
+                  </div>
+                  <div
+                    class="brand-card-item"
+                    data-filter="brand-air"
+                    title="Ver modelos con tecnología Air"
+                  >
+                    <span class="brand-item-badge">33</span>
+                    <img
+                      src="assets/logos/brand-nike-air-card.png"
+                      alt="Nike Air"
+                    />
+                  </div>
+                  <div
+                    class="brand-card-item"
+                    data-filter="brand-airforce"
+                    title="Ver modelos Air Force 1"
+                  >
+                    <span class="brand-item-badge">8</span>
+                    <img
+                      src="assets/logos/brand-air-force-card.svg"
+                      alt="Air Force 1"
+                    />
+                  </div>
+                  <div
+                    class="brand-card-item"
+                    data-filter="brand-airjordan"
+                    title="Ver modelos Air Jordan"
+                  >
+                    <span class="brand-item-badge">17</span>
+                    <img
+                      src="assets/logos/brand-air-jordan-card.png"
+                      alt="Air Jordan"
+                    />
+                  </div>
+                </div>
+                <div class="brand-filter-footer">
+                  <button type="button" class="brand-expand-btn">
+                    <span data-i18n-brands-toggle>VER MENOS</span>
+                    <span>▲</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget GRUPOS A–G -->
+            <div class="brand-filter-widget" id="group-filter-widget">
+              <div class="brand-filter-header" title="Alternar panel de grupos">
+                <h3>GRUPOS</h3>
+                <span class="brand-total-pill"
+                  >7 <span class="brand-header-chevron">▼</span></span
+                >
+              </div>
+              <div class="brand-filter-body">
+                <div class="brand-body-toolbar">
+                  <button type="button" class="brand-pill-all active" data-filter-group="all">
+                    TODOS
+                  </button>
+                  <button type="button" class="brand-clear-link" data-clear="group" title="Limpiar filtro de grupos">
+                    LIMPIAR
+                  </button>
+                </div>
+                <div class="brand-cards-grid group-grid">
+                  <div class="brand-card-item group-card" data-filter-group="A" title="Grupo A · 7 pares">
+                    <span class="brand-item-badge">7</span>
+                    <span class="group-label">A</span>
+                  </div>
+                  <div class="brand-card-item group-card" data-filter-group="B" title="Grupo B · 7 pares">
+                    <span class="brand-item-badge">7</span>
+                    <span class="group-label">B</span>
+                  </div>
+                  <div class="brand-card-item group-card" data-filter-group="C" title="Grupo C · 7 pares">
+                    <span class="brand-item-badge">7</span>
+                    <span class="group-label">C</span>
+                  </div>
+                  <div class="brand-card-item group-card" data-filter-group="D" title="Grupo D · 7 pares">
+                    <span class="brand-item-badge">7</span>
+                    <span class="group-label">D</span>
+                  </div>
+                  <div class="brand-card-item group-card" data-filter-group="E" title="Grupo E · 7 pares">
+                    <span class="brand-item-badge">7</span>
+                    <span class="group-label">E</span>
+                  </div>
+                  <div class="brand-card-item group-card" data-filter-group="F" title="Grupo F · 7 pares">
+                    <span class="brand-item-badge">7</span>
+                    <span class="group-label">F</span>
+                  </div>
+                  <div class="brand-card-item group-card" data-filter-group="G" title="Grupo G · 3 pares">
+                    <span class="brand-item-badge">3</span>
+                    <span class="group-label">G</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget CATEGORÍAS / SILUETAS -->
+            <div class="brand-filter-widget" id="cat-filter-widget">
+              <div class="brand-filter-header" title="Alternar panel de categorías">
+                <h3>CATEGORÍAS</h3>
+                <span class="brand-total-pill"
+                  >16 <span class="brand-header-chevron">▼</span></span
+                >
+              </div>
+              <div class="brand-filter-body">
+                <div class="brand-body-toolbar">
+                  <button type="button" class="brand-pill-all active" data-filter-cat="all">
+                    TODAS
+                  </button>
+                  <button type="button" class="brand-clear-link" data-clear="cat" title="Limpiar filtro de categorías">
+                    LIMPIAR
+                  </button>
+                </div>
+                <div class="cat-list">
+                  <button class="cat-item" data-filter-cat="Jordan Hybrid / Otros"><span class="cat-badge">8</span>Jordan Hybrid / Otros</button>
+                  <button class="cat-item" data-filter-cat="Nike Air Force 1"><span class="cat-badge">8</span>Nike Air Force 1</button>
+                  <button class="cat-item" data-filter-cat="Nike Air Max"><span class="cat-badge">5</span>Nike Air Max</button>
+                  <button class="cat-item" data-filter-cat="Air Jordan 1 Low"><span class="cat-badge">4</span>Air Jordan 1 Low</button>
+                  <button class="cat-item" data-filter-cat="Jordan Retro 4"><span class="cat-badge">4</span>Jordan Retro 4</button>
+                  <button class="cat-item" data-filter-cat="Jordan Retro 3"><span class="cat-badge">3</span>Jordan Retro 3</button>
+                  <button class="cat-item" data-filter-cat="Nike Diamond / DT / Griffey"><span class="cat-badge">3</span>Nike Diamond / DT</button>
+                  <button class="cat-item" data-filter-cat="Jordan Retro 1"><span class="cat-badge">2</span>Jordan Retro 1</button>
+                  <button class="cat-item" data-filter-cat="Nike Basketball"><span class="cat-badge">2</span>Nike Basketball</button>
+                  <button class="cat-item" data-filter-cat="Jordan Retro 9"><span class="cat-badge">1</span>Jordan Retro 9</button>
+                  <button class="cat-item" data-filter-cat="Jordan Retro 5"><span class="cat-badge">1</span>Jordan Retro 5</button>
+                  <button class="cat-item" data-filter-cat="Jordan 6 Rings"><span class="cat-badge">1</span>Jordan 6 Rings</button>
+                  <button class="cat-item" data-filter-cat="Jordan 1"><span class="cat-badge">1</span>Jordan 1 Mid</button>
+                  <button class="cat-item" data-filter-cat="Nike Flight Legacy"><span class="cat-badge">1</span>Nike Flight Legacy</button>
+                  <button class="cat-item" data-filter-cat="Nike Shox"><span class="cat-badge">1</span>Nike Shox</button>
+                </div>
+                <div class="brand-filter-footer">
+                  <button type="button" class="brand-expand-btn cat-expand-btn">
+                    <span>VER MENOS</span>
+                    <span>▲</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget SECCIONES -->
+            <div class="brand-filter-widget" id="sec-filter-widget">
+              <div class="brand-filter-header" title="Alternar panel de secciones">
+                <h3>SECCIONES</h3>
+                <span class="brand-total-pill"
+                  >6 <span class="brand-header-chevron">▼</span></span
+                >
+              </div>
+              <div class="brand-filter-body">
+                <div class="brand-body-toolbar">
+                  <button type="button" class="brand-pill-all active" data-filter="all">
+                    VER TODO
+                  </button>
+                  <button type="button" class="brand-clear-link" data-clear="sec" title="Limpiar filtro de secciones">
+                    LIMPIAR
+                  </button>
+                </div>
+                <div class="sec-list">
+                  <button class="sec-item" data-filter="exclusive">
+                    <span class="sec-icon">★</span> EXCLUSIVAS
+                  </button>
+                  <button class="sec-item" data-filter="kids">
+                    <span class="sec-icon">◦</span> NIÑO
+                  </button>
+                  <button class="sec-item" data-filter="men">
+                    <span class="sec-icon">◦</span> HOMBRE
+                  </button>
+                  <button class="sec-item" data-filter="women">
+                    <span class="sec-icon">◦</span> MUJER
+                  </button>
+                  <button class="sec-item" data-filter="adult">
+                    <span class="sec-icon">◦</span> ADULTO
+                  </button>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="catalog-content">
+            <div class="catalog-header-bar">
+              <div class="catalog-header-left">
+                <span class="catalog-kicker">COLECCIÓN 2026 · EXCLUSIVAS</span>
+                <h1 class="catalog-title">CATÁLOGO</h1>
+                <p class="collection-intro">
+                  Explora las siluetas exclusivas o encuentra calzado
+                  seleccionado para hombre y mujer.
+                </p>
+              </div>
+              <div class="catalog-header-right">
+                <div class="catalog-sort-wrapper">
+                  <select id="catalog-sort-select" class="catalog-sort-select" aria-label="Ordenar catálogo">
+                    <option value="featured">Ordenar: Destacados</option>
+                    <option value="price-asc">Precio: menor a mayor</option>
+                    <option value="price-desc">Precio: mayor a menor</option>
+                    <option value="discount">Mayor descuento</option>
+                  </select>
+                </div>
+                <span class="catalog-count-pill" id="catalog-count-display"
+                  ><span class="catalog-count-dot"></span> 45 MODELOS</span
+                >
+                <span class="catalog-selection">VER TODO</span>
+              </div>
+            </div>
+            <div class="product-grid" data-products></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="site-footer"></div>
+    <script src="js/i18n.js?v=20261117"></script>
+    <script src="js/catalog.js?v=20261117"></script>
+    <script src="js/source-link-photos.js?v=20261105-sources"></script>
+    <script src="js/products.js?v=20261117"></script>
+  </body>
 </html>

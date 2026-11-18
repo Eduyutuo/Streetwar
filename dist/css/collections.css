@@ -1,0 +1,149 @@
+.catalog-layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:32px;align-items:start}
+.catalog-sidebar{position:static;top:auto;border-top:2px solid #111;border-bottom:1px solid var(--line);padding:14px 0 18px;display:grid;gap:2px}
+.catalog-sidebar p{margin:0 0 10px;font-size:9px;font-weight:800;letter-spacing:.14em;color:#666}
+.catalog-sidebar button{border:0;border-left:3px solid transparent;background:transparent;padding:11px 12px;text-align:left;color:#111;font-size:11px;font-weight:800;letter-spacing:.08em;cursor:pointer}
+.catalog-sidebar button:hover,.catalog-sidebar button.active{border-left-color:#111;background:var(--lime)}
+.catalog-content{min-width:0}
+.collection-intro{max-width:510px;margin:-18px 0 30px;color:#555;font-size:13px;line-height:1.55}
+.catalog-selection{font-weight:800;letter-spacing:.12em;color:var(--blue)!important}
+@media(max-width:759px){.catalog-layout{display:block}.catalog-sidebar{position:static;display:flex;overflow-x:auto;gap:4px;border-top:1px solid var(--line);padding:10px 0;margin:0 0 20px 0;padding-left:0;max-width:100%;scrollbar-width:none}.catalog-sidebar::-webkit-scrollbar{display:none}.catalog-sidebar p{display:none}.catalog-sidebar button{flex:0 0 auto;border:1px solid #aaa;padding:10px 12px}.catalog-sidebar button:hover,.catalog-sidebar button.active{border-color:#111;background:var(--lime)}.collection-intro{font-size:12px;margin-top:-12px}}
+
+
+/* ========================================================
+   CABECERA ELEGANTE Y EDITORIAL DEL CATÁLOGO (NOVEDADES)
+   ======================================================== */
+.catalog-header-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 22px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--line, #cbc8c0);
+}
+
+.catalog-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.catalog-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.catalog-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--ink, #111);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.catalog-content .collection-intro {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  max-width: 540px;
+}
+
+.catalog-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+/* Selector Ordenar estilizado como en la referencia */
+.catalog-sort-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.catalog-sort-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat calc(100% - 12px) center;
+  border: 1.5px solid #111111;
+  border-radius: 24px;
+  padding: 8px 34px 8px 16px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111111;
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.catalog-sort-select:hover,
+.catalog-sort-select:focus {
+  border-color: #0757e8;
+  box-shadow: 0 2px 8px rgba(7, 87, 232, 0.15);
+}
+
+.catalog-count-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: #111111;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 24px;
+  text-transform: uppercase;
+}
+
+.catalog-count-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+}
+
+.catalog-header-right .catalog-selection {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0757e8;
+  background: #edf3fd;
+  padding: 8px 16px;
+  border-radius: 24px;
+  border: 1px solid #d0e0fb;
+  text-transform: uppercase;
+}
+
+@media (max-width: 759px) {
+  .catalog-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 18px;
+    margin-bottom: 24px;
+  }
+  .catalog-title {
+    font-size: 44px;
+  }
+  .catalog-header-right {
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 0;
+  }
+}

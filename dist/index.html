@@ -1,110 +1,267 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Lil David — catálogo actualizado de zapatillas Jordan y Nike.">
-  <title>RITMO — Streetwear en movimiento</title>
-  <meta http-equiv="refresh" content="0; url=novedades.html">
-  <script>location.replace('novedades.html');</script>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
-  <div class="promo" aria-label="Promociones">
-    <span>CATÁLOGO ACTUALIZADO</span><span>✦</span><strong>36 MODELOS JORDAN Y NIKE</strong><span>✦</span><span>TALLAS Y PRECIOS EN SOLES</span>
-  </div>
-
-  <header class="site-header">
-    <div class="header-main">
-      <button class="icon-button menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-      <a class="logo" href="index.html" aria-label="Lil David, inicio"><img src="LOGO.png" alt="Lil David"></a>
-      <form class="search" role="search" action="novedades.html">
-        <label class="sr-only" for="search">Buscar</label>
-        <input id="search" name="q" type="search" placeholder="¿Qué estás buscando?">
-        <button aria-label="Buscar">⌕</button>
-      </form>
-      <div class="header-actions">
-        <button class="icon-button" data-account aria-label="Mi cuenta">♙</button>
-        <button class="icon-button bag-button" aria-label="Abrir bolsa">▢<b>0</b></button>
-      </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Lil David — catálogo actualizado de zapatillas Jordan y Nike."
+    />
+    <title>RITMO — Streetwear en movimiento</title>
+    <meta http-equiv="refresh" content="0; url=novedades.html" />
+    <script>
+      location.replace("novedades.html");
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+      <link rel="stylesheet" href="css/card-style.css?v=20261117-static" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="promo" aria-label="Promociones">
+      <span>CATÁLOGO ACTUALIZADO</span><span>✦</span
+      ><strong>36 MODELOS JORDAN Y NIKE</strong><span>✦</span
+      ><span>TALLAS Y PRECIOS EN SOLES</span>
     </div>
-    <nav class="main-nav" aria-label="Navegación principal">
-      <a href="novedades.html">NOVEDADES</a>
-      <a href="hombre.html">HOMBRE</a>
-      <a href="mujer.html">MUJER</a>
-      <a href="ninos.html">NIÑOS</a>
-      <a href="marcas.html">MARCAS</a>
-      <a class="sale" href="ofertas.html">OFERTAS</a>
-      <a href="lanzamientos.html">LANZAMIENTOS</a>
-      <a href="editorial.html">EDITORIAL</a>
-      <a class="store" href="tiendas.html">⌖ TIENDAS</a>
-    </nav>
-    <div class="mega-menu" aria-hidden="true">
+
+    <header class="site-header">
+      <div class="header-main">
+        <button
+          class="icon-button menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <a class="logo" href="index.html" aria-label="Lil David, inicio"
+          ><img src="assets/LOGO.svg" alt="Lil David"
+        /></a>
+        <form class="search" role="search" action="novedades.html">
+          <label class="sr-only" for="search">Buscar</label>
+          <input
+            id="search"
+            name="q"
+            type="search"
+            placeholder="¿Qué estás buscando?"
+          />
+          <button aria-label="Buscar">⌕</button>
+        </form>
+        <div class="header-actions">
+          <button class="icon-button" data-account aria-label="Mi cuenta">
+            ♙
+          </button>
+          <button class="icon-button bag-button" aria-label="Abrir bolsa">
+            ▢<b>0</b>
+          </button>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="novedades.html">NOVEDADES</a>
+        <a href="hombre.html">HOMBRE</a>
+        <a href="mujer.html">MUJER</a>
+        <a href="ninos.html">NIÑOS</a>
+        <a href="marcas.html">MARCAS</a>
+        <a class="sale" href="ofertas.html">OFERTAS</a>
+        <a href="lanzamientos.html">LANZAMIENTOS</a>
+        <a href="editorial.html">EDITORIAL</a>
+        <a class="store" href="tiendas.html">⌖ TIENDAS</a>
+      </nav>
+      <div class="mega-menu" aria-hidden="true">
+        <div>
+          <p>DESTACADOS</p>
+          <a href="novedades.html">Nuevos ingresos</a
+          ><a href="editorial.html">Looks completos</a
+          ><a href="ofertas.html">Últimas tallas</a>
+        </div>
+        <div>
+          <p>CALZADO</p>
+          <a href="novedades.html">Lifestyle</a
+          ><a href="novedades.html">Running</a
+          ><a href="novedades.html">Basketball</a>
+        </div>
+        <div>
+          <p>ROPA</p>
+          <a href="editorial.html">Chaquetas</a
+          ><a href="editorial.html">Sudaderas</a
+          ><a href="editorial.html">Pantalones</a>
+        </div>
+        <div class="mega-card">
+          <img
+            src="assets/jordan-1-royal-product.webp?v=20261023-shoes"
+            alt="Air Jordan 1 Royal"
+          /><span>Jordan en foco →</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section class="hero">
+        <img
+          src="assets/hero-catalog-2026.png?v=20261102"
+          alt="Campaña urbana de zapatillas para el catálogo Streetwar"
+        />
+        <div class="hero-copy">
+          <p class="eyebrow">INVENTARIO 10.26</p>
+          <h1>CAMINA<br />CON <em>ESTILO</em></h1>
+          <p>Jordan y Nike: 28 modelos registrados en el catálogo actual.</p>
+          <div class="button-row">
+            <a class="btn light" href="novedades.html">COMPRAR AHORA</a
+            ><a class="text-link" href="editorial.html">VER CAMPAÑA ↗</a>
+          </div>
+        </div>
+        <div class="hero-index"><span>01</span><i></i><span>03</span></div>
+      </section>
+
+      <section class="section collections" id="novedades">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">EXPLORA</p>
+            <h2>EN TENDENCIA</h2>
+          </div>
+          <a href="novedades.html">VER TODO ↗</a>
+        </div>
+        <div class="collection-grid">
+          <article class="collection-card wide">
+            <img
+              src="assets/jordan-3-spring-flowers-product.webp?v=20261023-shoes"
+              alt="Air Jordan 3 Spring Flowers"
+            />
+            <div>
+              <span>01</span>
+              <h3>JORDAN<br />PARA ELLA</h3>
+              <a href="mujer.html">VER SELECCIÓN →</a>
+            </div>
+          </article>
+          <article class="collection-card">
+            <img
+              src="assets/jordan-1-royal-product.webp?v=20261023-shoes"
+              alt="Air Jordan 1 Royal"
+            />
+            <div>
+              <span>02</span>
+              <h3>AIR JORDAN<br />EN FOCO</h3>
+              <a href="lanzamientos.html">VER MODELOS →</a>
+            </div>
+          </article>
+          <article class="collection-card color-card">
+            <div class="orb">R</div>
+            <div>
+              <span>03</span>
+              <h3>BÁSICOS<br />NO TAN BÁSICOS</h3>
+              <a href="hombre.html">DESCUBRIR →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Mensaje de marca">
+        <div>KEEP MOVING ✦ STAY LOUD ✦ KEEP MOVING ✦ STAY LOUD ✦</div>
+      </section>
+
+      <section class="feature" id="lanzamientos">
+        <div class="feature-image">
+          <img
+            src="assets/jordan-1-royal-product.webp?v=20261023-shoes"
+            alt="Air Jordan 1 Royal"
+          /><span class="tag">DESTACADO</span>
+        </div>
+        <div class="feature-copy">
+          <p class="eyebrow dark">AIR JORDAN / INVENTARIO ACTUAL</p>
+          <h2>AJ1<br /><em>ROYAL</em></h2>
+          <p>
+            Air Jordan 1 High OG “Royal”, una de las siluetas registradas en la
+            hoja de inventario.
+          </p>
+          <div class="price">
+            CONSULTAR <small>TALLA · PRECIO · STOCK</small>
+          </div>
+          <a class="btn dark" href="lanzamientos.html">VER EL MODELO</a>
+        </div>
+      </section>
+
+      <section class="section editorial" id="editorial">
+        <div class="editorial-title">
+          <p class="eyebrow dark">EDITORIAL 004</p>
+          <h2>LA CIUDAD<br />NO SE DETIENE</h2>
+        </div>
+        <div class="editorial-image">
+          <img
+            src="assets/jordan-4-amazonas-product.webp?v=20261023-shoes"
+            alt="Air Jordan 4 Amazonas"
+          />
+          <p>Siluetas Jordan para días largos y noches que empiezan tarde.</p>
+        </div>
+        <div class="editorial-detail">
+          <img
+            src="assets/jordan-3-spring-flowers-product.webp?v=20261023-shoes"
+            alt="Air Jordan 3 Spring Flowers"
+          />
+          <div>
+            <span>DEL ESTUDIO A LA CALLE</span
+            ><a href="editorial.html">EXPLORAR EL LOOKBOOK →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="brands" id="marcas">
+        <p class="eyebrow">SELECCIÓN DEL INVENTARIO</p>
+        <h2>MARCAS EN ROTACIÓN</h2>
+        <div class="brand-row">
+          <span>JORDAN</span><span>AIR JORDAN 1</span><span>AIR JORDAN 4</span
+          ><span>NIKE AIR FORCE 1</span><span>NIKE AIR MAX</span>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div>
+          <p class="eyebrow dark">SIN SPAM. SOLO DROPS.</p>
+          <h2>ENTRA EN<br />LA LISTA.</h2>
+        </div>
+        <form>
+          <label class="sr-only" for="email">Correo electrónico</label
+          ><input
+            id="email"
+            type="email"
+            placeholder="TU CORREO ELECTRÓNICO"
+            required
+          /><button>UNIRME →</button
+          ><small>Al suscribirte aceptas recibir novedades de RITMO.</small>
+        </form>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <a class="footer-logo" href="index.html" aria-label="Lil David, inicio"
+        ><img src="assets/LOGO.svg" alt="Lil David"
+      /></a>
       <div>
-        <p>DESTACADOS</p><a href="novedades.html">Nuevos ingresos</a><a href="editorial.html">Looks completos</a><a href="ofertas.html">Últimas tallas</a>
+        <h3>TIENDA</h3>
+        <a href="#">Novedades</a><a href="#">Hombre</a><a href="#">Mujer</a
+        ><a href="#">Niños</a>
       </div>
       <div>
-        <p>CALZADO</p><a href="novedades.html">Lifestyle</a><a href="novedades.html">Running</a><a href="novedades.html">Basketball</a>
+        <h3>AYUDA</h3>
+        <a href="#">Envíos y devoluciones</a><a href="#">Seguimiento</a
+        ><a href="#">Contacto</a><a href="#">Preguntas frecuentes</a>
       </div>
       <div>
-        <p>ROPA</p><a href="editorial.html">Chaquetas</a><a href="editorial.html">Sudaderas</a><a href="editorial.html">Pantalones</a>
+        <h3>SÍGUENOS</h3>
+        <a href="#">Instagram ↗</a><a href="#">TikTok ↗</a
+        ><a href="#">Pinterest ↗</a>
       </div>
-      <div class="mega-card"><img src="assets/jordan-1-royal-product.webp?v=20261023-shoes" alt="Air Jordan 1 Royal"><span>Jordan en foco →</span></div>
-    </div>
-  </header>
+      <p class="copyright">© 2026 RITMO STUDIO — CONCEPTO DE DEMOSTRACIÓN</p>
+    </footer>
 
-  <main id="contenido">
-    <section class="hero">
-      <img src="assets/hero-catalog-2026.png?v=20261102" alt="Campaña urbana de zapatillas para el catálogo Streetwar">
-      <div class="hero-copy">
-        <p class="eyebrow">INVENTARIO 10.26</p>
-        <h1>CAMINA<br>CON <em>ESTILO</em></h1>
-        <p>Jordan y Nike: 28 modelos registrados en el catálogo actual.</p>
-        <div class="button-row"><a class="btn light" href="novedades.html">COMPRAR AHORA</a><a class="text-link" href="editorial.html">VER CAMPAÑA ↗</a></div>
-      </div>
-      <div class="hero-index"><span>01</span><i></i><span>03</span></div>
-    </section>
-
-    <section class="section collections" id="novedades">
-      <div class="section-head"><div><p class="eyebrow dark">EXPLORA</p><h2>EN TENDENCIA</h2></div><a href="novedades.html">VER TODO ↗</a></div>
-      <div class="collection-grid">
-        <article class="collection-card wide"><img src="assets/jordan-3-spring-flowers-product.webp?v=20261023-shoes" alt="Air Jordan 3 Spring Flowers"><div><span>01</span><h3>JORDAN<br>PARA ELLA</h3><a href="mujer.html">VER SELECCIÓN →</a></div></article>
-        <article class="collection-card"><img src="assets/jordan-1-royal-product.webp?v=20261023-shoes" alt="Air Jordan 1 Royal"><div><span>02</span><h3>AIR JORDAN<br>EN FOCO</h3><a href="lanzamientos.html">VER MODELOS →</a></div></article>
-        <article class="collection-card color-card"><div class="orb">R</div><div><span>03</span><h3>BÁSICOS<br>NO TAN BÁSICOS</h3><a href="hombre.html">DESCUBRIR →</a></div></article>
-      </div>
-    </section>
-
-    <section class="marquee" aria-label="Mensaje de marca"><div>KEEP MOVING ✦ STAY LOUD ✦ KEEP MOVING ✦ STAY LOUD ✦</div></section>
-
-    <section class="feature" id="lanzamientos">
-      <div class="feature-image"><img src="assets/jordan-1-royal-product.webp?v=20261023-shoes" alt="Air Jordan 1 Royal"><span class="tag">DESTACADO</span></div>
-      <div class="feature-copy"><p class="eyebrow dark">AIR JORDAN / INVENTARIO ACTUAL</p><h2>AJ1<br><em>ROYAL</em></h2><p>Air Jordan 1 High OG “Royal”, una de las siluetas registradas en la hoja de inventario.</p><div class="price">CONSULTAR <small>TALLA · PRECIO · STOCK</small></div><a class="btn dark" href="lanzamientos.html">VER EL MODELO</a></div>
-    </section>
-
-    <section class="section editorial" id="editorial">
-      <div class="editorial-title"><p class="eyebrow dark">EDITORIAL 004</p><h2>LA CIUDAD<br>NO SE DETIENE</h2></div>
-      <div class="editorial-image"><img src="assets/jordan-4-amazonas-product.webp?v=20261023-shoes" alt="Air Jordan 4 Amazonas"><p>Siluetas Jordan para días largos y noches que empiezan tarde.</p></div>
-      <div class="editorial-detail"><img src="assets/jordan-3-spring-flowers-product.webp?v=20261023-shoes" alt="Air Jordan 3 Spring Flowers"><div><span>DEL ESTUDIO A LA CALLE</span><a href="editorial.html">EXPLORAR EL LOOKBOOK →</a></div></div>
-    </section>
-
-    <section class="brands" id="marcas"><p class="eyebrow">SELECCIÓN DEL INVENTARIO</p><h2>MARCAS EN ROTACIÓN</h2><div class="brand-row"><span>JORDAN</span><span>AIR JORDAN 1</span><span>AIR JORDAN 4</span><span>NIKE AIR FORCE 1</span><span>NIKE AIR MAX</span></div></section>
-
-    <section class="newsletter"><div><p class="eyebrow dark">SIN SPAM. SOLO DROPS.</p><h2>ENTRA EN<br>LA LISTA.</h2></div><form><label class="sr-only" for="email">Correo electrónico</label><input id="email" type="email" placeholder="TU CORREO ELECTRÓNICO" required><button>UNIRME →</button><small>Al suscribirte aceptas recibir novedades de RITMO.</small></form></section>
-  </main>
-
-  <footer id="footer">
-    <a class="footer-logo" href="index.html" aria-label="Lil David, inicio"><img src="LOGO.png" alt="Lil David"></a>
-    <div><h3>TIENDA</h3><a href="#">Novedades</a><a href="#">Hombre</a><a href="#">Mujer</a><a href="#">Niños</a></div>
-    <div><h3>AYUDA</h3><a href="#">Envíos y devoluciones</a><a href="#">Seguimiento</a><a href="#">Contacto</a><a href="#">Preguntas frecuentes</a></div>
-    <div><h3>SÍGUENOS</h3><a href="#">Instagram ↗</a><a href="#">TikTok ↗</a><a href="#">Pinterest ↗</a></div>
-    <p class="copyright">© 2026 RITMO STUDIO — CONCEPTO DE DEMOSTRACIÓN</p>
-  </footer>
-
-  <aside class="bag" aria-hidden="true"><button class="close" aria-label="Cerrar bolsa">×</button><p class="eyebrow dark">TU BOLSA (0)</p><h2>TODAVÍA<br>ESTÁ VACÍA.</h2><p>Añade algo de energía a tu rotación.</p><a class="btn dark" href="#novedades">VER NOVEDADES</a></aside>
-  <div class="scrim"></div>
-  <script src="source-link-photos.js?v=20261105-sources"></script><script src="products.js?v=gallery-v3"></script>
-  <script src="search.js?v=20261102-live"></script>
-  <script src="script.js?v=20261023-shoes"></script>
-</body>
+    <aside class="bag" aria-hidden="true">
+      <button class="close" aria-label="Cerrar bolsa">×</button>
+      <p class="eyebrow dark">TU BOLSA (0)</p>
+      <h2>TODAVÍA<br />ESTÁ VACÍA.</h2>
+      <p>Añade algo de energía a tu rotación.</p>
+      <a class="btn dark" href="#novedades">VER NOVEDADES</a>
+    </aside>
+    <div class="scrim"></div>
+    <script src="js/source-link-photos.js?v=20261105-sources"></script>
+    <script src="js/products.js?v=gallery-v3"></script>
+    <script src="js/search.js?v=20261102-live"></script>
+    <script src="js/script.js?v=20261023-shoes"></script>
+  </body>
 </html>

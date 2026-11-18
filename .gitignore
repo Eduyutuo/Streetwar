@@ -1,4 +1,12 @@
-outputs/
-output/
+# Dependencias y scripts temporales
+node_modules/
 config.bat
-node_modules
+*.tmp.*
+
+# Carpeta de trabajo pesado y fotos originales (mantiene el repo ligero para GitHub Pages)
+_source_data/
+
+# Salidas temporales
+output/
+outputs/
+scratch/

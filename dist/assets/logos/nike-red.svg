@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="100%">
+  <!-- Fondo Rojo Nike Oficial -->
+  <rect width="500" height="200" rx="8" fill="#D31A2B"/>
+  
+  <g fill="#FFFFFF">
+    <!-- Texto NIKE estilizado e itálico -->
+    <path d="M48 135 L88 35 L125 35 L96 112 L138 35 L175 35 L135 135 L98 135 L128 58 L85 135 Z"/>
+    <path d="M178 135 L218 35 L255 35 L215 135 Z"/>
+    <path d="M260 135 L300 35 L337 35 L314 92 L358 35 L402 35 L347 95 L405 135 L360 135 L324 105 L312 135 Z"/>
+    <path d="M405 135 L445 35 L518 35 L506 63 L460 63 L452 82 L495 82 L483 110 L440 110 L430 135 Z" transform="scale(0.85) translate(80, 20)"/>
+    
+    <!-- Swoosh blanco atravesado icónico -->
+    <path d="M20 128 C55 152 110 162 165 142 C265 106 430 40 485 20 C488 19 475 29 465 35 C385 88 230 168 140 182 C75 192 25 175 5 145 C-5 130 5 120 20 128 Z"/>
+  </g>
+</svg>

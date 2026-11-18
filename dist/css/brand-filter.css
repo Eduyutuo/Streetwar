@@ -1,0 +1,542 @@
+/* ========================================================
+   WIDGET DE FILTRO POR MARCAS (Con los logos y colores oficiales)
+   ======================================================== */
+
+/* ── Keyframes: efecto radar sutil (solo PC / tablet) ── */
+@keyframes brand-radar-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.brand-filter-widget {
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  overflow: visible; /* visible para que el radar no se recorte */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  margin-bottom: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Cabecera oscura */
+.brand-filter-header {
+  background: #17243b;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 12px; /* cuando colapsado se ve redondeado en todos sus lados */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Cuando el body es visible, solo redondear arriba */
+.brand-filter-widget:not(.is-collapsed) .brand-filter-header {
+  border-radius: 12px 12px 0 0;
+}
+
+.brand-filter-header h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ── Pill "45 ▶" con radar ── */
+.brand-total-pill {
+  background: #2b3a55;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative; /* necesario para los anillos de radar */
+}
+
+/* Anillo de radar: pseudo-elemento posicionado sobre la pill */
+@media (min-width: 641px) {
+  .brand-filter-widget.is-collapsed .brand-total-pill::before,
+  .brand-filter-widget.is-collapsed .brand-total-pill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1.5px solid rgba(100, 149, 220, 0.6);
+    animation: brand-radar-ring 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+
+  .brand-filter-widget.is-collapsed .brand-total-pill::after {
+    animation-delay: 1.2s; /* segundo anillo desplazado */
+  }
+}
+
+.brand-header-chevron {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 9px;
+}
+
+/* Colapsado: flecha apunta a la derecha (▶ giro) */
+.brand-filter-widget.is-collapsed .brand-header-chevron {
+  transform: rotate(-90deg);
+}
+
+/* Ocultar cuerpo cuando colapsado */
+.brand-filter-widget.is-collapsed .brand-filter-body {
+  display: none;
+}
+
+/* Cuerpo del widget */
+.brand-filter-body {
+  padding: 14px 12px;
+}
+
+/* Botón TODOS / ALL */
+.brand-body-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Botón TODOS tipo píldora azul oscuro como en la referencia */
+.brand-pill-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #17243b;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+  outline: none;
+}
+
+.brand-pill-all:hover {
+  transform: translateY(-1px);
+  background: #233454;
+  box-shadow: 0 3px 8px rgba(23, 36, 59, 0.25);
+}
+
+.brand-pill-all.active {
+  background: #17243b;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(23, 36, 59, 0.35);
+}
+
+/* Botón/Enlace LIMPIAR en mayúsculas sobrio */
+.brand-clear-link {
+  background: transparent;
+  border: none;
+  color: #475569;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, transform 0.15s;
+  outline: none;
+}
+
+.brand-clear-link:hover {
+  color: #e5192d;
+  transform: translateY(-1px);
+}
+
+.brand-clear-link.has-filter {
+  color: #e5192d;
+  font-weight: 900;
+}
+
+/* Grilla de tarjetas de marcas */
+.brand-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 4px 2px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.brand-cards-grid::-webkit-scrollbar {
+  width: 4px;
+}
+.brand-cards-grid::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Tarjeta individual de marca: Contenedor con tamaño fijo y fondo sin recortes */
+.brand-card-item {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  width: 100%;
+  height: 72px; /* Mayor presencia para pantallas de escritorio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px; /* Margen interior para que respiren los logos */
+  box-sizing: border-box;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.brand-card-item:hover {
+  border-color: #111111;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.brand-card-item.active {
+  border-color: #111111;
+  border-width: 2px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* Logos dentro de la tarjeta: Centrados con contención sin cortes */
+.brand-card-item img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important; /* Nunca recorta los extremos del logo */
+  object-position: center !important;
+  display: block;
+}
+
+/* Insignia con el conteo numérico en la esquina superior derecha */
+.brand-item-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e2e8f0;
+  color: #1e293b;
+  font-size: 9.5px;
+  font-weight: 800;
+  line-height: 1;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.brand-card-item.active .brand-item-badge,
+.brand-card-item:hover .brand-item-badge {
+  background: #e5192d;
+  color: #ffffff;
+}
+
+/* Footer / Acordeón "VER MÁS" / "VER MENOS" */
+.brand-filter-footer {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.brand-expand-btn {
+  background: transparent;
+  border: 0;
+  color: #b45309;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 3px 2px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.brand-expand-btn:hover {
+  color: #d97706;
+}
+
+/* Ocultar "VER MENOS" en pantallas pequeñas (< 641px) */
+@media (max-width: 640px) {
+  .brand-filter-footer {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   WIDGET DE GRUPOS  (A B C D E F G)
+   ═══════════════════════════════════════════════════ */
+
+/* Grilla compacta 4 columnas para letras de grupo */
+.group-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  max-height: none !important;
+  overflow: visible !important;
+  gap: 8px !important;
+}
+
+/* Tarjeta de grupo: cuadrada con letra grande */
+.brand-card-item.group-card {
+  height: 52px;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.group-label {
+  font-size: 22px;
+  font-weight: 900;
+  color: #17243b;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-family: 'Inter', -apple-system, sans-serif;
+  user-select: none;
+}
+
+.brand-card-item.group-card:hover .group-label,
+.brand-card-item.group-card.active .group-label {
+  color: #e5192d;
+}
+
+/* ═══════════════════════════════════════════════════
+   WIDGET DE CATEGORÍAS (lista vertical)
+   ═══════════════════════════════════════════════════ */
+
+.cat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 2px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.cat-list::-webkit-scrollbar { width: 4px; }
+.cat-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* Botón de categoría: fila completa */
+.cat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.12s;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.cat-item:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+  transform: translateX(2px);
+}
+
+.cat-item.active {
+  background: #17243b;
+  border-color: #17243b;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.cat-badge {
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 9.5px;
+  font-weight: 800;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cat-item:hover .cat-badge,
+.cat-item.active .cat-badge {
+  background: #e5192d;
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════
+   WIDGET DE SECCIONES (VER TODO · HOMBRE · MUJER…)
+   ═══════════════════════════════════════════════════ */
+
+.sec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Botón de sección: ancho completo, alineado a la izquierda */
+.sec-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 12px 10px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #334155;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, padding-left 0.15s;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.sec-item:hover {
+  background: #f1f5f9;
+  border-left-color: #94a3b8;
+  color: #0f172a;
+  padding-left: 14px;
+}
+
+/* Activo: borde izquierdo rojo + fondo tenue oscuro + texto blanco */
+.sec-item.active {
+  border-left-color: #e5192d;
+  background: #17243b;
+  color: #ffffff;
+  padding-left: 14px;
+}
+
+.sec-icon {
+  font-size: 10px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.sec-item.active .sec-icon {
+  opacity: 1;
+  color: #e5192d;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .sec-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  .sec-item {
+    flex: 0 0 auto;
+    border-left: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 6px 6px 0 0;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+  .sec-item.active,
+  .sec-item:hover {
+    padding-left: 12px;
+    border-left-color: transparent;
+    border-bottom-color: #e5192d;
+  }
+}
+
+/* ── Corrección global: botones sidebar con --lime → fondo oscuro legible ── */
+/* Override del var(--lime) que era neon verde ilegible */
+.catalog-sidebar button:hover,
+.catalog-sidebar button.active {
+  background: #17243b !important;
+  color: #ffffff !important;
+  border-left-color: #e5192d !important;
+}
+
+/* Ocultar "VER MENOS" en pantallas pequeñas (< 641px) */
+@media (max-width: 640px) {
+  .brand-filter-footer,
+  .cat-expand-btn {
+    display: none;
+  }
+  /* Grupos en scroll horizontal en mobile */
+  .group-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+  }
+  .brand-card-item.group-card {
+    flex: 0 0 52px;
+  }
+  /* Categorías sin max-height en mobile */
+  .cat-list {
+    max-height: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .brand-filter-widget {
+    margin-bottom: 0;
+  }
+  .brand-cards-grid {
+    display: flex;
+    overflow-x: auto;
+    max-height: none;
+    padding-bottom: 6px;
+    gap: 8px;
+  }
+  .brand-card-item {
+    flex: 0 0 100px;
+    aspect-ratio: 1.5 / 1;
+  }
+}

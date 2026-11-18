@@ -1,86 +1,87 @@
 """
-Generador Maestro de Prompts para Flow (Midjourney, ComfyUI, FLUX, SDXL)
-Crea prompts específicos para 7 perspectivas canónicas de catálogo de e-commerce
-para cada uno de los 45 productos.
+Generador Maestro de Prompts para Flow / Nano Banana 2.1
+Soporta:
+- Tomas individuales (6 u 8 ángulos canónicos)
+- Hojas de contacto / Grids combinados (Grid 2x3 de 6 tomas o Grid 2x4 de 8 tomas)
+- Hojas en pares (1x2) o tríos (1x3)
 """
 
 import json
 import os
 
-# Definición técnica de los 7 ángulos canónicos de e-commerce
-PERSPECTIVES = [
+# 8 Ángulos canónicos organizados lógicamente
+ANGLES_8 = [
     {
-        "id": "toma-1-lateral-exterior",
-        "number": 1,
+        "slot": 1,
+        "code": "01-lateral-exterior",
         "name": "Perfil Lateral Exterior (90°)",
-        "tag": "90° Lateral Exterior",
-        "description": "Muestra silueta completa, logos principales y perfil de suela. Puntera a la izquierda.",
-        "angle_spec": "Strict 90-degree lateral outer profile side view of single left sneaker, toe box pointing horizontally directly to the LEFT, camera precisely at eye-level with the midsole.",
-        "details_focus": "Showcasing the exterior brand logo, lateral upper stitching, midsole silhouette, and full outsole profile line."
+        "grid_pos": "Fila 1, Columna 1 (Top-Left)",
+        "prompt_desc": "Panel 1: Strict 90-degree lateral side profile view, toe box pointing horizontally directly to the LEFT.",
+        "details": "Clear exterior brand Swoosh/Jumpman logo, upper stitch lines, full midsole and outsole profile."
     },
     {
-        "id": "toma-2-frontal-3-4",
-        "number": 2,
+        "slot": 2,
+        "code": "02-frontal-3-4",
         "name": "Perspectiva 3/4 Frontal (45°)",
-        "tag": "3/4 Frontal Perspectiva",
-        "description": "Muestra volumen tridimensional, puntera y lateral exterior simultáneamente.",
-        "angle_spec": "Three-quarter (3/4) perspective front-quarter three-quarter view of single left sneaker, angled toward the LEFT, camera elevated at a 25-degree dynamic product angle.",
-        "details_focus": "Showcasing the front toe box cap, lateral curved lacing eyestay, tongue badge, and outer lateral panel volume simultaneously."
+        "grid_pos": "Fila 1, Columna 2 (Top-Center)",
+        "prompt_desc": "Panel 2: Three-quarter (3/4) perspective front-quarter view, angled toward the LEFT.",
+        "details": "Showing front toe box volume, lacing eyestay curvature, and outer lateral panel simultaneously."
     },
     {
-        "id": "toma-3-frontal-directa",
-        "number": 3,
+        "slot": 3,
+        "code": "03-frontal-directa",
         "name": "Frontal Directa (0°)",
-        "tag": "Frontal Directa 0°",
-        "description": "Muestra simetría de puntera, lengüeta, ancho de empeine y sistema de cordones.",
-        "angle_spec": "Direct straight-on front eye-level view at 0 degrees, perfectly centered along the vertical axis of the sneaker.",
-        "details_focus": "Showcasing symmetrical rounded toe box perforation, neat lace row alignment, tongue brand embroidery, and dual collar openings."
+        "grid_pos": "Fila 1, Columna 3",
+        "prompt_desc": "Panel 3: Direct straight-on front eye-level view at 0 degrees, perfectly centered.",
+        "details": "Symmetrical rounded toe cap, neat lace rows, and tongue brand label."
     },
     {
-        "id": "toma-4-posterior-talon",
-        "number": 4,
+        "slot": 4,
+        "code": "04-posterior-talon",
         "name": "Posterior / Talón (180°)",
-        "tag": "Posterior Talón 180°",
-        "description": "Muestra contrafuerte del talón, logo de talón (Jumpman / Nike Air) y altura de caña.",
-        "angle_spec": "Direct 180-degree straight rear view looking directly at the heel counter from behind, perfectly centered and level.",
-        "details_focus": "Highlighting authentic rear branding badge, crisp heel stitch lines, padded heel notch collar, pull tab, and rear outsole tread wrap."
+        "grid_pos": "Fila 1, Columna 4 o Fila 2",
+        "prompt_desc": "Panel 4: Direct 180-degree rear heel view from behind, centered and vertical.",
+        "details": "Authentic heel counter branding badge (Nike Air / Jumpman), heel pull tab, and outsole tread wrap."
     },
     {
-        "id": "toma-5-trasera-3-4",
-        "number": 5,
+        "slot": 5,
+        "code": "05-trasera-3-4",
         "name": "Perspectiva 3/4 Trasera (135°)",
-        "tag": "3/4 Trasera Exterior",
-        "description": "Muestra contorno del tobillo, talón tridimensional y curva posterior de entresuela.",
-        "angle_spec": "Three-quarter (3/4) rear perspective view of single sneaker facing away toward the left, 135-degree angle from front.",
-        "details_focus": "Highlighting heel counter curve, Achilles tendon collar curvature, outer rear midsole sculpting, and lateral heel logo perspective."
+        "grid_pos": "Fila 2, Columna 1",
+        "prompt_desc": "Panel 5: Three-quarter (3/4) rear perspective view facing away toward the left.",
+        "details": "Ankle collar padding thickness, heel counter shape, and outer rear midsole curvature."
     },
     {
-        "id": "toma-6-lateral-interior",
-        "number": 6,
+        "slot": 6,
+        "code": "06-lateral-interior",
         "name": "Perfil Lateral Interior / Medial (90°)",
-        "tag": "90° Lateral Interior (Medial)",
-        "description": "Muestra el lado interno del pie, soporte del arco y patrón medial.",
-        "angle_spec": "Strict 90-degree medial inner side profile view of single left sneaker, toe box pointing horizontally to the LEFT, camera at direct eye-level.",
-        "details_focus": "Showcasing the inner arch support contour, medial upper stitch panels, inner midsole geometry, and medial venting."
+        "grid_pos": "Fila 2, Columna 2",
+        "prompt_desc": "Panel 6: Strict 90-degree medial inner side profile view, toe pointing horizontally to the LEFT.",
+        "details": "Inner foot arch support, medial panel textures, and inner midsole geometry."
     },
     {
-        "id": "toma-7-cenital-superior",
-        "number": 7,
+        "slot": 7,
+        "code": "07-cenital-superior",
         "name": "Cenital / Superior (90° Top-Down)",
-        "tag": "Cenital Superior 90°",
-        "description": "Muestra vista plana superior completa: plantilla interior, cordones y lengüeta.",
-        "angle_spec": "Direct 90-degree overhead top-down flat lay cenital view looking straight down onto the sneaker, toe box oriented upward or to the left.",
-        "details_focus": "Showcasing tongue branding tag, crisp eyelet symmetry, neatly tied flat laces, collar lining padding, and insole footbed printed logo."
+        "grid_pos": "Fila 2, Columna 3",
+        "prompt_desc": "Panel 7: Direct 90-degree top-down flat lay view looking straight down.",
+        "details": "Symmetrical eyelets, tied laces, collar opening, and printed footbed insole logo."
+    },
+    {
+        "slot": 8,
+        "code": "08-suela-inferior",
+        "name": "Suela Inferior / Outsole (90° Bottom-Up)",
+        "grid_pos": "Fila 2, Columna 4",
+        "prompt_desc": "Panel 8: Direct 90-degree flat outsole bottom tread view looking directly at the sole.",
+        "details": "Complete rubber traction pattern, pivot points, flex grooves, and embossed sole branding."
     }
 ]
 
-# Entorno de estudio, iluminación y calidad uniforme para consistencia comercial
-STUDIO_ENVIRONMENT = (
-    "Pure solid seamless white background (#FFFFFF), clean commercial studio environment. "
-    "Even balanced dual softbox lighting at 5500K neutral daylight color temperature, eliminating harsh hotspots. "
-    "Subtle grounded natural soft contact shadow directly underneath the outsole rubber on the floor plane. "
-    "Shot with 85mm prime lens at f/8 aperture, razor-sharp edge-to-edge focus across all textures, deep depth of field with zero chromatic aberration. "
-    "8k UHD resolution, hyper-detailed commercial footwear catalog asset, single shoe isolated, no floating artifacts, no props, zero background distractions."
+STUDIO_COMMON = (
+    "Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, "
+    "balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all angles, "
+    "subtle grounded contact shadows on the floor. 8k resolution e-commerce product catalog standard, "
+    "zero floating artifacts, zero background clutter."
 )
 
 NEGATIVE_PROMPT = (
@@ -89,21 +90,10 @@ NEGATIVE_PROMPT = (
     "dirty soles, worn leather, scuffs, lowres, oversaturated, chromatic aberration, cartoon, illustration, 3d render plastic sheen"
 )
 
-# Parámetros técnicos recomendados para Flow / Stable Diffusion / Midjourney
-FLOW_RECOMMENDED_SETTINGS = {
-    "aspect_ratio": "1:1 (Square 1200x1200px / 1024x1024px)",
-    "sampler": "Euler a / DPM++ 2M Karras",
-    "steps": 30,
-    "cfg_scale": 7.0,
-    "denoising_strength_img2img": 0.45,
-    "image_weight_reference": 1.8,
-    "seed_mode": "Fixed Seed per product to maintain identical materials across all 7 angles"
-}
-
 def clean_name(name):
     return name.replace('“', '"').replace('”', '"').replace('’', "'")
 
-def build_catalog_prompts():
+def build_all_prompts():
     with open('dist/js/assigned_angles.json', 'r', encoding='utf-8') as f:
         assigned = json.load(f)
 
@@ -113,99 +103,143 @@ def build_catalog_prompts():
         idx = item['index']
         sku = item['sku']
         raw_name = clean_name(item['name'])
-        folder = item.get('folder', sku)
         
-        # Generar prompts para los 7 ángulos
-        angles_data = []
-        for p in PERSPECTIVES:
-            prompt_flat = (
+        # 1. Prompts individuales (8 ángulos)
+        individual_angles = []
+        for a in ANGLES_8:
+            prompt_ind = (
                 f"Commercial footwear catalog studio photography of authentic sneaker {raw_name}, SKU: {sku}. "
-                f"{p['angle_spec']} {p['details_focus']} "
-                f"{STUDIO_ENVIRONMENT}"
+                f"{a['prompt_desc']} {a['details']} {STUDIO_COMMON}"
             )
-            
-            prompt_tags = (
-                f"footwear product photography, {raw_name}, {sku}, {p['tag']}, "
-                f"{p['angle_spec']}, {p['details_focus']}, "
-                f"pure white background #FFFFFF, softbox studio lighting 5500K, grounded contact shadow, "
-                f"85mm lens f8, pin-sharp detail, 8k resolution, e-commerce catalog"
-            )
-            
-            angles_data.append({
-                "number": p["number"],
-                "id": p["id"],
-                "name": p["name"],
-                "tag": p["tag"],
-                "description": p["description"],
-                "prompt_natural": prompt_flat,
-                "prompt_tags": prompt_tags,
-                "negative_prompt": NEGATIVE_PROMPT,
-                "ref_image_recommended": f"dist/assets/2-norm-std/{sku}/01-lateral.webp" if p["number"] in (1, 2, 5, 6) else f"dist/assets/2-norm-std/{sku}/02-frontal-3-4.webp"
+            individual_angles.append({
+                "slot": a["slot"],
+                "code": a["code"],
+                "name": a["name"],
+                "prompt": prompt_ind
             })
             
+        # 2. Grid de 6 Ángulos (Múltiplo de 2 y 3 -> Matriz 2x3 o 3x2)
+        grid_6_desc = (
+            f"Commercial e-commerce studio contact sheet grid showing exactly 6 distinct clean photographic panels of the authentic sneaker {raw_name}, SKU: {sku}, "
+            f"arranged in a neat 2-row by 3-column (2x3) grid on a pure solid white background (#FFFFFF). "
+            f"Row 1: [Panel 1: 90-degree lateral side profile pointing LEFT], [Panel 2: 3/4 perspective front-quarter facing LEFT], [Panel 3: direct straight front view]. "
+            f"Row 2: [Panel 4: direct rear heel view], [Panel 5: 90-degree medial inner side profile pointing LEFT], [Panel 6: direct overhead top-down flat lay view]. "
+            f"Identical sneaker colorway, identical softbox lighting, even spacing between panels. {STUDIO_COMMON}"
+        )
+
+        # 3. Grid de 8 Ángulos (Múltiplo de 2 y 4 -> Matriz 2x4)
+        grid_8_desc = (
+            f"Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker {raw_name}, SKU: {sku}, "
+            f"arranged in a neat 2-row by 4-column (2x4) grid on a pure solid white background (#FFFFFF). "
+            f"Row 1: [Panel 1: 90-degree lateral profile pointing LEFT], [Panel 2: 3/4 perspective front-quarter facing LEFT], [Panel 3: direct straight front view], [Panel 4: direct rear heel view]. "
+            f"Row 2: [Panel 5: 3/4 rear perspective facing LEFT], [Panel 6: 90-degree medial inner side profile pointing LEFT], [Panel 7: direct overhead top-down view], [Panel 8: direct bottom outsole tread view]. "
+            f"Identical sneaker colorway, identical softbox studio lighting, clean thin white gutters between panels. {STUDIO_COMMON}"
+        )
+
+        # 4. Grupo de 2 (Dúo 1x2: Lateral + 3/4 Frontal)
+        duo_1_desc = (
+            f"Commercial e-commerce dual-panel product sheet showing 2 views of the authentic sneaker {raw_name}, SKU: {sku}, "
+            f"side-by-side in 1 row by 2 columns (1x2) on pure white background (#FFFFFF). "
+            f"Left: 90-degree lateral side profile view pointing LEFT. "
+            f"Right: 3/4 perspective front-quarter view pointing LEFT. "
+            f"Identical lighting, grounded soft shadows. {STUDIO_COMMON}"
+        )
+
+        # 5. Grupo de 3 (Trío 1x3: Lateral + Trasera + Cenital)
+        trio_1_desc = (
+            f"Commercial e-commerce tri-panel product sheet showing 3 views of the authentic sneaker {raw_name}, SKU: {sku}, "
+            f"side-by-side in 1 row by 3 columns (1x3) on pure white background (#FFFFFF). "
+            f"Panel 1 (Left): 90-degree lateral side profile pointing LEFT. "
+            f"Panel 2 (Center): Direct 180-degree rear heel view. "
+            f"Panel 3 (Right): Direct 90-degree overhead top-down view. "
+            f"Identical materials, uniform softbox lighting. {STUDIO_COMMON}"
+        )
+
         catalog.append({
             "index": idx,
             "sku": sku,
             "name": raw_name,
-            "folder": folder,
-            "primary_ref": f"dist/assets/2-norm-std/{sku}/01-lateral.webp",
-            "angles": angles_data
+            # Ruta relativa limpia desde dist/
+            "primary_ref": f"assets/2-norm-std/{sku}/01-lateral.webp",
+            "individual_angles": individual_angles,
+            "grids": {
+                "grid_6": {
+                    "title": "Grid 2x3 (6 Ángulos en 1 Imagen)",
+                    "layout": "2x3",
+                    "multiplo": "Múltiplo de 2 y 3 (2 filas x 3 columnas)",
+                    "prompt": grid_6_desc
+                },
+                "grid_8": {
+                    "title": "Grid 2x4 (8 Ángulos en 1 Imagen)",
+                    "layout": "2x4",
+                    "multiplo": "Múltiplo de 2 y 4 (2 filas x 4 columnas)",
+                    "prompt": grid_8_desc
+                },
+                "duo_1x2": {
+                    "title": "Dúo 1x2 (2 Ángulos: Lateral + 3/4 Frontal)",
+                    "layout": "1x2",
+                    "multiplo": "Múltiplo de 2 (1 fila x 2 columnas)",
+                    "prompt": duo_1_desc
+                },
+                "trio_1x3": {
+                    "title": "Trío 1x3 (3 Ángulos: Lateral + Trasera + Cenital)",
+                    "layout": "1x3",
+                    "multiplo": "Múltiplo de 3 (1 fila x 3 columnas)",
+                    "prompt": trio_1_desc
+                }
+            }
         })
-        
+
     return catalog
 
 def export_all():
-    catalog = build_catalog_prompts()
+    catalog = build_all_prompts()
     
     # 1. Guardar JSON
     json_path = 'dist/flow_prompts_catalog.json'
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump({
-            "settings": FLOW_RECOMMENDED_SETTINGS,
-            "perspectives_meta": PERSPECTIVES,
+            "angles_meta": ANGLES_8,
+            "negative_prompt": NEGATIVE_PROMPT,
             "total_products": len(catalog),
             "catalog": catalog
         }, f, indent=2, ensure_ascii=False)
     print(f"Exportado JSON: {json_path}")
     
-    # 2. Guardar JS estático para el visor web
+    # 2. Guardar JS para el visor
     js_path = 'dist/js/flow_prompts.js'
     with open(js_path, 'w', encoding='utf-8') as f:
         f.write("const flowCatalogData = " + json.dumps({
-            "settings": FLOW_RECOMMENDED_SETTINGS,
-            "perspectives_meta": PERSPECTIVES,
+            "angles_meta": ANGLES_8,
+            "negative_prompt": NEGATIVE_PROMPT,
             "catalog": catalog
         }, indent=2, ensure_ascii=False) + ";\n")
     print(f"Exportado JS: {js_path}")
     
-    # 3. Guardar Guía Markdown de Referencia
+    # 3. Actualizar Markdown
     md_path = 'docs/GUIA_PROMPTS_FLOW_CATALOGO.md'
-    os.makedirs('docs', exist_ok=True)
     with open(md_path, 'w', encoding='utf-8') as f:
-        f.write("# Guía de Prompts para Generación en Flow (7 Ángulos Canónicos)\n\n")
-        f.write("Guía estructurada con prompts listos para copiar y pegar en herramientas de generación de imágenes (Flow, Midjourney, ComfyUI, FLUX).\n\n")
-        f.write("## ⚙️ Configuración Recomendada en Flow\n\n")
-        f.write(f"- **Relación de Aspecto (Aspect Ratio):** `{FLOW_RECOMMENDED_SETTINGS['aspect_ratio']}`\n")
-        f.write(f"- **Muestreador (Sampler):** `{FLOW_RECOMMENDED_SETTINGS['sampler']}`\n")
-        f.write(f"- **Pasos (Steps):** `{FLOW_RECOMMENDED_SETTINGS['steps']}`\n")
-        f.write(f"- **CFG Scale:** `{FLOW_RECOMMENDED_SETTINGS['cfg_scale']}`\n")
-        f.write(f"- **Denoising Strength (Img2Img):** `{FLOW_RECOMMENDED_SETTINGS['denoising_strength_img2img']}`\n")
-        f.write(f"- **Image Weight (Referencia):** `{FLOW_RECOMMENDED_SETTINGS['image_weight_reference']}`\n")
-        f.write(f"- **Consistencia de Semilla:** `{FLOW_RECOMMENDED_SETTINGS['seed_mode']}`\n\n")
-        f.write("### 🚫 Negative Prompt Común\n```text\n" + NEGATIVE_PROMPT + "\n```\n\n")
-        f.write("---\n\n")
-        f.write("## 👟 Catálogo de Modelos (45 Productos × 7 Ángulos)\n\n")
+        f.write("# Guía de Prompts para Flow y Nano Banana 2.1 (Grids de 6 y 8 Ángulos)\n\n")
+        f.write("Esta guía permite generar hojas de contacto combinadas en **grids de múltiplos de 2 y 3** (2x3, 2x4, 1x2, 1x3) ")
+        f.write("para cortarlas automáticamente con `scripts/split_grid_angles.py`.\n\n")
+        f.write("### 🚫 Negative Prompt Común\n```text\n" + NEGATIVE_PROMPT + "\n```\n\n---\n\n")
         
-        for item in catalog:
-            f.write(f"### [{item['index']:02d}] {item['sku']} — {item['name']}\n\n")
-            f.write(f"**Foto de Referencia Primaria recomendada:** `{item['primary_ref']}`\n\n")
-            for a in item['angles']:
-                f.write(f"#### Ángulo {a['number']}: {a['name']}\n")
-                f.write(f"*{a['description']}*\n\n")
-                f.write("**Prompt en Lenguaje Natural (Recomendado):**\n")
-                f.write("```text\n" + a['prompt_natural'] + "\n```\n\n")
-                f.write("**Variante en Tags (Para Stable Diffusion / ComfyUI):**\n")
-                f.write("```text\n" + a['prompt_tags'] + "\n```\n\n")
+        for p in catalog:
+            f.write(f"## [{p['index']:02d}] {p['sku']} — {p['name']}\n\n")
+            f.write(f"**Referencia Primaria:** `{p['primary_ref']}`\n\n")
+            
+            f.write("### 🔲 Prompts para Hojas de Contacto / Grids Combinados:\n\n")
+            f.write(f"**1. {p['grids']['grid_6']['title']}** ({p['grids']['grid_6']['multiplo']})\n")
+            f.write("```text\n" + p['grids']['grid_6']['prompt'] + "\n```\n\n")
+            
+            f.write(f"**2. {p['grids']['grid_8']['title']}** ({p['grids']['grid_8']['multiplo']})\n")
+            f.write("```text\n" + p['grids']['grid_8']['prompt'] + "\n```\n\n")
+            
+            f.write(f"**3. {p['grids']['duo_1x2']['title']}**\n")
+            f.write("```text\n" + p['grids']['duo_1x2']['prompt'] + "\n```\n\n")
+            
+            f.write(f"**4. {p['grids']['trio_1x3']['title']}**\n")
+            f.write("```text\n" + p['grids']['trio_1x3']['prompt'] + "\n```\n\n")
             f.write("---\n\n")
             
     print(f"Exportada Guía Markdown: {md_path}")

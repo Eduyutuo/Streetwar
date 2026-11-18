@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asistente Maestro de Prompts para Flow | Catálogo E-Commerce</title>
+  <title>Asistente Maestro de Prompts para Flow | Grids & Cortes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #0f172a;
@@ -15,6 +15,7 @@
       --accent-glow: rgba(56, 189, 248, 0.15);
       --accent-green: #34d399;
       --accent-purple: #c084fc;
+      --accent-amber: #fbbf24;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -29,19 +30,19 @@
     }
 
     .container {
-      max-width: 1400px;
+      max-width: 1440px;
       margin: 0 auto;
     }
 
     header {
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 20px;
+      padding-bottom: 18px;
     }
 
     .header-titles h1 {
@@ -63,7 +64,7 @@
       background: rgba(56, 189, 248, 0.15);
       color: var(--accent);
       border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 4px 12px;
+      padding: 6px 14px;
       border-radius: 9999px;
       font-size: 13px;
       font-weight: 600;
@@ -99,7 +100,7 @@
       background: #0b1120;
       color: var(--text-main);
       border: 1px solid var(--border-color);
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-radius: 8px;
       font-size: 15px;
       font-weight: 600;
@@ -115,7 +116,7 @@
     /* Grid Principal */
     .main-grid {
       display: grid;
-      grid-template-columns: 380px 1fr;
+      grid-template-columns: 360px 1fr;
       gap: 24px;
     }
 
@@ -123,7 +124,7 @@
       .main-grid { grid-template-columns: 1fr; }
     }
 
-    /* Panel Izquierdo: Referencia */
+    /* Panel Izquierdo */
     .left-panel {
       display: flex;
       flex-direction: column;
@@ -135,11 +136,11 @@
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
-      padding: 20px;
+      padding: 18px;
     }
 
     .card-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       margin-bottom: 12px;
       display: flex;
@@ -161,9 +162,10 @@
     }
 
     .preview-box img {
-      max-width: 90%;
-      max-height: 90%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+      padding: 10px;
     }
 
     .img-source-path {
@@ -174,19 +176,18 @@
       word-break: break-all;
     }
 
-    /* Recomendaciones de Configuración */
     .settings-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      font-size: 13px;
+      gap: 8px;
+      font-size: 12px;
     }
 
     .setting-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 10px;
+      padding: 7px 10px;
       background: rgba(0,0,0,0.25);
       border-radius: 6px;
       border: 1px solid rgba(255,255,255,0.05);
@@ -202,27 +203,161 @@
       font-weight: 600;
     }
 
-    /* Panel Derecho: 7 Ángulos */
+    /* Panel Derecho */
     .right-panel {
       display: flex;
       flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .badge-multiplo {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--accent-amber);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
       gap: 16px;
+    }
+
+    .grid-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .grid-box:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .grid-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .grid-box-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .prompt-text-area {
+      background: #0b1120;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      max-height: 180px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      background: var(--accent);
+      color: #0b1120;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+    }
+
+    .copy-btn:hover {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: var(--accent-green);
+      color: #064e3b;
+    }
+
+    /* Sección de Script de Corte */
+    .cli-box {
+      background: #0b1120;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .cli-title {
+      color: var(--accent-green);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cli-code {
+      background: #020617;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #a7f3d0;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
+    }
+
+    /* Pestañas individuales */
+    .tabs-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
     }
 
     .angle-tabs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      padding-bottom: 4px;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .tab-btn {
-      background: #1e293b;
+      background: #0b1120;
       color: var(--text-muted);
       border: 1px solid var(--border-color);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -239,157 +374,6 @@
       color: #0b1120;
       border-color: var(--accent);
       font-weight: 700;
-      box-shadow: 0 0 12px var(--accent-glow);
-    }
-
-    .prompt-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 24px;
-      position: relative;
-    }
-
-    .prompt-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
-    }
-
-    .angle-info h2 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #f1f5f9;
-    }
-
-    .angle-info p {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-top: 2px;
-    }
-
-    .prompt-toggle {
-      display: flex;
-      background: #0b1120;
-      border-radius: 6px;
-      padding: 3px;
-      gap: 2px;
-      border: 1px solid var(--border-color);
-    }
-
-    .toggle-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .toggle-btn.active {
-      background: var(--card-bg);
-      color: var(--accent);
-    }
-
-    .prompt-container {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .prompt-box {
-      background: #0b1120;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #e2e8f0;
-      max-height: 220px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .copy-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: var(--accent);
-      color: #0b1120;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .copy-btn:hover {
-      background: #7dd3fc;
-      transform: translateY(-1px);
-    }
-
-    .copy-btn.copied {
-      background: var(--accent-green);
-      color: #064e3b;
-    }
-
-    .negative-box {
-      margin-top: 16px;
-      background: rgba(239, 68, 68, 0.05);
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      border-radius: 8px;
-      padding: 14px;
-    }
-
-    .negative-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #f87171;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .negative-content {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #cbd5e1;
-      line-height: 1.5;
-    }
-
-    .quick-tips {
-      margin-top: 24px;
-      background: rgba(192, 132, 252, 0.08);
-      border: 1px solid rgba(192, 132, 252, 0.25);
-      border-radius: 8px;
-      padding: 16px;
-      font-size: 13px;
-    }
-
-    .quick-tips strong {
-      color: var(--accent-purple);
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .quick-tips ul {
-      padding-left: 20px;
-      color: #cbd5e1;
-    }
-
-    .quick-tips li {
-      margin-bottom: 4px;
     }
   </style>
 </head>
@@ -398,11 +382,11 @@
 <div class="container">
   <header>
     <div class="header-titles">
-      <h1>⚡ Asistente de Prompts para Flow</h1>
-      <p>Generación manual de 7 ángulos canónicos para catálogo e-commerce comercial</p>
+      <h1>⚡ Asistente de Prompts para Flow & Nano Banana 2.1</h1>
+      <p>Generación en Múltiplos de 2 y 3 (Grids 2x3 de 6 tomas / 2x4 de 8 tomas) con Corte Automático</p>
     </div>
     <div class="badge-count">
-      45 Modelos &bull; 7 Perspectivas &bull; Fondo Blanco #FFFFFF
+      45 Modelos &bull; Grids de 6 u 8 Tomas &bull; Script de Corte Incluido
     </div>
   </header>
 
@@ -421,35 +405,35 @@
           <span>🖼️</span> Imagen de Referencia (Image-to-Image / Flow)
         </div>
         <div class="preview-box">
-          <img id="ref-image" src="" alt="Referencia">
+          <img id="ref-image" src="" alt="Foto de Referencia" onerror="this.onerror=null; this.src='assets/productos/' + currentSku + '/01-lateral.webp';">
         </div>
         <div class="img-source-path" id="ref-path"></div>
       </div>
 
       <div class="card">
         <div class="card-title">
-          <span>⚙️</span> Configuración Óptima en Flow
+          <span>⚙️</span> Parámetros Óptimos en Flow / Nano Banana
         </div>
         <div class="settings-list">
           <div class="setting-item">
-            <span class="setting-label">Relación de Aspecto:</span>
-            <span class="setting-value">1:1 (Square)</span>
+            <span class="setting-label">Aspect Ratio Grid 2x3 (6 tomas):</span>
+            <span class="setting-value">3:2 (ej. 1800x1200)</span>
           </div>
           <div class="setting-item">
-            <span class="setting-label">Denoising (Img2Img):</span>
-            <span class="setting-value">0.45 - 0.55</span>
+            <span class="setting-label">Aspect Ratio Grid 2x4 (8 tomas):</span>
+            <span class="setting-value">2:1 (ej. 2400x1200)</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Dúo (1x2):</span>
+            <span class="setting-value">2:1 (ej. 2000x1000)</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Trío (1x3):</span>
+            <span class="setting-value">3:1 (ej. 2400x800)</span>
           </div>
           <div class="setting-item">
             <span class="setting-label">Image Weight (Ref):</span>
-            <span class="setting-value">1.8</span>
-          </div>
-          <div class="setting-item">
-            <span class="setting-label">CFG Scale:</span>
-            <span class="setting-value">7.0</span>
-          </div>
-          <div class="setting-item">
-            <span class="setting-label">Lente Virtual:</span>
-            <span class="setting-value">85mm f/8</span>
+            <span class="setting-value">1.8 - 2.0</span>
           </div>
           <div class="setting-item">
             <span class="setting-label">Fondo:</span>
@@ -459,49 +443,94 @@
       </div>
     </div>
 
-    <!-- Panel Derecho: Selector de Tomas y Prompts -->
+    <!-- Panel Derecho: Opciones de Grid y Cortes -->
     <div class="right-panel">
-      <div class="angle-tabs" id="angle-tabs">
-        <!-- Renderizado dinámicamente -->
+
+      <!-- Sección 1: Hojas Combinadas / Grids -->
+      <div>
+        <div class="section-title">
+          <span>🔲</span> Hojas de Contacto en Grids (Para Generar y Cortar)
+        </div>
+        
+        <div class="grid-cards">
+          <!-- Tarjeta Grid 6 -->
+          <div class="grid-box">
+            <div class="grid-box-header">
+              <span class="grid-box-title">1. Grid 2x3 (6 Ángulos Canónicos)</span>
+              <span class="badge-multiplo">Múltiplo de 2 y 3</span>
+            </div>
+            <div class="prompt-text-area" id="prompt-grid-6"></div>
+            <button class="copy-btn" onclick="copyText('prompt-grid-6', this)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Prompt Grid 6
+            </button>
+          </div>
+
+          <!-- Tarjeta Grid 8 -->
+          <div class="grid-box">
+            <div class="grid-box-header">
+              <span class="grid-box-title">2. Grid 2x4 (8 Ángulos Completos)</span>
+              <span class="badge-multiplo">Múltiplo de 2 y 4</span>
+            </div>
+            <div class="prompt-text-area" id="prompt-grid-8"></div>
+            <button class="copy-btn" onclick="copyText('prompt-grid-8', this)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Prompt Grid 8
+            </button>
+          </div>
+
+          <!-- Tarjeta Dúo 1x2 -->
+          <div class="grid-box">
+            <div class="grid-box-header">
+              <span class="grid-box-title">3. Dúo 1x2 (Lateral + 3/4 Frontal)</span>
+              <span class="badge-multiplo">Múltiplo de 2</span>
+            </div>
+            <div class="prompt-text-area" id="prompt-duo"></div>
+            <button class="copy-btn" onclick="copyText('prompt-duo', this)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Prompt Dúo
+            </button>
+          </div>
+
+          <!-- Tarjeta Trío 1x3 -->
+          <div class="grid-box">
+            <div class="grid-box-header">
+              <span class="grid-box-title">4. Trío 1x3 (Lateral + Trasera + Cenital)</span>
+              <span class="badge-multiplo">Múltiplo de 3</span>
+            </div>
+            <div class="prompt-text-area" id="prompt-trio"></div>
+            <button class="copy-btn" onclick="copyText('prompt-trio', this)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Prompt Trío
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="prompt-card">
-        <div class="prompt-header">
-          <div class="angle-info">
-            <h2 id="angle-title">1. Perfil Lateral Exterior (90°)</h2>
-            <p id="angle-desc">Silueta general, swoosh/logos principales y perfil de suela. Puntera a la izquierda.</p>
-          </div>
-          <div class="prompt-toggle">
-            <button class="toggle-btn active" id="btn-mode-natural">Lenguaje Natural</button>
-            <button class="toggle-btn" id="btn-mode-tags">Tags ComfyUI / SD</button>
-          </div>
+      <!-- Sección 2: Comando para Cortar Automáticamente -->
+      <div class="cli-box">
+        <div class="cli-title">
+          <span>✂️</span> Cómo Cortar Automáticamente la Imagen Descargada de Flow
         </div>
-
-        <div class="prompt-container">
-          <button class="copy-btn" id="btn-copy">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Prompt
-          </button>
-          <div class="prompt-box" id="prompt-text">Cargando prompt...</div>
-        </div>
-
-        <div class="negative-box">
-          <div class="negative-title">
-            <span>🚫 Negative Prompt (Copia Común)</span>
-            <button class="toggle-btn" id="btn-copy-negative" style="background:#334155;color:#fff;">Copiar Negative</button>
-          </div>
-          <div class="negative-content" id="negative-text"></div>
-        </div>
-
-        <div class="quick-tips">
-          <strong>💡 Recomendaciones de Flujo en Flow:</strong>
-          <ul>
-            <li><strong>Usa la imagen de referencia:</strong> Sube la imagen del panel izquierdo a Flow con peso 1.8 para que no alucine colores ni suelas.</li>
-            <li><strong>Fija la Semilla (Seed):</strong> Si encuentras una semilla que reproduce los materiales correctos, fíjate en ella y cámbiale solo el texto del ángulo para que los 7 disparos sean idénticos en iluminación.</li>
-            <li><strong>Orientación:</strong> Todas las tomas laterales y 3/4 miran hacia la <strong>izquierda</strong> para mantener simetría en el catálogo.</li>
-          </ul>
-        </div>
+        <p style="font-size: 13px; color: #94a3b8; margin-bottom: 8px;">
+          Una vez generada la imagen en Flow, guárdala y corre este comando en tu terminal para cortar cada ángulo centrado a 1200x1200px:
+        </p>
+        <div class="cli-code" id="cli-command">python scripts/split_grid_angles.py "tu_imagen.png" --sku <span id="cli-sku">SKU</span> --layout 2x3</div>
       </div>
+
+      <!-- Sección 3: Tomas Individuales (Para disparos individuales) -->
+      <div class="tabs-container">
+        <div class="section-title">
+          <span>🎯</span> Tomas Individuales (1 Ángulo por Disparo)
+        </div>
+        <div class="angle-tabs" id="angle-tabs"></div>
+        <div class="prompt-text-area" id="prompt-individual" style="margin-bottom: 12px;"></div>
+        <button class="copy-btn" onclick="copyText('prompt-individual', this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copiar Toma Individual
+        </button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -509,14 +538,14 @@
 <script src="js/flow_prompts.js"></script>
 <script>
   let currentProductIndex = 0;
-  let currentAngleIndex = 0;
-  let promptMode = 'natural'; // 'natural' | 'tags'
+  let currentIndividualAngleIndex = 0;
+  let currentSku = '';
 
   const catalog = flowCatalogData.catalog;
   const select = document.getElementById('product-select');
   const angleTabsContainer = document.getElementById('angle-tabs');
 
-  // Inicializar selector de productos
+  // Inicializar selector
   catalog.forEach((p, idx) => {
     const opt = document.createElement('option');
     opt.value = idx;
@@ -524,92 +553,73 @@
     select.appendChild(opt);
   });
 
-  // Generar botones de pestañas para los 7 ángulos
-  flowCatalogData.perspectives_meta.forEach((meta, idx) => {
+  // Pestañas individuales (8 ángulos)
+  flowCatalogData.angles_meta.forEach((meta, idx) => {
     const btn = document.createElement('button');
     btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
-    btn.textContent = `${meta.number}. ${meta.name.split('(')[0].trim()}`;
+    btn.textContent = `${meta.slot}. ${meta.name.split('(')[0].trim()}`;
     btn.addEventListener('click', () => {
-      currentAngleIndex = idx;
-      updateTabs();
-      renderPrompt();
+      currentIndividualAngleIndex = idx;
+      updateIndividualTabs();
+      renderIndividualPrompt();
     });
     angleTabsContainer.appendChild(btn);
   });
 
-  function updateTabs() {
+  function updateIndividualTabs() {
     const btns = angleTabsContainer.querySelectorAll('.tab-btn');
-    btns.forEach((b, i) => {
-      b.classList.toggle('active', i === currentAngleIndex);
-    });
+    btns.forEach((b, i) => b.classList.toggle('active', i === currentIndividualAngleIndex));
   }
 
-  function renderPrompt() {
+  function renderView() {
     const p = catalog[currentProductIndex];
-    const angle = p.angles[currentAngleIndex];
+    currentSku = p.sku;
 
-    // Actualizar datos de referencia
-    document.getElementById('ref-image').src = p.primary_ref;
+    // Actualizar imagen de referencia: ruta relativa limpia assets/...
+    const imgEl = document.getElementById('ref-image');
+    imgEl.src = p.primary_ref;
     document.getElementById('ref-path').textContent = p.primary_ref;
 
-    // Actualizar encabezado del ángulo
-    document.getElementById('angle-title').textContent = `${angle.number}. ${angle.name}`;
-    document.getElementById('angle-desc').textContent = angle.description;
+    // Prompts de Grids
+    document.getElementById('prompt-grid-6').textContent = p.grids.grid_6.prompt;
+    document.getElementById('prompt-grid-8').textContent = p.grids.grid_8.prompt;
+    document.getElementById('prompt-duo').textContent = p.grids.duo_1x2.prompt;
+    document.getElementById('prompt-trio').textContent = p.grids.trio_1x3.prompt;
 
-    // Actualizar texto del prompt
-    const text = promptMode === 'natural' ? angle.prompt_natural : angle.prompt_tags;
-    document.getElementById('prompt-text').textContent = text;
-    document.getElementById('negative-text').textContent = angle.negative_prompt;
+    // CLI helper
+    document.getElementById('cli-sku').textContent = p.sku;
+    document.getElementById('cli-command').innerHTML = `python scripts/split_grid_angles.py "tu_imagen.png" --sku ${p.sku} --layout 2x3`;
+
+    // Toma individual
+    renderIndividualPrompt();
+  }
+
+  function renderIndividualPrompt() {
+    const p = catalog[currentProductIndex];
+    const ind = p.individual_angles[currentIndividualAngleIndex];
+    document.getElementById('prompt-individual').textContent = ind.prompt;
   }
 
   select.addEventListener('change', e => {
     currentProductIndex = Number(e.target.value);
-    renderPrompt();
+    renderView();
   });
 
-  // Modo Natural vs Tags
-  document.getElementById('btn-mode-natural').addEventListener('click', () => {
-    promptMode = 'natural';
-    document.getElementById('btn-mode-natural').classList.add('active');
-    document.getElementById('btn-mode-tags').classList.remove('active');
-    renderPrompt();
-  });
-
-  document.getElementById('btn-mode-tags').addEventListener('click', () => {
-    promptMode = 'tags';
-    document.getElementById('btn-mode-tags').classList.add('active');
-    document.getElementById('btn-mode-natural').classList.remove('active');
-    renderPrompt();
-  });
-
-  // Botón Copiar Prompt
-  const copyBtn = document.getElementById('btn-copy');
-  copyBtn.addEventListener('click', () => {
-    const text = document.getElementById('prompt-text').textContent;
+  function copyText(elementId, btn) {
+    const text = document.getElementById(elementId).textContent;
     navigator.clipboard.writeText(text).then(() => {
-      copyBtn.textContent = '¡Copiado!';
-      copyBtn.classList.add('copied');
+      const originalHtml = btn.innerHTML;
+      btn.textContent = '¡Copiado!';
+      btn.classList.add('copied');
       setTimeout(() => {
-        copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copiar Prompt';
-        copyBtn.classList.remove('copied');
+        btn.innerHTML = originalHtml;
+        btn.classList.remove('copied');
       }, 1500);
     });
-  });
+  }
 
-  // Botón Copiar Negative Prompt
-  const copyNegBtn = document.getElementById('btn-copy-negative');
-  copyNegBtn.addEventListener('click', () => {
-    const text = document.getElementById('negative-text').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      copyNegBtn.textContent = '¡Copiado!';
-      setTimeout(() => {
-        copyNegBtn.textContent = 'Copiar Negative';
-      }, 1500);
-    });
-  });
-
-  // Inicializar primera vista
-  renderPrompt();
+  // Inicio
+  renderView();
 </script>
 
 </body>

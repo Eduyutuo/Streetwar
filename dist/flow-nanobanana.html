@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flow & Nano Banana 2.1 — Workstation de Generación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-hover: #172033;
+      --border: #1f293d;
+      --border-focus: #38bdf8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --accent-green: #10b981;
+      --accent-yellow: #f59e0b;
+      --accent-purple: #a855f7;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1520px;
+      margin: 0 auto;
+    }
+
+    /* Header Moderno */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .title-area h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .title-area h1 span.logo-badge {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .title-area p {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      margin-top: 4px;
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge.active {
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    /* Barra de Filtros Intuitiva UX */
+    .filter-bar {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      min-width: 90px;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .f-pill {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .f-pill:hover {
+      color: #fff;
+      border-color: #334155;
+    }
+
+    .f-pill.active {
+      background: var(--accent);
+      color: #090d16;
+      border-color: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .search-box {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #0b1120;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px 10px 38px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+    }
+
+    /* Grid Principal 3 Columnas */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr 400px;
+      gap: 24px;
+    }
+
+    @media (max-width: 1280px) {
+      .workspace-grid { grid-template-columns: 320px 1fr; }
+      .instructions-col { grid-column: span 2; }
+    }
+
+    @media (max-width: 860px) {
+      .workspace-grid { grid-template-columns: 1fr; }
+      .instructions-col { grid-column: span 1; }
+    }
+
+    /* Columna 1: Lista de Productos */
+    .card-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .product-list {
+      max-height: 720px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-item {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      cursor: pointer;
+      transition: background 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .product-item:hover {
+      background: var(--card-hover);
+    }
+
+    .product-item.active {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--accent);
+    }
+
+    .p-top-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .p-sku {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .p-badge-count {
+      font-size: 11px;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .p-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.35;
+    }
+
+    .p-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Columna 2: Centro de Prompts */
+    .prompts-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .product-header-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .prod-identity h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .prod-identity p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .folder-path-pill {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .copy-folder-btn {
+      background: #1e293b;
+      border: none;
+      color: var(--accent);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .copy-folder-btn:hover { background: #334155; }
+
+    /* Tarjetas de Prompts (Texto y JSON) */
+    .prompt-box-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .box-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .box-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .box-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .tag-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-purple { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .code-view {
+      background: #070a12;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      max-height: 220px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-copy-action {
+      background: var(--accent);
+      color: #090d16;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .btn-copy-action:hover {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    .btn-copy-action.copied {
+      background: var(--accent-green);
+      color: #022c22;
+    }
+
+    /* Comando de Corte */
+    .cli-bar {
+      background: #0b1120;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .cli-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #6ee7b7;
+      word-break: break-all;
+    }
+
+    /* Columna 3: Instrucciones y Referencias */
+    .instructions-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ref-visual-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .ref-header {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .ref-img-container {
+      background: #fff;
+      border-radius: 8px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .ref-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .ref-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+
+    /* Pasos de Trabajo en Flow */
+    .steps-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .step-text strong {
+      color: #fff;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent-green);
+      color: #022c22;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.2s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="title-area">
+      <h1>
+        ⚡ Flow Workstation
+        <span class="logo-badge">🍌 Nano Banana 2.1</span>
+      </h1>
+      <p>Asistente de flujo de trabajo ágil para fotos reales en <code>_source_data/fotos_*</code> y cuadrícula canónica de 8 tomas</p>
+    </div>
+    <div class="header-badges">
+      <div class="badge active">
+        <span>📐</span> Ref: Air Jordan 9 Retro OG "Space Jam"
+      </div>
+      <div class="badge">
+        <span>📦</span> 45 Modelos E-Commerce
+      </div>
+    </div>
+  </header>
+
+  <!-- Filtros Intuitivos UX -->
+  <div class="filter-bar">
+    <div class="filter-row">
+      <span class="filter-label">Carpeta Raíz:</span>
+      <div class="filter-pills" id="top-folder-pills">
+        <button class="f-pill active" data-top="ALL">Todas las Carpetas</button>
+        <button class="f-pill" data-top="fotos_ABC">📁 fotos_ABC</button>
+        <button class="f-pill" data-top="fotos_DE">📁 fotos_DE</button>
+        <button class="f-pill" data-top="fotos_FG">📁 fotos_FG</button>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Grupo:</span>
+      <div class="filter-pills" id="group-pills">
+        <button class="f-pill active" data-group="ALL">Todos los Grupos</button>
+        <button class="f-pill" data-group="Grupo A">Grupo A</button>
+        <button class="f-pill" data-group="Grupo B">Grupo B</button>
+        <button class="f-pill" data-group="Grupo C">Grupo C</button>
+        <button class="f-pill" data-group="Grupo D">Grupo D</button>
+        <button class="f-pill" data-group="Grupo E">Grupo E</button>
+        <button class="f-pill" data-group="Grupo F">Grupo F</button>
+        <button class="f-pill" data-group="Grupo G">Grupo G</button>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Buscar por SKU (ej. AQ9214) o nombre del modelo...">
+      </div>
+    </div>
+  </div>
+
+  <!-- Workspace Grid -->
+  <div class="workspace-grid">
+
+    <!-- Columna 1: Selector de Modelos -->
+    <div class="card-panel">
+      <div class="panel-header">
+        <span>Modelos Filtrados</span>
+        <span id="filtered-count" style="color:var(--accent); font-weight:800;">45</span>
+      </div>
+      <div class="product-list" id="product-list">
+        <!-- Renderizado dinámicamente -->
+      </div>
+    </div>
+
+    <!-- Columna 2: Centro de Prompts -->
+    <div class="prompts-col">
+
+      <!-- Ficha de Identidad del Modelo -->
+      <div class="product-header-card">
+        <div class="prod-identity">
+          <h2 id="active-name">Air Jordan 9 Retro OG "Space Jam"</h2>
+          <p>
+            <span id="active-sku" style="color:var(--accent); font-weight:700; font-family:'JetBrains Mono';">IX6180-100</span>
+            &bull;
+            <span id="active-group-label" style="color:#fff;">fotos_ABC / Grupo A</span>
+            &bull;
+            <span id="active-photos-count" style="color:var(--accent-green); font-weight:700;">6 fotos de entrada</span>
+          </p>
+        </div>
+
+        <div class="folder-path-pill">
+          <span>📂</span>
+          <span id="active-path-text" style="user-select:all;">...</span>
+          <button class="copy-folder-btn" onclick="copyActivePath()">Copiar Ruta</button>
+        </div>
+      </div>
+
+      <!-- Opción 1: TEXTO PLANO -->
+      <div class="prompt-box-card">
+        <div class="box-top">
+          <div class="box-title">
+            <span>📝</span> Opción 1: Prompt en Texto Plano
+          </div>
+          <span class="box-tag tag-blue">Recomendado Flow • Adherencia Máxima</span>
+        </div>
+        <div class="code-view" id="prompt-text-view">Cargando...</div>
+        <div class="card-footer">
+          <button class="btn-copy-action" onclick="copyPrompt('prompt-text-view', this)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copiar Prompt Texto Plano
+          </button>
+          <span style="font-size:12px; color:var(--text-dim);">Adaptado a las <b id="count-label-1">5-6</b> fotos de entrada</span>
+        </div>
+      </div>
+
+      <!-- Opción 2: JSON ESTRUCTURADO -->
+      <div class="prompt-box-card">
+        <div class="box-top">
+          <div class="box-title">
+            <span>🔲</span> Opción 2: Prompt Estructurado en JSON
+          </div>
+          <span class="box-tag tag-purple">JSON • 4 Filas × 2 Columnas</span>
+        </div>
+        <div class="code-view" id="prompt-json-view">Cargando...</div>
+        <div class="card-footer">
+          <button class="btn-copy-action" onclick="copyPrompt('prompt-json-view', this)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copiar Prompt JSON
+          </button>
+          <span style="font-size:12px; color:var(--text-dim);">Mantiene referencia fija a Space Jam</span>
+        </div>
+      </div>
+
+      <!-- Comando de Corte Automático -->
+      <div class="cli-bar">
+        <div>
+          <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Cortar Imagen Descargada (1200×1200 px idéntico)</div>
+          <div class="cli-text" id="cli-cmd-view">python scripts/split_grid_angles.py "imagen.jpg" --sku SKU --layout 4x2</div>
+        </div>
+        <button class="btn-copy-action" style="padding:6px 14px; font-size:12px; background:#1e293b; color:#fff;" onclick="copyCliCmd(this)">Copiar Comando</button>
+      </div>
+
+    </div>
+
+    <!-- Columna 3: Instrucciones & Referencias -->
+    <div class="instructions-col">
+
+      <!-- Imagen de Referencia Maestra Fija -->
+      <div class="ref-visual-card" style="border-color:rgba(56, 189, 248, 0.4);">
+        <div class="ref-header">
+          <span>📐</span> Imagen Maestra de Cuadrícula
+        </div>
+        <div class="ref-img-container">
+          <img src="assets/Air Jordan 9 Retro OG Space Jam.jpg" alt="Air Jordan 9 Retro OG Space Jam">
+        </div>
+        <div class="ref-desc">
+          <strong>Air Jordan 9 Retro OG "Space Jam"</strong><br>
+          Esta es la referencia visual de composición 4×2 fija que Flow toma para posicionar los 8 ángulos.
+        </div>
+      </div>
+
+      <!-- Guía Paso a Paso en Flow -->
+      <div class="steps-card">
+        <div class="ref-header">
+          <span>⚡</span> Flujo Rápido en Flow
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            Abre la carpeta del modelo en tu explorador (presiona <strong>"Copiar Ruta"</strong>).
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            Arrastra las <strong>5 o 6 fotos reales</strong> a Flow como imágenes de entrada.
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            Selecciona <strong>Nano Banana 2.1</strong>, Aspect Ratio <strong>1:1</strong>, Cantidad <strong>x1</strong> o <strong>x4</strong>.
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            Pega el <strong>Prompt Texto Plano</strong> o <strong>JSON</strong> y genera la hoja de 8 tomas.
+          </div>
+        </div>
+
+        <div class="step-item" style="margin-bottom:0;">
+          <div class="step-num">5</div>
+          <div class="step-text">
+            Corta la imagen con el comando inferior para obtener las 8 fotos en <strong>1200×1200 px</strong>.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="toast" id="toast">¡Texto copiado al portapapeles!</div>
+
+<script src="js/flow_nanobanana_data.js"></script>
+<script>
+  let activeFilterTop = 'ALL';
+  let activeFilterGroup = 'ALL';
+  let searchQuery = '';
+  let activeIndex = 0;
+
+  const catalog = flowNanobananaData.catalog;
+  const listEl = document.getElementById('product-list');
+
+  // Inicializar Pills de Carpeta Raíz
+  document.querySelectorAll('#top-folder-pills .f-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#top-folder-pills .f-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilterTop = btn.dataset.top;
+      applyFilters();
+    });
+  });
+
+  // Inicializar Pills de Grupo
+  document.querySelectorAll('#group-pills .f-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#group-pills .f-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilterGroup = btn.dataset.group;
+      applyFilters();
+    });
+  });
+
+  // Búsqueda en vivo
+  document.getElementById('search-input').addEventListener('input', e => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    applyFilters();
+  });
+
+  function getFilteredItems() {
+    return catalog.filter(item => {
+      const matchTop = (activeFilterTop === 'ALL') || (item.top_folder === activeFilterTop);
+      const matchGroup = (activeFilterGroup === 'ALL') || (item.group === activeFilterGroup);
+      const matchSearch = (!searchQuery) || 
+        item.name.toLowerCase().includes(searchQuery) || 
+        item.sku.toLowerCase().includes(searchQuery) ||
+        item.prod_dir.toLowerCase().includes(searchQuery);
+      return matchTop && matchGroup && matchSearch;
+    });
+  }
+
+  function applyFilters() {
+    const filtered = getFilteredItems();
+    document.getElementById('filtered-count').textContent = filtered.length;
+
+    listEl.innerHTML = '';
+    if (filtered.length === 0) {
+      listEl.innerHTML = '<div style="padding:24px; color:#64748b; text-align:center; font-size:13px;">No se encontraron modelos con los filtros seleccionados.</div>';
+      return;
+    }
+
+    filtered.forEach(p => {
+      const div = document.createElement('div');
+      div.className = `product-item ${p.index === activeIndex ? 'active' : ''}`;
+      div.onclick = () => selectProduct(p.index);
+      div.innerHTML = `
+        <div class="p-top-line">
+          <span class="p-sku">${p.sku}</span>
+          <span class="p-badge-count">📸 ${p.image_count} fotos</span>
+        </div>
+        <div class="p-name">${p.name}</div>
+        <div class="p-meta">
+          <span>📁 ${p.top_folder}</span> &bull; <span>${p.group}</span>
+        </div>
+      `;
+      listEl.appendChild(div);
+    });
+
+    // Si el activo actual no está en la lista filtrada, seleccionar el primero
+    if (!filtered.some(p => p.index === activeIndex) && filtered.length > 0) {
+      selectProduct(filtered[0].index);
+    }
+  }
+
+  function selectProduct(index) {
+    activeIndex = index;
+    const p = catalog.find(item => item.index === index) || catalog[0];
+
+    // Marcar activo en lista
+    document.querySelectorAll('.product-item').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.product-item').forEach(el => {
+      if (el.querySelector('.p-sku') && el.querySelector('.p-sku').textContent === p.sku) {
+        el.classList.add('active');
+      }
+    });
+
+    // Actualizar encabezado del modelo
+    document.getElementById('active-name').textContent = p.name;
+    document.getElementById('active-sku').textContent = p.sku;
+    document.getElementById('active-group-label').textContent = `${p.top_folder} / ${p.group}`;
+    document.getElementById('active-photos-count').textContent = `${p.image_count} fotos de inventario`;
+    document.getElementById('active-path-text').textContent = p.full_disk_path;
+
+    // Actualizar Prompts
+    document.getElementById('prompt-text-view').textContent = p.prompt_text;
+    document.getElementById('prompt-json-view').textContent = p.prompt_json;
+    document.getElementById('count-label-1').textContent = `${p.image_count}`;
+
+    // Comando CLI
+    document.getElementById('cli-cmd-view').textContent = p.split_command;
+  }
+
+  function copyPrompt(elementId, btn) {
+    const text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.innerHTML;
+      btn.textContent = '¡Copiado!';
+      btn.classList.add('copied');
+      showToast('¡Prompt copiado al portapapeles!');
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  }
+
+  function copyActivePath() {
+    const p = catalog.find(item => item.index === activeIndex) || catalog[0];
+    navigator.clipboard.writeText(p.full_disk_path).then(() => {
+      showToast(`Ruta copiada: ${p.prod_dir}`);
+    });
+  }
+
+  function copyCliCmd(btn) {
+    const p = catalog.find(item => item.index === activeIndex) || catalog[0];
+    navigator.clipboard.writeText(p.split_command).then(() => {
+      showToast('Comando de corte copiado');
+    });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  // Inicialización
+  applyFilters();
+  selectProduct(0);
+</script>
+
+</body>
+</html>

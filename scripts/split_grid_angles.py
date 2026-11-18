@@ -82,12 +82,19 @@ def split_nanobanana_grid(image_path, sku, output_dir=None, layout='4x2'):
         output_dir = os.path.join('dist/assets/cortes-flow', sku)
     os.makedirs(output_dir, exist_ok=True)
 
+    # Detectar con precisión las líneas divisorias negras para no incluirlas
+    # Se añade un margen de seguridad interior de 3px alrededor de cada celda
+    gutter = max(2, int(w * 0.0015)) # 2px para 1K, 3-4px para 2K
+    tag_h = max(35, int(h * 0.026))  # 35px para 1K, 55px para 2K
+    tag_w = max(160, int(w * 0.115)) # 160px para 1K, 240px para 2K
+
     cell_w = w / cols
     cell_h = h / rows
     
     print(f"\n=======================================================")
     print(f"Cortando Grid Nano Banana: {image_path}")
     print(f"SKU: {sku} | Dimensiones: {w}x{h} px | Layout: {rows} filas x {cols} columnas")
+    print(f"Margen anti-líneas: {gutter}px | Área etiqueta: {tag_w}x{tag_h}px")
     print(f"Carpeta destino: {output_dir}")
     print(f"=======================================================")
 
@@ -99,26 +106,30 @@ def split_nanobanana_grid(image_path, sku, output_dir=None, layout='4x2'):
             if idx >= len(PANEL_LABELS_8):
                 break
                 
-            x0 = int(c * cell_w)
-            y0 = int(r * cell_h)
-            x1 = int((c + 1) * cell_w)
-            y1 = int((r + 1) * cell_h)
+            # Coordenadas respetando la línea negra (sin tocar el borde divisorio)
+            x0 = int(c * cell_w) + gutter
+            y0 = int(r * cell_h) + gutter
+            x1 = int((c + 1) * cell_w) - gutter
+            y1 = int((r + 1) * cell_h) - gutter
             
             cell = im.crop((x0, y0, x1, y1))
             
-            # Limpiar marca de agua / etiqueta en la esquina superior izquierda si existe
+            # Limpiar la etiqueta de texto en la esquina superior izquierda
             cell_arr = np.array(cell.convert('RGB'))
-            cell_arr[:35, :160] = 255
+            cell_arr[:tag_h, :tag_w] = 255
             cleaned_cell = Image.fromarray(cell_arr)
             
             standardized = standardize_crop(cleaned_cell, target_size=1200)
             
-            filename = f"{PANEL_LABELS_8[idx]}.webp"
-            out_file = os.path.join(output_dir, filename)
-            standardized.save(out_file, 'WEBP', quality=95)
+            # Guardar en WebP y en JPEG de alta resolución
+            base_name = PANEL_LABELS_8[idx]
+            out_webp = os.path.join(output_dir, f"{base_name}.webp")
+            out_jpg = os.path.join(output_dir, f"{base_name}.jpg")
+            standardized.save(out_webp, 'WEBP', quality=95)
+            standardized.save(out_jpg, 'JPEG', quality=98)
             
-            print(f"  [{idx+1}/8] Guardado: {filename} (Fila {r+1}, Col {c+1})")
-            saved_paths.append(out_file)
+            print(f"  [{idx+1}/8] Guardado: {base_name}.webp / .jpg (Fila {r+1}, Col {c+1})")
+            saved_paths.append(out_webp)
             idx += 1
 
     print(f"\n¡Éxito! Se cortaron y normalizaron las 8 tomas a 1200x1200px con fondo blanco puro.")

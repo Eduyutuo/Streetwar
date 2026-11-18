@@ -1,17 +1,10 @@
 """
-Script de Corte Automático de Grids / Hojas de Contacto de Calzado
-Soporta:
-- Grids de 6 ángulos: 2x3 (2 filas, 3 columnas) o 3x2 (3 filas, 2 columnas)
-- Grids de 8 ángulos: 2x4 (2 filas, 4 columnas) o 4x2 (4 filas, 2 columnas)
-- Tiras de 2 ángulos: 1x2
-- Tiras de 3 ángulos: 1x3
-
-Cada panel cortado se:
-1. Aísla de la celda de la cuadrícula.
-2. Centra en un lienzo cuadrado uniforme de 1200x1200px.
-3. Aplica fondo blanco puro #FFFFFF.
-4. Aplica padding del 10% (la zapatilla ocupa 80% máximo).
-5. Guarda en formato WebP optimizado con nomenclatura estandarizada.
+Script de Corte Automático para Hojas de Contacto de Nano Banana 2.1
+Soporta exactamente las distribuciones de 8 paneles:
+- 4x2 (4 filas x 2 columnas, como en la imagen generada de Nano Banana)
+- 2x4 (2 filas x 4 columnas)
+- Limpia automáticamente las marcas de texto (01 | LATERAL, etc.)
+- Estandariza a 1200x1200px con fondo blanco puro #FFFFFF, centrado y 10% padding.
 """
 
 import os
@@ -19,50 +12,18 @@ import argparse
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
-# Nombres canónicos para los cortes según cantidad de tomas
-NAMES_6 = [
-    "01-lateral-exterior",
-    "02-frontal-3-4",
-    "03-frontal-directa",
-    "04-posterior-talon",
-    "05-lateral-interior",
-    "06-cenital-superior"
-]
-
-NAMES_8 = [
-    "01-lateral-exterior",
-    "02-frontal-3-4",
-    "03-frontal-directa",
-    "04-posterior-talon",
-    "05-trasera-3-4",
-    "06-lateral-interior",
-    "07-cenital-superior",
-    "08-suela-inferior"
-]
-
-NAMES_4 = [
-    "01-lateral-exterior",
-    "02-frontal-3-4",
-    "03-posterior-talon",
-    "04-cenital-superior"
-]
-
-NAMES_2 = [
-    "01-lateral-exterior",
-    "02-frontal-3-4"
-]
-
-NAMES_3 = [
-    "01-lateral-exterior",
-    "02-posterior-talon",
-    "03-cenital-superior"
+PANEL_LABELS_8 = [
+    "01-lateral",
+    "02-medial",
+    "03-3-4-front",
+    "04-3-4-rear",
+    "05-front",
+    "06-rear",
+    "07-top-down",
+    "08-outsole"
 ]
 
 def standardize_crop(cropped_img, target_size=1200, padding_pct=0.10):
-    """
-    Toma un recorte individual, detecta su bounding box real,
-    lo centra sobre lienzo blanco 1200x1200px con padding 10% y sombra suave.
-    """
     img_rgba = cropped_img.convert('RGBA')
     arr = np.array(img_rgba)
     
@@ -106,51 +67,16 @@ def standardize_crop(cropped_img, target_size=1200, padding_pct=0.10):
     canvas.alpha_composite(resized, (pos_x, pos_y))
     return canvas.convert('RGB')
 
-def split_grid(image_path, sku, output_dir=None, layout=None):
-    """
-    Corta una imagen de grid en sus paneles correspondientes.
-    layout puede ser: '2x3', '3x2', '2x4', '4x2', '1x2', '1x3' o None (auto-detectar).
-    """
+def split_nanobanana_grid(image_path, sku, output_dir=None, layout='4x2'):
     if not os.path.exists(image_path):
         print(f"Error: No existe el archivo {image_path}")
         return []
 
     im = Image.open(image_path)
     w, h = im.size
-    aspect = w / h
     
-    # Auto-detección de layout si no se especifica
-    if layout is None:
-        if 1.4 <= aspect <= 1.6: # aprox 3:2 (ej. 3 cols x 2 rows)
-            rows, cols = 2, 3
-        elif 1.9 <= aspect <= 2.2: # aprox 2:1 (ej. 4 cols x 2 rows)
-            rows, cols = 2, 4
-        elif 1.8 <= aspect <= 2.2 and h < w/1.8: # 1 row x 2 cols
-            rows, cols = 1, 2
-        elif 2.8 <= aspect <= 3.3: # 1 row x 3 cols
-            rows, cols = 1, 3
-        elif 0.9 <= aspect <= 1.1: # Cuadrado 2x2
-            rows, cols = 2, 2
-        else:
-            # Por defecto asumir 2 filas x 3 columnas
-            rows, cols = 2, 3
-    else:
-        parts = layout.lower().split('x')
-        rows, cols = int(parts[0]), int(parts[1])
-
-    total_panels = rows * cols
-    if total_panels == 6:
-        names = NAMES_6
-    elif total_panels == 8:
-        names = NAMES_8
-    elif total_panels == 4:
-        names = NAMES_4
-    elif total_panels == 2:
-        names = NAMES_2
-    elif total_panels == 3:
-        names = NAMES_3
-    else:
-        names = [f"{i+1:02d}-angulo" for i in range(total_panels)]
+    parts = layout.lower().split('x')
+    rows, cols = int(parts[0]), int(parts[1])
 
     if output_dir is None:
         output_dir = os.path.join('dist/assets/cortes-flow', sku)
@@ -160,17 +86,17 @@ def split_grid(image_path, sku, output_dir=None, layout=None):
     cell_h = h / rows
     
     print(f"\n=======================================================")
-    print(f"Procesando Grid: {image_path}")
-    print(f"SKU: {sku} | Dimensiones: {w}x{h} px | Layout: {rows} filas x {cols} columnas ({total_panels} paneles)")
+    print(f"Cortando Grid Nano Banana: {image_path}")
+    print(f"SKU: {sku} | Dimensiones: {w}x{h} px | Layout: {rows} filas x {cols} columnas")
     print(f"Carpeta destino: {output_dir}")
     print(f"=======================================================")
 
     saved_paths = []
-    panel_idx = 0
+    idx = 0
     
     for r in range(rows):
         for c in range(cols):
-            if panel_idx >= len(names):
+            if idx >= len(PANEL_LABELS_8):
                 break
                 
             x0 = int(c * cell_w)
@@ -178,29 +104,35 @@ def split_grid(image_path, sku, output_dir=None, layout=None):
             x1 = int((c + 1) * cell_w)
             y1 = int((r + 1) * cell_h)
             
-            cell_crop = im.crop((x0, y0, x1, y1))
-            standardized = standardize_crop(cell_crop, target_size=1200)
+            cell = im.crop((x0, y0, x1, y1))
             
-            filename = f"{names[panel_idx]}.webp"
+            # Limpiar marca de agua / etiqueta en la esquina superior izquierda si existe
+            cell_arr = np.array(cell.convert('RGB'))
+            cell_arr[:35, :160] = 255
+            cleaned_cell = Image.fromarray(cell_arr)
+            
+            standardized = standardize_crop(cleaned_cell, target_size=1200)
+            
+            filename = f"{PANEL_LABELS_8[idx]}.webp"
             out_file = os.path.join(output_dir, filename)
-            standardized.save(out_file, 'WEBP', quality=92)
+            standardized.save(out_file, 'WEBP', quality=95)
             
-            print(f"  [{panel_idx+1}/{total_panels}] Guardado: {filename} (Fila {r+1}, Col {c+1})")
+            print(f"  [{idx+1}/8] Guardado: {filename} (Fila {r+1}, Col {c+1})")
             saved_paths.append(out_file)
-            panel_idx += 1
+            idx += 1
 
-    print(f"\nÉxito: Se cortaron y normalizaron {len(saved_paths)} tomas a 1200x1200px en {output_dir}")
+    print(f"\n¡Éxito! Se cortaron y normalizaron las 8 tomas a 1200x1200px con fondo blanco puro.")
     return saved_paths
 
 def main():
-    parser = argparse.ArgumentParser(description="Script para cortar y estandarizar hojas de contacto de Flow/Nano Banana")
-    parser.add_argument('image', help='Ruta de la imagen de grid generada por Flow (ej: uploads/grid_jordan.png)')
-    parser.add_argument('--sku', required=True, help='SKU del producto (ej: IX6180-100 o HF7054-012)')
-    parser.add_argument('--layout', default=None, choices=['2x3', '3x2', '2x4', '4x2', '1x2', '1x3'], help='Distribución de filas y columnas (por defecto: auto-detectar)')
+    parser = argparse.ArgumentParser(description="Cortador oficial de cuadrículas de Nano Banana 2.1")
+    parser.add_argument('image', help='Ruta de la imagen descargada de Flow / Nano Banana')
+    parser.add_argument('--sku', required=True, help='SKU del producto (ej: IX6180-100)')
+    parser.add_argument('--layout', default='4x2', choices=['4x2', '2x4'], help='Distribución de paneles (por defecto: 4x2)')
     parser.add_argument('--out', default=None, help='Directorio de salida personalizado')
 
     args = parser.parse_args()
-    split_grid(args.image, args.sku, args.out, args.layout)
+    split_nanobanana_grid(args.image, args.sku, args.out, args.layout)
 
 if __name__ == '__main__':
     main()

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asistente Flow | Nano Banana 2.1 — 4 Opciones de Prompt y Corte</title>
+  <title>Asistente Flow | Nano Banana 2.1 — Generador y Cortador de 8 Ángulos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -73,7 +73,7 @@
       gap: 6px;
     }
 
-    /* Selector de Productos */
+    /* Selector */
     .top-controls {
       display: flex;
       gap: 14px;
@@ -180,68 +180,54 @@
       word-break: break-all;
     }
 
-    /* Simulación UI de Nano Banana 2.1 */
-    .flow-ui-box {
+    /* Configuración de Pantalla Nano Banana */
+    .flow-settings-box {
       background: #0b1120;
       border: 1px solid #334155;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 14px;
-      margin-top: 6px;
-    }
-
-    .ui-row {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
+      flex-direction: column;
+      gap: 8px;
       font-size: 12px;
     }
 
-    .ratio-pills {
+    .flow-setting-row {
       display: flex;
-      gap: 6px;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .pill {
-      background: #1e293b;
-      border: 1px solid #334155;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
+    .flow-setting-row .val {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
       font-weight: 600;
-      color: #94a3b8;
     }
 
-    .pill.active {
-      background: #334155;
-      color: #fff;
-      border-color: var(--accent);
-    }
-
-    /* Panel Derecho: 4 Opciones */
+    /* Panel Derecho: 2 Opciones */
     .right-panel {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .option-card {
+    .prompt-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 20px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       position: relative;
       transition: border-color 0.2s;
     }
 
-    .option-card:hover {
+    .prompt-card:hover {
       border-color: rgba(56, 189, 248, 0.4);
     }
 
-    .option-header {
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -249,65 +235,62 @@
       gap: 10px;
     }
 
-    .option-title {
-      font-size: 16px;
-      font-weight: 700;
+    .card-top h2 {
+      font-size: 17px;
+      font-weight: 800;
       color: #f8fafc;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .option-tag {
+    .tag-badge {
       font-size: 11px;
       font-weight: 700;
-      padding: 3px 10px;
+      padding: 4px 10px;
       border-radius: 6px;
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.3);
     }
 
-    .option-tag.json-tag {
-      background: rgba(192, 132, 252, 0.15);
-      color: var(--accent-purple);
-      border-color: rgba(192, 132, 252, 0.4);
-    }
-
-    .option-tag.text-tag {
+    .tag-text {
       background: rgba(52, 211, 153, 0.15);
       color: var(--accent-green);
-      border-color: rgba(52, 211, 153, 0.4);
+      border: 1px solid rgba(52, 211, 153, 0.35);
     }
 
-    .prompt-box {
+    .tag-json {
+      background: rgba(192, 132, 252, 0.15);
+      color: var(--accent-purple);
+      border: 1px solid rgba(192, 132, 252, 0.35);
+    }
+
+    .prompt-content {
       background: #0b1120;
       border: 1px solid #334155;
       border-radius: 8px;
-      padding: 14px;
+      padding: 16px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      line-height: 1.55;
+      font-size: 12.5px;
+      line-height: 1.6;
       color: #e2e8f0;
-      max-height: 200px;
+      max-height: 220px;
       overflow-y: auto;
       white-space: pre-wrap;
       word-break: break-word;
     }
 
-    .actions-bar {
+    .bottom-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .copy-btn {
       background: var(--accent);
       color: #0b1120;
       border: none;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: 6px;
       font-size: 13px;
       font-weight: 700;
@@ -328,42 +311,35 @@
       color: #064e3b;
     }
 
-    .split-instruction {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      background: rgba(0,0,0,0.3);
-      padding: 6px 10px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .split-instruction code {
-      color: var(--accent-yellow);
-      font-weight: 600;
-    }
-
-    /* Caja de Negative Prompt */
-    .neg-card {
-      background: rgba(239, 68, 68, 0.05);
-      border: 1px solid rgba(239, 68, 68, 0.25);
+    /* Barra de Corte */
+    .cli-box {
+      background: #0b1120;
+      border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 12px;
-      padding: 16px;
+      padding: 18px;
     }
 
-    .neg-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .neg-title {
+    .cli-title {
       font-size: 13px;
       font-weight: 700;
-      color: #f87171;
+      color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cli-code {
+      background: #020617;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #7dd3fc;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
     }
   </style>
 </head>
@@ -372,11 +348,11 @@
 <div class="container">
   <header>
     <div class="header-titles">
-      <h1>🍌 Asistente Nano Banana 2.1 — 4 Opciones de Prompts</h1>
-      <p>Genera en cuadrícula (2×2 en 1:1) o tira horizontal (1×3 en 16:9) y córtalas con tamaño idéntico (1200×1200 px)</p>
+      <h1>⚡ Asistente Flow & Nano Banana 2.1 — 8 Ángulos</h1>
+      <p>Genera la hoja de contacto de 8 tomas y córtala en imágenes individuales uniformes de 1200×1200 px</p>
     </div>
     <div class="model-badge">
-      <span>🍌</span> Nano Banana 2.1 Activo
+      <span>🍌</span> Nano Banana 2.1 Oficial
     </div>
   </header>
 
@@ -388,7 +364,7 @@
   </div>
 
   <div class="main-grid">
-    <!-- Panel Izquierdo: Referencia y Ajustes de Nano Banana -->
+    <!-- Panel Izquierdo -->
     <div class="left-panel">
       <div class="card">
         <div class="card-title">
@@ -402,115 +378,73 @@
 
       <div class="card">
         <div class="card-title">
-          <span>⚙️</span> Ajustes en tu Pantalla de Flow
+          <span>⚙️</span> Ajustes Recomendados en Flow
         </div>
-        <div class="flow-ui-box">
-          <div class="ui-row">
-            <span style="color:#94a3b8; font-weight:600;">Aspect Ratio:</span>
-            <div class="ratio-pills">
-              <span class="pill" id="pill-16-9">16:9</span>
-              <span class="pill" id="pill-4-3">4:3</span>
-              <span class="pill active" id="pill-1-1">1:1</span>
-            </div>
+        <div class="flow-settings-box">
+          <div class="flow-setting-row">
+            <span style="color:#94a3b8;">Aspect Ratio:</span>
+            <span class="val">1:1 (Cuadrado)</span>
           </div>
-          <div class="ui-row">
-            <span style="color:#94a3b8; font-weight:600;">Modelo:</span>
-            <span style="color:var(--accent-yellow); font-weight:700;">🍌 Nano Banana 2.1</span>
+          <div class="flow-setting-row">
+            <span style="color:#94a3b8;">Modelo:</span>
+            <span class="val" style="color:var(--accent-yellow);">🍌 Nano Banana 2.1</span>
           </div>
-          <div class="ui-row">
-            <span style="color:#94a3b8; font-weight:600;">Cantidad:</span>
-            <span class="pill active">x1 o x4</span>
+          <div class="flow-setting-row">
+            <span style="color:#94a3b8;">Cantidad:</span>
+            <span class="val">x1 o x4</span>
           </div>
-          <div class="ui-row" style="margin-bottom:0;">
-            <span style="color:#94a3b8; font-weight:600;">Fondo:</span>
-            <span style="color:#fff; font-weight:700;">#FFFFFF Blanco Puro</span>
+          <div class="flow-setting-row">
+            <span style="color:#94a3b8;">Fondo:</span>
+            <span class="val">#FFFFFF Blanco Puro</span>
           </div>
         </div>
-      </div>
-
-      <!-- Negative Prompt -->
-      <div class="neg-card">
-        <div class="neg-header">
-          <span class="neg-title">🚫 Negative Prompt Común</span>
-          <button class="copy-btn" style="padding:4px 10px; font-size:11px;" onclick="copyElement('negative-content', this)">Copiar</button>
-        </div>
-        <div class="prompt-box" id="negative-content" style="max-height:100px; font-size:11px;"></div>
       </div>
     </div>
 
-    <!-- Panel Derecho: 4 Opciones Listas para Copiar -->
+    <!-- Panel Derecho: Solo las 2 Opciones Solicitadas -->
     <div class="right-panel">
 
-      <!-- Opción 1: JSON 2x2 -->
-      <div class="option-card">
-        <div class="option-header">
-          <div class="option-title">
-            <span>🔲</span> Opción 1: JSON 2×2 (Cuadrícula de 4 Ángulos)
-          </div>
-          <span class="option-tag json-tag">JSON • Ratio 1:1</span>
+      <!-- Opción 1: TEXTO PLANO -->
+      <div class="prompt-card">
+        <div class="card-top">
+          <h2><span>📝</span> Opción 1: Texto Plano (8 Ángulos Canónicos)</h2>
+          <span class="tag-badge tag-text">Formato Texto • Recomendado Flow</span>
         </div>
-        <div class="prompt-box" id="prompt-json-2x2"></div>
-        <div class="actions-bar">
-          <button class="copy-btn" onclick="copyElement('prompt-json-2x2', this)">
+        <div class="prompt-content" id="prompt-text">Cargando...</div>
+        <div class="bottom-bar">
+          <button class="copy-btn" onclick="copyElement('prompt-text', this)">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Opción 1 (JSON 2×2)
+            Copiar Prompt Texto Plano
           </button>
-          <div class="split-instruction">Corte idéntico: <code id="cmd-json-2x2"></code></div>
+          <span style="font-size:12px; color:#94a3b8;">Ideal para máxima adherencia en Flow</span>
         </div>
       </div>
 
-      <!-- Opción 2: JSON 1x3 -->
-      <div class="option-card">
-        <div class="option-header">
-          <div class="option-title">
-            <span>📐</span> Opción 2: JSON 1×3 (Tira Horizontal de 3 Ángulos)
-          </div>
-          <span class="option-tag json-tag">JSON • Ratio 16:9 o 4:3</span>
+      <!-- Opción 2: JSON ESTRUCTURADO -->
+      <div class="prompt-card">
+        <div class="card-top">
+          <h2><span>🔲</span> Opción 2: Formato JSON (8 Ángulos Canónicos)</h2>
+          <span class="tag-badge tag-json">Formato JSON • Estructurado</span>
         </div>
-        <div class="prompt-box" id="prompt-json-1x3"></div>
-        <div class="actions-bar">
-          <button class="copy-btn" onclick="copyElement('prompt-json-1x3', this)">
+        <div class="prompt-content" id="prompt-json">Cargando...</div>
+        <div class="bottom-bar">
+          <button class="copy-btn" onclick="copyElement('prompt-json', this)">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Opción 2 (JSON 1×3)
+            Copiar Prompt JSON
           </button>
-          <div class="split-instruction">Corte idéntico: <code id="cmd-json-1x3"></code></div>
+          <span style="font-size:12px; color:#94a3b8;">Estructura limpia por cuadrantes</span>
         </div>
       </div>
 
-      <!-- Opción 3: Texto Plano 2x2 -->
-      <div class="option-card">
-        <div class="option-header">
-          <div class="option-title">
-            <span>📝</span> Opción 3: Texto Plano 2×2 (Cuadrícula de 4 Ángulos)
-          </div>
-          <span class="option-tag text-tag">Texto Plano • Ratio 1:1</span>
+      <!-- Comando de Corte para el Modelo Seleccionado -->
+      <div class="cli-box">
+        <div class="cli-title">
+          <span>✂️</span> Cómo Cortar Automáticamente la Imagen Generada (8 Ángulos de 1200×1200 px)
         </div>
-        <div class="prompt-box" id="prompt-text-2x2"></div>
-        <div class="actions-bar">
-          <button class="copy-btn" onclick="copyElement('prompt-text-2x2', this)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Opción 3 (Texto 2×2)
-          </button>
-          <div class="split-instruction">Corte idéntico: <code id="cmd-text-2x2"></code></div>
-        </div>
-      </div>
-
-      <!-- Opción 4: Texto Plano 1x3 -->
-      <div class="option-card">
-        <div class="option-header">
-          <div class="option-title">
-            <span>📄</span> Opción 4: Texto Plano 1×3 (Tira Horizontal de 3 Ángulos)
-          </div>
-          <span class="option-tag text-tag">Texto Plano • Ratio 16:9</span>
-        </div>
-        <div class="prompt-box" id="prompt-text-1x3"></div>
-        <div class="actions-bar">
-          <button class="copy-btn" onclick="copyElement('prompt-text-1x3', this)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Opción 4 (Texto 1×3)
-          </button>
-          <div class="split-instruction">Corte idéntico: <code id="cmd-text-1x3"></code></div>
-        </div>
+        <p style="font-size: 13px; color: #94a3b8; margin-bottom: 8px;">
+          Descarga la imagen generada de Flow a tu equipo y corre este comando para limpiarle las etiquetas de texto y dejar cada una de las 8 tomas en tamaño exacto de 1200×1200 px con fondo blanco puro:
+        </p>
+        <div class="cli-code" id="cli-command"></div>
       </div>
 
     </div>
@@ -543,20 +477,11 @@
     document.getElementById('ref-path').textContent = p.primary_ref;
 
     // Prompts
-    document.getElementById('prompt-json-2x2').textContent = p.formats.json_2x2.prompt;
-    document.getElementById('cmd-json-2x2').textContent = p.formats.json_2x2.split_cmd;
+    document.getElementById('prompt-text').textContent = p.prompt_text;
+    document.getElementById('prompt-json').textContent = p.prompt_json;
 
-    document.getElementById('prompt-json-1x3').textContent = p.formats.json_1x3.prompt;
-    document.getElementById('cmd-json-1x3').textContent = p.formats.json_1x3.split_cmd;
-
-    document.getElementById('prompt-text-2x2').textContent = p.formats.text_2x2.prompt;
-    document.getElementById('cmd-text-2x2').textContent = p.formats.text_2x2.split_cmd;
-
-    document.getElementById('prompt-text-1x3').textContent = p.formats.text_1x3.prompt;
-    document.getElementById('cmd-text-1x3').textContent = p.formats.text_1x3.split_cmd;
-
-    // Negative prompt
-    document.getElementById('negative-content').textContent = p.negative_prompt;
+    // Comando CLI
+    document.getElementById('cli-command').textContent = p.split_command;
   }
 
   select.addEventListener('change', e => {
@@ -577,7 +502,7 @@
     });
   }
 
-  // Inicio
+  // Inicialización
   renderView();
 </script>
 

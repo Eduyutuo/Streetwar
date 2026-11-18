@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistente Maestro de Prompts para Flow | Catálogo E-Commerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --border-color: #334155;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --accent-green: #34d399;
+      --accent-purple: #c084fc;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+
+    .header-titles h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-titles p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .badge-count {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .top-controls {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+      margin-bottom: 24px;
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .selector-box {
+      flex: 1;
+    }
+
+    .selector-box label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    select {
+      width: 100%;
+      background: #0b1120;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    select:focus {
+      border-color: var(--accent);
+    }
+
+    /* Grid Principal */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 980px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Panel Izquierdo: Referencia */
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #e2e8f0;
+    }
+
+    .preview-box {
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .preview-box img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .img-source-path {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      word-break: break-all;
+    }
+
+    /* Recomendaciones de Configuración */
+    .settings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .setting-label {
+      color: var(--text-muted);
+    }
+
+    .setting-value {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Panel Derecho: 7 Ángulos */
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .angle-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      background: #1e293b;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      background: #334155;
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0b1120;
+      border-color: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .prompt-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .angle-info h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #f1f5f9;
+    }
+
+    .angle-info p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .prompt-toggle {
+      display: flex;
+      background: #0b1120;
+      border-radius: 6px;
+      padding: 3px;
+      gap: 2px;
+      border: 1px solid var(--border-color);
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toggle-btn.active {
+      background: var(--card-bg);
+      color: var(--accent);
+    }
+
+    .prompt-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .prompt-box {
+      background: #0b1120;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      max-height: 220px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--accent);
+      color: #0b1120;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .copy-btn:hover {
+      background: #7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: var(--accent-green);
+      color: #064e3b;
+    }
+
+    .negative-box {
+      margin-top: 16px;
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .negative-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #f87171;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .negative-content {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .quick-tips {
+      margin-top: 24px;
+      background: rgba(192, 132, 252, 0.08);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    .quick-tips strong {
+      color: var(--accent-purple);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .quick-tips ul {
+      padding-left: 20px;
+      color: #cbd5e1;
+    }
+
+    .quick-tips li {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="header-titles">
+      <h1>⚡ Asistente de Prompts para Flow</h1>
+      <p>Generación manual de 7 ángulos canónicos para catálogo e-commerce comercial</p>
+    </div>
+    <div class="badge-count">
+      45 Modelos &bull; 7 Perspectivas &bull; Fondo Blanco #FFFFFF
+    </div>
+  </header>
+
+  <div class="top-controls">
+    <div class="selector-box">
+      <label for="product-select">Selecciona el Producto del Catálogo:</label>
+      <select id="product-select"></select>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <!-- Panel Izquierdo: Referencia Visual & Config -->
+    <div class="left-panel">
+      <div class="card">
+        <div class="card-title">
+          <span>🖼️</span> Imagen de Referencia (Image-to-Image / Flow)
+        </div>
+        <div class="preview-box">
+          <img id="ref-image" src="" alt="Referencia">
+        </div>
+        <div class="img-source-path" id="ref-path"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>⚙️</span> Configuración Óptima en Flow
+        </div>
+        <div class="settings-list">
+          <div class="setting-item">
+            <span class="setting-label">Relación de Aspecto:</span>
+            <span class="setting-value">1:1 (Square)</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Denoising (Img2Img):</span>
+            <span class="setting-value">0.45 - 0.55</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Image Weight (Ref):</span>
+            <span class="setting-value">1.8</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">CFG Scale:</span>
+            <span class="setting-value">7.0</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Lente Virtual:</span>
+            <span class="setting-value">85mm f/8</span>
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Fondo:</span>
+            <span class="setting-value">#FFFFFF Puro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Derecho: Selector de Tomas y Prompts -->
+    <div class="right-panel">
+      <div class="angle-tabs" id="angle-tabs">
+        <!-- Renderizado dinámicamente -->
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="angle-info">
+            <h2 id="angle-title">1. Perfil Lateral Exterior (90°)</h2>
+            <p id="angle-desc">Silueta general, swoosh/logos principales y perfil de suela. Puntera a la izquierda.</p>
+          </div>
+          <div class="prompt-toggle">
+            <button class="toggle-btn active" id="btn-mode-natural">Lenguaje Natural</button>
+            <button class="toggle-btn" id="btn-mode-tags">Tags ComfyUI / SD</button>
+          </div>
+        </div>
+
+        <div class="prompt-container">
+          <button class="copy-btn" id="btn-copy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copiar Prompt
+          </button>
+          <div class="prompt-box" id="prompt-text">Cargando prompt...</div>
+        </div>
+
+        <div class="negative-box">
+          <div class="negative-title">
+            <span>🚫 Negative Prompt (Copia Común)</span>
+            <button class="toggle-btn" id="btn-copy-negative" style="background:#334155;color:#fff;">Copiar Negative</button>
+          </div>
+          <div class="negative-content" id="negative-text"></div>
+        </div>
+
+        <div class="quick-tips">
+          <strong>💡 Recomendaciones de Flujo en Flow:</strong>
+          <ul>
+            <li><strong>Usa la imagen de referencia:</strong> Sube la imagen del panel izquierdo a Flow con peso 1.8 para que no alucine colores ni suelas.</li>
+            <li><strong>Fija la Semilla (Seed):</strong> Si encuentras una semilla que reproduce los materiales correctos, fíjate en ella y cámbiale solo el texto del ángulo para que los 7 disparos sean idénticos en iluminación.</li>
+            <li><strong>Orientación:</strong> Todas las tomas laterales y 3/4 miran hacia la <strong>izquierda</strong> para mantener simetría en el catálogo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/flow_prompts.js"></script>
+<script>
+  let currentProductIndex = 0;
+  let currentAngleIndex = 0;
+  let promptMode = 'natural'; // 'natural' | 'tags'
+
+  const catalog = flowCatalogData.catalog;
+  const select = document.getElementById('product-select');
+  const angleTabsContainer = document.getElementById('angle-tabs');
+
+  // Inicializar selector de productos
+  catalog.forEach((p, idx) => {
+    const opt = document.createElement('option');
+    opt.value = idx;
+    opt.textContent = `[${String(idx).padStart(2, '0')}] ${p.sku} — ${p.name}`;
+    select.appendChild(opt);
+  });
+
+  // Generar botones de pestañas para los 7 ángulos
+  flowCatalogData.perspectives_meta.forEach((meta, idx) => {
+    const btn = document.createElement('button');
+    btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
+    btn.textContent = `${meta.number}. ${meta.name.split('(')[0].trim()}`;
+    btn.addEventListener('click', () => {
+      currentAngleIndex = idx;
+      updateTabs();
+      renderPrompt();
+    });
+    angleTabsContainer.appendChild(btn);
+  });
+
+  function updateTabs() {
+    const btns = angleTabsContainer.querySelectorAll('.tab-btn');
+    btns.forEach((b, i) => {
+      b.classList.toggle('active', i === currentAngleIndex);
+    });
+  }
+
+  function renderPrompt() {
+    const p = catalog[currentProductIndex];
+    const angle = p.angles[currentAngleIndex];
+
+    // Actualizar datos de referencia
+    document.getElementById('ref-image').src = p.primary_ref;
+    document.getElementById('ref-path').textContent = p.primary_ref;
+
+    // Actualizar encabezado del ángulo
+    document.getElementById('angle-title').textContent = `${angle.number}. ${angle.name}`;
+    document.getElementById('angle-desc').textContent = angle.description;
+
+    // Actualizar texto del prompt
+    const text = promptMode === 'natural' ? angle.prompt_natural : angle.prompt_tags;
+    document.getElementById('prompt-text').textContent = text;
+    document.getElementById('negative-text').textContent = angle.negative_prompt;
+  }
+
+  select.addEventListener('change', e => {
+    currentProductIndex = Number(e.target.value);
+    renderPrompt();
+  });
+
+  // Modo Natural vs Tags
+  document.getElementById('btn-mode-natural').addEventListener('click', () => {
+    promptMode = 'natural';
+    document.getElementById('btn-mode-natural').classList.add('active');
+    document.getElementById('btn-mode-tags').classList.remove('active');
+    renderPrompt();
+  });
+
+  document.getElementById('btn-mode-tags').addEventListener('click', () => {
+    promptMode = 'tags';
+    document.getElementById('btn-mode-tags').classList.add('active');
+    document.getElementById('btn-mode-natural').classList.remove('active');
+    renderPrompt();
+  });
+
+  // Botón Copiar Prompt
+  const copyBtn = document.getElementById('btn-copy');
+  copyBtn.addEventListener('click', () => {
+    const text = document.getElementById('prompt-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      copyBtn.textContent = '¡Copiado!';
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copiar Prompt';
+        copyBtn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+
+  // Botón Copiar Negative Prompt
+  const copyNegBtn = document.getElementById('btn-copy-negative');
+  copyNegBtn.addEventListener('click', () => {
+    const text = document.getElementById('negative-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      copyNegBtn.textContent = '¡Copiado!';
+      setTimeout(() => {
+        copyNegBtn.textContent = 'Copiar Negative';
+      }, 1500);
+    });
+  });
+
+  // Inicializar primera vista
+  renderPrompt();
+</script>
+
+</body>
+</html>

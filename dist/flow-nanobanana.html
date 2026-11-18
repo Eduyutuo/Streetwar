@@ -81,7 +81,54 @@
       display: flex;
       gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
     }
+
+    .base-path-config {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .base-path-config label {
+      color: var(--text-muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .base-path-input {
+      background: #000;
+      border: 1px solid #334155;
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      width: 280px;
+      outline: none;
+    }
+
+    .base-path-input:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-save-path {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-save-path:hover { background: #334155; }
 
     .badge {
       font-size: 12px;
@@ -586,6 +633,11 @@
       <p>Asistente de flujo de trabajo ágil para fotos reales en <code>_source_data/fotos_*</code> y cuadrícula canónica de 8 tomas</p>
     </div>
     <div class="header-badges">
+      <div class="base-path-config">
+        <label for="base-path-input">⚙️ Tu Carpeta Raíz:</label>
+        <input type="text" class="base-path-input" id="base-path-input" placeholder="C:/Users/tu_usuario/Documents/CATALOGO">
+        <button class="btn-save-path" onclick="saveBasePath()">Guardar</button>
+      </div>
       <div class="badge active">
         <span>📐</span> Ref: Air Jordan 9 Retro OG "Space Jam"
       </div>
@@ -785,6 +837,30 @@
   let searchQuery = '';
   let activeIndex = 0;
 
+  // LocalStorage para la ruta base personalizada
+  const DEFAULT_BASE_PATH = "C:/Users/eduar/Documents/CATALOGO";
+  let currentBasePath = localStorage.getItem('flow_catalog_base_path') || DEFAULT_BASE_PATH;
+
+  // Configurar input
+  const basePathInput = document.getElementById('base-path-input');
+  basePathInput.value = currentBasePath;
+
+  function saveBasePath() {
+    let val = basePathInput.value.trim().replace(/\\/g, '/');
+    if (val.endsWith('/')) val = val.slice(0, -1);
+    if (!val) val = DEFAULT_BASE_PATH;
+    currentBasePath = val;
+    basePathInput.value = currentBasePath;
+    localStorage.setItem('flow_catalog_base_path', currentBasePath);
+    showToast(`Ruta base guardada: ${currentBasePath}`);
+    selectProduct(activeIndex);
+  }
+
+  function getDynamicPath(p) {
+    // Reemplaza la ruta base por la personalizada
+    return `${currentBasePath}/_source_data/${p.top_folder}/${p.group}/${p.prod_dir}`;
+  }
+
   const catalog = flowNanobananaData.catalog;
   const listEl = document.getElementById('product-list');
 
@@ -872,19 +948,21 @@
     });
 
     // Actualizar encabezado del modelo
+    const dynamicPath = getDynamicPath(p);
     document.getElementById('active-name').textContent = p.name;
     document.getElementById('active-sku').textContent = p.sku;
     document.getElementById('active-group-label').textContent = `${p.top_folder} / ${p.group}`;
     document.getElementById('active-photos-count').textContent = `${p.image_count} fotos de inventario`;
-    document.getElementById('active-path-text').textContent = p.full_disk_path;
+    document.getElementById('active-path-text').textContent = dynamicPath;
 
     // Actualizar Prompts
     document.getElementById('prompt-text-view').textContent = p.prompt_text;
     document.getElementById('prompt-json-view').textContent = p.prompt_json;
     document.getElementById('count-label-1').textContent = `${p.image_count}`;
 
-    // Comando CLI
-    document.getElementById('cli-cmd-view').textContent = p.split_command;
+    // Comando CLI con ruta personalizada
+    const splitCmd = `python scripts/split_grid_angles.py "tu_imagen.jpg" --sku ${p.sku} --layout 4x2`;
+    document.getElementById('cli-cmd-view').textContent = splitCmd;
   }
 
   function copyPrompt(elementId, btn) {
@@ -903,7 +981,8 @@
 
   function copyActivePath() {
     const p = catalog.find(item => item.index === activeIndex) || catalog[0];
-    navigator.clipboard.writeText(p.full_disk_path).then(() => {
+    const path = getDynamicPath(p);
+    navigator.clipboard.writeText(path).then(() => {
       showToast(`Ruta copiada: ${p.prod_dir}`);
     });
   }

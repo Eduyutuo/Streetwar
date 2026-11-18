@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asistente Flow | Nano Banana 2.1 — Generador y Cortador de 8 Ángulos</title>
+  <title>Asistente Flow | Nano Banana 2.1 — Sneaker product grid studio display</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -73,7 +73,6 @@
       gap: 6px;
     }
 
-    /* Selector */
     .top-controls {
       display: flex;
       gap: 14px;
@@ -120,7 +119,7 @@
     /* Grid Layout */
     .main-grid {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 380px 1fr;
       gap: 24px;
     }
 
@@ -153,6 +152,15 @@
       color: #e2e8f0;
     }
 
+    .ref-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent);
+      margin-left: auto;
+    }
+
     .preview-box {
       background: #ffffff;
       border-radius: 8px;
@@ -169,7 +177,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      padding: 12px;
+      padding: 8px;
     }
 
     .img-source-path {
@@ -180,31 +188,7 @@
       word-break: break-all;
     }
 
-    /* Configuración de Pantalla Nano Banana */
-    .flow-settings-box {
-      background: #0b1120;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 12px;
-    }
-
-    .flow-setting-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .flow-setting-row .val {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* Panel Derecho: 2 Opciones */
+    /* Panel Derecho */
     .right-panel {
       display: flex;
       flex-direction: column;
@@ -311,7 +295,6 @@
       color: #064e3b;
     }
 
-    /* Barra de Corte */
     .cli-box {
       background: #0b1120;
       border: 1px solid rgba(56, 189, 248, 0.3);
@@ -348,11 +331,11 @@
 <div class="container">
   <header>
     <div class="header-titles">
-      <h1>⚡ Asistente Flow & Nano Banana 2.1 — 8 Ángulos</h1>
-      <p>Genera la hoja de contacto de 8 tomas y córtala en imágenes individuales uniformes de 1200×1200 px</p>
+      <h1>⚡ Flow & Nano Banana 2.1 — Sneaker product grid studio display</h1>
+      <p>Generación con Referencia Maestra de 8 Tomas y Corte Automático a 1200×1200 px</p>
     </div>
     <div class="model-badge">
-      <span>🍌</span> Nano Banana 2.1 Oficial
+      <span>🍌</span> Nano Banana 2.1
     </div>
   </header>
 
@@ -364,40 +347,29 @@
   </div>
 
   <div class="main-grid">
-    <!-- Panel Izquierdo -->
+    <!-- Panel Izquierdo: Las 2 Referencias Clave -->
     <div class="left-panel">
-      <div class="card">
+      <!-- Referencia Maestra de Grid -->
+      <div class="card" style="border-color: rgba(56,189,248,0.5);">
         <div class="card-title">
-          <span>🖼️</span> Imagen de Referencia (Sube a Flow)
+          <span>📐</span> Sneaker product grid studio display
+          <span class="ref-badge">Referencia Maestra de Grid</span>
         </div>
         <div class="preview-box">
-          <img id="ref-image" src="" alt="Referencia" onerror="this.onerror=null; this.src='assets/productos/' + currentSku + '/01-lateral.webp';">
+          <img id="grid-ref-img" src="assets/sneaker-product-grid-studio-display.jpg" alt="Sneaker product grid studio display">
         </div>
-        <div class="img-source-path" id="ref-path"></div>
+        <div class="img-source-path">assets/sneaker-product-grid-studio-display.jpg</div>
       </div>
 
+      <!-- Referencia del Modelo Específico -->
       <div class="card">
         <div class="card-title">
-          <span>⚙️</span> Ajustes Recomendados en Flow
+          <span>👟</span> Foto del Modelo (Para Colores/Textura)
         </div>
-        <div class="flow-settings-box">
-          <div class="flow-setting-row">
-            <span style="color:#94a3b8;">Aspect Ratio:</span>
-            <span class="val">1:1 (Cuadrado)</span>
-          </div>
-          <div class="flow-setting-row">
-            <span style="color:#94a3b8;">Modelo:</span>
-            <span class="val" style="color:var(--accent-yellow);">🍌 Nano Banana 2.1</span>
-          </div>
-          <div class="flow-setting-row">
-            <span style="color:#94a3b8;">Cantidad:</span>
-            <span class="val">x1 o x4</span>
-          </div>
-          <div class="flow-setting-row">
-            <span style="color:#94a3b8;">Fondo:</span>
-            <span class="val">#FFFFFF Blanco Puro</span>
-          </div>
+        <div class="preview-box">
+          <img id="ref-image" src="" alt="Referencia Modelo" onerror="this.onerror=null; this.src='assets/productos/' + currentSku + '/01-lateral.webp';">
         </div>
+        <div class="img-source-path" id="ref-path"></div>
       </div>
     </div>
 
@@ -407,7 +379,7 @@
       <!-- Opción 1: TEXTO PLANO -->
       <div class="prompt-card">
         <div class="card-top">
-          <h2><span>📝</span> Opción 1: Texto Plano (8 Ángulos Canónicos)</h2>
+          <h2><span>📝</span> Opción 1: Texto Plano (Referenciando Sneaker product grid studio display)</h2>
           <span class="tag-badge tag-text">Formato Texto • Recomendado Flow</span>
         </div>
         <div class="prompt-content" id="prompt-text">Cargando...</div>
@@ -416,14 +388,14 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copiar Prompt Texto Plano
           </button>
-          <span style="font-size:12px; color:#94a3b8;">Ideal para máxima adherencia en Flow</span>
+          <span style="font-size:12px; color:#94a3b8;">Incluye la referencia de composición exacta</span>
         </div>
       </div>
 
       <!-- Opción 2: JSON ESTRUCTURADO -->
       <div class="prompt-card">
         <div class="card-top">
-          <h2><span>🔲</span> Opción 2: Formato JSON (8 Ángulos Canónicos)</h2>
+          <h2><span>🔲</span> Opción 2: Formato JSON (Referenciando Sneaker product grid studio display)</h2>
           <span class="tag-badge tag-json">Formato JSON • Estructurado</span>
         </div>
         <div class="prompt-content" id="prompt-json">Cargando...</div>
@@ -432,17 +404,17 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copiar Prompt JSON
           </button>
-          <span style="font-size:12px; color:#94a3b8;">Estructura limpia por cuadrantes</span>
+          <span style="font-size:12px; color:#94a3b8;">Estructura limpia con referencia visual</span>
         </div>
       </div>
 
-      <!-- Comando de Corte para el Modelo Seleccionado -->
+      <!-- Comando de Corte Automático -->
       <div class="cli-box">
         <div class="cli-title">
-          <span>✂️</span> Cómo Cortar Automáticamente la Imagen Generada (8 Ángulos de 1200×1200 px)
+          <span>✂️</span> Cómo Cortar Automáticamente la Imagen Generada (8 Ángulos a 1200×1200 px)
         </div>
         <p style="font-size: 13px; color: #94a3b8; margin-bottom: 8px;">
-          Descarga la imagen generada de Flow a tu equipo y corre este comando para limpiarle las etiquetas de texto y dejar cada una de las 8 tomas en tamaño exacto de 1200×1200 px con fondo blanco puro:
+          Descarga la imagen generada de Nano Banana a tu equipo y corre este comando para limpiarle las etiquetas de texto (<code>01 | LATERAL</code>, etc.) y dejar cada una de las 8 tomas en tamaño idéntico de 1200×1200 px con fondo blanco puro:
         </p>
         <div class="cli-code" id="cli-command"></div>
       </div>
@@ -471,7 +443,7 @@
     const p = catalog[currentProductIndex];
     currentSku = p.sku;
 
-    // Foto de referencia
+    // Foto de referencia de producto
     const imgEl = document.getElementById('ref-image');
     imgEl.src = p.primary_ref;
     document.getElementById('ref-path').textContent = p.primary_ref;

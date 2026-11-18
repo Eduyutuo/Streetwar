@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparador Visual de Rutas — RITMO Sneaker Studio</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --border: #2a2e3d;
+      --text: #f0f2f8;
+      --text-muted: #8b92a5;
+      --accent-1: #3b82f6;
+      --accent-2: #10b981;
+      --accent-3: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 24px; }
+    
+    header { text-align: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.8rem; margin-bottom: 8px; }
+    p.subtitle { color: var(--text-muted); font-size: 0.95rem; }
+
+    .selector-bar {
+      display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    select {
+      background: var(--card-bg); color: var(--text); border: 1px solid var(--border);
+      padding: 10px 16px; border-radius: 8px; font-size: 1rem; outline: none; cursor: pointer; min-width: 320px;
+    }
+    
+    .angles-nav {
+      display: flex; justify-content: center; gap: 8px; margin-bottom: 24px;
+    }
+    .angle-btn {
+      background: var(--card-bg); color: var(--text-muted); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 500;
+    }
+    .angle-btn.active { background: var(--text); color: #000; border-color: var(--text); font-weight: bold; }
+
+    .comparison-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1300px; margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+
+    .column-card {
+      background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .column-header {
+      padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;
+    }
+    .column-tag {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 4px;
+    }
+    .tag-1 { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .tag-2 { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .tag-3 { background: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+
+    .img-wrapper {
+      position: relative; width: 100%; aspect-ratio: 1 / 1; background: #ffffff;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .img-wrapper img {
+      width: 100%; height: 100%; object-fit: contain; transition: transform 0.25s ease;
+    }
+    .img-wrapper:hover img {
+      transform: scale(1.18);
+    }
+
+    .column-body {
+      padding: 16px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; flex: 1;
+    }
+    .column-body strong { color: var(--text); }
+    .file-path {
+      font-family: monospace; font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px;
+      margin-top: 8px; word-break: break-all; color: #94a3b8; display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Comparador de Rutas de Calzado</h1>
+    <p class="subtitle">Compara en vivo las fotos originales (1), la normalización fotográfica oficial (2) y la generación con IA Nano Banana (3)</p>
+  </header>
+
+  <div class="selector-bar">
+    <label for="product-select"><strong>Selecciona un Modelo:</strong></label>
+    <select id="product-select"></select>
+  </div>
+
+  <div class="angles-nav">
+    <button class="angle-btn active" data-angle="01-lateral">1. Lateral (Perfil Izq.)</button>
+    <button class="angle-btn" data-angle="02-frontal-3-4">2. 3/4 Frontal</button>
+    <button class="angle-btn" data-angle="03-trasera">3. Trasera (Talón)</button>
+    <button class="angle-btn" data-angle="04-superior">4. Cenital (Superior)</button>
+  </div>
+
+  <div class="comparison-grid">
+    <!-- Columna 1 -->
+    <div class="column-card">
+      <div class="column-header">
+        <h3>1-orig-raw</h3>
+        <span class="column-tag tag-1">Original Fuente</span>
+      </div>
+      <div class="img-wrapper">
+        <img id="img-c1" src="" alt="Foto original">
+      </div>
+      <div class="column-body">
+        <strong>Fuente Web Oficial / Marketplace:</strong>
+        <p>Tomas originales sin normalizar. Tamaños heterogéneos, fondos variables y direcciones dispares.</p>
+        <span class="file-path" id="path-c1"></span>
+      </div>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="column-card">
+      <div class="column-header">
+        <h3>2-norm-std</h3>
+        <span class="column-tag tag-2">Ruta 1 (Recomendada)</span>
+      </div>
+      <div class="img-wrapper">
+        <img id="img-c2" src="" alt="Ruta 1 Normalizada">
+      </div>
+      <div class="column-body">
+        <strong>Normalización E-Commerce (100% Real):</strong>
+        <p>1200x1200px, 10% padding uniforme, fondo blanco puro #FFFFFF, dirección forzada a la izquierda y sombra suave. Sin alucinaciones.</p>
+        <span class="file-path" id="path-c2"></span>
+      </div>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="column-card">
+      <div class="column-header">
+        <h3>3-gen-nano</h3>
+        <span class="column-tag tag-3">Ruta 2 (Nano Banana IA)</span>
+      </div>
+      <div class="img-wrapper">
+        <img id="img-c3" src="" alt="Ruta 2 IA Nano Banana">
+      </div>
+      <div class="column-body">
+        <strong>Generación por IA (Gemini Imagen 3):</strong>
+        <p>Sintetizada a partir de 1 o 2 fotos de entrada usando prompts estructurados de estudio comercial. Requiere supervisión de logos.</p>
+        <span class="file-path" id="path-c3"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/source-link-photos.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/assigned_angles.js"></script>
+  <script>
+    let currentAngle = '01-lateral';
+    let currentProductIndex = 0;
+    let assignedData = typeof assignedAnglesData !== 'undefined' ? assignedAnglesData : [];
+
+    const select = document.getElementById('product-select');
+    const angleBtns = document.querySelectorAll('.angle-btn');
+
+    // Inicializar catálogo
+    initCatalog();
+
+    function initCatalog() {
+      select.innerHTML = '';
+      inventory.forEach((p, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = `[${String(idx).padStart(2, '0')}] ${p.sku} — ${p.name}`;
+        select.appendChild(opt);
+      });
+      // Restaurar selección previa
+      select.value = currentProductIndex;
+      updateComparison();
+    }
+
+    function updateComparison() {
+      const p = inventory[currentProductIndex];
+      const sku = p.sku;
+      
+      const itemData = assignedData.find(d => d.sku === sku);
+      const folder = itemData ? itemData.folder : sku;
+      const rawFile = itemData && itemData.tomas ? itemData.tomas[currentAngle] : 'official-01.jpg';
+
+      // Columna 1: archivo original real desde 1-orig-raw
+      const c1Rel = `assets/1-orig-raw/${folder}/${rawFile}`;
+      const img1 = document.getElementById('img-c1');
+      img1.src = c1Rel;
+      img1.onerror = () => { img1.src = `assets/2-norm-std/${sku}/${currentAngle}.webp`; };
+      document.getElementById('path-c1').textContent = `dist/${c1Rel}`;
+
+      // Columna 2: Ruta 1
+      const c2Rel = `assets/2-norm-std/${sku}/${currentAngle}.webp`;
+      document.getElementById('img-c2').src = c2Rel;
+      document.getElementById('path-c2').textContent = `dist/${c2Rel}`;
+
+      // Columna 3: Ruta 2
+      const c3Rel = `assets/3-gen-nano/${sku}/${currentAngle}.webp`;
+      document.getElementById('img-c3').src = c3Rel;
+      document.getElementById('path-c3').textContent = `dist/${c3Rel}`;
+    }
+
+    select.addEventListener('change', e => {
+      currentProductIndex = Number(e.target.value);
+      updateComparison();
+    });
+
+    angleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        angleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentAngle = btn.dataset.angle;
+        updateComparison();
+      });
+    });
+
+    // Iniciar con producto 2 si es el que estaba viendo el usuario
+    currentProductIndex = 2;
+    initCatalog();
+  </script>
+</body>
+</html>

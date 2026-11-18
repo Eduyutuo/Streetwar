@@ -10,3 +10,13 @@ _source_data/
 output/
 outputs/
 scratch/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos comprimidos pesados
+*.rar
+*.zip
+*.tar.gz

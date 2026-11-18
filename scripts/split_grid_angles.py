@@ -40,6 +40,13 @@ NAMES_8 = [
     "08-suela-inferior"
 ]
 
+NAMES_4 = [
+    "01-lateral-exterior",
+    "02-frontal-3-4",
+    "03-posterior-talon",
+    "04-cenital-superior"
+]
+
 NAMES_2 = [
     "01-lateral-exterior",
     "02-frontal-3-4"
@@ -136,6 +143,8 @@ def split_grid(image_path, sku, output_dir=None, layout=None):
         names = NAMES_6
     elif total_panels == 8:
         names = NAMES_8
+    elif total_panels == 4:
+        names = NAMES_4
     elif total_panels == 2:
         names = NAMES_2
     elif total_panels == 3:

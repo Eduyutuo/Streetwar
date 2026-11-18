@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asistente Flow | Nano Banana 2.1 — Sneaker product grid studio display</title>
+  <title>Asistente Flow | Nano Banana 2.1 — Referencia: Air Jordan 9 Retro OG "Space Jam"</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -256,7 +256,7 @@
       font-size: 12.5px;
       line-height: 1.6;
       color: #e2e8f0;
-      max-height: 220px;
+      max-height: 240px;
       overflow-y: auto;
       white-space: pre-wrap;
       word-break: break-word;
@@ -331,8 +331,8 @@
 <div class="container">
   <header>
     <div class="header-titles">
-      <h1>⚡ Flow & Nano Banana 2.1 — Sneaker product grid studio display</h1>
-      <p>Generación con Referencia Maestra de 8 Tomas y Corte Automático a 1200×1200 px</p>
+      <h1>⚡ Flow & Nano Banana 2.1 — 8 Ángulos</h1>
+      <p>Referencia de Cuadrícula Fija: <code>Air Jordan 9 Retro OG "Space Jam"</code></p>
     </div>
     <div class="model-badge">
       <span>🍌</span> Nano Banana 2.1
@@ -349,22 +349,22 @@
   <div class="main-grid">
     <!-- Panel Izquierdo: Las 2 Referencias Clave -->
     <div class="left-panel">
-      <!-- Referencia Maestra de Grid -->
+      <!-- Referencia Maestra Fija -->
       <div class="card" style="border-color: rgba(56,189,248,0.5);">
         <div class="card-title">
-          <span>📐</span> Sneaker product grid studio display
-          <span class="ref-badge">Referencia Maestra de Grid</span>
+          <span>📐</span> Air Jordan 9 Retro OG "Space Jam"
+          <span class="ref-badge">Referencia Maestra de Grid Fija</span>
         </div>
         <div class="preview-box">
-          <img id="grid-ref-img" src="assets/sneaker-product-grid-studio-display.jpg" alt="Sneaker product grid studio display">
+          <img id="grid-ref-img" src="assets/Air Jordan 9 Retro OG Space Jam.jpg" alt="Air Jordan 9 Retro OG Space Jam">
         </div>
-        <div class="img-source-path">assets/sneaker-product-grid-studio-display.jpg</div>
+        <div class="img-source-path">assets/Air Jordan 9 Retro OG Space Jam.jpg</div>
       </div>
 
       <!-- Referencia del Modelo Específico -->
       <div class="card">
         <div class="card-title">
-          <span>👟</span> Foto del Modelo (Para Colores/Textura)
+          <span>👟</span> Foto del Modelo Seleccionado (Colores y Detalles)
         </div>
         <div class="preview-box">
           <img id="ref-image" src="" alt="Referencia Modelo" onerror="this.onerror=null; this.src='assets/productos/' + currentSku + '/01-lateral.webp';">
@@ -373,13 +373,29 @@
       </div>
     </div>
 
-    <!-- Panel Derecho: Solo las 2 Opciones Solicitadas -->
+    <!-- Panel Derecho: 2 Opciones (JSON Mejorado y Texto) -->
     <div class="right-panel">
 
-      <!-- Opción 1: TEXTO PLANO -->
+      <!-- Opción 1: JSON MEJORADO -->
       <div class="prompt-card">
         <div class="card-top">
-          <h2><span>📝</span> Opción 1: Texto Plano (Referenciando Sneaker product grid studio display)</h2>
+          <h2><span>🔲</span> Opción 1: Formato JSON Optimizado (Referencia Fija: Air Jordan 9 Retro OG "Space Jam")</h2>
+          <span class="tag-badge tag-json">Formato JSON • Mapeo 4×2</span>
+        </div>
+        <div class="prompt-content" id="prompt-json">Cargando...</div>
+        <div class="bottom-bar">
+          <button class="copy-btn" onclick="copyElement('prompt-json', this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copiar Prompt JSON
+          </button>
+          <span style="font-size:12px; color:#94a3b8;">Referencia única sin duplicar nombres</span>
+        </div>
+      </div>
+
+      <!-- Opción 2: TEXTO PLANO -->
+      <div class="prompt-card">
+        <div class="card-top">
+          <h2><span>📝</span> Opción 2: Texto Plano (Referencia Fija: Air Jordan 9 Retro OG "Space Jam")</h2>
           <span class="tag-badge tag-text">Formato Texto • Recomendado Flow</span>
         </div>
         <div class="prompt-content" id="prompt-text">Cargando...</div>
@@ -388,23 +404,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copiar Prompt Texto Plano
           </button>
-          <span style="font-size:12px; color:#94a3b8;">Incluye la referencia de composición exacta</span>
-        </div>
-      </div>
-
-      <!-- Opción 2: JSON ESTRUCTURADO -->
-      <div class="prompt-card">
-        <div class="card-top">
-          <h2><span>🔲</span> Opción 2: Formato JSON (Referenciando Sneaker product grid studio display)</h2>
-          <span class="tag-badge tag-json">Formato JSON • Estructurado</span>
-        </div>
-        <div class="prompt-content" id="prompt-json">Cargando...</div>
-        <div class="bottom-bar">
-          <button class="copy-btn" onclick="copyElement('prompt-json', this)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Prompt JSON
-          </button>
-          <span style="font-size:12px; color:#94a3b8;">Estructura limpia con referencia visual</span>
+          <span style="font-size:12px; color:#94a3b8;">4 filas x 2 columnas correlacionadas</span>
         </div>
       </div>
 
@@ -449,8 +449,8 @@
     document.getElementById('ref-path').textContent = p.primary_ref;
 
     // Prompts
-    document.getElementById('prompt-text').textContent = p.prompt_text;
     document.getElementById('prompt-json').textContent = p.prompt_json;
+    document.getElementById('prompt-text').textContent = p.prompt_text;
 
     // Comando CLI
     document.getElementById('cli-command').textContent = p.split_command;

@@ -9,25 +9,29 @@ def clean_name(name):
 
 catalog_data = []
 
+REF_IMAGE_NAME = 'Air Jordan 9 Retro OG "Space Jam"'
+
 for item in assigned:
     idx = item['index']
     sku = item['sku']
     name = clean_name(item['name'])
     
-    # 1. TEXTO PLANO CON REFERENCIA A LA IMAGEN MAESTRA DE GRID
+    # 1. TEXTO PLANO REFERENCIANDO LA IMAGEN FIJA
     prompt_text = (
         f'Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker {name}, SKU: {sku}, '
-        f'arranged in a neat 2-row by 4-column (or 4-row by 2-column) grid on a pure solid white background (#FFFFFF), identical composition and layout to reference image "Sneaker product grid studio display". '
-        f'Row 1: [Panel 1: 90-degree lateral profile pointing LEFT], [Panel 2: 3/4 perspective front-quarter facing LEFT], [Panel 3: direct straight front view], [Panel 4: direct rear heel view]. '
-        f'Row 2: [Panel 5: 3/4 rear perspective facing LEFT], [Panel 6: 90-degree medial inner side profile pointing LEFT], [Panel 7: direct overhead top-down view], [Panel 8: direct bottom outsole tread view]. '
-        f'Identical sneaker colorway, identical softbox studio lighting, clean thin white gutters between panels. '
-        f'Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all angles, subtle grounded contact shadows on the floor. 8k resolution e-commerce product catalog standard, zero floating artifacts, zero background clutter.'
+        f'matching the exact 4-row by 2-column layout and camera angles of reference image "{REF_IMAGE_NAME}". '
+        f'Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. '
+        f'Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. '
+        f'Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. '
+        f'Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. '
+        f'Identical sneaker colorway and materials across all 8 panels, seamless solid pure white background (#FFFFFF), '
+        f'balanced softbox studio lighting at 5500K, subtle grounded floor contact shadows, razor-sharp edge-to-edge focus, 8k resolution e-commerce standard.'
     )
 
-    # 2. JSON CON REFERENCIA A LA IMAGEN MAESTRA
+    # 2. JSON OPTIMIZADO Y PERFECCIONADO
     prompt_json = {
         "task": "commercial_footwear_catalog_contact_sheet_8_panels",
-        "reference_composition_image": "Sneaker product grid studio display",
+        "reference_composition_image": REF_IMAGE_NAME,
         "product": {
             "name": name,
             "sku": sku,
@@ -35,21 +39,20 @@ for item in assigned:
         },
         "grid_layout": {
             "total_panels": 8,
-            "distribution": "matching_reference_Sneaker_product_grid_studio_display",
+            "distribution": "4_rows_by_2_columns",
+            "reference_match": f"replicate_exact_grid_and_angles_from_{REF_IMAGE_NAME}",
             "background": "#FFFFFF",
             "gutters": "clean_thin_white_lines"
         },
-        "row_1_panels": [
-            {"panel_1": "90-degree lateral side profile pointing LEFT"},
-            {"panel_2": "3/4 perspective front-quarter facing LEFT"},
-            {"panel_3": "direct straight front eye-level view"},
-            {"panel_4": "direct rear heel counter view"}
-        ],
-        "row_2_panels": [
-            {"panel_5": "3/4 rear perspective facing LEFT"},
-            {"panel_6": "90-degree medial inner side profile pointing LEFT"},
-            {"panel_7": "direct overhead top-down flat lay view"},
-            {"panel_8": "direct bottom outsole tread view"}
+        "panels_distribution": [
+            {"row": 1, "col": 1, "label": "01 | LATERAL", "view": "90-degree lateral outer profile pointing LEFT"},
+            {"row": 1, "col": 2, "label": "02 | MEDIAL", "view": "90-degree medial inner side profile pointing LEFT"},
+            {"row": 2, "col": 1, "label": "03 | 3/4 FRONT", "view": "45-degree 3/4 perspective front-quarter facing LEFT"},
+            {"row": 2, "col": 2, "label": "04 | 3/4 REAR", "view": "135-degree 3/4 rear perspective facing LEFT"},
+            {"row": 3, "col": 1, "label": "05 | FRONT", "view": "direct straight front eye-level view centered"},
+            {"row": 3, "col": 2, "label": "06 | REAR", "view": "direct rear heel counter view centered"},
+            {"row": 4, "col": 1, "label": "07 | TOP-DOWN", "view": "direct overhead top-down flat lay view, toe pointing left/up"},
+            {"row": 4, "col": 2, "label": "08 | OUTSOLE", "view": "direct bottom outsole rubber tread view"}
         ],
         "environment": {
             "lighting": "dual_softbox_5500k_neutral_daylight",
@@ -64,8 +67,8 @@ for item in assigned:
         "sku": sku,
         "name": name,
         "primary_ref": f"assets/2-norm-std/{sku}/01-lateral.webp",
-        "grid_ref_image": "assets/sneaker-product-grid-studio-display.jpg",
-        "grid_ref_name": "Sneaker product grid studio display",
+        "grid_ref_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
+        "grid_ref_name": REF_IMAGE_NAME,
         "prompt_text": prompt_text,
         "prompt_json": json.dumps(prompt_json, indent=2),
         "split_command": f'python scripts/split_grid_angles.py "tu_imagen.jpg" --sku {sku} --layout 4x2'
@@ -75,4 +78,4 @@ js_content = "const nanoBananaCatalog = " + json.dumps(catalog_data, indent=2, e
 with open('dist/js/nanobanana_prompts.js', 'w', encoding='utf-8') as f:
     f.write(js_content)
 
-print(f"Exportado con referencia Sneaker product grid studio display: dist/js/nanobanana_prompts.js")
+print(f"Exportado correctamente con referencia fija a {REF_IMAGE_NAME}: dist/js/nanobanana_prompts.js")

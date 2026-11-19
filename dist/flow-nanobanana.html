@@ -771,12 +771,27 @@
         <div class="ref-header">
           <span>📐</span> Imagen Maestra de Cuadrícula
         </div>
-        <div class="ref-img-container">
+        <div class="ref-img-container" style="cursor:pointer;" title="Clic para ver en tamaño completo" onclick="window.open(this.querySelector('img').src, '_blank')">
           <img src="assets/Air Jordan 9 Retro OG Space Jam.jpg" alt="Air Jordan 9 Retro OG Space Jam">
         </div>
         <div class="ref-desc">
           <strong>Air Jordan 9 Retro OG "Space Jam"</strong><br>
           Esta es la referencia visual de composición 4×2 fija que Flow toma para posicionar los 8 ángulos.
+        </div>
+      </div>
+
+      <!-- Foto de Referencia del Producto Seleccionado -->
+      <div class="ref-visual-card" style="border-color:rgba(168, 85, 247, 0.4);">
+        <div class="ref-header">
+          <span>👟</span> Foto de Referencia del Producto
+        </div>
+        <div class="ref-img-container" style="cursor:pointer;" title="Clic para ver en tamaño completo" onclick="if(document.getElementById('product-ref-img').src) window.open(document.getElementById('product-ref-img').src, '_blank')">
+          <img id="product-ref-img" src="" alt="Referencia del Producto">
+        </div>
+        <div class="ref-desc">
+          <strong id="product-ref-name">-</strong><br>
+          <span id="product-ref-sku" style="font-family:monospace; color:var(--accent-purple); font-weight:700;">-</span> &bull; 
+          <span id="product-ref-path" style="font-size:11px; color:var(--text-dim);">-</span>
         </div>
       </div>
 
@@ -954,6 +969,24 @@
     document.getElementById('active-group-label').textContent = `${p.top_folder} / ${p.group}`;
     document.getElementById('active-photos-count').textContent = `${p.image_count} fotos de inventario`;
     document.getElementById('active-path-text').textContent = dynamicPath;
+
+    // Actualizar Foto de Referencia del Producto
+    const prodImg = document.getElementById('product-ref-img');
+    if (prodImg) {
+      const primarySrc = p.preview_primary || `assets/2-norm-std/${p.sku}/01-lateral.webp`;
+      prodImg.src = primarySrc;
+      prodImg.alt = `${p.name} (${p.sku})`;
+      prodImg.onerror = function() {
+        this.onerror = null;
+        this.src = `assets/productos/${p.sku}/01-lateral.webp`;
+      };
+    }
+    const refName = document.getElementById('product-ref-name');
+    if (refName) refName.textContent = p.name;
+    const refSku = document.getElementById('product-ref-sku');
+    if (refSku) refSku.textContent = p.sku;
+    const refPath = document.getElementById('product-ref-path');
+    if (refPath) refPath.textContent = p.preview_primary || `assets/2-norm-std/${p.sku}/01-lateral.webp`;
 
     // Actualizar Prompts
     document.getElementById('prompt-text-view').textContent = p.prompt_text;

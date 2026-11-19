@@ -19,7 +19,15 @@ const flowNanobananaData = {
         "IMG_0051.jpeg",
         "IMG_0052.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IX6180-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IX6180-100/01_IMG_0046.webp",
+      "real_photos": [
+        "assets/source-previews/IX6180-100/01_IMG_0046.webp",
+        "assets/source-previews/IX6180-100/02_IMG_0047.webp",
+        "assets/source-previews/IX6180-100/03_IMG_0048.webp",
+        "assets/source-previews/IX6180-100/04_IMG_0049.webp",
+        "assets/source-previews/IX6180-100/05_IMG_0051.webp",
+        "assets/source-previews/IX6180-100/06_IMG_0052.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 9 Retro OG \"Space Jam\", SKU: IX6180-100. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -42,7 +50,14 @@ const flowNanobananaData = {
         "IMG_0056.jpeg",
         "IMG_0057.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IO2076-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IO2076-100/01_IMG_0053.webp",
+      "real_photos": [
+        "assets/source-previews/IO2076-100/01_IMG_0053.webp",
+        "assets/source-previews/IO2076-100/02_IMG_0054.webp",
+        "assets/source-previews/IO2076-100/03_IMG_0055.webp",
+        "assets/source-previews/IO2076-100/04_IMG_0056.webp",
+        "assets/source-previews/IO2076-100/05_IMG_0057.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 3 Retro \"Play Your Way\", SKU: IO2076-100. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -65,7 +80,14 @@ const flowNanobananaData = {
         "IMG_0061.jpeg",
         "IMG_0062.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/AQ9214-006/01-lateral.webp",
+      "preview_primary": "assets/source-previews/AQ9214-006/01_IMG_0058.webp",
+      "real_photos": [
+        "assets/source-previews/AQ9214-006/01_IMG_0058.webp",
+        "assets/source-previews/AQ9214-006/02_IMG_0059.webp",
+        "assets/source-previews/AQ9214-006/03_IMG_0060.webp",
+        "assets/source-previews/AQ9214-006/04_IMG_0061.webp",
+        "assets/source-previews/AQ9214-006/05_IMG_0062.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Max Aura Black / Black / Gym Red, SKU: AQ9214-006. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -88,7 +110,14 @@ const flowNanobananaData = {
         "IMG_0066.jpeg",
         "IMG_0067.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/HF7054-012/01-lateral.webp",
+      "preview_primary": "assets/source-previews/HF7054-012/01_IMG_0063.webp",
+      "real_photos": [
+        "assets/source-previews/HF7054-012/01_IMG_0063.webp",
+        "assets/source-previews/HF7054-012/02_IMG_0064.webp",
+        "assets/source-previews/HF7054-012/03_IMG_0065.webp",
+        "assets/source-previews/HF7054-012/04_IMG_0066.webp",
+        "assets/source-previews/HF7054-012/05_IMG_0067.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Max 95 White / Pink / Brown, SKU: HF7054-012. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -111,7 +140,14 @@ const flowNanobananaData = {
         "IMG_0071.jpeg",
         "IMG_0072.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/BQ4212-002/01-lateral.webp",
+      "preview_primary": "assets/source-previews/BQ4212-002/01_IMG_0068.webp",
+      "real_photos": [
+        "assets/source-previews/BQ4212-002/01_IMG_0068.webp",
+        "assets/source-previews/BQ4212-002/02_IMG_0069.webp",
+        "assets/source-previews/BQ4212-002/03_IMG_0070.webp",
+        "assets/source-previews/BQ4212-002/04_IMG_0071.webp",
+        "assets/source-previews/BQ4212-002/05_IMG_0072.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Flight Legacy Black / White, SKU: BQ4212-002. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -135,7 +171,15 @@ const flowNanobananaData = {
         "IMG_0077.jpeg",
         "IMG_0078.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/694862-200/01-lateral.webp",
+      "preview_primary": "assets/source-previews/694862-200/01_IMG_0073.webp",
+      "real_photos": [
+        "assets/source-previews/694862-200/01_IMG_0073.webp",
+        "assets/source-previews/694862-200/02_IMG_0074.webp",
+        "assets/source-previews/694862-200/03_IMG_0075.webp",
+        "assets/source-previews/694862-200/04_IMG_0076.webp",
+        "assets/source-previews/694862-200/05_IMG_0077.webp",
+        "assets/source-previews/694862-200/06_IMG_0078.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Max Command Premium Light Taupe, SKU: 694862-200. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -159,7 +203,15 @@ const flowNanobananaData = {
         "IMG_0083.jpeg",
         "IMG_0083_copia.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/511416-011/01-lateral.webp",
+      "preview_primary": "assets/source-previews/511416-011/01_IMG_0079.webp",
+      "real_photos": [
+        "assets/source-previews/511416-011/01_IMG_0079.webp",
+        "assets/source-previews/511416-011/02_IMG_0080.webp",
+        "assets/source-previews/511416-011/03_IMG_0081.webp",
+        "assets/source-previews/511416-011/04_IMG_0082.webp",
+        "assets/source-previews/511416-011/05_IMG_0083.webp",
+        "assets/source-previews/511416-011/06_IMG_0083_copia.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Max Correlate Black / White / Grey, SKU: 511416-011. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -183,7 +235,15 @@ const flowNanobananaData = {
         "IMG_0087.jpeg",
         "IMG_0088.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR0519-101/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR0519-101/01_IMG_0084.webp",
+      "real_photos": [
+        "assets/source-previews/IR0519-101/01_IMG_0084.webp",
+        "assets/source-previews/IR0519-101/02_IMG_0085.webp",
+        "assets/source-previews/IR0519-101/03_IMG_0086.webp",
+        "assets/source-previews/IR0519-101/04_IMG_0086_copia.webp",
+        "assets/source-previews/IR0519-101/05_IMG_0087.webp",
+        "assets/source-previews/IR0519-101/06_IMG_0088.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Son of Mars Low White / Red / Black, SKU: IR0519-101. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -206,7 +266,14 @@ const flowNanobananaData = {
         "IMG_0092.jpeg",
         "IMG_0093.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IQ0205-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IQ0205-100/01_IMG_0089.webp",
+      "real_photos": [
+        "assets/source-previews/IQ0205-100/01_IMG_0089.webp",
+        "assets/source-previews/IQ0205-100/02_IMG_0090.webp",
+        "assets/source-previews/IQ0205-100/03_IMG_0091.webp",
+        "assets/source-previews/IQ0205-100/04_IMG_0092.webp",
+        "assets/source-previews/IQ0205-100/05_IMG_0093.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 '07 Black / White / Orange Peel, SKU: IQ0205-100. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -229,7 +296,14 @@ const flowNanobananaData = {
         "IMG_0097.jpeg",
         "IMG_0098.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR1968-133/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR1968-133/01_IMG_0094.webp",
+      "real_photos": [
+        "assets/source-previews/IR1968-133/01_IMG_0094.webp",
+        "assets/source-previews/IR1968-133/02_IMG_0095.webp",
+        "assets/source-previews/IR1968-133/03_IMG_0096.webp",
+        "assets/source-previews/IR1968-133/04_IMG_0097.webp",
+        "assets/source-previews/IR1968-133/05_IMG_0098.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 '07 WNBA 30th Anniversary, SKU: IR1968-133. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -252,7 +326,14 @@ const flowNanobananaData = {
         "IMG_0102.jpeg",
         "IMG_0103.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR5896-030/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR5896-030/01_IMG_0099.webp",
+      "real_photos": [
+        "assets/source-previews/IR5896-030/01_IMG_0099.webp",
+        "assets/source-previews/IR5896-030/02_IMG_0100.webp",
+        "assets/source-previews/IR5896-030/03_IMG_0101.webp",
+        "assets/source-previews/IR5896-030/04_IMG_0102.webp",
+        "assets/source-previews/IR5896-030/05_IMG_0103.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 '07 LV8 \"Mexico\", SKU: IR5896-030. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -276,7 +357,15 @@ const flowNanobananaData = {
         "IMG_0108.jpeg",
         "IMG_0109.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IV6222-410/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IV6222-410/01_IMG_0104.webp",
+      "real_photos": [
+        "assets/source-previews/IV6222-410/01_IMG_0104.webp",
+        "assets/source-previews/IV6222-410/02_IMG_0105.webp",
+        "assets/source-previews/IV6222-410/03_IMG_0106.webp",
+        "assets/source-previews/IV6222-410/04_IMG_0107.webp",
+        "assets/source-previews/IV6222-410/05_IMG_0108.webp",
+        "assets/source-previews/IV6222-410/06_IMG_0109.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Griffey Max 1, SKU: IV6222-410. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -299,7 +388,14 @@ const flowNanobananaData = {
         "IMG_0113.jpeg",
         "IMG_0114.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/553560-045/01-lateral.webp",
+      "preview_primary": "assets/source-previews/553560-045/01_IMG_0110.webp",
+      "real_photos": [
+        "assets/source-previews/553560-045/01_IMG_0110.webp",
+        "assets/source-previews/553560-045/02_IMG_0111.webp",
+        "assets/source-previews/553560-045/03_IMG_0112.webp",
+        "assets/source-previews/553560-045/04_IMG_0113.webp",
+        "assets/source-previews/553560-045/05_IMG_0114.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 Low Summit White / Black, SKU: 553560-045. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -322,7 +418,14 @@ const flowNanobananaData = {
         "IMG_0118.jpeg",
         "IMG_0119.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/CT3839-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/CT3839-100/01_IMG_0115.webp",
+      "real_photos": [
+        "assets/source-previews/CT3839-100/01_IMG_0115.webp",
+        "assets/source-previews/CT3839-100/02_IMG_0116.webp",
+        "assets/source-previews/CT3839-100/03_IMG_0117.webp",
+        "assets/source-previews/CT3839-100/04_IMG_0118.webp",
+        "assets/source-previews/CT3839-100/05_IMG_0119.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 Blanco / Negro, SKU: CT3839-100. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -346,7 +449,15 @@ const flowNanobananaData = {
         "IMG_0124.jpeg",
         "IMG_0125.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IW2872-700/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IW2872-700/01_IMG_0120.webp",
+      "real_photos": [
+        "assets/source-previews/IW2872-700/01_IMG_0120.webp",
+        "assets/source-previews/IW2872-700/02_IMG_0121.webp",
+        "assets/source-previews/IW2872-700/03_IMG_0122.webp",
+        "assets/source-previews/IW2872-700/04_IMG_0123.webp",
+        "assets/source-previews/IW2872-700/05_IMG_0124.webp",
+        "assets/source-previews/IW2872-700/06_IMG_0125.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 4 x J Balvin \"Amazonas\", SKU: IW2872-700. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -369,7 +480,14 @@ const flowNanobananaData = {
         "IMG_0129.jpeg",
         "IMG_0130.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/FD1437-008/01-lateral.webp",
+      "preview_primary": "assets/source-previews/FD1437-008/01_IMG_0126.webp",
+      "real_photos": [
+        "assets/source-previews/FD1437-008/01_IMG_0126.webp",
+        "assets/source-previews/FD1437-008/02_IMG_0127.webp",
+        "assets/source-previews/FD1437-008/03_IMG_0128.webp",
+        "assets/source-previews/FD1437-008/04_IMG_0129.webp",
+        "assets/source-previews/FD1437-008/05_IMG_0130.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 High OG \"Shattered Backboard\", SKU: FD1437-008. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -392,7 +510,14 @@ const flowNanobananaData = {
         "IMG_0134.jpeg",
         "IMG_0135.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/408452-102/01-lateral.webp",
+      "preview_primary": "assets/source-previews/408452-102/01_IMG_0131.webp",
+      "real_photos": [
+        "assets/source-previews/408452-102/01_IMG_0131.webp",
+        "assets/source-previews/408452-102/02_IMG_0132.webp",
+        "assets/source-previews/408452-102/03_IMG_0133.webp",
+        "assets/source-previews/408452-102/04_IMG_0134.webp",
+        "assets/source-previews/408452-102/05_IMG_0135.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 4 Retro \"Tour Yellow\", SKU: 408452-102. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -415,7 +540,14 @@ const flowNanobananaData = {
         "IMG_0139.jpeg",
         "IMG_0140.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/AQ9214-011/01-lateral.webp",
+      "preview_primary": "assets/source-previews/AQ9214-011/01_IMG_0136.webp",
+      "real_photos": [
+        "assets/source-previews/AQ9214-011/01_IMG_0136.webp",
+        "assets/source-previews/AQ9214-011/02_IMG_0137.webp",
+        "assets/source-previews/AQ9214-011/03_IMG_0138.webp",
+        "assets/source-previews/AQ9214-011/04_IMG_0139.webp",
+        "assets/source-previews/AQ9214-011/05_IMG_0140.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Max Aura Black / White, SKU: AQ9214-011. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -438,7 +570,14 @@ const flowNanobananaData = {
         "IMG_0144.jpeg",
         "IMG_0145.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/II1254-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/II1254-001/01_IMG_0141.webp",
+      "real_photos": [
+        "assets/source-previews/II1254-001/01_IMG_0141.webp",
+        "assets/source-previews/II1254-001/02_IMG_0142.webp",
+        "assets/source-previews/II1254-001/03_IMG_0143.webp",
+        "assets/source-previews/II1254-001/04_IMG_0144.webp",
+        "assets/source-previews/II1254-001/05_IMG_0145.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 Mid SE Black / Gold / Pink, SKU: II1254-001. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -462,7 +601,15 @@ const flowNanobananaData = {
         "IMG_0150.jpeg",
         "IMG_0151.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/II0599-600/01-lateral.webp",
+      "preview_primary": "assets/source-previews/II0599-600/01_IMG_0146.webp",
+      "real_photos": [
+        "assets/source-previews/II0599-600/01_IMG_0146.webp",
+        "assets/source-previews/II0599-600/02_IMG_0147.webp",
+        "assets/source-previews/II0599-600/03_IMG_0148.webp",
+        "assets/source-previews/II0599-600/04_IMG_0149.webp",
+        "assets/source-previews/II0599-600/05_IMG_0150.webp",
+        "assets/source-previews/II0599-600/06_IMG_0151.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 3 Retro GS \"Spring Flowers\", SKU: II0599-600. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -486,7 +633,15 @@ const flowNanobananaData = {
         "IMG_0157.jpeg",
         "IMG_0158.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/511417-136/01-lateral.webp",
+      "preview_primary": "assets/source-previews/511417-136/01_IMG_0153.webp",
+      "real_photos": [
+        "assets/source-previews/511417-136/01_IMG_0153.webp",
+        "assets/source-previews/511417-136/02_IMG_0154.webp",
+        "assets/source-previews/511417-136/03_IMG_0155.webp",
+        "assets/source-previews/511417-136/04_IMG_0156.webp",
+        "assets/source-previews/511417-136/05_IMG_0157.webp",
+        "assets/source-previews/511417-136/06_IMG_0158.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Max Correlate White / New Green / Bright Mango / Black, SKU: 511417-136. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -510,7 +665,15 @@ const flowNanobananaData = {
         "IMG_0163.jpeg",
         "IMG_0164.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/323419-164/01-lateral.webp",
+      "preview_primary": "assets/source-previews/323419-164/01_IMG_0159.webp",
+      "real_photos": [
+        "assets/source-previews/323419-164/01_IMG_0159.webp",
+        "assets/source-previews/323419-164/02_IMG_0160.webp",
+        "assets/source-previews/323419-164/03_IMG_0161.webp",
+        "assets/source-previews/323419-164/04_IMG_0162.webp",
+        "assets/source-previews/323419-164/05_IMG_0163.webp",
+        "assets/source-previews/323419-164/06_IMG_0164.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan 6 Rings White / University Red / Black, SKU: 323419-164. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -533,7 +696,14 @@ const flowNanobananaData = {
         "IMG_0168.jpeg",
         "IMG_0169.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR4727-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR4727-100/01_IMG_0165.webp",
+      "real_photos": [
+        "assets/source-previews/IR4727-100/01_IMG_0165.webp",
+        "assets/source-previews/IR4727-100/02_IMG_0166.webp",
+        "assets/source-previews/IR4727-100/03_IMG_0167.webp",
+        "assets/source-previews/IR4727-100/04_IMG_0168.webp",
+        "assets/source-previews/IR4727-100/05_IMG_0169.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Diamond Turf II, SKU: IR4727-100. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -556,7 +726,14 @@ const flowNanobananaData = {
         "IMG_0173.jpeg",
         "IMG_0174.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR4714-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR4714-100/01_IMG_0170.webp",
+      "real_photos": [
+        "assets/source-previews/IR4714-100/01_IMG_0170.webp",
+        "assets/source-previews/IR4714-100/02_IMG_0171.webp",
+        "assets/source-previews/IR4714-100/03_IMG_0172.webp",
+        "assets/source-previews/IR4714-100/04_IMG_0173.webp",
+        "assets/source-previews/IR4714-100/05_IMG_0174.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air DT Max '96 Low White / Metallic, SKU: IR4714-100. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -580,7 +757,15 @@ const flowNanobananaData = {
         "IMG_0179.jpeg",
         "IMG_0180.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/DR8784-005/01-lateral.webp",
+      "preview_primary": "assets/source-previews/DR8784-005/01_IMG_0175.webp",
+      "real_photos": [
+        "assets/source-previews/DR8784-005/01_IMG_0175.webp",
+        "assets/source-previews/DR8784-005/02_IMG_0176.webp",
+        "assets/source-previews/DR8784-005/03_IMG_0177.webp",
+        "assets/source-previews/DR8784-005/04_IMG_0178.webp",
+        "assets/source-previews/DR8784-005/05_IMG_0179.webp",
+        "assets/source-previews/DR8784-005/06_IMG_0180.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Zoom LeBron NXXT Gen \"Black Wolf Grey\", SKU: DR8784-005. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -603,7 +788,14 @@ const flowNanobananaData = {
         "IMG_0184.jpeg",
         "IMG_0185.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/AR3762-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/AR3762-001/01_IMG_0181.webp",
+      "real_photos": [
+        "assets/source-previews/AR3762-001/01_IMG_0181.webp",
+        "assets/source-previews/AR3762-001/02_IMG_0182.webp",
+        "assets/source-previews/AR3762-001/03_IMG_0183.webp",
+        "assets/source-previews/AR3762-001/04_IMG_0184.webp",
+        "assets/source-previews/AR3762-001/05_IMG_0185.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan Access \"Black Gym Red\", SKU: AR3762-001. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -626,7 +818,14 @@ const flowNanobananaData = {
         "IMG_0189.jpeg",
         "IMG_0190.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IV5197-201/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IV5197-201/01_IMG_0186.webp",
+      "real_photos": [
+        "assets/source-previews/IV5197-201/01_IMG_0186.webp",
+        "assets/source-previews/IV5197-201/02_IMG_0187.webp",
+        "assets/source-previews/IV5197-201/03_IMG_0188.webp",
+        "assets/source-previews/IV5197-201/04_IMG_0189.webp",
+        "assets/source-previews/IV5197-201/05_IMG_0190.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 '07 Light British Tan / Sail / Hemp / Metallic Gold, SKU: IV5197-201. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -649,7 +848,14 @@ const flowNanobananaData = {
         "IMG_0194.jpeg",
         "IMG_0195.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/CU4152-101/01-lateral.webp",
+      "preview_primary": "assets/source-previews/CU4152-101/01_IMG_0191.webp",
+      "real_photos": [
+        "assets/source-previews/CU4152-101/01_IMG_0191.webp",
+        "assets/source-previews/CU4152-101/02_IMG_0192.webp",
+        "assets/source-previews/CU4152-101/03_IMG_0193.webp",
+        "assets/source-previews/CU4152-101/04_IMG_0194.webp",
+        "assets/source-previews/CU4152-101/05_IMG_0195.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Max Bolt, SKU: CU4152-101. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -672,7 +878,14 @@ const flowNanobananaData = {
         "IMG_0199.jpeg",
         "IMG_0200.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/AR4430-101/01-lateral.webp",
+      "preview_primary": "assets/source-previews/AR4430-101/01_IMG_0196.webp",
+      "real_photos": [
+        "assets/source-previews/AR4430-101/01_IMG_0196.webp",
+        "assets/source-previews/AR4430-101/02_IMG_0197.webp",
+        "assets/source-previews/AR4430-101/03_IMG_0198.webp",
+        "assets/source-previews/AR4430-101/04_IMG_0199.webp",
+        "assets/source-previews/AR4430-101/05_IMG_0200.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Lift Off White / Black / Wolf Grey, SKU: AR4430-101. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -695,7 +908,14 @@ const flowNanobananaData = {
         "IMG_0204.jpeg",
         "IMG_0205.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/DM0967-111/01-lateral.webp",
+      "preview_primary": "assets/source-previews/DM0967-111/01_IMG_0201.webp",
+      "real_photos": [
+        "assets/source-previews/DM0967-111/01_IMG_0201.webp",
+        "assets/source-previews/DM0967-111/02_IMG_0202.webp",
+        "assets/source-previews/DM0967-111/03_IMG_0203.webp",
+        "assets/source-previews/DM0967-111/04_IMG_0204.webp",
+        "assets/source-previews/DM0967-111/05_IMG_0205.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 3 Retro \"Pure Money\", SKU: DM0967-111. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -718,7 +938,14 @@ const flowNanobananaData = {
         "IMG_0209.jpeg",
         "IMG_0210.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/553560-081/01-lateral.webp",
+      "preview_primary": "assets/source-previews/553560-081/01_IMG_0206.webp",
+      "real_photos": [
+        "assets/source-previews/553560-081/01_IMG_0206.webp",
+        "assets/source-previews/553560-081/02_IMG_0207.webp",
+        "assets/source-previews/553560-081/03_IMG_0208.webp",
+        "assets/source-previews/553560-081/04_IMG_0209.webp",
+        "assets/source-previews/553560-081/05_IMG_0210.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 Low \"Shattered Backboard Alternate\", SKU: 553560-081. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -741,7 +968,14 @@ const flowNanobananaData = {
         "IMG_0214.jpeg",
         "IMG_0215.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/HV4775-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/HV4775-001/01_IMG_0211.webp",
+      "real_photos": [
+        "assets/source-previews/HV4775-001/01_IMG_0211.webp",
+        "assets/source-previews/HV4775-001/02_IMG_0212.webp",
+        "assets/source-previews/HV4775-001/03_IMG_0213.webp",
+        "assets/source-previews/HV4775-001/04_IMG_0214.webp",
+        "assets/source-previews/HV4775-001/05_IMG_0215.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 Low \"Inner Beast\", SKU: HV4775-001. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -764,7 +998,14 @@ const flowNanobananaData = {
         "IMG_0219.jpeg",
         "IMG_0220.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/HQ8034-700/01-lateral.webp",
+      "preview_primary": "assets/source-previews/HQ8034-700/01_IMG_0216.webp",
+      "real_photos": [
+        "assets/source-previews/HQ8034-700/01_IMG_0216.webp",
+        "assets/source-previews/HQ8034-700/02_IMG_0217.webp",
+        "assets/source-previews/HQ8034-700/03_IMG_0218.webp",
+        "assets/source-previews/HQ8034-700/04_IMG_0219.webp",
+        "assets/source-previews/HQ8034-700/05_IMG_0220.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike LeBron Witness 9, SKU: HQ8034-700. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -787,7 +1028,14 @@ const flowNanobananaData = {
         "IMG_0224.jpeg",
         "IMG_0225.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IQ0213-685/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IQ0213-685/01_IMG_0221.webp",
+      "real_photos": [
+        "assets/source-previews/IQ0213-685/01_IMG_0221.webp",
+        "assets/source-previews/IQ0213-685/02_IMG_0222.webp",
+        "assets/source-previews/IQ0213-685/03_IMG_0223.webp",
+        "assets/source-previews/IQ0213-685/04_IMG_0224.webp",
+        "assets/source-previews/IQ0213-685/05_IMG_0225.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 Rust Pink / Metallic Red, SKU: IQ0213-685. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -810,7 +1058,14 @@ const flowNanobananaData = {
         "IMG_0229.jpeg",
         "IMG_0230.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/CW2626-008/01-lateral.webp",
+      "preview_primary": "assets/source-previews/CW2626-008/01_IMG_0226.webp",
+      "real_photos": [
+        "assets/source-previews/CW2626-008/01_IMG_0226.webp",
+        "assets/source-previews/CW2626-008/02_IMG_0227.webp",
+        "assets/source-previews/CW2626-008/03_IMG_0228.webp",
+        "assets/source-previews/CW2626-008/04_IMG_0229.webp",
+        "assets/source-previews/CW2626-008/05_IMG_0230.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Shox R4 College Grey / Volt, SKU: CW2626-008. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -834,7 +1089,15 @@ const flowNanobananaData = {
         "IMG_0235.jpeg",
         "IMG_0236.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/HQ7980-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/HQ7980-001/01_IMG_0231.webp",
+      "real_photos": [
+        "assets/source-previews/HQ7980-001/01_IMG_0231.webp",
+        "assets/source-previews/HQ7980-001/02_IMG_0232.webp",
+        "assets/source-previews/HQ7980-001/03_IMG_0233.webp",
+        "assets/source-previews/HQ7980-001/04_IMG_0234.webp",
+        "assets/source-previews/HQ7980-001/05_IMG_0235.webp",
+        "assets/source-previews/HQ7980-001/06_IMG_0236.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 5 Retro \"Halloween\", SKU: HQ7980-001. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -857,7 +1120,14 @@ const flowNanobananaData = {
         "IMG_0240.jpeg",
         "IMG_0241.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IM4026-100/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IM4026-100/01_IMG_0237.webp",
+      "real_photos": [
+        "assets/source-previews/IM4026-100/01_IMG_0237.webp",
+        "assets/source-previews/IM4026-100/02_IMG_0238.webp",
+        "assets/source-previews/IM4026-100/03_IMG_0239.webp",
+        "assets/source-previews/IM4026-100/04_IMG_0240.webp",
+        "assets/source-previews/IM4026-100/05_IMG_0241.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 4 Retro \"Flight Club\", SKU: IM4026-100. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -881,7 +1151,15 @@ const flowNanobananaData = {
         "IMG_0246.jpeg",
         "IMG_0247.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IO2829-600/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IO2829-600/01_IMG_0242.webp",
+      "real_photos": [
+        "assets/source-previews/IO2829-600/01_IMG_0242.webp",
+        "assets/source-previews/IO2829-600/02_IMG_0243.webp",
+        "assets/source-previews/IO2829-600/03_IMG_0244.webp",
+        "assets/source-previews/IO2829-600/04_IMG_0245.webp",
+        "assets/source-previews/IO2829-600/05_IMG_0246.webp",
+        "assets/source-previews/IO2829-600/06_IMG_0247.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 4 Retro \"She's A Star\", SKU: IO2829-600. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -904,7 +1182,14 @@ const flowNanobananaData = {
         "IMG_0251.jpeg",
         "IMG_0252.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IV6811-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IV6811-001/01_IMG_0248.webp",
+      "real_photos": [
+        "assets/source-previews/IV6811-001/01_IMG_0248.webp",
+        "assets/source-previews/IV6811-001/02_IMG_0249.webp",
+        "assets/source-previews/IV6811-001/03_IMG_0250.webp",
+        "assets/source-previews/IV6811-001/04_IMG_0251.webp",
+        "assets/source-previews/IV6811-001/05_IMG_0252.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 Mid SE Black / Opti Yellow / Silver, SKU: IV6811-001. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -928,7 +1213,15 @@ const flowNanobananaData = {
         "IMG_0257.jpeg",
         "IMG_0258.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR0519-600/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR0519-600/01_IMG_0253.webp",
+      "real_photos": [
+        "assets/source-previews/IR0519-600/01_IMG_0253.webp",
+        "assets/source-previews/IR0519-600/02_IMG_0254.webp",
+        "assets/source-previews/IR0519-600/03_IMG_0255.webp",
+        "assets/source-previews/IR0519-600/04_IMG_0256.webp",
+        "assets/source-previews/IR0519-600/05_IMG_0257.webp",
+        "assets/source-previews/IR0519-600/06_IMG_0258.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Son Of Mars Low Rojo Pasión / Neblina Gris / White / Black, SKU: IR0519-600. Synthesized from the 6 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 6 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -951,7 +1244,14 @@ const flowNanobananaData = {
         "IMG_0262.jpeg",
         "IMG_0263.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IW6277-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IW6277-001/01_IMG_0259.webp",
+      "real_photos": [
+        "assets/source-previews/IW6277-001/01_IMG_0259.webp",
+        "assets/source-previews/IW6277-001/02_IMG_0260.webp",
+        "assets/source-previews/IW6277-001/03_IMG_0261.webp",
+        "assets/source-previews/IW6277-001/04_IMG_0262.webp",
+        "assets/source-previews/IW6277-001/05_IMG_0263.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Air Jordan 1 Retro Low OG \"Banned\", SKU: IW6277-001. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -974,7 +1274,14 @@ const flowNanobananaData = {
         "IMG_0267.jpeg",
         "IMG_0268.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IR0519-003/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IR0519-003/01_IMG_0264.webp",
+      "real_photos": [
+        "assets/source-previews/IR0519-003/01_IMG_0264.webp",
+        "assets/source-previews/IR0519-003/02_IMG_0265.webp",
+        "assets/source-previews/IR0519-003/03_IMG_0266.webp",
+        "assets/source-previews/IR0519-003/04_IMG_0267.webp",
+        "assets/source-previews/IR0519-003/05_IMG_0268.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Son Of Mars Low Black / University Red, SKU: IR0519-003. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -997,7 +1304,14 @@ const flowNanobananaData = {
         "IMG_0273.jpeg",
         "IMG_0274.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/AQ9214-012/01-lateral.webp",
+      "preview_primary": "assets/source-previews/AQ9214-012/01_IMG_0269.webp",
+      "real_photos": [
+        "assets/source-previews/AQ9214-012/01_IMG_0269.webp",
+        "assets/source-previews/AQ9214-012/02_IMG_0270.webp",
+        "assets/source-previews/AQ9214-012/03_IMG_0272.webp",
+        "assets/source-previews/AQ9214-012/04_IMG_0273.webp",
+        "assets/source-previews/AQ9214-012/05_IMG_0274.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Jordan Max Aura Cool Grey / Gym Red / Black / White, SKU: AQ9214-012. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -1020,7 +1334,14 @@ const flowNanobananaData = {
         "IMG_0278.jpeg",
         "IMG_0279.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IB6644-001/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IB6644-001/01_IMG_0275.webp",
+      "real_photos": [
+        "assets/source-previews/IB6644-001/01_IMG_0275.webp",
+        "assets/source-previews/IB6644-001/02_IMG_0276.webp",
+        "assets/source-previews/IB6644-001/03_IMG_0277.webp",
+        "assets/source-previews/IB6644-001/04_IMG_0278.webp",
+        "assets/source-previews/IB6644-001/05_IMG_0279.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 '07 Premium \"Flowers\", SKU: IB6644-001. Synthesized from the 5 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 5 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",
@@ -1045,7 +1366,16 @@ const flowNanobananaData = {
         "IMG_0285.jpeg",
         "IMG_0286.jpeg"
       ],
-      "preview_primary": "assets/2-norm-std/IM6969-451/01-lateral.webp",
+      "preview_primary": "assets/source-previews/IM6969-451/01_IMG_0280.webp",
+      "real_photos": [
+        "assets/source-previews/IM6969-451/01_IMG_0280.webp",
+        "assets/source-previews/IM6969-451/02_IMG_0281.webp",
+        "assets/source-previews/IM6969-451/03_IMG_0282.webp",
+        "assets/source-previews/IM6969-451/04_IMG_0283.webp",
+        "assets/source-previews/IM6969-451/05_IMG_0284.webp",
+        "assets/source-previews/IM6969-451/06_IMG_0285.webp",
+        "assets/source-previews/IM6969-451/07_IMG_0286.webp"
+      ],
       "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
       "ref_master_name": "Air Jordan 9 Retro OG \"Space Jam\"",
       "prompt_text": "Commercial e-commerce studio contact sheet grid showing exactly 8 distinct clean photographic panels of the authentic sneaker Nike Air Force 1 Obsidiana / Azul Difuso / Perla Suave / Aluminio, SKU: IM6969-451. Synthesized from the 7 input reference photos provided, matching the exact 4-row by 2-column layout and camera angles of reference image \"Air Jordan 9 Retro OG \"Space Jam\"\". Row 1: [01 | LATERAL: 90-degree lateral profile pointing LEFT], [02 | MEDIAL: 90-degree medial inner side profile pointing LEFT]. Row 2: [03 | 3/4 FRONT: three-quarter perspective front-quarter facing LEFT], [04 | 3/4 REAR: three-quarter rear perspective facing LEFT]. Row 3: [05 | FRONT: direct straight front eye-level view], [06 | REAR: direct rear heel counter view]. Row 4: [07 | TOP-DOWN: direct overhead flat lay view], [08 | OUTSOLE: direct bottom outsole tread view]. Synthesize the 3D geometry seamlessly using all 7 multi-angle reference photos to reconstruct complete 360-degree colorway and textures. Pure solid seamless white background (#FFFFFF). Uniform high-end commercial studio lighting, balanced softbox illumination at 5500K neutral daylight, razor-sharp focus across all 8 panels, subtle grounded floor contact shadows, zero floating artifacts, 8k resolution e-commerce product catalog standard.",

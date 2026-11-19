@@ -780,18 +780,27 @@
         </div>
       </div>
 
-      <!-- Foto de Referencia del Producto Seleccionado -->
+      <!-- Foto de Referencia Real del Producto (_source_data) -->
       <div class="ref-visual-card" style="border-color:rgba(168, 85, 247, 0.4);">
-        <div class="ref-header">
-          <span>👟</span> Foto de Referencia del Producto
+        <div class="ref-header" style="justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span>👟</span> Foto de Referencia Real (_source_data)
+          </div>
+          <span style="font-size:11px; color:var(--text-muted); background:#1e293b; padding:2px 8px; border-radius:10px;" id="product-ref-count">0 fotos</span>
         </div>
         <div class="ref-img-container" style="cursor:pointer;" title="Clic para ver en tamaño completo" onclick="if(document.getElementById('product-ref-img').src) window.open(document.getElementById('product-ref-img').src, '_blank')">
-          <img id="product-ref-img" src="" alt="Referencia del Producto">
+          <img id="product-ref-img" src="" alt="Referencia Real del Producto">
         </div>
+        
+        <!-- Carrusel / Miniaturas de Fotos Reales -->
+        <div id="product-thumbs-strip" style="display:flex; gap:6px; margin-top:10px; overflow-x:auto; padding-bottom:4px;">
+        </div>
+
         <div class="ref-desc">
           <strong id="product-ref-name">-</strong><br>
           <span id="product-ref-sku" style="font-family:monospace; color:var(--accent-purple); font-weight:700;">-</span> &bull; 
-          <span id="product-ref-path" style="font-size:11px; color:var(--text-dim);">-</span>
+          <span id="product-ref-file-label" style="font-family:monospace; color:#38bdf8; font-size:11.5px; font-weight:600;">-</span><br>
+          <span id="product-ref-path" style="font-size:11px; color:var(--text-dim); word-break:break-all;">-</span>
         </div>
       </div>
 
@@ -970,23 +979,70 @@
     document.getElementById('active-photos-count').textContent = `${p.image_count} fotos de inventario`;
     document.getElementById('active-path-text').textContent = dynamicPath;
 
-    // Actualizar Foto de Referencia del Producto
+    // Actualizar Foto de Referencia Real del Producto (_source_data)
     const prodImg = document.getElementById('product-ref-img');
+    const thumbsStrip = document.getElementById('product-thumbs-strip');
+    const refCount = document.getElementById('product-ref-count');
+    const refFileLabel = document.getElementById('product-ref-file-label');
+
+    const realList = (p.real_photos && p.real_photos.length) ? p.real_photos : (p.preview_primary ? [p.preview_primary] : []);
+    const fileNames = (p.image_files && p.image_files.length) ? p.image_files : [];
+
+    if (refCount) refCount.textContent = `${realList.length} fotos reales`;
+
+    if (thumbsStrip) {
+      thumbsStrip.innerHTML = '';
+      realList.forEach((src, idx) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.alt = fileNames[idx] || `Foto ${idx+1}`;
+        thumb.style.width = '44px';
+        thumb.style.height = '44px';
+        thumb.style.objectFit = 'cover';
+        thumb.style.borderRadius = '6px';
+        thumb.style.cursor = 'pointer';
+        thumb.style.border = idx === 0 ? '2px solid var(--accent-purple)' : '1px solid var(--border)';
+        thumb.style.background = '#0b1120';
+        thumb.style.flexShrink = '0';
+        thumb.style.transition = 'all 0.15s ease';
+        thumb.title = fileNames[idx] || `Foto ${idx+1}`;
+
+        thumb.onclick = () => {
+          if (prodImg) {
+            prodImg.src = src;
+            prodImg.alt = `${p.name} - ${fileNames[idx] || ''}`;
+          }
+          if (refFileLabel) {
+            refFileLabel.textContent = fileNames[idx] || `Foto ${idx+1}`;
+          }
+          thumbsStrip.querySelectorAll('img').forEach(img => {
+            img.style.border = '1px solid var(--border)';
+            img.style.transform = 'scale(1)';
+          });
+          thumb.style.border = '2px solid var(--accent-purple)';
+          thumb.style.transform = 'scale(1.05)';
+        };
+
+        thumbsStrip.appendChild(thumb);
+      });
+    }
+
     if (prodImg) {
-      const primarySrc = p.preview_primary || `assets/2-norm-std/${p.sku}/01-lateral.webp`;
+      const primarySrc = realList[0] || p.preview_primary || `assets/2-norm-std/${p.sku}/01-lateral.webp`;
       prodImg.src = primarySrc;
       prodImg.alt = `${p.name} (${p.sku})`;
       prodImg.onerror = function() {
         this.onerror = null;
-        this.src = `assets/productos/${p.sku}/01-lateral.webp`;
+        this.src = `assets/2-norm-std/${p.sku}/01-lateral.webp`;
       };
     }
     const refName = document.getElementById('product-ref-name');
     if (refName) refName.textContent = p.name;
     const refSku = document.getElementById('product-ref-sku');
     if (refSku) refSku.textContent = p.sku;
+    if (refFileLabel) refFileLabel.textContent = fileNames[0] || 'Foto 01';
     const refPath = document.getElementById('product-ref-path');
-    if (refPath) refPath.textContent = p.preview_primary || `assets/2-norm-std/${p.sku}/01-lateral.webp`;
+    if (refPath) refPath.textContent = dynamicPath;
 
     // Actualizar Prompts
     document.getElementById('prompt-text-view').textContent = p.prompt_text;

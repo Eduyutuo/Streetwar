@@ -1,5 +1,8 @@
 import os
 import json
+import re
+from PIL import Image, ImageOps
+from concurrent.futures import ThreadPoolExecutor
 
 base = '_source_data'
 top_folders = [
@@ -14,6 +17,12 @@ with open('dist/js/assigned_angles.json', 'r', encoding='utf-8') as f:
 def clean_name(name):
     return name.replace('“', '"').replace('”', '"').replace('’', "'")
 
+def sanitize_filename(filename):
+    name, _ = os.path.splitext(filename)
+    return re.sub(r'[^a-zA-Z0-9_-]', '_', name)
+
+# Tareas para generar previews optimizados de las fotos reales
+tasks = []
 catalog = []
 sku_idx = 0
 
@@ -33,6 +42,22 @@ for top, groups in top_folders:
                 name = clean_name(matched['name'] if matched else pdir)
                 
                 img_count = len(files)
+                
+                # Previews locales reales dentro de dist/assets/source-previews/{sku}
+                sku_preview_dir = os.path.join('dist', 'assets', 'source-previews', sku)
+                os.makedirs(sku_preview_dir, exist_ok=True)
+                
+                real_photos = []
+                for i, f in enumerate(files):
+                    clean_fn = sanitize_filename(f)
+                    webp_name = f"{i+1:02d}_{clean_fn}.webp"
+                    dst_path = os.path.join(sku_preview_dir, webp_name)
+                    src_path = os.path.join(pdir_full, f)
+                    rel_web_path = f"assets/source-previews/{sku}/{webp_name}"
+                    real_photos.append(rel_web_path)
+                    tasks.append((src_path, dst_path))
+                
+                preview_primary = real_photos[0] if real_photos else f"assets/2-norm-std/{sku}/01-lateral.webp"
                 
                 # Generar prompt de texto adaptativo
                 prompt_text = (
@@ -96,7 +121,8 @@ for top, groups in top_folders:
                     "full_disk_path": f"C:/Users/eduar/Documents/CATALOGO/_source_data/{top}/{g}/{pdir}",
                     "image_count": img_count,
                     "image_files": files,
-                    "preview_primary": f"assets/2-norm-std/{sku}/01-lateral.webp",
+                    "preview_primary": preview_primary,
+                    "real_photos": real_photos,
                     "ref_master_image": "assets/Air Jordan 9 Retro OG Space Jam.jpg",
                     "ref_master_name": REF_MASTER,
                     "prompt_text": prompt_text,
@@ -105,6 +131,23 @@ for top, groups in top_folders:
                 })
                 
                 sku_idx += 1
+
+# Procesar imágenes en paralelo
+def convert_worker(item):
+    src, dst = item
+    if os.path.exists(dst):
+        return
+    try:
+        with Image.open(src) as im:
+            im = ImageOps.exif_transpose(im)
+            im.thumbnail((1200, 1200), Image.Resampling.LANCZOS)
+            im.save(dst, 'WEBP', quality=85)
+    except Exception as e:
+        print(f"Error procesando {src}: {e}")
+
+print(f"Generando {len(tasks)} previews de fotos reales desde _source_data...")
+with ThreadPoolExecutor(max_workers=8) as ex:
+    list(ex.map(convert_worker, tasks))
 
 # Guardar JS
 js_content = "const flowNanobananaData = " + json.dumps({
@@ -116,4 +159,4 @@ js_content = "const flowNanobananaData = " + json.dumps({
 with open('dist/js/flow_nanobanana_data.js', 'w', encoding='utf-8') as f:
     f.write(js_content)
 
-print(f"Generado dist/js/flow_nanobanana_data.js con {len(catalog)} productos.")
+print(f"Generado dist/js/flow_nanobanana_data.js con {len(catalog)} productos y {len(tasks)} fotos reales de inventario.")

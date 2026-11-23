@@ -1,0 +1,97 @@
+Eres un ingeniero senior full-stack y especialista en procesamiento de imágenes con Python/Node. Necesito que actualices y mejores este proyecto (**Flow Workstation**) en todos los frentes indicados abajo. Antes de editar, inspecciona la estructura real del repositorio (frontend, fuente de datos de los 45 modelos y `scripts/split_grid_angles.py`) para respetar el estilo, stack y rutas existentes.
+
+---
+
+### OBJETIVO GENERAL
+1. Corregir y mejorar la generación de prompts (Texto Plano y JSON) en **2 idiomas (Inglés y Español)** para que coincidan 100% con la cuadrícula maestra 4x2 de referencia (`01 | LATERAL` a `08 | OUTSOLE`).
+2. Normalizar el catálogo completo de **45 modelos (Grupos A hasta G)** y sus SKUs.
+3. Mejorar `scripts/split_grid_angles.py` para que corte la cuadrícula descargada en 8 imágenes individuales **del mismo tamaño exacto en píxeles (1K `1024x1024` o HD `1200x1200`)**, limpias, centradas sobre blanco puro `#FFFFFF` y exportadas directamente en **WebP** organizadas por Grupo y SKU.
+4. Actualizar la UI de **Flow Workstation** con controles de idioma (`EN | ES`), tamaño de salida (`1024px 1K` / `1200px HD`), modo de vistas `05/06` y comando CLI dinámico listo para copiar.
+
+---
+
+### FASE 1 — AUDITORÍA Y NORMALIZACIÓN DEL CATÁLOGO (45 MODELOS, GRUPOS A–G)
+1. Localiza el archivo donde viven los 45 modelos del inventario (Grupos A hasta G).
+2. Normaliza los datos manteniendo las rutas locales reales de `_source_data`:
+   - Corrige typos conocidos en nombres que afecten a la IA (por ejemplo, `"Spam Jam"` -> `"Space Jam"` en `IX6180-100`).
+   - Normaliza todos los **SKU / Códigos** a MAYÚSCULAS y formato consistente con guion (ej. `"ix6180-100"` -> `"IX6180-100"`, `"IO2076 100"` -> `"IO2076-100"`, `"ir4714-100"` -> `"IR4714-100"`), conservando un campo `rawSku` si hiciera falta para buscar carpetas existentes sin romper la vinculación con `_source_data`.
+   - Verifica que los 7 grupos (**Grupo A, B, C, D, E, F, G**) estén completos y filtrables en la UI.
+
+---
+
+### FASE 2 — MEJORA DE PROMPTS (EN + ES, TEXTO PLANO + JSON) Y CONTROLES EN LA UI
+Actualiza la lógica que genera los prompts en **Flow Workstation** aplicando estas correcciones críticas respecto a la cuadrícula maestra de referencia:
+
+1. **Correcciones obligatorias en ambos formatos (Texto Plano y JSON):**
+   - **Resolución y márgenes:** Especificar generación maestra en **4K** (`aspectRatio 1:1`) para que al cortar en 8 paneles cada recorte tenga resolución **HD / 1K real**, con margen blanco amplio e idéntico en cada celda para que el calzado nunca toque bordes ni etiquetas.
+   - **Líneas divisorias reales:** Cambiar cualquier mención a líneas blancas por **líneas divisorias finas de 1px en gris oscuro** (`thin 1px dark-gray divider lines`) sobre fondo `#FFFFFF` puro, con etiquetas en esquina superior izquierda (`01 | LATERAL`, etc.).
+   - **Ángulos exactos corregidos (no invertir direcciones):**
+     - `01 | LATERAL`: perfil lateral externo a 90°, puntera apuntando a la **IZQUIERDA** (`toe pointing LEFT`).
+     - `02 | MEDIAL`: perfil medial interno a 90°, puntera apuntando a la **DERECHA** (`toe pointing RIGHT`). *(Corregir el error anterior donde decía LEFT).*
+     - `03 | 3/4 FRONT`: vista 3/4 frontal-lateral a 45°, puntera apuntando abajo-**IZQUIERDA** (`toe pointing bottom-LEFT`).
+     - `04 | 3/4 REAR`: vista 3/4 trasera a 135°, talón a la izquierda y puntera apuntando a la **DERECHA** (`heel on left, toe pointing RIGHT`).
+     - `05 | FRONT` y `06 | REAR` — **Agregar un selector/toggle en la UI**:
+       - Modo **A ("Plantilla Maestra — Pares")**:
+         - `05 | FRONT`: par lado a lado (izquierda vista frontal directa, derecha vista trasera directa), centrado.
+         - `06 | REAR`: par lado a lado (doble vista trasera del talón), centrado.
+       - Modo **B ("E-commerce — 1 Zapatilla")**:
+         - `05 | FRONT`: 1 sola zapatilla vista frontal directa, centrada.
+         - `06 | REAR`: 1 sola zapatilla vista trasera del talón, centrada.
+     - `07 | TOP-DOWN`: vista cenital horizontal, talón a la izquierda y puntera apuntando a la **DERECHA** (`toe pointing RIGHT`).
+     - `08 | OUTSOLE`: vista inferior horizontal de la suela, talón a la izquierda y puntera apuntando a la **DERECHA** (`toe pointing RIGHT`).
+
+2. **Selector de Idioma (`EN | ES`) en la UI:**
+   - Agrega un selector claro (`EN` / `ES`) en la zona de prompts para que tanto **Opción 1: Prompt en Texto Plano** como **Opción 2: Prompt Estructurado en JSON** se generen dinámicamente en **Inglés** o en **Español** con el `MODEL_NAME`, `SKU`, `GROUP` y `FOLDER_ORIGIN` del modelo seleccionado.
+   - Asegúrate de que la versión en Inglés use terminología fotográfica de estudio precisa (`5500K neutral daylight`, `subtle grounded contact shadow`, `edge-to-edge f/8 sharpness`, `#FFFFFF seamless pure white background`) y la versión en Español mantenga exactamente el mismo nivel técnico.
+
+---
+
+### FASE 3 — REESCRITURA PROFESIONAL DE `scripts/split_grid_angles.py` (CORTE + NORMALIZADO 1K/HD + WEBP)
+Revisa y mejora `scripts/split_grid_angles.py` usando **Python + Pillow (`PIL`)** (agrega `pillow` a `requirements.txt` si no existe, sin depender obligatoriamente de librerías pesadas externas; usa `numpy` solo si ya está instalado o implementa todo en `Pillow` puro para cero fricción).
+
+El script debe cumplir exactamente con todo esto:
+1. **CLI flexible (individual y lote):**
+   - Modo individual:
+     `python scripts/split_grid_angles.py "ruta_imagen.png" --sku IX6180-100 --group Grupo_A --size 1024 --format webp`
+   - Modo lote (`--batch-dir`): escanea una carpeta con cuadrículas descargadas nombradas por SKU (ej. `IX6180-100.png` o `Grupo_A/IX6180-100.jpg`) y procesa todas automáticamente en segundos.
+   - Parámetros soportados:
+     - `--layout 4x2` (por defecto `4x2`: 4 filas × 2 columnas).
+     - `--size 1024` (tamaño cuadrado final por defecto `1024` para `1024x1024` 1K; soportar `1200` para `1200x1200` HD o `--width` / `--height` personalizados).
+     - `--format webp` (por defecto `webp`, también aceptar `png` o `both`).
+     - `--quality 90` (calidad WebP por defecto `90`, `method=6` para máxima compresión sin pérdida visual).
+     - `--fill-ratio 0.82` (el producto ocupará máximo el 82% del ancho/alto del lienzo para mantener margen uniforme y consistencia visual entre los 45 modelos).
+     - `--keep-labels` (flag booleano; **por defecto FALSO**, es decir, limpia la etiqueta `01 | LATERAL` y las rayas del borde).
+     - `--output-dir` (por defecto `./output_catalog`).
+
+2. **Algoritmo exacto por cada una de las 8 celdas (`01_lateral`, `02_medial`, `03_3-4_front`, `04_3-4_rear`, `05_front`, `06_rear`, `07_top_down`, `08_outsole`):**
+   - **Paso A (Corte + limpieza de bordes de cuadrícula):** Dividir la imagen en 4 filas × 2 columnas y recortar un margen interno seguro (ej. `1.5%`–`2%` o detección de líneas divisorias oscuras en los bordes) para eliminar completamente las líneas de 1px de la cuadrícula.
+   - **Paso B (Limpieza automática de la etiqueta superior izquierda cuando `--keep-labels` está desactivado):**
+     - Analizar la franja superior izquierda de cada celda (aprox. top `12%`–`14%` de altura × `48%` de ancho) o detectar componentes/texto desconectados del calzado en esa esquina y pintarlos de `#FFFFFF` puro **sin cortar nunca la parte superior de la lengüeta o el cuello de la zapatilla si entra en esa zona** (verifica si hay una separación de filas blancas entre el texto y el zapato o limpia específicamente la zona superior izquierda donde solo hay píxeles oscuros aislados del texto).
+   - **Paso C (Normalización de blanco puro + Auto-Centrado por Bounding Box):**
+     - Limpiar grises muy claros de compresión JPEG/PNG del fondo (píxeles casi blancos cercanos a `>= 246` en R, G y B llevarlos suavemente a `255, 255, 255`, cuidando de no borrar bordes blancos reales de zapatillas blancas — usar detección inteligente de fondo conectado desde los bordes o flood-fill suave / umbral conservador solo para el bounding box).
+     - Calcular el bounding box real del calzado (ignorando polvo o píxeles aislados < 3px).
+     - Redimensionar proporcionalmente con `Image.Resampling.LANCZOS` para que encaje dentro de `size * fill_ratio`.
+     - Centrar exactamente (horizontal y verticalmente) sobre un lienzo nuevo `#FFFFFF` de dimensiones exactas `size x size` (ej. `1024x1024` o `1200x1200`).
+   - **Paso D (Exportación y estructura de carpetas):**
+     - Guardar como:
+       `{output_dir}/{group}/{sku}/{sku}_01_lateral.webp` ... `{sku}_08_outsole.webp`
+     - Imprimir resumen en consola por cada SKU: dimensiones verificadas (`1024x1024`), peso en KB de cada WebP, y advertencias si algún panel detectó un bounding box anómalo (muy vacío o pegado al borde).
+
+---
+
+### FASE 4 — ACTUALIZAR EL PANEL DE COMANDO EN LA UI DE FLOW WORKSTATION
+En la tarjeta inferior de comando de corte (actualmente muestra `CORTAR IMAGEN DESCARGADA (1200x1200 PX IDÉNTICO)`):
+1. Agrega un selector rápido de resolución de salida: **`1K (1024×1024)`** | **`HD (1200×1200)`**, y un checkbox **`Limpiar etiquetas (para tienda)`** (activado por defecto).
+2. Actualiza dinámicamente el comando copiable para que incluya `--sku`, `--group`, `--size` y `--format webp` (y si desactivan limpiar etiquetas, añada `--keep-labels`).
+3. Añade un botón secundario para copiar el comando de **procesamiento masivo por lote** (`--batch-dir`).
+
+---
+
+### FASE 5 — VERIFICACIÓN OBLIGATORIA ANTES DE TERMINAR
+1. Instala/verifica `pillow` en el entorno Python del proyecto.
+2. Ejecuta `scripts/split_grid_angles.py` con una imagen de prueba de cuadrícula 4×2 (si hay alguna en el repo úsala; si no, genera una sintética en `/tmp` con Pillow que simule 8 paneles con líneas 1px, etiquetas `01 | LATERAL` y siluetas de distintos tamaños) y comprueba que:
+   - Se generan los 8 archivos `.webp` en `Grupo/SKU/`.
+   - Todos los `.webp` tienen **exactamente el mismo tamaño** (`1024x1024` o `1200x1200`).
+   - El fondo es `#FFFFFF` puro y no quedan bordes de la cuadrícula ni etiquetas cuando `--keep-labels` no está activo.
+3. Compila / verifica el frontend (`npm run build` o `tsc --noEmit`) para asegurar cero errores de TypeScript o React.
+4. Al terminar, entrega un resumen conciso de los archivos modificados, las pruebas ejecutadas y los comandos listos para usar.

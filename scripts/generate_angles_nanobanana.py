@@ -252,6 +252,17 @@ def main():
     args = parser.parse_args()
     api_key = args.api_key or os.environ.get("GEMINI_API_KEY")
 
+    if not api_key and os.path.exists('.env'):
+        try:
+            with open('.env', 'r', encoding='utf-8') as ef:
+                for eline in ef:
+                    eline = eline.strip()
+                    if eline.startswith('GEMINI_API_KEY='):
+                        api_key = eline.split('=', 1)[1].strip().strip('"').strip("'")
+                        break
+        except Exception:
+            pass
+
     angles_file = 'scratch/assigned_angles.json' if os.path.exists('scratch/assigned_angles.json') else 'scratch/product_mapping.json'
     with open(angles_file, 'r', encoding='utf-8') as f:
         products = json.load(f)

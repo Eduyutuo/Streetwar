@@ -489,23 +489,194 @@
       color: #022c22;
     }
 
-    /* Comando de Corte */
-    .cli-bar {
+    /* Barra de Controles de Prompts (Idioma y Modo 05/06) */
+    .prompt-controls-bar {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .ctrl-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ctrl-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .ctrl-pills {
+      display: flex;
+      background: #000;
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid #1e293b;
+      gap: 3px;
+    }
+
+    .c-pill {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .c-pill:hover {
+      color: #fff;
+    }
+
+    .c-pill.active {
+      background: var(--accent);
+      color: #090d16;
+      box-shadow: 0 1px 6px rgba(56, 189, 248, 0.3);
+    }
+
+    .c-pill-purple.active {
+      background: var(--accent-purple);
+      color: #fff;
+      box-shadow: 0 1px 6px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Panel CLI de Corte y Normalización (Fase 4) */
+    .cli-panel-card {
       background: #0b1120;
-      border: 1px solid rgba(52, 211, 153, 0.3);
-      border-radius: 10px;
-      padding: 14px 18px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cli-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .cli-title-box h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .cli-title-box p {
+      font-size: 11.5px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .cli-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cli-size-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cli-size-toggle span {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .clean-check-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .clean-check-label input[type="checkbox"] {
+      accent-color: var(--accent-green);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .cli-code-container {
+      background: #050811;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .cli-text {
+    .cli-code-text {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       color: #6ee7b7;
       word-break: break-all;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .cli-buttons-wrap {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cli-sub {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .btn-cli-sub:hover {
+      background: #334155;
+      color: #fff;
     }
 
     /* Columna 3: Instrucciones y Referencias */
@@ -716,6 +887,24 @@
         </div>
       </div>
 
+      <!-- Barra de Controles de Prompts (Idioma EN/ES y Modo 05/06) -->
+      <div class="prompt-controls-bar">
+        <div class="ctrl-section">
+          <span class="ctrl-label">🌐 Idioma Prompt:</span>
+          <div class="ctrl-pills" id="lang-pills">
+            <button class="c-pill active" data-lang="EN">🇺🇸 EN (English)</button>
+            <button class="c-pill" data-lang="ES">🇪🇸 ES (Español)</button>
+          </div>
+        </div>
+        <div class="ctrl-section">
+          <span class="ctrl-label">📐 Ángulos 05/06:</span>
+          <div class="ctrl-pills" id="mode-pills">
+            <button class="c-pill c-pill-purple active" data-mode="mode_a" title="05: Par Frontal + Trasero | 06: Par Doble Talón">Modo A (Pares • Plantilla Maestra)</button>
+            <button class="c-pill c-pill-purple" data-mode="mode_b" title="05: 1 Zapatilla Frontal | 06: 1 Zapatilla Trasera">Modo B (1 Zapatilla • E-Commerce)</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Opción 1: TEXTO PLANO -->
       <div class="prompt-box-card">
         <div class="box-top">
@@ -752,13 +941,40 @@
         </div>
       </div>
 
-      <!-- Comando de Corte Automático -->
-      <div class="cli-bar">
-        <div>
-          <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Cortar Imagen Descargada (1200×1200 px idéntico)</div>
-          <div class="cli-text" id="cli-cmd-view">python scripts/split_grid_angles.py "imagen.jpg" --sku SKU --layout 4x2</div>
+      <!-- Panel de Comando CLI de Corte y Normalización -->
+      <div class="cli-panel-card">
+        <div class="cli-card-top">
+          <div class="cli-title-box">
+            <h3><span>⚡</span> Cortar y Normalizar Cuadrícula (WebP 1K / HD)</h3>
+            <p>Corta las 8 tomas, elimina líneas 1px, auto-centra sobre blanco puro #FFFFFF y organiza por Grupo y SKU</p>
+          </div>
+          <div class="cli-controls-group">
+            <div class="cli-size-toggle">
+              <span>Resolución:</span>
+              <div class="ctrl-pills" id="size-pills">
+                <button class="c-pill active" data-size="1024">1K (1024×1024)</button>
+                <button class="c-pill" data-size="1200">HD (1200×1200)</button>
+              </div>
+            </div>
+            <label class="clean-check-label">
+              <input type="checkbox" id="clean-labels-toggle" checked>
+              <span>Limpiar etiquetas (para tienda)</span>
+            </label>
+          </div>
         </div>
-        <button class="btn-copy-action" style="padding:6px 14px; font-size:12px; background:#1e293b; color:#fff;" onclick="copyCliCmd(this)">Copiar Comando</button>
+        <div class="cli-code-container">
+          <div class="cli-code-text" id="cli-cmd-view">python scripts/split_grid_angles.py "imagen.png" --sku SKU --size 1024 --format webp</div>
+          <div class="cli-buttons-wrap">
+            <button class="btn-copy-action" style="padding:6px 14px; font-size:12px; background:var(--accent-green); color:#022c22;" onclick="copyIndividualCmd(this)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Individual
+            </button>
+            <button class="btn-cli-sub" onclick="copyBatchCmd(this)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Copiar Lote (--batch-dir)
+            </button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -841,7 +1057,7 @@
         <div class="step-item" style="margin-bottom:0;">
           <div class="step-num">5</div>
           <div class="step-text">
-            Corta la imagen con el comando inferior para obtener las 8 fotos en <strong>1200×1200 px</strong>.
+            Corta la cuadrícula con el comando inferior para obtener las 8 fotos normalizadas en <strong>1024×1024 px (1K) o 1200×1200 px (HD)</strong>.
           </div>
         </div>
       </div>
@@ -860,6 +1076,10 @@
   let activeFilterGroup = 'ALL';
   let searchQuery = '';
   let activeIndex = 0;
+  let currentLang = 'EN';
+  let currentMode = 'mode_a';
+  let currentSize = 1024;
+  let cleanLabels = true;
 
   // LocalStorage para la ruta base personalizada
   const DEFAULT_BASE_PATH = "C:/Users/eduar/Documents/CATALOGO";
@@ -908,6 +1128,45 @@
     });
   });
 
+  // Inicializar Controles de Prompts (Idioma y Modo 05/06)
+  document.querySelectorAll('#lang-pills .c-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#lang-pills .c-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentLang = btn.dataset.lang;
+      updatePrompts();
+      showToast(`Idioma cambiado a: ${currentLang === 'EN' ? 'Inglés (EN)' : 'Español (ES)'}`);
+    });
+  });
+
+  document.querySelectorAll('#mode-pills .c-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mode-pills .c-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMode = btn.dataset.mode;
+      updatePrompts();
+      showToast(`Modo 05/06: ${currentMode === 'mode_a' ? 'Pares (Plantilla Maestra)' : '1 Zapatilla (E-Commerce)'}`);
+    });
+  });
+
+  // Inicializar Controles de CLI (Resolución y Limpieza)
+  document.querySelectorAll('#size-pills .c-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#size-pills .c-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentSize = parseInt(btn.dataset.size, 10);
+      updateCliCommand();
+    });
+  });
+
+  const cleanToggle = document.getElementById('clean-labels-toggle');
+  if (cleanToggle) {
+    cleanToggle.addEventListener('change', e => {
+      cleanLabels = e.target.checked;
+      updateCliCommand();
+    });
+  }
+
   // Búsqueda en vivo
   document.getElementById('search-input').addEventListener('input', e => {
     searchQuery = e.target.value.toLowerCase().trim();
@@ -921,6 +1180,7 @@
       const matchSearch = (!searchQuery) || 
         item.name.toLowerCase().includes(searchQuery) || 
         item.sku.toLowerCase().includes(searchQuery) ||
+        (item.rawSku && item.rawSku.toLowerCase().includes(searchQuery)) ||
         item.prod_dir.toLowerCase().includes(searchQuery);
       return matchTop && matchGroup && matchSearch;
     });
@@ -957,6 +1217,38 @@
     if (!filtered.some(p => p.index === activeIndex) && filtered.length > 0) {
       selectProduct(filtered[0].index);
     }
+  }
+
+  function updatePrompts() {
+    const p = catalog.find(item => item.index === activeIndex) || catalog[0];
+    if (!p) return;
+
+    let textPrompt = '';
+    let jsonPrompt = '';
+
+    if (p.prompts && p.prompts[currentLang] && p.prompts[currentLang][currentMode]) {
+      textPrompt = p.prompts[currentLang][currentMode].text;
+      jsonPrompt = p.prompts[currentLang][currentMode].json;
+    } else {
+      textPrompt = p.prompt_text || '';
+      jsonPrompt = p.prompt_json || '';
+    }
+
+    document.getElementById('prompt-text-view').textContent = textPrompt;
+    document.getElementById('prompt-json-view').textContent = jsonPrompt;
+    const countLabel = document.getElementById('count-label-1');
+    if (countLabel) countLabel.textContent = `${p.image_count}`;
+  }
+
+  function updateCliCommand() {
+    const p = catalog.find(item => item.index === activeIndex) || catalog[0];
+    if (!p) return;
+
+    const safeGroup = (p.group || 'Grupo_A').replace(/\s+/g, '_');
+    const keepFlag = cleanLabels ? '' : ' --keep-labels';
+    const cmd = `python scripts/split_grid_angles.py "${p.sku}.png" --sku ${p.sku} --group ${safeGroup} --size ${currentSize} --format webp${keepFlag}`;
+    const cmdView = document.getElementById('cli-cmd-view');
+    if (cmdView) cmdView.textContent = cmd;
   }
 
   function selectProduct(index) {
@@ -1044,14 +1336,9 @@
     const refPath = document.getElementById('product-ref-path');
     if (refPath) refPath.textContent = dynamicPath;
 
-    // Actualizar Prompts
-    document.getElementById('prompt-text-view').textContent = p.prompt_text;
-    document.getElementById('prompt-json-view').textContent = p.prompt_json;
-    document.getElementById('count-label-1').textContent = `${p.image_count}`;
-
-    // Comando CLI con ruta personalizada
-    const splitCmd = `python scripts/split_grid_angles.py "tu_imagen.jpg" --sku ${p.sku} --layout 4x2`;
-    document.getElementById('cli-cmd-view').textContent = splitCmd;
+    // Actualizar Prompts y Comando CLI
+    updatePrompts();
+    updateCliCommand();
   }
 
   function copyPrompt(elementId, btn) {
@@ -1076,10 +1363,28 @@
     });
   }
 
-  function copyCliCmd(btn) {
+  function copyIndividualCmd(btn) {
     const p = catalog.find(item => item.index === activeIndex) || catalog[0];
-    navigator.clipboard.writeText(p.split_command).then(() => {
-      showToast('Comando de corte copiado');
+    if (!p) return;
+    const safeGroup = (p.group || 'Grupo_A').replace(/\s+/g, '_');
+    const keepFlag = cleanLabels ? '' : ' --keep-labels';
+    const cmd = `python scripts/split_grid_angles.py "${p.sku}.png" --sku ${p.sku} --group ${safeGroup} --size ${currentSize} --format webp${keepFlag}`;
+    navigator.clipboard.writeText(cmd).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '¡Copiado!';
+      showToast(`Comando copiado para SKU ${p.sku}`);
+      setTimeout(() => { btn.innerHTML = orig; }, 1500);
+    });
+  }
+
+  function copyBatchCmd(btn) {
+    const keepFlag = cleanLabels ? '' : ' --keep-labels';
+    const batchCmd = `python scripts/split_grid_angles.py --batch-dir "./descargas" --output-dir "./output_catalog" --size ${currentSize} --format webp${keepFlag}`;
+    navigator.clipboard.writeText(batchCmd).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '¡Copiado!';
+      showToast('Comando de procesamiento por lote copiado');
+      setTimeout(() => { btn.innerHTML = orig; }, 1500);
     });
   }
 

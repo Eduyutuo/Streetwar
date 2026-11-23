@@ -214,7 +214,7 @@ if(grid){
       const formattedOriginal = originalPrice ? money(originalPrice) : '';
       const pIndex = inventory.indexOf(p);
       const sourcePhotos = typeof sourceLinkPhotos!=='undefined' ? sourceLinkPhotos[pIndex] : null;
-      const photos = (sourcePhotos || catalogPhotos[pIndex]?.map(catalogPhotoPath) || [p.image]).slice(0, 4);
+      const photos = (sourcePhotos || catalogPhotos[pIndex]?.map(catalogPhotoPath) || [p.image]).slice(0, 5);
 
       return `
         <article class="product" data-category="${p.category}" data-product-index="${pIndex}">

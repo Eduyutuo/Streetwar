@@ -70,10 +70,11 @@ if(detailRoot){
     }
   };
 
-  const allAvailablePhotos = (typeof sourceLinkPhotos !== 'undefined' && sourceLinkPhotos[id]?.length)
-    ? sourceLinkPhotos[id]
-    : (typeof galleries !== 'undefined' && galleries[id]?.length ? galleries[id] : [product.image]);
-  const gallery = [product.image, ...allAvailablePhotos.filter(image => image !== product.image)];
+  const gallery = (typeof sourceLinkPhotos !== 'undefined' && sourceLinkPhotos[id]?.length)
+    ? sourceLinkPhotos[id].slice(0, 8)
+    : (typeof galleries !== 'undefined' && galleries[id]?.length 
+        ? galleries[id].slice(0, 8) 
+        : [product.image]);
   let selected='';
   let galleryIndex=0;
 

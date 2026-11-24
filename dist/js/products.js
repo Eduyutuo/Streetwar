@@ -4,34 +4,34 @@ const inventory=[
 {group:'A',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Black / Black / Gym Red',sizes:'39–42',price:685,audience:'Hombre',image:'products/max-aura-black-gym-red.jpg',source:'https://novelship.com/air-jordan-max-aura-black-infrared'},
 {group:'A',category:'Nike Air Max',name:'Nike Air Max 95 White / Pink / Brown',sizes:'37–39',price:695,audience:'Mujer',image:'real/air-max-95.webp',source:'https://stockx.com/es-us/nike-air-max-95-cuban-link-velvet-brown-w'},
 {group:'A',category:'Nike Flight Legacy',name:'Nike Flight Legacy Black / White',sizes:'39–41',price:500,audience:'Hombre',image:'real/flight-legacy.webp',source:'https://stockx.com/nike-flight-legacy-black-white'},
-{group:'A',category:'Nike Air Max',name:'Nike Air Max Command Premium Light Taupe',sizes:'40–42',price:695,audience:'Hombre',image:'products/air-max-command-hq.png',source:'https://www.nike.com/jp/en/t/air-max-command-womens-shoes-JfvPvR'},
-{group:'A',category:'Nike Air Max',name:'Nike Air Max Correlate Black / White / Grey',sizes:'36–41',price:450,audience:'Unisex',image:'products/air-max-correlate-black-grey.png',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
+{group:'A',category:'Nike Air Max',name:'Nike Air Max Command Premium Light Taupe',sizes:'40–42',price:695,audience:'Hombre',image:'',source:'https://www.nike.com/jp/en/t/air-max-command-womens-shoes-JfvPvR'},
+{group:'A',category:'Nike Air Max',name:'Nike Air Max Correlate Black / White / Grey',sizes:'36–41',price:450,audience:'Unisex',image:'',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
 {group:'B',category:'Jordan Hybrid / Otros',name:'Jordan Son of Mars Low White / Red / Black',sizes:'39–41',price:700,audience:'Hombre',image:'real/son-of-mars.webp',source:'https://www.shopwss.com/products/580603_101'},
-{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 Black / White / Orange Peel',sizes:'36–38 / 39–42',price:584,audience:'Unisex',image:'products/air-force-1-orange-peel.png',source:'https://www.nike.com/es/t/air-force-1-07-zapatillas-hombre-CcXoUHU9/IX6731-010'},
-{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 WNBA 30th Anniversary',sizes:'36–40',price:595,audience:'Unisex',image:'products/air-force-1-wnba.png',source:'https://www.nike.com/w/complete-the-wnba-fan-look-shoes-4cbgmzom6bzy7ok'},
-{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 LV8 “Mexico”',sizes:'39–41',price:595,audience:'Hombre',image:'products/air-force-1-mexico.png',source:'https://www.nike.com/mx/t/tenis-para-hombre-nike-air-force-1-07-lv8-mkYmss6V'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 Black / White / Orange Peel',sizes:'36–38 / 39–42',price:584,audience:'Unisex',image:'',source:'https://www.nike.com/es/t/air-force-1-07-zapatillas-hombre-CcXoUHU9/IX6731-010'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 WNBA 30th Anniversary',sizes:'36–40',price:595,audience:'Unisex',image:'',source:'https://www.nike.com/w/complete-the-wnba-fan-look-shoes-4cbgmzom6bzy7ok'},
+{group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 LV8 “Mexico”',sizes:'39–41',price:595,audience:'Hombre',image:'',source:'https://www.nike.com/mx/t/tenis-para-hombre-nike-air-force-1-07-lv8-mkYmss6V'},
 {group:'B',category:'Nike Diamond / DT / Griffey',name:'Nike Air Griffey Max 1',sizes:'39–42',price:650,audience:'Hombre',image:'real/griffey-max-1.webp',source:'https://www.shiekh.com/nike-air-griffey-max-1-white-black-fresh-water.html'},
-{group:'B',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low Summit White / Black',sizes:'36–42',price:584,audience:'Unisex',image:'products/jordan-1-low-summit-white.png',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
+{group:'B',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low Summit White / Black',sizes:'36–42',price:584,audience:'Unisex',image:'',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
 {group:'B',category:'Nike Air Force 1',name:'Nike Air Force 1 Blanco / Negro',sizes:'37–40',price:413,audience:'Mujer',image:'products/air-force-1-white-black.jpeg',source:'https://www.nike.com/mx/w/air-force-1-1ef98z2eqihz5sj3yzom6b'},
 {group:'C',category:'Jordan Retro 4',name:'Air Jordan 4 x J Balvin “Amazonas”',sizes:'40–42',price:1300,audience:'Hombre',image:'real/jordan-4-amazonas.webp',source:'https://www.nike.com/mx/launch/t/air-jordan-4-j-balvin-amazonas'},
 {group:'C',category:'Jordan Retro 1',name:'Air Jordan 1 High OG “Shattered Backboard”',sizes:'39–42',price:740,audience:'Hombre',image:'products/jordan-1-shattered-backboard.webp',source:'https://www.nike.com/mx/w/air-jordan-1-zapatillas-aj85gzy7ok'},
-{group:'C',category:'Jordan Retro 4',name:'Air Jordan 4 Retro “Tour Yellow”',sizes:'36–38 / 40–42',price:1100,audience:'Unisex',image:'products/jordan-4-tour-yellow.png',source:'https://www.nike.com/mx/w/jordan-jordan-4-37eefz6ymx6zcsxjzy7ok'},
-{group:'C',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Black / White',sizes:'39–42',price:685,audience:'Hombre',image:'products/max-aura-black-white.png',source:'https://novelship.com/air-jordan-max-aura-black-infrared'},
+{group:'C',category:'Jordan Retro 4',name:'Air Jordan 4 Retro “Tour Yellow”',sizes:'36–38 / 40–42',price:1100,audience:'Unisex',image:'',source:'https://www.nike.com/mx/w/jordan-jordan-4-37eefz6ymx6zcsxjzy7ok'},
+{group:'C',category:'Jordan Hybrid / Otros',name:'Jordan Max Aura Black / White',sizes:'39–42',price:685,audience:'Hombre',image:'',source:'https://novelship.com/air-jordan-max-aura-black-infrared'},
 {group:'C',category:'Jordan Retro 1',name:'Air Jordan 1 Mid SE Black / Gold / Pink',sizes:'35–38',price:514,audience:'Mujer',image:'products/jordan-1-mid-pinksicle.jpg',source:'https://www.nike.com/mx/w/air-jordan-1-zapatillas-aj85gzy7ok'},
-{group:'C',category:'Jordan Retro 3',name:'Air Jordan 3 Retro GS “Spring Flowers”',sizes:'35–39',price:617,audience:'Mujer',image:'products/jordan-3-spring-flowers.png',source:'https://www.nike.com/mx/w/jordan-calzado-37eefz98pddzj5jwzy7ok'},
-{group:'C',category:'Nike Air Max',name:'Nike Air Max Correlate White / New Green / Bright Mango / Black',sizes:'35–38',price:583,audience:'Mujer',image:'products/air-max-correlate-mango.png',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
+{group:'C',category:'Jordan Retro 3',name:'Air Jordan 3 Retro GS “Spring Flowers”',sizes:'35–39',price:617,audience:'Mujer',image:'',source:'https://www.nike.com/mx/w/jordan-calzado-37eefz98pddzj5jwzy7ok'},
+{group:'C',category:'Nike Air Max',name:'Nike Air Max Correlate White / New Green / Bright Mango / Black',sizes:'35–38',price:583,audience:'Mujer',image:'',source:'https://www.nike.com/il/t/air-max-correlate-shoes-sZmWR6'},
 {group:'D',category:'Jordan 6 Rings',name:'Jordan 6 Rings White / University Red / Black',sizes:'36–38 / 39–42',price:686,audience:'Unisex',image:'real/jordan-6-rings.webp',source:'https://www.shoepalace.com/products/jordan-322992-164-6-rings-mens-basketball-shoes-white-varsity-red-black'},
 {group:'D',category:'Nike Diamond / DT / Griffey',name:'Nike Air Diamond Turf II',sizes:'36–38 / 39–42',price:583,audience:'Unisex',image:'real/diamond-turf.webp',source:'https://www.dtlr.com/products/nike-air-diamond-turf-ii-prime-red-mf-red-hq2631-600'},
 {group:'D',category:'Nike Diamond / DT / Griffey',name:'Nike Air DT Max ’96 Low White / Metallic',sizes:'36–42',price:686,audience:'Unisex',image:'products/air-dt-max-96-low.webp',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
-{group:'D',category:'Nike Basketball / Performance',name:'Nike Zoom LeBron NXXT Gen “Black Wolf Grey”',sizes:'40 / 40.5',price:630,audience:'Hombre',image:'galleries/25-1.png',source:'https://www.nike.com/t/lebron-nxxt-gen-basketball-shoes-55g4w1/DR8784-004'},
+{group:'D',category:'Nike Basketball / Performance',name:'Nike Zoom LeBron NXXT Gen “Black Wolf Grey”',sizes:'40 / 40.5',price:630,audience:'Hombre',image:'',source:'https://www.nike.com/t/lebron-nxxt-gen-basketball-shoes-55g4w1/DR8784-004'},
 {group:'D',category:'Jordan Hybrid / Otros',name:'Air Jordan Access “Black Gym Red”',sizes:'40–42',price:583,audience:'Hombre',image:'real/jordan-access.webp',source:'https://item.rakuten.co.jp/limited-edt/ar3762-001/'},
 {group:'D',category:'Nike Air Force 1',name:'Nike Air Force 1 ’07 Light British Tan / Sail / Hemp / Metallic Gold',sizes:'36–39',price:685,audience:'Mujer',image:'products/air-force-1-light-british-tan.webp',source:'https://www.nike.com/mx/w/air-force-1-1ef98z2eqihz5sj3yzom6b'},
-{group:'D',category:'Nike Air Max',name:'Nike Air Max Bolt',sizes:'36–39',price:411,audience:'Mujer',image:'products/air-max-bolt.png',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
+{group:'D',category:'Nike Air Max',name:'Nike Air Max Bolt',sizes:'36–39',price:411,audience:'Mujer',image:'',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
 {group:'E',category:'Jordan Hybrid / Otros',name:'Jordan Lift Off White / Black / Wolf Grey',sizes:'40–42',price:650,audience:'Hombre',image:'real/jordan-lift-off.webp',source:'https://stockx.com/air-jordan-lift-off-white'},
 {group:'E',category:'Jordan Retro 3',name:'Air Jordan 3 Retro “Pure Money”',sizes:'36–40',price:650,audience:'Unisex',image:'products/jordan-3-pure-money.webp',source:'https://www.nike.com/mx/w/jordan-calzado-37eefz98pddzj5jwzy7ok'},
 {group:'E',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low “Shattered Backboard Alternate”',sizes:'36–41',price:584,audience:'Unisex',image:'galleries/31-1.webp',source:'https://www.topsandbottomsusa.com/products/jordan-mens-air-jordan-1-low-shattered-backboard-alternate-shoes-553558-081'},
-{group:'E',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low “Inner Beast”',sizes:'35–37',price:514,audience:'Mujer',image:'products/jordan-1-inner-beast.png',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
-{group:'E',category:'Nike Basketball',name:'Nike LeBron Witness 9',sizes:'40–41',price:360,audience:'Hombre',image:'galleries/33-1.png',source:'https://www.nike.com/t/lebron-witness-9-basketball-shoes-h9SkAFPT'},
+{group:'E',category:'Air Jordan 1 Low',name:'Air Jordan 1 Low “Inner Beast”',sizes:'35–37',price:514,audience:'Mujer',image:'',source:'https://www.nike.com/mx/w/air-jordan-1-low-260d2z37eefz4foky'},
+{group:'E',category:'Nike Basketball',name:'Nike LeBron Witness 9',sizes:'40–41',price:360,audience:'Hombre',image:'',source:'https://www.nike.com/t/lebron-witness-9-basketball-shoes-h9SkAFPT'},
 {group:'E',category:'Nike Air Force 1',name:'Nike Air Force 1 Rust Pink / Metallic Red',sizes:'36–38',price:446,audience:'Mujer',image:'products/air-force-1-rust-pink.webp',source:'https://www.nike.com/w/complete-the-wnba-fan-look-shoes-4cbgmzom6bzy7ok'},
 {group:'E',category:'Nike Shox',name:'Nike Shox R4 College Grey / Volt',sizes:'35–38',price:514,audience:'Unisex',image:'products/shox-r4-college-grey.jpg',source:'https://www.nike.com/mx/w/calzado-1v79xz3r09wz9hh0lzy7ok'},
 {group:'F',category:'Jordan Retro 5',name:'Air Jordan 5 Retro “Halloween”',sizes:'36–38 / 39–41',price:null,audience:'Unisex',image:'',sku:'HQ7980-001',source:'http://nike.com.pe/air-jordan-5-retro-haloween-zapatillas-para-hombre/hq7978-001/11112211015.html',note:'No tomar en cuenta la última imagen. Poner fondo blanco.'},
@@ -67,7 +67,7 @@ const spreadsheetMetadata=[
   ['AQ9214-011','https://www.zakcret.gr/en/jordan-max-aura-aq9214-011-leyko-mayro',''],
   ['II1254-001','https://thesolesupplier.co.uk/release-dates/nike/air-jordan-1/air-jordan-1-mid-se-gs-world-tour-multi/',''],
   ['II0599-600','https://www.sneakersnstuff.com/products/jordan-air-jordan-3-retro-spring-flowers-big-kids-gs-ii0599-600','Poner fondo blanco.'],
-  ['511417-136','https://www.nike.com.pe/nike-air-max-correlate-zapatillas-para-mujer/511417-136/10677147014.html','Poner fondo blanco.'],
+  ['511417-136','https://www.nike.com.pe/nike-air-max-correlate-zapatillas-para-mujer/511417-136/10677147014.html',''],
   ['323419-164','https://www.kickscrew.com/products/gs-air-jordan-6-rings-white-varsity-red-black-323419-164',''],
   ['IR4727-100','https://www.bbbranded.com/products/y-nike-air-diamond-turf-ii-ir4727-100',''],
   ['IR4714-100','https://www.shiekh.com/nike-grade-school-air-dt-max-96-low-white-metallic-silver-white-ir4714-100.html','Poner fondo blanco. No tomar en cuenta la última imagen.'],
@@ -85,19 +85,13 @@ const spreadsheetMetadata=[
 ];
 spreadsheetMetadata.forEach(([sku,source,note],index)=>Object.assign(inventory[index],{sku,source,note}));
 // La tarjeta y la ficha comienzan con la misma primera toma del modelo.
-const cardPrimaryImages={0:'galleries/1-1.jpg',1:'galleries/2-1.jpg',7:'galleries/8-1.webp',11:'galleries/12-1.jpg',14:'galleries/15-1.jpg',21:'galleries/22-1.webp',22:'products/diamond-turf-hq.png',24:'galleries/25-1.png',25:'galleries/26-1.webp',30:'real/aj1-low-shattered.webp',32:'galleries/33-1.png'};
-Object.entries(cardPrimaryImages).forEach(([index,image])=>{inventory[Number(index)].image=image});
 // Todas las tarjetas cargan una versión de alta resolución del mismo ángulo principal.
 inventory.forEach((product,index)=>{product.image=`hq/product-${index}.webp`});
 inventory[7].image='real/son-of-mars.webp';
 inventory[2].image='products/max-aura-official-1.jpg';
 inventory[16].image='products/tour-yellow-main.webp';
 inventory[4].image='products/flight-legacy-2.jpg';
-inventory[6].image='products/air-max-correlate-1.png';
-inventory[7].image='products/son-of-mars-1.png';
-inventory[1].image='generated/jordan-3-green-white-red/angle-1.png';
 // Todas las tarjetas del catálogo usan la primera toma generada sobre fondo blanco.
-for(let index=0;index<inventory.length;index+=1){inventory[index].image=`generated/product-${index}/angle-1.png`;}
 
 // Fotografías originales recibidas. La primera toma de cada conjunto se usa
 // también como imagen principal en las tarjetas del catálogo.

@@ -2,8 +2,6 @@
 node_modules/
 config.bat
 *.tmp.*
-.env
-.env.local
 
 # Carpeta de trabajo pesado y fotos originales (mantiene el repo ligero para GitHub Pages)
 _source_data/

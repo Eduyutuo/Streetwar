@@ -23,10 +23,14 @@ from concurrent.futures import ThreadPoolExecutor
 BASE_DIR = '_source_data'
 REF_MASTER = 'Air Jordan 9 Retro OG "Space Jam"'
 
-TOP_FOLDERS = [
-    ('fotos_ABC', ['Grupo A', 'Grupo B', 'Grupo C']),
-    ('fotos_DE', ['Grupo D', 'Grupo E']),
-    ('fotos_FG', ['Grupo F', 'Grupo G'])
+GROUP_MAPPINGS = [
+    ('Grupo A', 'fotos_ABC'),
+    ('Grupo B', 'fotos_ABC'),
+    ('Grupo C', 'fotos_ABC'),
+    ('Grupo D', 'fotos_DE'),
+    ('Grupo E', 'fotos_DE'),
+    ('Grupo F', 'fotos_FG'),
+    ('Grupo G', 'fotos_FG')
 ]
 
 with open('dist/js/assigned_angles.json', 'r', encoding='utf-8') as f:
@@ -187,18 +191,33 @@ def build_prompt_json(name, sku, group, top_folder, prod_dir, img_count, lang='e
             }
         }
 
-tasks = []
-catalog = []
-sku_idx = 0
+def find_group_path(group_name, top_folder):
+    """Localiza la ruta real en disco para un grupo dado."""
+    # 1. Intentar _source_data/fotos/<group>
+    p1 = os.path.join(BASE_DIR, 'fotos', group_name)
+    if os.path.exists(p1):
+        return p1, f"C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/{group_name}"
+        
+    # 2. Intentar _source_data/<top_folder>/<group>
+    p2 = os.path.join(BASE_DIR, top_folder, group_name)
+    if os.path.exists(p2):
+        return p2, f"C:/Users/eduar/Documents/CATALOGO/_source_data/{top_folder}/{group_name}"
+        
+    return None, None
 
-print("🔍 Escaneando estructura de _source_data (Grupos A a G)...")
-for top, groups in TOP_FOLDERS:
-    for g in groups:
-        g_path = os.path.join(BASE_DIR, top, g)
-        if not os.path.exists(g_path):
+def main():
+    tasks = []
+    catalog = []
+    sku_idx = 0
+
+    print("🔍 Escaneando estructura de _source_data (Grupos A a G)...")
+    for g, top in GROUP_MAPPINGS:
+        g_path, full_disk_base = find_group_path(g, top)
+        if not g_path or not os.path.exists(g_path):
+            print(f"⚠️ No se encontró la ruta para {g} (top: {top})")
             continue
             
-        # Filtrar estrictamente carpetas de producto (ignorar 'resultado', 'ref', etc.)
+        # Filtrar carpetas de producto (ignorar 'resultado', 'ref', etc.)
         prod_dirs = sorted([
             d for d in os.listdir(g_path)
             if os.path.isdir(os.path.join(g_path, d)) and not d.lower().startswith(('resultado', 'ref'))
@@ -253,7 +272,7 @@ for top, groups in TOP_FOLDERS:
                 "top_folder": top,
                 "group": g,
                 "prod_dir": pdir,
-                "full_disk_path": f"C:/Users/eduar/Documents/CATALOGO/_source_data/{top}/{g}/{pdir}",
+                "full_disk_path": f"{full_disk_base}/{pdir}",
                 "image_count": img_count,
                 "image_files": files,
                 "preview_primary": preview_primary,
@@ -290,32 +309,35 @@ for top, groups in TOP_FOLDERS:
             
             sku_idx += 1
 
-print(f"\n📦 Total de productos catalogados: {len(catalog)}")
+    print(f"\n📦 Total de productos catalogados: {len(catalog)}")
 
-def convert_worker(item):
-    src, dst = item
-    if os.path.exists(dst):
-        return
-    try:
-        with Image.open(src) as im:
-            im = ImageOps.exif_transpose(im)
-            im.thumbnail((1200, 1200), Image.Resampling.LANCZOS)
-            im.save(dst, 'WEBP', quality=85)
-    except Exception as e:
-        print(f"Error procesando preview {src}: {e}")
+    def convert_worker(item):
+        src, dst = item
+        if os.path.exists(dst):
+            return
+        try:
+            with Image.open(src) as im:
+                im = ImageOps.exif_transpose(im)
+                im.thumbnail((1200, 1200), Image.Resampling.LANCZOS)
+                im.save(dst, 'WEBP', quality=85)
+        except Exception as e:
+            print(f"Error procesando preview {src}: {e}")
 
-print(f"⚡ Verificando/generando {len(tasks)} previews de fotos reales en WebP...")
-with ThreadPoolExecutor(max_workers=8) as ex:
-    list(ex.map(convert_worker, tasks))
+    print(f"⚡ Verificando/generando {len(tasks)} previews de fotos reales en WebP...")
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        list(ex.map(convert_worker, tasks))
 
-# Guardar JS
-js_content = "const flowNanobananaData = " + json.dumps({
-    "total_products": len(catalog),
-    "ref_master": REF_MASTER,
-    "catalog": catalog
-}, indent=2, ensure_ascii=False) + ";\n"
+    # Guardar JS
+    js_content = "const flowNanobananaData = " + json.dumps({
+        "total_products": len(catalog),
+        "ref_master": REF_MASTER,
+        "catalog": catalog
+    }, indent=2, ensure_ascii=False) + ";\n"
 
-with open('dist/js/flow_nanobanana_data.js', 'w', encoding='utf-8') as f:
-    f.write(js_content)
+    with open('dist/js/flow_nanobanana_data.js', 'w', encoding='utf-8') as f:
+        f.write(js_content)
 
-print(f"✅ Generado exitosamente 'dist/js/flow_nanobanana_data.js' con {len(catalog)} productos.")
+    print(f"✅ Generado exitosamente 'dist/js/flow_nanobanana_data.js' con {len(catalog)} productos.")
+
+if __name__ == '__main__':
+    main()

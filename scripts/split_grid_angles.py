@@ -332,8 +332,9 @@ def find_sku_and_group(filepath, catalog=None):
             cat_sku = item.get('sku', '').upper()
             if inferred_sku and cat_sku == inferred_sku:
                 return cat_sku, item.get('group', 'Grupo_A')
-            # Comparar por nombre de carpeta
-            if item.get('prod_dir', '').lower() in filepath.lower():
+            # Comparar por nombre de carpeta (solo si prod_dir no está vacío)
+            prod_dir = item.get('prod_dir')
+            if prod_dir and prod_dir.lower() in filepath.lower():
                 return cat_sku, item.get('group', 'Grupo_A')
                 
     # 3. Inferir grupo desde la ruta

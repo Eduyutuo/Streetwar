@@ -10,7 +10,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "01_Air_Jordan_9_Space_Jam",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/01_Air_Jordan_9_Space_Jam",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/01_Air_Jordan_9_Space_Jam",
       "image_count": 6,
       "image_files": [
         "01-lateral-zoom.jpeg",
@@ -65,7 +65,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "02_Air_Jordan_3_Green_White_Red",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/02_Air_Jordan_3_Green_White_Red",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/02_Air_Jordan_3_Green_White_Red",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -118,7 +118,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "03_Jordan_Max_Aura_Black_Gym_Red",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/03_Jordan_Max_Aura_Black_Gym_Red",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/03_Jordan_Max_Aura_Black_Gym_Red",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -171,7 +171,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "04_Nike_Air_Max_95_White_Pink_Brown",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/04_Nike_Air_Max_95_White_Pink_Brown",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/04_Nike_Air_Max_95_White_Pink_Brown",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -224,7 +224,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "05_Nike_Flight_Legacy_Black_White",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/05_Nike_Flight_Legacy_Black_White",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/05_Nike_Flight_Legacy_Black_White",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -277,7 +277,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "06_Nike_Air_Max_Command_Light_Taupe",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/06_Nike_Air_Max_Command_Light_Taupe",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/06_Nike_Air_Max_Command_Light_Taupe",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -332,7 +332,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo A",
       "prod_dir": "07_Nike_Air_Max_Correlate_Black_White_Grey",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo A/07_Nike_Air_Max_Correlate_Black_White_Grey",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo A/07_Nike_Air_Max_Correlate_Black_White_Grey",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -387,7 +387,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "01_Jordan_Son_of_Mars_Low_White_Red_Black",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/01_Jordan_Son_of_Mars_Low_White_Red_Black",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/01_Jordan_Son_of_Mars_Low_White_Red_Black",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -442,7 +442,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "02_Nike_Air_Force_1_Orange_Peel",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/02_Nike_Air_Force_1_Orange_Peel",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/02_Nike_Air_Force_1_Orange_Peel",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -495,7 +495,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "03_Nike_Air_Force_1_WNBA",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/03_Nike_Air_Force_1_WNBA",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/03_Nike_Air_Force_1_WNBA",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -548,7 +548,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "04_Nike_Air_Force_1_Mexico",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/04_Nike_Air_Force_1_Mexico",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/04_Nike_Air_Force_1_Mexico",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -601,7 +601,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "05_Nike_Air_Griffey_Max_1",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/05_Nike_Air_Griffey_Max_1",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/05_Nike_Air_Griffey_Max_1",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -656,7 +656,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "06_Air_Jordan_1_Low_Summit_White_Black",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/06_Air_Jordan_1_Low_Summit_White_Black",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/06_Air_Jordan_1_Low_Summit_White_Black",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -709,7 +709,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo B",
       "prod_dir": "07_Nike_Air_Force_1_Blanco_Negro",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo B/07_Nike_Air_Force_1_Blanco_Negro",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo B/07_Nike_Air_Force_1_Blanco_Negro",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -762,7 +762,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "01_Air_Jordan_4_J_Balvin_Amazonas",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/01_Air_Jordan_4_J_Balvin_Amazonas",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/01_Air_Jordan_4_J_Balvin_Amazonas",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -817,7 +817,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "02_Air_Jordan_1_High_Shattered_Backboard",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/02_Air_Jordan_1_High_Shattered_Backboard",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/02_Air_Jordan_1_High_Shattered_Backboard",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -872,7 +872,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "03_Air_Jordan_4_Tour_Yellow",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/03_Air_Jordan_4_Tour_Yellow",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/03_Air_Jordan_4_Tour_Yellow",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -927,7 +927,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "04_Jordan_Max_Aura_Black_White",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/04_Jordan_Max_Aura_Black_White",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/04_Jordan_Max_Aura_Black_White",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -980,7 +980,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "05_Air_Jordan_1_Mid_Black_Gold_Pink",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/05_Air_Jordan_1_Mid_Black_Gold_Pink",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/05_Air_Jordan_1_Mid_Black_Gold_Pink",
       "image_count": 5,
       "image_files": [
         "01-lateral.jpeg",
@@ -1033,7 +1033,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "06_Air_Jordan_3_Spring_Flowers",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/06_Air_Jordan_3_Spring_Flowers",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/06_Air_Jordan_3_Spring_Flowers",
       "image_count": 4,
       "image_files": [
         "01-lateral.jpeg",
@@ -1084,7 +1084,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_ABC",
       "group": "Grupo C",
       "prod_dir": "07_Nike_Air_Max_Correlate_Mango",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_ABC/Grupo C/07_Nike_Air_Max_Correlate_Mango",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo C/07_Nike_Air_Max_Correlate_Mango",
       "image_count": 6,
       "image_files": [
         "01-lateral.jpeg",
@@ -1139,7 +1139,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "01_Jordan_6_Rings_White_Red_Black",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/01_Jordan_6_Rings_White_Red_Black",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/01_Jordan_6_Rings_White_Red_Black",
       "image_count": 6,
       "image_files": [
         "IMG_0159.jpeg",
@@ -1194,7 +1194,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "02_Nike_Air_Diamond_Turf_II",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/02_Nike_Air_Diamond_Turf_II",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/02_Nike_Air_Diamond_Turf_II",
       "image_count": 5,
       "image_files": [
         "IMG_0165.jpeg",
@@ -1247,7 +1247,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "03_Nike_Air_DT_Max_96_Low",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/03_Nike_Air_DT_Max_96_Low",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/03_Nike_Air_DT_Max_96_Low",
       "image_count": 5,
       "image_files": [
         "IMG_0170.jpeg",
@@ -1300,7 +1300,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "04_Nike_Zoom_LeBron_NXXT_Gen",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/04_Nike_Zoom_LeBron_NXXT_Gen",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/04_Nike_Zoom_LeBron_NXXT_Gen",
       "image_count": 6,
       "image_files": [
         "IMG_0175.jpeg",
@@ -1355,7 +1355,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "05_Air_Jordan_Access_Black_Gym_Red",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/05_Air_Jordan_Access_Black_Gym_Red",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/05_Air_Jordan_Access_Black_Gym_Red",
       "image_count": 5,
       "image_files": [
         "IMG_0181.jpeg",
@@ -1408,7 +1408,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "06_Nike_Air_Force_1_Light_British_Tan",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/06_Nike_Air_Force_1_Light_British_Tan",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/06_Nike_Air_Force_1_Light_British_Tan",
       "image_count": 5,
       "image_files": [
         "IMG_0186.jpeg",
@@ -1461,7 +1461,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo D",
       "prod_dir": "07_Nike_Air_Max_Bolt",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo D/07_Nike_Air_Max_Bolt",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo D/07_Nike_Air_Max_Bolt",
       "image_count": 5,
       "image_files": [
         "IMG_0191.jpeg",
@@ -1514,7 +1514,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "01_Jordan_Lift_Off_White_Black_Grey",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/01_Jordan_Lift_Off_White_Black_Grey",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/01_Jordan_Lift_Off_White_Black_Grey",
       "image_count": 5,
       "image_files": [
         "IMG_0196.jpeg",
@@ -1567,7 +1567,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "02_Air_Jordan_3_Pure_Money",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/02_Air_Jordan_3_Pure_Money",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/02_Air_Jordan_3_Pure_Money",
       "image_count": 5,
       "image_files": [
         "IMG_0201.jpeg",
@@ -1620,7 +1620,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "03_Air_Jordan_1_Low_Shattered_Backboard",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/03_Air_Jordan_1_Low_Shattered_Backboard",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/03_Air_Jordan_1_Low_Shattered_Backboard",
       "image_count": 5,
       "image_files": [
         "IMG_0206.jpeg",
@@ -1673,7 +1673,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "04_Air_Jordan_1_Low_Inner_Beast",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/04_Air_Jordan_1_Low_Inner_Beast",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/04_Air_Jordan_1_Low_Inner_Beast",
       "image_count": 5,
       "image_files": [
         "IMG_0211.jpeg",
@@ -1726,7 +1726,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "05_Nike_LeBron_Witness_9",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/05_Nike_LeBron_Witness_9",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/05_Nike_LeBron_Witness_9",
       "image_count": 5,
       "image_files": [
         "IMG_0216.jpeg",
@@ -1779,7 +1779,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "06_Nike_Air_Force_1_Rust_Pink",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/06_Nike_Air_Force_1_Rust_Pink",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/06_Nike_Air_Force_1_Rust_Pink",
       "image_count": 5,
       "image_files": [
         "IMG_0221.jpeg",
@@ -1832,7 +1832,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_DE",
       "group": "Grupo E",
       "prod_dir": "07_Nike_Shox_R4_College_Grey_Volt",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_DE/Grupo E/07_Nike_Shox_R4_College_Grey_Volt",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo E/07_Nike_Shox_R4_College_Grey_Volt",
       "image_count": 5,
       "image_files": [
         "IMG_0226.jpeg",
@@ -1885,7 +1885,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo F",
       "prod_dir": "01_Jordan_Negro_Rojo",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo F/01_Jordan_Negro_Rojo",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo F/01_Jordan_Negro_Rojo",
       "image_count": 6,
       "image_files": [
         "IMG_0231.jpeg",
@@ -1940,7 +1940,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo F",
       "prod_dir": "02_Jordan_Blanco_Negro",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo F/02_Jordan_Blanco_Negro",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo F/02_Jordan_Blanco_Negro",
       "image_count": 5,
       "image_files": [
         "IMG_0237.jpeg",
@@ -1993,7 +1993,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo F",
       "prod_dir": "03_Jordan_Borgona",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo F/03_Jordan_Borgona",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo F/03_Jordan_Borgona",
       "image_count": 6,
       "image_files": [
         "IMG_0242.jpeg",
@@ -2048,7 +2048,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo F",
       "prod_dir": "04_Jordan_Negro_Amarillo",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo F/04_Jordan_Negro_Amarillo",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo F/04_Jordan_Negro_Amarillo",
       "image_count": 5,
       "image_files": [
         "IMG_0248.jpeg",
@@ -2101,7 +2101,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo F",
       "prod_dir": "05_Jordan_Rojo_Elephant_Print",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo F/05_Jordan_Rojo_Elephant_Print",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo F/05_Jordan_Rojo_Elephant_Print",
       "image_count": 6,
       "image_files": [
         "IMG_0253.jpeg",
@@ -2156,7 +2156,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo F",
       "prod_dir": "06_Air_Jordan_1_Low_Banned",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo F/06_Air_Jordan_1_Low_Banned",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo F/06_Air_Jordan_1_Low_Banned",
       "image_count": 5,
       "image_files": [
         "IMG_0259.jpeg",
@@ -2209,7 +2209,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo G",
       "prod_dir": "01_Jordan_Negro_Elephant_Print",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo G/01_Jordan_Negro_Elephant_Print",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo G/01_Jordan_Negro_Elephant_Print",
       "image_count": 5,
       "image_files": [
         "IMG_0264.jpeg",
@@ -2262,7 +2262,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo G",
       "prod_dir": "02_Jordan_Gris_Negro",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo G/02_Jordan_Gris_Negro",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo G/02_Jordan_Gris_Negro",
       "image_count": 5,
       "image_files": [
         "IMG_0269.jpeg",
@@ -2315,7 +2315,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo G",
       "prod_dir": "03_Nike_Air_Force_1_Negro",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo G/03_Nike_Air_Force_1_Negro",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo G/03_Nike_Air_Force_1_Negro",
       "image_count": 5,
       "image_files": [
         "IMG_0275.jpeg",
@@ -2368,7 +2368,7 @@ const flowNanobananaData = {
       "top_folder": "fotos_FG",
       "group": "Grupo G",
       "prod_dir": "04_Nike_Air_Force_1_Azul_Marino",
-      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos_FG/Grupo G/04_Nike_Air_Force_1_Azul_Marino",
+      "full_disk_path": "C:/Users/eduar/Documents/CATALOGO/_source_data/fotos/Grupo G/04_Nike_Air_Force_1_Azul_Marino",
       "image_count": 7,
       "image_files": [
         "IMG_0280.jpeg",

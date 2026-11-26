@@ -1,27 +1,22 @@
 // ============================================================================
-// DEMO 3D INTERACTIVO — Comparativa de los 3 métodos en productos específicos
+// STREETWAR 3D & 360° INTERACTIVO
 // ============================================================================
-// Método 1 (Visor 360° Turntable por ángulos + Tilt + Zoom): id 1, id 15
-// Método 2 (3D Real .GLB con <model-viewer>):                id 0, id 14
-// Método 3 (Tarjetas 3D Tilt/Parallax/Profundidad):          id 2, id 16
+// Método 1 (Visor 360° Turntable por ángulos + Tilt + Zoom): todos los modelos del catálogo
+// Método 2 (3D Real .GLB Multi-Vista): id 0 (IX6180-100) y id 14 (IW2872-700)
 // ============================================================================
 
 window.STREETWAR_3D_DEMO = {
-  method1_spin360: {
-    1:  { label: 'MÉTODO 1 · 360° FOTOS', sku: 'IO2076-100' },
-    15: { label: 'MÉTODO 1 · 360° FOTOS', sku: 'FD1437-008' }
-  },
   method2_glb: {
     0:  { label: 'MÉTODO 2 · 3D REAL (.GLB)', sku: 'IX6180-100', model: 'assets/models/IX6180-100.glb' },
     14: { label: 'MÉTODO 2 · 3D REAL (.GLB)', sku: 'IW2872-700', model: 'assets/models/IW2872-700.glb' }
   },
-  method3_tilt: {
-    2:  { label: 'MÉTODO 3 · TILT 3D', sku: 'AQ9214-006' },
-    16: { label: 'MÉTODO 3 · TILT 3D', sku: '408452-102' }
+
+  isSpinEnabled(pIndex) {
+    return !this.method2_glb[pIndex];
   },
 
   getSortRank(pIndex) {
-    const order = [0, 14, 1, 15, 2, 16];
+    const order = [0, 14];
     const pos = order.indexOf(Number(pIndex));
     return pos === -1 ? 999 : pos;
   },
@@ -30,72 +25,11 @@ window.STREETWAR_3D_DEMO = {
     if (this.method2_glb[pIndex]) {
       return '<span class="badge-3d-demo badge-3d-glb">3D GLB</span>';
     }
-    if (this.method1_spin360[pIndex]) {
-      return '<span class="badge-3d-demo badge-3d-360">360° FOTOS</span>';
-    }
-    if (this.method3_tilt[pIndex]) {
-      return '<span class="badge-3d-demo badge-3d-tilt">TILT 3D</span>';
-    }
-    return '';
+    return '<span class="badge-3d-demo badge-3d-360">360°</span>';
   },
 
-  // ── MÉTODO 3: Activa Tilt 3D + Parallax + Profundidad en las tarjetas demo ──
-  initTiltCards(root = document) {
-    Object.keys(this.method3_tilt).forEach(idx => {
-      const card = root.querySelector(`.product[data-product-index="${idx}"]`);
-      if (!card || card.dataset.tiltReady) return;
-      card.dataset.tiltReady = '1';
-      card.classList.add('demo-tilt-3d');
-
-      const media = card.querySelector('.product-media');
-      const img = card.querySelector('.main-card-img');
-      if (media && !media.querySelector('.demo-tilt-glare')) {
-        const glare = document.createElement('div');
-        glare.className = 'demo-tilt-glare';
-        media.appendChild(glare);
-      }
-
-      const glareEl = card.querySelector('.demo-tilt-glare');
-      const thumbs = Array.from(card.querySelectorAll('.product-thumb-item'));
-
-      const applyTilt = (clientX, clientY) => {
-        const rect = card.getBoundingClientRect();
-        const px = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        const py = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
-        const rotY = (px - 0.5) * 20;   // -10deg .. +10deg
-        const rotX = (0.5 - py) * 16;   // -8deg .. +8deg
-
-        card.classList.add('is-tilting');
-        card.style.transform = `perspective(950px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-6px)`;
-        if (img) {
-          const shiftX = (px - 0.5) * 14;
-          const shiftY = (py - 0.5) * 10;
-          img.style.transform = `translate3d(${shiftX.toFixed(1)}px, ${shiftY.toFixed(1)}px, 42px) scale(1.10)`;
-        }
-        if (glareEl) {
-          glareEl.style.background = `radial-gradient(circle at ${(px * 100).toFixed(1)}% ${(py * 100).toFixed(1)}%, rgba(199, 255, 22, 0.28), rgba(7, 87, 232, 0.08) 45%, transparent 72%)`;
-        }
-        // Scrub angle smoothly if card has multiple thumbnails while moving horizontally
-        if (thumbs.length > 1) {
-          const thumbIdx = Math.min(thumbs.length - 1, Math.floor(px * Math.min(3, thumbs.length)));
-          const src = thumbs[thumbIdx]?.dataset.thumbSrc;
-          if (src && img && img.dataset.activeTiltIdx !== String(thumbIdx)) {
-            img.dataset.activeTiltIdx = String(thumbIdx);
-            img.src = src;
-            thumbs.forEach((t, i) => t.classList.toggle('active', i === thumbIdx));
-          }
-        }
-      };
-
-      const resetTilt = () => {
-        card.classList.remove('is-tilting');
-        card.style.transform = '';
-        if (img) img.style.transform = '';
-      };
-
-      card.addEventListener('pointermove', e => applyTilt(e.clientX, e.clientY));
-      card.addEventListener('pointerleave', resetTilt);
-    });
+  initTiltCards() {
+    // Método 3 desactivado: se usan únicamente Método 1 (360° catálogo) y Método 2 (.GLB en 2 modelos)
   },
 
   // ── MÉTODO 2: Visor 3D Real (.GLB) con <model-viewer> ──
@@ -116,7 +50,7 @@ window.STREETWAR_3D_DEMO = {
 
   loadGlbUrlForProtocol(sku, modelPath) {
     if (location.protocol !== 'file:') {
-      return Promise.resolve(`${modelPath}?v=20261125-triposr-v4`);
+      return Promise.resolve(`${modelPath}?v=20261126-hy3d`);
     }
     return new Promise((resolve, reject) => {
       const makeBlobUrl = b64 => {
@@ -130,7 +64,7 @@ window.STREETWAR_3D_DEMO = {
         return;
       }
       const sc = document.createElement('script');
-      sc.src = `${modelPath}.js?v=20261125-triposr-v4`;
+      sc.src = `${modelPath}.js?v=20261126-hy3d`;
       sc.onload = () => {
         if (window.__GLB_B64 && window.__GLB_B64[sku]) {
           resolve(makeBlobUrl(window.__GLB_B64[sku]));
@@ -145,8 +79,8 @@ window.STREETWAR_3D_DEMO = {
 
   mountDetailExperience(detailRoot, id, product, gallery) {
     const isGlb = Boolean(this.method2_glb[id]);
-    const isSpin = Boolean(this.method1_spin360[id]);
-    if (!isGlb && !isSpin) return;
+    const hasMultiView = Array.isArray(gallery) && gallery.length > 1;
+    if (!isGlb && !hasMultiView) return;
 
     const mainBox = detailRoot.querySelector('.detail-main');
     const galleryBox = detailRoot.querySelector('.detail-gallery');
@@ -166,28 +100,36 @@ window.STREETWAR_3D_DEMO = {
 
     const modeBar = document.createElement('div');
     modeBar.className = 'detail-mode-bar';
-    const meta = isGlb ? this.method2_glb[id] : this.method1_spin360[id];
-    const modeLabel = isGlb ? '🧊 3D Real (.GLB)' : '🔄 360° Interactivo';
+    const pillLabel = isGlb ? this.method2_glb[id].label : 'MÉTODO 1 · 360° FOTOS';
 
     modeBar.innerHTML = `
-      <span class="detail-mode-pill ${isGlb ? 'is-glb' : ''}">${meta.label}</span>
+      <span class="detail-mode-pill ${isGlb ? 'is-glb' : ''}">${pillLabel}</span>
       <div class="detail-mode-tabs" role="tablist">
-        <button type="button" class="active" data-view-mode="interactive">${modeLabel}</button>
+        ${isGlb ? `<button type="button" class="active" data-view-mode="glb">🧊 3D Real (.GLB)</button>` : ''}
+        ${hasMultiView ? `<button type="button" class="${isGlb ? '' : 'active'}" data-view-mode="spin">🔄 360°</button>` : ''}
         <button type="button" data-view-mode="photos">📷 Fotos (${gallery.length})</button>
       </div>
     `;
 
-    const interactiveContainer = document.createElement('div');
-    interactiveContainer.className = 'detail-interactive-stage-wrap';
-    interactiveContainer.style.width = '100%';
+    const glbContainer = document.createElement('div');
+    glbContainer.className = 'detail-interactive-stage-wrap';
+    glbContainer.style.width = '100%';
+    glbContainer.style.display = isGlb ? 'block' : 'none';
+
+    const spinContainer = document.createElement('div');
+    spinContainer.className = 'detail-interactive-stage-wrap';
+    spinContainer.style.width = '100%';
+    spinContainer.style.display = isGlb ? 'none' : 'block';
 
     mainBox.appendChild(modeBar);
-    mainBox.appendChild(interactiveContainer);
+    if (isGlb) mainBox.appendChild(glbContainer);
+    if (hasMultiView) mainBox.appendChild(spinContainer);
     mainBox.appendChild(photoWrap);
 
     if (isGlb) {
+      const meta = this.method2_glb[id];
       this.ensureModelViewerScript();
-      interactiveContainer.innerHTML = `
+      glbContainer.innerHTML = `
         <div class="detail-glb-stage">
           <span class="glb-status" data-glb-status>Cargando modelo 3D...</span>
           <model-viewer
@@ -201,7 +143,7 @@ window.STREETWAR_3D_DEMO = {
             rotation-per-second="30deg"
             shadow-intensity="0.95"
             shadow-softness="0.8"
-            exposure="0.95"
+            exposure="1.0"
             interaction-prompt="auto"
             camera-orbit="35deg 75deg 110%"
             min-camera-orbit="auto auto 65%"
@@ -217,10 +159,10 @@ window.STREETWAR_3D_DEMO = {
         </div>
       `;
 
-      const mv = interactiveContainer.querySelector('model-viewer');
-      const statusEl = interactiveContainer.querySelector('[data-glb-status]');
-      const btnAuto = interactiveContainer.querySelector('[data-glb-autorotate]');
-      const btnReset = interactiveContainer.querySelector('[data-glb-reset]');
+      const mv = glbContainer.querySelector('model-viewer');
+      const statusEl = glbContainer.querySelector('[data-glb-status]');
+      const btnAuto = glbContainer.querySelector('[data-glb-autorotate]');
+      const btnReset = glbContainer.querySelector('[data-glb-reset]');
 
       mv?.addEventListener('load', () => {
         statusEl?.classList.add('is-hidden');
@@ -258,24 +200,21 @@ window.STREETWAR_3D_DEMO = {
         mv.cameraOrbit = '35deg 75deg 110%';
         mv.fieldOfView = 'auto';
       });
-    } else if (isSpin) {
-      this._mountSpin360(interactiveContainer, product, gallery);
+    }
+
+    if (hasMultiView) {
+      this._mountSpin360(spinContainer, product, gallery);
     }
 
     const tabs = modeBar.querySelectorAll('[data-view-mode]');
     const setMode = mode => {
       tabs.forEach(t => t.classList.toggle('active', t.dataset.viewMode === mode));
-      if (mode === 'interactive') {
-        interactiveContainer.style.display = 'block';
-        photoWrap.style.display = 'none';
-      } else {
-        interactiveContainer.style.display = 'none';
-        photoWrap.style.display = 'block';
-      }
+      glbContainer.style.display = mode === 'glb' ? 'block' : 'none';
+      spinContainer.style.display = mode === 'spin' ? 'block' : 'none';
+      photoWrap.style.display = mode === 'photos' ? 'block' : 'none';
     };
     tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.viewMode)));
 
-    // Clicking a left thumbnail switches smoothly to Photo view if user picks a specific frame
     detailRoot.querySelectorAll('[data-gallery-index]').forEach(btn => {
       btn.addEventListener('click', () => {
         setMode('photos');
@@ -285,7 +224,6 @@ window.STREETWAR_3D_DEMO = {
 
   // ── MÉTODO 1: Visor Interactivo 360° Turntable por ángulos + Tilt + Zoom ──
   _mountSpin360(container, product, gallery) {
-    // Arrange horizontal orbit in logical 360° order around the shoe
     const orbitOrder = [
       { key: '01-lateral', label: 'Lateral (0°)' },
       { key: '03-3-4-front', label: '3/4 Frontal (45°)' },
@@ -412,7 +350,6 @@ window.STREETWAR_3D_DEMO = {
       const rect = stage.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width - 0.5;
       const ny = (e.clientY - rect.top) / rect.height - 0.5;
-      // Subtle 3D tilt following cursor/drag
       const rY = nx * 14;
       const rX = -ny * 10;
       card.style.transform = `scale(${zoomScale}) rotateX(${rX.toFixed(1)}deg) rotateY(${rY.toFixed(1)}deg)`;

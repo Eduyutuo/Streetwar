@@ -26,6 +26,15 @@ from collections import deque
 from PIL import Image, ImageOps
 import numpy as np
 
+# Importar calibración de métricas de referencia
+try:
+    from reference_metrics import align_and_canvas
+except ImportError:
+    try:
+        from scripts.reference_metrics import align_and_canvas
+    except ImportError:
+        align_and_canvas = None
+
 PANEL_NAMES_8 = [
     "01_lateral",
     "02_medial",
@@ -127,14 +136,14 @@ def clean_background_compression(cell_arr, threshold=244):
                     
     cell_arr[bg_connected] = [255, 255, 255]
 
-def process_cell(cell_img, target_w, target_h, fill_ratio=0.82, keep_labels=False):
+def process_cell(cell_img, target_w, target_h, fill_ratio=0.82, keep_labels=False, angle_slug=None):
     """
     Procesa un panel individual:
       1. Limpia etiqueta si keep_labels es False.
       2. Limpia artefactos de fondo.
-      3. Encuentra bounding box del producto.
-      4. Escala proporcionalmente según fill_ratio.
-      5. Centra sobre lienzo blanco puro #FFFFFF de target_w x target_h.
+      3. Si angle_slug y align_and_canvas están disponibles, calibra escala y baseline
+         con output_catalog/REFERENCIA/.
+      4. De lo contrario, escala proporcionalmente según fill_ratio centrado.
     """
     cell_rgb = cell_img.convert('RGB')
     cell_arr = np.array(cell_rgb)
@@ -154,20 +163,29 @@ def process_cell(cell_img, target_w, target_h, fill_ratio=0.82, keep_labels=Fals
     warning_msg = None
     if len(ys) < 50:
         warning_msg = "ADVERTENCIA: Panel prácticamente vacío o sin calzado detectado."
-        shoe = Image.fromarray(cell_arr)
-    else:
-        ymin, ymax = ys.min(), ys.max()
-        xmin, xmax = xs.min(), xs.max()
+        return Image.new('RGB', (target_w, target_h), (255, 255, 255)), warning_msg
         
-        # Verificar anomalía de bordes
-        if ymin <= 2 or xmin <= 2 or ymax >= ch - 3 or xmax >= cw - 3:
-            warning_msg = "AVISO: El calzado detectado toca o está muy cerca del borde del recorte."
-            
-        shoe = Image.fromarray(cell_arr[ymin:ymax + 1, xmin:xmax + 1])
+    ymin, ymax = ys.min(), ys.max()
+    xmin, xmax = xs.min(), xs.max()
+    
+    # Verificar anomalía de bordes
+    if ymin <= 2 or xmin <= 2 or ymax >= ch - 3 or xmax >= cw - 3:
+        warning_msg = "AVISO: El calzado detectado toca o está muy cerca del borde del recorte."
+
+    # Calibración exacta con el estándar maestro REFERENCIA si está disponible
+    if angle_slug and align_and_canvas is not None:
+        rgba_arr = np.dstack([cell_arr, np.full((ch, cw), 255, dtype=np.uint8)])
+        bg_mask = np.all(cell_arr >= 246, axis=2)
+        rgba_arr[bg_mask, 3] = 0
+        shoe_rgba = Image.fromarray(rgba_arr)
         
+        canvas = align_and_canvas(shoe_rgba, angle_slug=angle_slug, target_size=target_w)
+        return canvas, warning_msg
+
+    # Fallback genérico centrado por fill_ratio
+    shoe = Image.fromarray(cell_arr[ymin:ymax + 1, xmin:xmax + 1])
     sw, sh = shoe.size
     
-    # Redimensionar proporcionalmente con fill_ratio
     max_w = int(target_w * fill_ratio)
     max_h = int(target_h * fill_ratio)
     scale = min(max_w / sw, max_h / sh)
@@ -175,8 +193,6 @@ def process_cell(cell_img, target_w, target_h, fill_ratio=0.82, keep_labels=Fals
     nh = max(1, int(sh * scale))
     
     resized_shoe = shoe.resize((nw, nh), Image.Resampling.LANCZOS)
-    
-    # Centrar en lienzo blanco puro #FFFFFF
     canvas = Image.new('RGB', (target_w, target_h), (255, 255, 255))
     pos_x = (target_w - nw) // 2
     pos_y = (target_h - nh) // 2
@@ -186,8 +202,9 @@ def process_cell(cell_img, target_w, target_h, fill_ratio=0.82, keep_labels=Fals
 
 def split_grid_image(
     image_path,
-    sku,
-    group="Grupo_A",
+    sku=None,
+    group=None,
+    product_dir=None,
     output_dir="./output_catalog",
     layout="4x2",
     target_w=1024,
@@ -195,11 +212,14 @@ def split_grid_image(
     out_format="webp",
     quality=90,
     fill_ratio=0.82,
-    keep_labels=False
+    keep_labels=False,
+    only_missing=False,
+    overwrite=False
 ):
     """
     Corta una cuadrícula 4x2 en 8 imágenes individuales normalizadas y las guarda
-    en {output_dir}/{group}/{sku}/{sku}_{panel_name}.webp
+    en {output_dir}/{group}/{product_dir}/{product_dir}_{panel_name}.webp
+    utilizando el nombre real de la carpeta cruzado con SNKRS (1).xlsx.
     """
     if not os.path.exists(image_path):
         print(f"❌ Error: No existe el archivo de imagen '{image_path}'")
@@ -220,11 +240,32 @@ def split_grid_image(
     if total_panels != 8:
         print(f"⚠️ Advertencia: El layout '{layout}' define {total_panels} paneles (se esperan 8).")
         
-    # Sanitizar rutas
-    safe_group = sanitize_folder_name(group)
-    safe_sku = sanitize_folder_name(sku).upper()
+    # Resolver nombre real de la carpeta mediante snkrs_mapping
+    real_folder = product_dir
+    real_group = group
     
-    dest_dir = os.path.join(output_dir, safe_group, safe_sku)
+    try:
+        sys.path.append(os.path.dirname(__file__))
+        from snkrs_mapping import load_snkrs_mapping, normalize_sku
+        _, sku_map, f_map = load_snkrs_mapping()
+        if real_folder and real_folder in f_map:
+            info = f_map[real_folder]
+            real_group = real_group or info['group']
+        elif sku:
+            norm_s = normalize_sku(sku)
+            if norm_s in sku_map:
+                info = sku_map[norm_s]
+                real_folder = info['folder']
+                real_group = real_group or info['group']
+    except Exception:
+        pass
+        
+    if not real_folder:
+        real_folder = sku or "desconocido"
+    if not real_group:
+        real_group = "Grupo A"
+        
+    dest_dir = os.path.join(output_dir, real_group, real_folder)
     os.makedirs(dest_dir, exist_ok=True)
     
     cell_w = w / cols
@@ -236,7 +277,7 @@ def split_grid_image(
     
     print("\n" + "=" * 70)
     print(f"👟 PROCESANDO CUADRÍCULA: {os.path.basename(image_path)}")
-    print(f"   • SKU: {safe_sku} | Grupo: {safe_group}")
+    print(f"   • Carpeta Real: {real_folder} | Grupo: {real_group} (SKU: {sku or 'N/A'})")
     print(f"   • Dimensiones origen: {w}x{h} px | Layout: {rows}x{cols}")
     print(f"   • Salida objetivo: {target_w}x{target_h} px | Formato: {out_format.upper()} (Q={quality})")
     print(f"   • Fill-Ratio: {fill_ratio * 100:.0f}% | Limpieza etiquetas: {'DESACTIVADA' if keep_labels else 'ACTIVADA'}")
@@ -252,6 +293,14 @@ def split_grid_image(
                 break
                 
             panel_name = PANEL_NAMES_8[idx]
+            base_filename = f"{real_folder}_{panel_name}"
+            webp_path = os.path.join(dest_dir, f"{base_filename}.webp")
+            
+            # Si se solicita solo ángulos faltantes y el archivo ya existe
+            if only_missing and not overwrite and os.path.exists(webp_path):
+                print(f"   ⏩ [{idx+1}/8] {base_filename}.webp ya existe (conservando foto real / omitido por --only-missing)")
+                idx += 1
+                continue
             
             # Coordenadas recortando líneas divisorias de borde
             x0 = int(c * cell_w) + margin_x
@@ -267,11 +316,12 @@ def split_grid_image(
                 target_w=target_w,
                 target_h=target_h,
                 fill_ratio=fill_ratio,
-                keep_labels=keep_labels
+                keep_labels=keep_labels,
+                angle_slug=panel_name
             )
             
-            # Guardar archivos según formato
-            base_filename = f"{safe_sku}_{panel_name}"
+            # Guardar archivos según formato con la nomenclatura oficial
+            base_filename = f"{real_folder}_{panel_name}"
             
             # WebP
             if out_format in ('webp', 'both'):
@@ -357,6 +407,8 @@ def run_batch(
     quality=90,
     fill_ratio=0.82,
     keep_labels=False,
+    only_missing=False,
+    overwrite=False,
     catalog=None
 ):
     """
@@ -397,7 +449,9 @@ def run_batch(
             out_format=out_format,
             quality=quality,
             fill_ratio=fill_ratio,
-            keep_labels=keep_labels
+            keep_labels=keep_labels,
+            only_missing=only_missing,
+            overwrite=overwrite
         )
         if res:
             total_processed += 1
@@ -427,9 +481,14 @@ def main():
         help="SKU del producto (ej: IX6180-100). Si se omite, se infiere del nombre del archivo."
     )
     parser.add_argument(
+        '--product-dir',
+        default=None,
+        help="Nombre exacto de la carpeta real de referencia (ej: 01_Air_Jordan_9_Space_Jam). Si se especifica, tiene prioridad sobre --sku."
+    )
+    parser.add_argument(
         '--group',
-        default="Grupo_A",
-        help="Grupo del producto (ej: Grupo_A, Grupo_B, etc.). Por defecto: Grupo_A."
+        default=None,
+        help="Grupo del producto (ej: Grupo A, Grupo B, etc.). Si se omite, se infiere del mapeo."
     )
     parser.add_argument(
         '--layout',
@@ -484,6 +543,18 @@ def main():
         default="./output_catalog",
         help="Directorio raíz de salida (por defecto: ./output_catalog)."
     )
+    parser.add_argument(
+        '--only-missing',
+        action='store_true',
+        default=False,
+        help="No sobrescribe ángulos WebP que ya existen en disco, rellenando únicamente los faltantes."
+    )
+    parser.add_argument(
+        '--overwrite',
+        action='store_true',
+        default=False,
+        help="Fuerza la sobrescritura incluso si los archivos ya existen o si se especificó --only-missing."
+    )
     
     args = parser.parse_args()
     
@@ -513,6 +584,8 @@ def main():
             quality=args.quality,
             fill_ratio=args.fill_ratio,
             keep_labels=args.keep_labels,
+            only_missing=args.only_missing,
+            overwrite=args.overwrite,
             catalog=catalog
         )
         return
@@ -535,6 +608,7 @@ def main():
         image_path=args.image,
         sku=sku,
         group=group,
+        product_dir=args.product_dir,
         output_dir=args.output_dir,
         layout=args.layout,
         target_w=target_w,
@@ -542,7 +616,9 @@ def main():
         out_format=args.format,
         quality=args.quality,
         fill_ratio=args.fill_ratio,
-        keep_labels=args.keep_labels
+        keep_labels=args.keep_labels,
+        only_missing=args.only_missing,
+        overwrite=args.overwrite
     )
 
 if __name__ == '__main__':

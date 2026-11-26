@@ -93,20 +93,27 @@ def run_deduplication():
                 thumb = np.array(im.resize((48, 48)), dtype=float)
                 is_duplicate = False
                 for cf, cth in zip(chosen_files, chosen_thumbs):
-                    diff = np.mean(np.abs(thumb - cth))
-                    diff_flip = np.mean(np.abs(thumb - np.fliplr(cth)))
-                    # If diff < 6.0, it's visually the exact same image
-                    if diff < 6.0:
+                    # Compute difference focused on non-white foreground
+                    fg_mask = (thumb < 240) | (cth < 240)
+                    if np.any(fg_mask):
+                        fg_diff = np.mean(np.abs(thumb[fg_mask] - cth[fg_mask]))
+                        fg_diff_flip = np.mean(np.abs(thumb[fg_mask] - np.fliplr(cth)[fg_mask]))
+                    else:
+                        fg_diff = np.mean(np.abs(thumb - cth))
+                        fg_diff_flip = np.mean(np.abs(thumb - np.fliplr(cth)))
+                        
+                    # If foreground diff < 12.0, it's visually the exact same image
+                    if fg_diff < 12.0:
                         is_duplicate = True
                         total_removed += 1
-                        print(f"  [{sku}] Removing {f} - identical duplicate of {cf} (diff={diff:.2f})")
+                        print(f"  [{sku}] Removing {f} - identical duplicate of {cf} (fg_diff={fg_diff:.2f})")
                         break
                     # If it's a flipped version of lateral in 02-medial or elsewhere
-                    if diff_flip < 3.0:
+                    if fg_diff_flip < 8.0:
                         # Artificially flipped duplicate
                         is_duplicate = True
                         total_removed += 1
-                        print(f"  [{sku}] Removing {f} - artificial mirror-flip duplicate of {cf} (diff_flip={diff_flip:.2f})")
+                        print(f"  [{sku}] Removing {f} - artificial mirror-flip duplicate of {cf} (fg_diff_flip={fg_diff_flip:.2f})")
                         break
                         
                 if not is_duplicate:

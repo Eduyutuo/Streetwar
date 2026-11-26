@@ -28,7 +28,7 @@ for item in assigned:
         f'Master generation in 4K resolution (1:1 aspect ratio), divided by thin 1px dark-gray divider lines on a seamless pure white #FFFFFF background, with generous uniform white margins in each cell ensuring the sneaker never touches borders or labels. Upper-left corner of each cell displays discrete technical label: '
         f'Row 1: [01 | LATERAL: 90-degree lateral outer profile, toe pointing LEFT], [02 | MEDIAL: 90-degree medial inner profile, toe pointing RIGHT]. '
         f'Row 2: [03 | 3/4 FRONT: 45-degree three-quarter front perspective, toe pointing bottom-LEFT], [04 | 3/4 REAR: 135-degree three-quarter rear perspective, heel on left and toe pointing RIGHT]. '
-        f'Row 3: [05 | FRONT: pair side-by-side (left shoe direct front eye-level view, right shoe direct rear heel view), centered], [06 | REAR: pair side-by-side (dual direct rear heel views showing both heel counters), centered]. '
+        f'Row 3: [05 | FRONT: single sneaker direct straight front eye-level view, perfectly centered], [06 | REAR: single sneaker direct rear heel counter view, perfectly centered]. '
         f'Row 4: [07 | TOP-DOWN: horizontal direct overhead top-down flat lay view, heel on left and toe pointing RIGHT], [08 | OUTSOLE: horizontal direct bottom outsole rubber tread view, heel on left and toe pointing RIGHT]. '
         f'Identical sneaker colorway and materials across all 8 panels, seamless solid pure white background (#FFFFFF), '
         f'balanced softbox studio lighting at 5500K neutral daylight, subtle grounded floor contact shadows, razor-sharp edge-to-edge f/8 focus, master 4K resolution e-commerce standard.'
@@ -59,8 +59,8 @@ for item in assigned:
             {"row": 1, "col": 2, "label": "02 | MEDIAL", "view": "90-degree medial inner profile, toe pointing RIGHT"},
             {"row": 2, "col": 1, "label": "03 | 3/4 FRONT", "view": "45-degree 3/4 perspective front-quarter facing bottom-LEFT"},
             {"row": 2, "col": 2, "label": "04 | 3/4 REAR", "view": "135-degree 3/4 rear perspective, heel on left and toe pointing RIGHT"},
-            {"row": 3, "col": 1, "label": "05 | FRONT", "view": "pair side-by-side (left shoe direct front eye-level view, right shoe direct rear heel view), centered"},
-            {"row": 3, "col": 2, "label": "06 | REAR", "view": "pair side-by-side (dual direct rear heel views showing both heel counters), centered"},
+            {"row": 3, "col": 1, "label": "05 | FRONT", "view": "single sneaker direct straight front eye-level view, perfectly centered"},
+            {"row": 3, "col": 2, "label": "06 | REAR", "view": "single sneaker direct rear heel counter view, perfectly centered"},
             {"row": 4, "col": 1, "label": "07 | TOP-DOWN", "view": "horizontal direct overhead top-down flat lay view, heel on left and toe pointing RIGHT"},
             {"row": 4, "col": 2, "label": "08 | OUTSOLE", "view": "horizontal direct bottom outsole rubber tread view, heel on left and toe pointing RIGHT"}
         ],

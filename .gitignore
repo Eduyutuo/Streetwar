@@ -8,6 +8,12 @@ config.bat
 # Carpeta de trabajo pesado y fotos originales (mantiene el repo ligero para GitHub Pages)
 _source_data/
 
+# Carpetas de imágenes internas de procesamiento (backup local en imagenes-internas-backup.zip)
+dist/assets/1-orig-raw/
+dist/assets/2-norm-std/
+dist/assets/3-gen-nano/
+dist/assets/source-previews/
+
 # Salidas temporales
 output/
 outputs/

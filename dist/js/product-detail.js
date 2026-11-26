@@ -177,6 +177,10 @@ if(detailRoot){
     if (detailNotes && t.detail.notes) {
       detailNotes.innerHTML = t.detail.notes.map(n => `<article><span>${n.num}</span><h3>${n.title}</h3><p>${n.text}</p></article>`).join('');
     }
+
+    if (window.STREETWAR_3D_DEMO) {
+      window.STREETWAR_3D_DEMO.mountDetailExperience(detailRoot, id, product, gallery);
+    }
   }
 
   renderDetailView();

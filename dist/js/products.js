@@ -217,6 +217,7 @@ if(grid){
             <div class="card-badges">
               ${originalPrice ? `<span class="badge-discount">-26%</span>` : (p.price === null ? `<span class="badge-consult">CONSULTAR</span>` : '')}
               ${exclusiveProducts.has(p.name) ? `<span class="badge-exclusive">EXCLUSIVO</span>` : ''}
+              ${window.STREETWAR_3D_DEMO ? window.STREETWAR_3D_DEMO.getCardBadge(pIndex) : ''}
             </div>
             <a href="${detailUrl(p)}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
               <img class="main-card-img" src="assets/${photos[0]}?v=20261125-output-catalog" alt="${p.name}" loading="lazy">
@@ -311,6 +312,10 @@ if(grid){
         }
       });
     });
+
+    if (window.STREETWAR_3D_DEMO) {
+      window.STREETWAR_3D_DEMO.initTiltCards(grid);
+    }
   };
   const normalized=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const filterProducts=filter=>{

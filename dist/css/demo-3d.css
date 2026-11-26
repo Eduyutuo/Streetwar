@@ -1,0 +1,324 @@
+/* ==========================================================================
+   DEMO 3D INTERACTIVO — 3 Métodos de prueba por producto
+   ========================================================================== */
+
+/* Badges de prueba en tarjetas del catálogo */
+.badge-3d-demo {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.badge-3d-glb {
+  background: #0757e8;
+  color: #ffffff;
+}
+
+.badge-3d-360 {
+  background: #111111;
+  color: #c7ff16;
+}
+
+.badge-3d-tilt {
+  background: #c7ff16;
+  color: #111111;
+}
+
+/* ── MÉTODO 3: Tarjetas 3D Interactivas (Tilt + Parallax + Profundidad Z) ── */
+.product.demo-tilt-3d {
+  transform-style: preserve-3d;
+  perspective: 950px;
+  will-change: transform;
+  transition: transform 0.16s ease-out, box-shadow 0.25s ease, border-color 0.2s ease;
+}
+
+.product.demo-tilt-3d .product-media {
+  transform-style: preserve-3d;
+  overflow: visible;
+  position: relative;
+}
+
+.product.demo-tilt-3d .demo-tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(circle at 50% 50%, rgba(199, 255, 22, 0.22), rgba(7, 87, 232, 0.08) 45%, transparent 72%);
+  z-index: 4;
+}
+
+.product.demo-tilt-3d.is-tilting .demo-tilt-glare {
+  opacity: 1;
+}
+
+.product.demo-tilt-3d .main-card-img {
+  transform-style: preserve-3d;
+  transition: transform 0.16s ease-out, filter 0.25s ease;
+}
+
+.product.demo-tilt-3d.is-tilting .main-card-img {
+  filter: drop-shadow(0 24px 26px rgba(0, 0, 0, 0.24));
+}
+
+.product.demo-tilt-3d .product-info-box {
+  transform: translateZ(14px);
+  background: #ffffff;
+  position: relative;
+  z-index: 3;
+}
+
+/* ── MÉTODO 1 y 2: Barra de control en producto.html ── */
+.detail-main.has-3d-demo {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 10px;
+  padding: 12px;
+  overflow: visible !important;
+}
+
+.detail-mode-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  z-index: 5;
+}
+
+.detail-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #111111;
+  color: #c7ff16;
+}
+
+.detail-mode-pill.is-glb {
+  background: #0757e8;
+  color: #ffffff;
+}
+
+.detail-mode-tabs {
+  display: inline-flex;
+  background: #ece9e1;
+  padding: 3px;
+  border-radius: 999px;
+  gap: 3px;
+}
+
+.detail-mode-tabs button {
+  border: 0;
+  background: transparent;
+  color: #333;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.detail-mode-tabs button.active {
+  background: #111111;
+  color: #ffffff;
+}
+
+/* ── MÉTODO 2: Visor 3D Real (<model-viewer>) ── */
+.detail-glb-stage {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  min-height: 360px;
+  background: radial-gradient(circle at 50% 42%, #ffffff 0%, #f5f5f5 75%, #eceae4 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e6e3db;
+  touch-action: none;
+}
+
+@media (max-width: 759px) {
+  .detail-glb-stage {
+    height: 360px;
+  }
+}
+
+.glb-status {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(17, 17, 17, 0.85);
+  color: #c7ff16;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.glb-status.is-hidden {
+  display: none;
+}
+
+.detail-glb-stage model-viewer {
+  width: 100%;
+  height: 100%;
+  display: block;
+  --poster-color: #ffffff;
+  background-color: transparent;
+  cursor: grab;
+}
+
+.detail-glb-stage model-viewer:active {
+  cursor: grabbing;
+}
+
+.glb-toolbar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.glb-hint {
+  background: rgba(17, 17, 17, 0.82);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+.glb-actions {
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.glb-btn {
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  background: rgba(255, 255, 255, 0.94);
+  color: #111111;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.glb-btn.active {
+  background: #111111;
+  color: #c7ff16;
+  border-color: #111111;
+}
+
+/* ── MÉTODO 1: Visor Interactivo 360° por ángulos + Tilt + Zoom ── */
+.detail-spin360-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 360px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e6e3db;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  perspective: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-spin360-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.spin360-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.14s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spin360-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.spin360-card img.active {
+  opacity: 1;
+}
+
+.spin360-hud {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.spin360-angle-label {
+  background: rgba(17, 17, 17, 0.85);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: 999px;
+}
+
+.spin360-controls {
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.spin360-vertical-strip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 4;
+}

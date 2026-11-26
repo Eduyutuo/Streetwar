@@ -1,5 +1,6 @@
 # Dependencias y scripts temporales
 node_modules/
+.venv3d/
 config.bat
 *.tmp.*
 

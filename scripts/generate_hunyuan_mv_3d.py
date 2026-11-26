@@ -1,8 +1,11 @@
 import os
+import re
 import sys
 import gc
+import json
 import time
 import base64
+import argparse
 import numpy as np
 import torch
 import trimesh
@@ -37,7 +40,27 @@ def load_rgba_cached(sku, view_name, path, cache_dir, get_rembg):
     return im
 
 
+def load_all_targets_from_galleries():
+    with open("dist/js/galleries.js", "r", encoding="utf-8") as f:
+        raw = f.read()
+    obj = json.loads(re.search(r"const galleries\s*=\s*(\{[\s\S]*?\});", raw).group(1))
+    targets = []
+    seen = set()
+    for idx in sorted(obj.keys(), key=lambda x: int(x)):
+        first = obj[idx][0]  # e.g. "productos/IX6180-100/01-lateral.webp"
+        sku = first.split("/")[1]
+        if sku in seen:
+            continue
+        seen.add(sku)
+        targets.append((sku, f"dist/assets/productos/{sku}", f"dist/assets/models/{sku}.glb"))
+    return targets
+
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--all", action="store_true", help="Generate GLBs for all 45 SKUs in galleries.js")
+    args = parser.parse_args()
+
     os.makedirs("scratch/hy3d_tmp", exist_ok=True)
     rembg_holder = [None]
 
@@ -47,17 +70,28 @@ def main():
             rembg_holder[0] = BackgroundRemover()
         return rembg_holder[0]
 
+    if args.all:
+        all_targets = load_all_targets_from_galleries()
+    else:
+        all_targets = [
+            ("IX6180-100", "dist/assets/productos/IX6180-100", "dist/assets/models/IX6180-100.glb"),
+            ("IW2872-700", "dist/assets/productos/IW2872-700", "dist/assets/models/IW2872-700.glb"),
+        ]
+
     targets = [
-        ("IX6180-100", "dist/assets/productos/IX6180-100", "dist/assets/models/IX6180-100.glb"),
-        ("IW2872-700", "dist/assets/productos/IW2872-700", "dist/assets/models/IW2872-700.glb"),
+        t for t in all_targets
+        if not (os.path.exists(t[2]) and os.path.exists(t[2] + ".js"))
     ]
+    print(f"Total targets: {len(all_targets)} | Already done: {len(all_targets) - len(targets)} | Pending: {len(targets)}", flush=True)
+    if not targets:
+        print("All targets already generated!", flush=True)
+        return
 
     # Map studio views consistently around the shoe so lateral (rich side view) is azim=0 ("front"):
     # Looking from azim=0: shoe toe points LEFT ->
     #   90° clockwise (left view) sees TOE (05-front)
     #   180° (back view) sees MEDIAL (02-medial)
     #   270° (right view) sees HEEL (06-rear)
-    mv_inputs = {}
     view_files = {
         "front": "01-lateral.webp",
         "left": "05-front.webp",
@@ -66,12 +100,17 @@ def main():
     }
     rgba_cache_dir = "scratch/hy3d_tmp/rgba"
     for sku, pdir, _ in targets:
-        mv_inputs[sku] = {
-            vname: load_rgba_cached(sku, vname, os.path.join(pdir, fname), rgba_cache_dir, get_rembg)
-            for vname, fname in view_files.items()
-        }
+        for vname, fname in view_files.items():
+            im = load_rgba_cached(sku, vname, os.path.join(pdir, fname), rgba_cache_dir, get_rembg)
+            im.close()
     rembg_holder[0] = None
     gc.collect()
+
+    def get_mv_images(sku):
+        return {
+            vname: Image.open(os.path.join(rgba_cache_dir, f"{sku}_{vname}.png")).convert("RGBA")
+            for vname in view_files
+        }
 
     # ── STAGE 1: Multi-View Shape Generation (Hunyuan3D-2mv) ──
     white_paths = {sku: f"scratch/hy3d_tmp/{sku}_white.glb" for sku, _, _ in targets}
@@ -103,7 +142,7 @@ def main():
             t0 = time.time()
             print(f"[{sku}] Generating multi-view 3D shape...", flush=True)
             mesh = shape_pipe(
-                image=mv_inputs[sku],
+                image=get_mv_images(sku),
                 num_inference_steps=35,
                 octree_resolution=300,
                 num_chunks=12000,
@@ -143,14 +182,16 @@ def main():
         print("Note enabling slicing:", exc, flush=True)
     print(f"Paint pipeline ready in {time.time() - t_p:.1f}s", flush=True)
 
-    for sku, _, out_glb in targets:
+    for idx, (sku, _, out_glb) in enumerate(targets, 1):
         t0 = time.time()
-        print(f"[{sku}] Painting 2K UV texture...", flush=True)
+        print(f"[{idx}/{len(targets)} {sku}] Painting 2K UV texture...", flush=True)
         mesh = trimesh.load(white_paths[sku])
         if isinstance(mesh, trimesh.Scene):
-            mesh = mesh.dump(concatenate=True)
+            mesh = mesh.to_geometry()
 
-        textured_mesh = paint_pipe(mesh, image=mv_inputs[sku]["front"])
+        front_img = Image.open(os.path.join(rgba_cache_dir, f"{sku}_front.png")).convert("RGBA")
+        textured_mesh = paint_pipe(mesh, image=front_img)
+        front_img.close()
 
         raw_tpath = f"scratch/hy3d_tmp/{sku}_textured_raw.glb"
         textured_mesh.export(raw_tpath)
@@ -173,6 +214,8 @@ def main():
             f.write(f'window.__GLB_B64=window.__GLB_B64||{{}};window.__GLB_B64["{sku}"]="{b64}";\n')
 
         print(f"[{sku}] Textured GLB saved ({len(glb_bytes)/1024:.1f} KB) in {time.time() - t0:.1f}s -> {out_glb}", flush=True)
+        gc.collect()
+        torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":

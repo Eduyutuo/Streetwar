@@ -130,55 +130,32 @@ window.STREETWAR_3D_DEMO = {
     if (!mainBox || !galleryBox) return;
     mainBox.classList.add('has-3d-demo');
 
-    // Preserve original photo HTML inside a wrapper so user can toggle back and forth
-    const photoWrap = document.createElement('div');
-    photoWrap.className = 'detail-photo-fallback';
-    photoWrap.style.width = '100%';
-    photoWrap.style.height = '100%';
-    photoWrap.style.position = 'relative';
-    photoWrap.style.display = 'none';
-    while (mainBox.firstChild) {
-      photoWrap.appendChild(mainBox.firstChild);
-    }
-
-    const modeBar = document.createElement('div');
-    modeBar.className = 'detail-mode-bar';
-    const pillLabel = isGlb ? this.method2_glb[id].label : 'MÉTODO 1 · 360° FOTOS';
-
-    modeBar.innerHTML = `
-      <span class="detail-mode-pill ${isGlb ? 'is-glb' : ''}">${pillLabel}</span>
-      <div class="detail-mode-tabs" role="tablist">
-        ${isGlb ? `<button type="button" class="active" data-view-mode="glb">🧊 3D Real (.GLB)</button>` : ''}
-        ${hasMultiView ? `<button type="button" class="${isGlb ? '' : 'active'}" data-view-mode="spin">🔄 360°</button>` : ''}
-        <button type="button" data-view-mode="photos">📷 Fotos (${gallery.length})</button>
-      </div>
-    `;
-
-    const glbContainer = document.createElement('div');
-    glbContainer.className = 'detail-interactive-stage-wrap';
-    glbContainer.style.width = '100%';
-    glbContainer.style.display = isGlb ? 'block' : 'none';
-
-    const spinContainer = document.createElement('div');
-    spinContainer.className = 'detail-interactive-stage-wrap';
-    spinContainer.style.width = '100%';
-    spinContainer.style.display = isGlb ? 'none' : 'block';
-
-    mainBox.appendChild(modeBar);
-    if (isGlb) mainBox.appendChild(glbContainer);
-    if (hasMultiView) mainBox.appendChild(spinContainer);
-    mainBox.appendChild(photoWrap);
-
     if (isGlb) {
+      galleryBox.classList.add('is-glb-only');
+      mainBox.innerHTML = '';
+
+      const modeBar = document.createElement('div');
+      modeBar.className = 'detail-mode-bar';
+      modeBar.innerHTML = `<span class="detail-mode-pill is-glb">🧊 3D REAL (.GLB)</span>`;
+
+      const glbContainer = document.createElement('div');
+      glbContainer.className = 'detail-interactive-stage-wrap';
+      glbContainer.style.width = '100%';
+      glbContainer.style.display = 'block';
+
+      mainBox.appendChild(modeBar);
+      mainBox.appendChild(glbContainer);
+
       const meta = this.method2_glb[id];
       this.ensureModelViewerScript();
+      const posterAttr = gallery?.[0] ? `poster="assets/${gallery[0]}?v=20261125-output-catalog"` : '';
       glbContainer.innerHTML = `
         <div class="detail-glb-stage">
           <span class="glb-status" data-glb-status>Cargando modelo 3D...</span>
           <model-viewer
             id="streetwar-model-viewer"
             alt="Modelo 3D interactivo de ${product.name}"
-            poster="assets/${gallery[0]}?v=20261125-output-catalog"
+            ${posterAttr}
             camera-controls
             touch-action="none"
             auto-rotate
@@ -243,7 +220,38 @@ window.STREETWAR_3D_DEMO = {
         mv.cameraOrbit = '35deg 75deg 110%';
         mv.fieldOfView = 'auto';
       });
+      return;
     }
+
+    // Preserve original photo HTML inside a wrapper so user can toggle back and forth
+    const photoWrap = document.createElement('div');
+    photoWrap.className = 'detail-photo-fallback';
+    photoWrap.style.width = '100%';
+    photoWrap.style.height = '100%';
+    photoWrap.style.position = 'relative';
+    photoWrap.style.display = 'none';
+    while (mainBox.firstChild) {
+      photoWrap.appendChild(mainBox.firstChild);
+    }
+
+    const modeBar = document.createElement('div');
+    modeBar.className = 'detail-mode-bar';
+    modeBar.innerHTML = `
+      <span class="detail-mode-pill">MÉTODO 1 · 360° FOTOS</span>
+      <div class="detail-mode-tabs" role="tablist">
+        ${hasMultiView ? `<button type="button" class="active" data-view-mode="spin">🔄 360°</button>` : ''}
+        <button type="button" data-view-mode="photos">📷 Fotos (${gallery.length})</button>
+      </div>
+    `;
+
+    const spinContainer = document.createElement('div');
+    spinContainer.className = 'detail-interactive-stage-wrap';
+    spinContainer.style.width = '100%';
+    spinContainer.style.display = 'block';
+
+    mainBox.appendChild(modeBar);
+    if (hasMultiView) mainBox.appendChild(spinContainer);
+    mainBox.appendChild(photoWrap);
 
     if (hasMultiView) {
       this._mountSpin360(spinContainer, product, gallery);
@@ -252,7 +260,6 @@ window.STREETWAR_3D_DEMO = {
     const tabs = modeBar.querySelectorAll('[data-view-mode]');
     const setMode = mode => {
       tabs.forEach(t => t.classList.toggle('active', t.dataset.viewMode === mode));
-      glbContainer.style.display = mode === 'glb' ? 'block' : 'none';
       spinContainer.style.display = mode === 'spin' ? 'block' : 'none';
       photoWrap.style.display = mode === 'photos' ? 'block' : 'none';
     };

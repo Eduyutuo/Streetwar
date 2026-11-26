@@ -76,6 +76,14 @@
 }
 
 /* ── MÉTODO 1 y 2: Barra de control en producto.html ── */
+.detail-gallery.is-glb-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.detail-gallery.is-glb-only .detail-thumbs {
+  display: none;
+}
+
 .detail-main.has-3d-demo {
   display: flex !important;
   flex-direction: column !important;

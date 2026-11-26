@@ -558,6 +558,89 @@
       box-shadow: 0 1px 6px rgba(168, 85, 247, 0.3);
     }
 
+    /* Selector de Estrategia: Grilla vs 8 Prompts */
+    .strategy-selector-bar {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .strategy-tab {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .strategy-tab:hover {
+      background: #1e293b;
+      color: #fff;
+    }
+
+    .strategy-tab.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
+      color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Tarjetas de Prompts Individuales */
+    .indiv-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .indiv-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .indiv-badge-panel {
+      font-weight: 700;
+      font-size: 13px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(168, 85, 247, 0.2);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #c084fc;
+    }
+
+    .indiv-filename-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: #38bdf8;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .indiv-ref-info {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     /* Panel CLI de Corte y Normalización (Fase 4) */
     .cli-panel-card {
       background: #0b1120;
@@ -887,6 +970,22 @@
         </div>
       </div>
 
+      <!-- Barra de Estado de Ángulos (Fotos Reales vs Faltantes en Flow) -->
+      <div class="angles-status-card" id="angles-status-card" style="background:#0f172a; border:1px solid var(--border); border-radius:12px; padding:14px 18px; margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted);">Estado de los 8 Ángulos:</span>
+            <span id="angles-summary-badge" style="font-size:11.5px; font-weight:700; padding:2px 10px; border-radius:6px; background:rgba(56,189,248,0.15); color:var(--accent); border:1px solid rgba(56,189,248,0.3);">Cargando...</span>
+          </div>
+          <button class="btn-copy-action" id="btn-copy-missing-prompt" onclick="copyMissingAnglesPrompt(this)" style="padding:6px 14px; font-size:12px; background:var(--accent-purple); color:#fff; border:none; border-radius:8px; cursor:pointer;">
+            ⚡ Copiar Prompt Solo Ángulos Faltantes (Flow)
+          </button>
+        </div>
+        <div id="angles-pills-row" style="display:flex; flex-wrap:wrap; gap:6px;">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </div>
+
       <!-- Barra de Controles de Prompts (Idioma EN/ES y Modo 05/06) -->
       <div class="prompt-controls-bar">
         <div class="ctrl-section">
@@ -899,82 +998,102 @@
         <div class="ctrl-section">
           <span class="ctrl-label">📐 Ángulos 05/06:</span>
           <div class="ctrl-pills" id="mode-pills">
-            <button class="c-pill c-pill-purple active" data-mode="mode_a" title="05: Par Frontal + Trasero | 06: Par Doble Talón">Modo A (Pares • Plantilla Maestra)</button>
-            <button class="c-pill c-pill-purple" data-mode="mode_b" title="05: 1 Zapatilla Frontal | 06: 1 Zapatilla Trasera">Modo B (1 Zapatilla • E-Commerce)</button>
+            <button class="c-pill c-pill-purple" data-mode="mode_a" title="05: Par Frontal + Trasero | 06: Par Doble Talón">Modo A (Pares • Plantilla Maestra)</button>
+            <button class="c-pill c-pill-purple active" data-mode="mode_b" title="05: 1 Zapatilla Frontal | 06: 1 Zapatilla Trasera">Modo B (1 Zapatilla • E-Commerce)</button>
           </div>
         </div>
       </div>
 
-      <!-- Opción 1: TEXTO PLANO -->
-      <div class="prompt-box-card">
-        <div class="box-top">
-          <div class="box-title">
-            <span>📝</span> Opción 1: Prompt en Texto Plano
-          </div>
-          <span class="box-tag tag-blue">Recomendado Flow • Adherencia Máxima</span>
-        </div>
-        <div class="code-view" id="prompt-text-view">Cargando...</div>
-        <div class="card-footer">
-          <button class="btn-copy-action" onclick="copyPrompt('prompt-text-view', this)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Prompt Texto Plano
-          </button>
-          <span style="font-size:12px; color:var(--text-dim);">Adaptado a las <b id="count-label-1">5-6</b> fotos de entrada</span>
-        </div>
+      <!-- Selector de Estrategia: Cuadrícula 4x2 vs 8 Prompts Individuales -->
+      <div class="strategy-selector-bar">
+        <button id="tab-strategy-grid" class="strategy-tab active" onclick="switchStrategy('grid')">
+          <span>🔲</span> Cuadrícula 4×2 Maestra (1 Imagen 4K)
+        </button>
+        <button id="tab-strategy-individual" class="strategy-tab" onclick="switchStrategy('individual')">
+          <span>👟</span> 8 Prompts Individuales (1:1 WebP sobre #FFFFFF)
+        </button>
       </div>
 
-      <!-- Opción 2: JSON ESTRUCTURADO -->
-      <div class="prompt-box-card">
-        <div class="box-top">
-          <div class="box-title">
-            <span>🔲</span> Opción 2: Prompt Estructurado en JSON
-          </div>
-          <span class="box-tag tag-purple">JSON • 4 Filas × 2 Columnas</span>
-        </div>
-        <div class="code-view" id="prompt-json-view">Cargando...</div>
-        <div class="card-footer">
-          <button class="btn-copy-action" onclick="copyPrompt('prompt-json-view', this)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar Prompt JSON
-          </button>
-          <span style="font-size:12px; color:var(--text-dim);">Identidad estricta • Mapeo 1:1 fotos reales</span>
-        </div>
-      </div>
+      <!-- Estrategia 1: Cuadrícula 4x2 -->
+      <div id="grid-strategy-container" style="display:flex; flex-direction:column; gap:16px;">
 
-      <!-- Panel de Comando CLI de Corte y Normalización -->
-      <div class="cli-panel-card">
-        <div class="cli-card-top">
-          <div class="cli-title-box">
-            <h3><span>⚡</span> Cortar y Normalizar Cuadrícula (WebP 1K / HD)</h3>
-            <p>Corta las 8 tomas, elimina líneas 1px, auto-centra sobre blanco puro #FFFFFF y organiza por Grupo y SKU</p>
-          </div>
-          <div class="cli-controls-group">
-            <div class="cli-size-toggle">
-              <span>Resolución:</span>
-              <div class="ctrl-pills" id="size-pills">
-                <button class="c-pill active" data-size="1024">1K (1024×1024)</button>
-                <button class="c-pill" data-size="1200">HD (1200×1200)</button>
-              </div>
+        <!-- Opción 1: TEXTO PLANO -->
+        <div class="prompt-box-card">
+          <div class="box-top">
+            <div class="box-title">
+              <span>📝</span> Opción 1: Prompt en Texto Plano (Cuadrícula 4×2)
             </div>
-            <label class="clean-check-label">
-              <input type="checkbox" id="clean-labels-toggle" checked>
-              <span>Limpiar etiquetas (para tienda)</span>
-            </label>
+            <span class="box-tag tag-blue">Recomendado Flow • Adherencia Máxima</span>
+          </div>
+          <div class="code-view" id="prompt-text-view">Cargando...</div>
+          <div class="card-footer">
+            <button class="btn-copy-action" onclick="copyPrompt('prompt-text-view', this)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Prompt Texto Plano
+            </button>
+            <span style="font-size:12px; color:var(--text-dim);">Adaptado a las <b id="count-label-1">5-6</b> fotos de entrada</span>
           </div>
         </div>
-        <div class="cli-code-container">
-          <div class="cli-code-text" id="cli-cmd-view">python scripts/split_grid_angles.py "imagen.png" --sku SKU --size 1024 --format webp</div>
-          <div class="cli-buttons-wrap">
-            <button class="btn-copy-action" style="padding:6px 14px; font-size:12px; background:var(--accent-green); color:#022c22;" onclick="copyIndividualCmd(this)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              Copiar Individual
+
+        <!-- Opción 2: JSON ESTRUCTURADO -->
+        <div class="prompt-box-card">
+          <div class="box-top">
+            <div class="box-title">
+              <span>🔲</span> Opción 2: Prompt Estructurado en JSON (Cuadrícula 4×2)
+            </div>
+            <span class="box-tag tag-purple">JSON • 4 Filas × 2 Columnas</span>
+          </div>
+          <div class="code-view" id="prompt-json-view">Cargando...</div>
+          <div class="card-footer">
+            <button class="btn-copy-action" onclick="copyPrompt('prompt-json-view', this)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copiar Prompt JSON
             </button>
-            <button class="btn-cli-sub" onclick="copyBatchCmd(this)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              Copiar Lote (--batch-dir)
-            </button>
+            <span style="font-size:12px; color:var(--text-dim);">Identidad estricta • Mapeo 1:1 fotos reales</span>
           </div>
         </div>
+
+        <!-- Panel de Comando CLI de Corte y Normalización -->
+        <div class="cli-panel-card">
+          <div class="cli-card-top">
+            <div class="cli-title-box">
+              <h3><span>⚡</span> Cortar y Normalizar Cuadrícula (WebP 1K / HD)</h3>
+              <p>Corta las 8 tomas con nombre de carpeta real, elimina líneas 1px, auto-centra sobre blanco puro #FFFFFF</p>
+            </div>
+            <div class="cli-controls-group">
+              <div class="cli-size-toggle">
+                <span>Resolución:</span>
+                <div class="ctrl-pills" id="size-pills">
+                  <button class="c-pill active" data-size="1024">1K (1024×1024)</button>
+                  <button class="c-pill" data-size="1200">HD (1200×1200)</button>
+                </div>
+              </div>
+              <label class="clean-check-label">
+                <input type="checkbox" id="clean-labels-toggle" checked>
+                <span>Limpiar etiquetas (para tienda)</span>
+              </label>
+            </div>
+          </div>
+          <div class="cli-code-container">
+            <div class="cli-code-text" id="cli-cmd-view">python scripts/split_grid_angles.py "imagen.png" --product-dir CARPETA --size 1024 --format webp</div>
+            <div class="cli-buttons-wrap">
+              <button class="btn-copy-action" style="padding:6px 14px; font-size:12px; background:var(--accent-green); color:#022c22;" onclick="copyIndividualCmd(this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                Copiar Individual
+              </button>
+              <button class="btn-cli-sub" onclick="copyBatchCmd(this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                Copiar Lote (--batch-dir)
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Estrategia 2: 8 Prompts Individuales (1:1 WebP sobre Fondo Blanco #FFFFFF) -->
+      <div id="individual-strategy-container" style="display:none; flex-direction:column; gap:16px;">
+        <!-- Se renderizan dinámicamente las 8 tarjetas -->
       </div>
 
     </div>
@@ -1083,7 +1202,7 @@
   let searchQuery = '';
   let activeIndex = 0;
   let currentLang = 'EN';
-  let currentMode = 'mode_a';
+  let currentMode = 'mode_b';
   let currentSize = 1024;
   let cleanLabels = true;
 
@@ -1225,6 +1344,90 @@
     }
   }
 
+  let currentStrategy = 'grid'; // 'grid' | 'individual'
+
+  function switchStrategy(strat) {
+    currentStrategy = strat;
+    document.querySelectorAll('.strategy-tab').forEach(t => t.classList.remove('active'));
+    const activeTab = document.getElementById(`tab-strategy-${strat}`);
+    if (activeTab) activeTab.classList.add('active');
+
+    const gridContainer = document.getElementById('grid-strategy-container');
+    const indivContainer = document.getElementById('individual-strategy-container');
+
+    if (strat === 'grid') {
+      if (gridContainer) gridContainer.style.display = 'flex';
+      if (indivContainer) indivContainer.style.display = 'none';
+    } else {
+      if (gridContainer) gridContainer.style.display = 'none';
+      if (indivContainer) indivContainer.style.display = 'flex';
+      renderIndividualCards();
+    }
+  }
+
+  function renderIndividualCards() {
+    const p = catalog.find(item => item.index === activeIndex) || catalog[0];
+    const indivContainer = document.getElementById('individual-strategy-container');
+    if (!p || !indivContainer) return;
+
+    const cardsData = (p.prompts_individual && p.prompts_individual[currentMode] && p.prompts_individual[currentMode][currentLang])
+      ? p.prompts_individual[currentMode][currentLang]
+      : [];
+
+    if (!cardsData.length) {
+      indivContainer.innerHTML = '<p style="color:var(--text-muted); padding:20px;">No hay prompts individuales cargados para este modo.</p>';
+      return;
+    }
+
+    indivContainer.innerHTML = '';
+    cardsData.forEach((card, idx) => {
+      const promptText = currentLang === 'EN' ? card.prompt_en : card.prompt_es;
+      const refBadgeStyle = card.is_synthesis
+        ? 'background:rgba(234, 179, 8, 0.15); border:1px solid rgba(234, 179, 8, 0.4); color:#fde047;'
+        : 'background:rgba(56, 189, 248, 0.15); border:1px solid rgba(56, 189, 248, 0.4); color:#38bdf8;';
+      const refIcon = card.is_synthesis ? '✨' : '📷';
+
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'indiv-card';
+      cardDiv.innerHTML = `
+        <div class="indiv-card-top">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span class="indiv-badge-panel">${card.label}</span>
+            <span style="font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:6px; ${refBadgeStyle}">
+              ${refIcon} Ref: ${card.primary_file}
+            </span>
+            <span style="font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; ${card.is_synthesis ? 'background:rgba(234,179,8,0.15); color:#fde047; border:1px solid rgba(234,179,8,0.3);' : 'background:rgba(34,197,94,0.15); color:#4ade80; border:1px solid rgba(34,197,94,0.3);'}">
+              ${card.is_synthesis ? '⏳ Faltante (Flow Web)' : '✅ Foto Real (rembg)'}
+            </span>
+          </div>
+          <span class="indiv-filename-pill">💾 ${card.expected_filename}</span>
+        </div>
+        <div class="code-view" id="prompt-indiv-${idx}" style="max-height:160px; font-size:12px; line-height:1.5;">${promptText}</div>
+        <div style="display:flex; gap:12px; margin-top:10px; padding:8px 12px; background:rgba(15,23,42,0.6); border-radius:8px; border:1px solid rgba(51,65,85,0.7); align-items:center;">
+          <div style="width:48px; height:48px; background:#fff; border-radius:6px; overflow:hidden; border:1px solid #475569; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+            <img src="../output_catalog/REFERENCIA/${card.ref_file_name}" alt="${card.label}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='assets/master_grid_template_4x2.png'">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:11.5px; color:#94a3b8; margin-bottom:3px;">
+              Pose y Cámara Estándar: <strong style="color:#f8fafc;">${card.ref_file_name}</strong> (Última Imagen)
+            </div>
+            <a href="../output_catalog/REFERENCIA/${card.ref_file_name}" download="${card.ref_file_name}" target="_blank" style="font-size:11.5px; color:#38bdf8; text-decoration:none; display:inline-flex; align-items:center; gap:5px; font-weight:600;">
+              📥 Descargar Referencia (.webp)
+            </a>
+          </div>
+        </div>
+        <div class="card-footer" style="padding-top:8px; display:flex; justify-content:space-between; align-items:center;">
+          <button class="btn-copy-action" onclick="copyPrompt('prompt-indiv-${idx}', this)" style="padding:6px 14px; font-size:12px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copiar Prompt ${card.slug}
+          </button>
+          <span style="font-size:11.5px; color:var(--text-dim);">1:1 Cuadrado • Blanco #FFFFFF</span>
+        </div>
+      `;
+      indivContainer.appendChild(cardDiv);
+    });
+  }
+
   function updatePrompts() {
     const p = catalog.find(item => item.index === activeIndex) || catalog[0];
     if (!p) return;
@@ -1244,17 +1447,101 @@
     document.getElementById('prompt-json-view').textContent = jsonPrompt;
     const countLabel = document.getElementById('count-label-1');
     if (countLabel) countLabel.textContent = `${p.image_count}`;
+
+    if (currentStrategy === 'individual') {
+      renderIndividualCards();
+    }
   }
 
   function updateCliCommand() {
     const p = catalog.find(item => item.index === activeIndex) || catalog[0];
     if (!p) return;
 
-    const safeGroup = (p.group || 'Grupo_A').replace(/\s+/g, '_');
+    const realFolder = p.real_folder || p.product_dir;
     const keepFlag = cleanLabels ? '' : ' --keep-labels';
-    const cmd = `python scripts/split_grid_angles.py "${p.sku}.png" --sku ${p.sku} --group ${safeGroup} --size ${currentSize} --format webp${keepFlag}`;
+    const cmd = `python scripts/split_grid_angles.py "_source_data/generados/${realFolder}_grid.png" --product-dir "${realFolder}" --group "${p.group}" --size ${currentSize} --format webp --only-missing${keepFlag}`;
     const cmdView = document.getElementById('cli-cmd-view');
     if (cmdView) cmdView.textContent = cmd;
+  }
+
+  function updateAnglesStatusBar(p) {
+    const summaryBadge = document.getElementById('angles-summary-badge');
+    const pillsRow = document.getElementById('angles-pills-row');
+    const btnMissing = document.getElementById('btn-copy-missing-prompt');
+    if (!pillsRow || !summaryBadge) return;
+
+    const canonicalKeys = [
+      { code: '01', slug: '01_lateral', label: '01 Lateral' },
+      { code: '02', slug: '02_medial', label: '02 Medial' },
+      { code: '03', slug: '03_3-4_front', label: '03 3/4 Front' },
+      { code: '04', slug: '04_3-4_rear', label: '04 3/4 Rear' },
+      { code: '05', slug: '05_front', label: '05 Front' },
+      { code: '06', slug: '06_rear', label: '06 Rear' },
+      { code: '07', slug: '07_top_down', label: '07 Top-Down' },
+      { code: '08', slug: '08_outsole', label: '08 Outsole' }
+    ];
+
+    const missingCodes = p.missing_angles || [];
+    const realCount = 8 - missingCodes.length;
+    const missingCount = missingCodes.length;
+
+    summaryBadge.textContent = `${realCount} Reales (rembg) • ${missingCount} Faltantes (Flow)`;
+    summaryBadge.style.background = missingCount === 0 ? 'rgba(34,197,94,0.15)' : 'rgba(56,189,248,0.15)';
+    summaryBadge.style.color = missingCount === 0 ? '#4ade80' : 'var(--accent)';
+    summaryBadge.style.borderColor = missingCount === 0 ? 'rgba(34,197,94,0.3)' : 'rgba(56,189,248,0.3)';
+
+    if (btnMissing) {
+      if (missingCount === 0) {
+        btnMissing.style.display = 'none';
+      } else {
+        btnMissing.style.display = 'inline-flex';
+        btnMissing.textContent = `⚡ Copiar Prompt ${missingCount} Ángulos Faltantes (Flow)`;
+      }
+    }
+
+    pillsRow.innerHTML = canonicalKeys.map(k => {
+      const isMissing = missingCodes.includes(k.code);
+      if (isMissing) {
+        return `<span style="background:rgba(234,179,8,0.15); border:1px solid rgba(234,179,8,0.3); color:#fde047; padding:4px 9px; border-radius:6px; font-size:11px; font-weight:700;">⏳ ${k.label} (Falta Flow)</span>`;
+      } else {
+        return `<span style="background:rgba(34,197,94,0.15); border:1px solid rgba(34,197,94,0.3); color:#4ade80; padding:4px 9px; border-radius:6px; font-size:11px; font-weight:700;">✅ ${k.label} (Foto Real)</span>`;
+      }
+    }).join('');
+  }
+
+  function copyMissingAnglesPrompt(btn) {
+    const p = catalog.find(item => item.index === activeIndex) || catalog[0];
+    if (!p) return;
+    const missingCodes = p.missing_angles || [];
+    if (!missingCodes.length) {
+      showToast("¡Este producto ya tiene los 8 ángulos cubiertos por fotos reales!");
+      return;
+    }
+    const isEn = currentLang === 'EN';
+    const missingCards = (p.prompts_individual && p.prompts_individual[currentMode] && p.prompts_individual[currentMode][currentLang])
+      ? p.prompts_individual[currentMode][currentLang].filter(c => c.is_synthesis)
+      : [];
+
+    let text = "";
+    if (isEn) {
+      text = `Master commercial studio footwear photograph of ${p.name} (SKU: ${p.sku}, ${p.group}).\n\n` +
+        `Render ONLY the following ${missingCards.length} missing angle(s) on pure white background (#FFFFFF):\n` +
+        missingCards.map(c => `- [${c.label}] (${c.slug}): 1:1 square centered shot, seamless pure white (#FFFFFF), soft floor shadow.`).join('\n') +
+        `\n\nSTRICT PRODUCT IDENTITY: Render ONLY authentic ${p.name} (SKU: ${p.sku}). Replicate materials, stitch patterns, and brand markings from reference photos. Pure solid white background only (#FFFFFF). 1:1 square aspect ratio. Dual-softbox 5500K studio illumination. Crisp razor-sharp focus. No text, no logos, no watermarks, no borders, no grid lines.`;
+    } else {
+      text = `Fotografía de producto comercial de calzado en estudio de ${p.name} (SKU: ${p.sku}, ${p.group}).\n\n` +
+        `Renderizar ÚNICAMENTE los siguientes ${missingCards.length} ángulo(s) faltantes sobre fondo blanco puro (#FFFFFF):\n` +
+        missingCards.map(c => `- [${c.label}] (${c.slug}): toma cuadrada 1:1 centrada, fondo blanco puro sin costuras (#FFFFFF), sombra suave de contacto en piso.`).join('\n') +
+        `\n\nIDENTIDAD ESTRICTA DEL PRODUCTO: Renderizar ÚNICAMENTE la zapatilla auténtica ${p.name} (SKU: ${p.sku}). Replicar materiales, paneles, costuras y logotipos mostrados en las fotos de referencia. Fondo blanco puro sólido (#FFFFFF). Relación de aspecto cuadrada 1:1. Iluminación comercial dual-softbox a 5500K. Enfoque nítido de borde a borde. CERO texto, CERO marcas de agua, CERO bordes, CERO líneas de cuadrícula.`;
+    }
+
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = "✅ ¡Prompt Faltantes Copiado!";
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
+      showToast(`Prompt de ${missingCards.length} ángulos faltantes copiado al portapapeles`);
+    });
   }
 
   function selectProduct(index) {
@@ -1366,7 +1653,8 @@
     const refPath = document.getElementById('product-ref-path');
     if (refPath) refPath.textContent = dynamicPath;
 
-    // Actualizar Prompts y Comando CLI
+    // Actualizar Prompts, Barra de Ángulos y Comando CLI
+    updateAnglesStatusBar(p);
     updatePrompts();
     updateCliCommand();
   }

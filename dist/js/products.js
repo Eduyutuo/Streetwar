@@ -219,15 +219,15 @@ if(grid){
               ${exclusiveProducts.has(p.name) ? `<span class="badge-exclusive">EXCLUSIVO</span>` : ''}
             </div>
             <a href="${detailUrl(p)}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-              <img class="main-card-img" src="assets/${photos[0]}?v=20261117-card" alt="${p.name}" loading="lazy">
+              <img class="main-card-img" src="assets/${photos[0]}?v=20261125-output-catalog" alt="${p.name}" loading="lazy">
             </a>
           </div>
 
           ${photos.length > 1 ? `
             <div class="product-thumbs-bar" aria-label="Ángulos y variantes">
               ${photos.map((photo, phIdx) => `
-                <button type="button" class="product-thumb-item ${phIdx===0?'active':''}" data-thumb-src="assets/${photo}?v=20261117-card" aria-label="Vista ${phIdx+1}">
-                  <img src="assets/${photo}?v=20261117-card" alt="">
+                <button type="button" class="product-thumb-item ${phIdx===0?'active':''}" data-thumb-src="assets/${photo}?v=20261125-output-catalog" aria-label="Vista ${phIdx+1}">
+                  <img src="assets/${photo}?v=20261125-output-catalog" alt="">
                 </button>
               `).join('')}
             </div>
@@ -244,7 +244,7 @@ if(grid){
               ${photos.length > 1 ? `
                 <div class="product-thumbs-dots" aria-label="Variantes">
                   ${photos.map((photo, phIdx) => `
-                    <button type="button" class="product-thumb-dot ${phIdx===0?'active':''}" data-thumb-src="assets/${photo}?v=20261117-card" aria-label="Variante ${phIdx+1}"></button>
+                    <button type="button" class="product-thumb-dot ${phIdx===0?'active':''}" data-thumb-src="assets/${photo}?v=20261125-output-catalog" aria-label="Variante ${phIdx+1}"></button>
                   `).join('')}
                 </div>
               ` : ''}

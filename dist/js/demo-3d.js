@@ -20,6 +20,12 @@ window.STREETWAR_3D_DEMO = {
     16: { label: 'MÉTODO 3 · TILT 3D', sku: '408452-102' }
   },
 
+  getSortRank(pIndex) {
+    const order = [0, 14, 1, 15, 2, 16];
+    const pos = order.indexOf(Number(pIndex));
+    return pos === -1 ? 999 : pos;
+  },
+
   getCardBadge(pIndex) {
     if (this.method2_glb[pIndex]) {
       return '<span class="badge-3d-demo badge-3d-glb">3D GLB</span>';

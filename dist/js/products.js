@@ -202,7 +202,11 @@ if(grid){
       count.innerHTML = `<span class="catalog-count-dot"></span> ${items.length} ${countSuffix}`;
     }
 
-    grid.innerHTML=items.length?items.map((p,i)=>{
+    const orderedItems = window.STREETWAR_3D_DEMO
+      ? [...items].sort((a, b) => window.STREETWAR_3D_DEMO.getSortRank(inventory.indexOf(a)) - window.STREETWAR_3D_DEMO.getSortRank(inventory.indexOf(b)))
+      : items;
+
+    grid.innerHTML=orderedItems.length?orderedItems.map((p,i)=>{
       const originalPrice = p.price ? Math.round(p.price * 1.35) : null;
       const formattedCurrent = money(p.price);
       const formattedOriginal = originalPrice ? money(originalPrice) : '';

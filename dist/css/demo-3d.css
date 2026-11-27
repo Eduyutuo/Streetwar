@@ -20,6 +20,12 @@
   color: #ffffff;
 }
 
+.badge-3d-pbr {
+  background: #c7ff16;
+  color: #111111;
+  border-color: #111111;
+}
+
 .badge-3d-360 {
   background: #111111;
   color: #c7ff16;
@@ -121,6 +127,77 @@
 .detail-mode-pill.is-glb {
   background: #0757e8;
   color: #ffffff;
+}
+
+.detail-mode-pill.is-pbr {
+  background: #c7ff16;
+  color: #111111;
+}
+
+.detail-compare-subbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detail-compare-subbar a.glb-btn {
+  text-decoration: none;
+}
+
+.detail-glb-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.detail-glb-compare-grid.is-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+  .detail-glb-compare-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.detail-glb-compare-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compare-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compare-side-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.compare-side-badge.is-old {
+  background: #ece9e1;
+  color: #222222;
+}
+
+.compare-side-badge.is-new {
+  background: #111111;
+  color: #c7ff16;
+}
+
+.detail-glb-compare-grid .detail-glb-stage {
+  height: 440px;
 }
 
 .detail-mode-tabs {

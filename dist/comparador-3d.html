@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Comparador 3D: Anterior vs Nuevo PBR — RITMO</title>
+    <link rel="stylesheet" href="css/catalog.css?v=20261111-collections" />
+    <link rel="stylesheet" href="css/demo-3d.css?v=20261126-pbr" />
+    <style>
+      .cmp-wrap {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 28px 20px 64px;
+      }
+      .cmp-hero {
+        background: #111111;
+        color: #ffffff;
+        border-radius: 16px;
+        padding: 24px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+      .cmp-hero .kicker {
+        color: #c7ff16;
+        margin: 0 0 6px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+      .cmp-hero h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+        line-height: 1.1;
+      }
+      .cmp-hero p {
+        margin: 0;
+        color: #d4d2cb;
+        font-size: 14px;
+      }
+      .cmp-hero-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .cmp-btn-lime {
+        background: #c7ff16;
+        color: #111111;
+        border: 0;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .cmp-btn-dark {
+        background: #232323;
+        color: #ffffff;
+        border: 1px solid #3c3c3c;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .cmp-btn-dark.active {
+        background: #0757e8;
+        border-color: #0757e8;
+      }
+      .cmp-item {
+        background: #ffffff;
+        border: 1px solid #e2dfd7;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 24px;
+      }
+      .cmp-item-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ece9e1;
+        padding-bottom: 14px;
+        margin-bottom: 16px;
+      }
+      .cmp-item-head h2 {
+        margin: 0;
+        font-size: 20px;
+      }
+      .cmp-item-meta {
+        font-size: 12px;
+        color: #555555;
+        margin-top: 4px;
+      }
+      .cmp-item-meta strong {
+        color: #111111;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="cmp-wrap">
+      <div class="cmp-hero">
+        <div>
+          <p class="kicker">PILOTO 3D · COMPARATIVA LADO A LADO</p>
+          <h1>IZQUIERDA: ANTERIOR · DERECHA: NUEVO 3D PBR</h1>
+          <p>
+            Arrastra cualquiera de los dos modelos para girar ambos en el mismo
+            ángulo y comparar logos, costuras, suela y relieve.
+          </p>
+        </div>
+        <div class="cmp-hero-actions">
+          <button type="button" class="cmp-btn-dark active" id="global-sync-btn">
+            🔗 Giro sincronizado
+          </button>
+          <a class="cmp-btn-lime" href="novedades.html">← Volver al Catálogo</a>
+        </div>
+      </div>
+
+      <div id="comparador-list"></div>
+    </main>
+    <div id="site-footer"></div>
+
+    <script src="js/i18n.js?v=20261117"></script>
+    <script src="js/catalog.js?v=20261117"></script>
+    <script src="js/products.js?v=20261126-pbr"></script>
+    <script src="js/galleries.js?v=20261125-output-catalog"></script>
+    <script src="js/demo-3d.js?v=20261126-pbr"></script>
+    <script>
+      (function () {
+        const listEl = document.getElementById('comparador-list');
+        const syncBtn = document.getElementById('global-sync-btn');
+        if (!listEl || !window.STREETWAR_3D_DEMO || typeof inventory === 'undefined') return;
+
+        window.STREETWAR_3D_DEMO.ensureModelViewerScript();
+        let syncOn = true;
+        syncBtn?.addEventListener('click', () => {
+          syncOn = !syncOn;
+          syncBtn.classList.toggle('active', syncOn);
+        });
+
+        const pilotIndices = [0, 1, 13];
+        pilotIndices.forEach((pIdx, orderIdx) => {
+          const product = inventory[pIdx];
+          const oldMeta = window.STREETWAR_3D_DEMO.method2_glb[pIdx];
+          const newMeta = window.STREETWAR_3D_DEMO.pbr_new[pIdx];
+          if (!product || !oldMeta || !newMeta) return;
+
+          const poster = typeof galleries !== 'undefined' && galleries[pIdx]?.[0]
+            ? `poster="assets/${galleries[pIdx][0]}?v=20261125-output-catalog"`
+            : '';
+
+          const sec = document.createElement('section');
+          sec.className = 'cmp-item';
+          sec.innerHTML = `
+            <div class="cmp-item-head">
+              <div>
+                <h2>#${orderIdx + 1} · ${product.name}</h2>
+                <div class="cmp-item-meta">
+                  SKU: <strong>${newMeta.sku}</strong> · ${product.category} · ${product.audience}
+                </div>
+              </div>
+              <a class="cmp-btn-dark" href="producto.html?id=${pIdx}">Abrir ficha del producto →</a>
+            </div>
+            <div class="detail-glb-compare-grid">
+              <div data-slot="old">${window.STREETWAR_3D_DEMO._buildViewerMarkup('◀ ANTERIOR · 1-Vista 512px', 'is-old', product.name, poster, `cmp-old-${pIdx}`)}</div>
+              <div data-slot="new">${window.STREETWAR_3D_DEMO._buildViewerMarkup('NUEVO 3D PBR · 2K Multi-Vista + Relieve ▶', 'is-new', product.name, poster, `cmp-new-${pIdx}`)}</div>
+            </div>
+          `;
+          listEl.appendChild(sec);
+
+          const mvOld = window.STREETWAR_3D_DEMO._wireSingleViewer(
+            sec.querySelector('[data-slot="old"]'),
+            oldMeta.sku,
+            oldMeta.model,
+            oldMeta.sku
+          );
+          const mvNew = window.STREETWAR_3D_DEMO._wireSingleViewer(
+            sec.querySelector('[data-slot="new"]'),
+            newMeta.sku,
+            newMeta.model,
+            newMeta.b64Key
+          );
+
+          let syncing = false;
+          const link = (src, dst) => {
+            src?.addEventListener('camera-change', e => {
+              if (!syncOn || syncing || e.detail?.source !== 'user-interaction') return;
+              syncing = true;
+              dst.cameraOrbit = src.getCameraOrbit().toString();
+              requestAnimationFrame(() => { syncing = false; });
+            });
+          };
+          link(mvOld, mvNew);
+          link(mvNew, mvOld);
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -54,17 +54,26 @@ window.STREETWAR_3D_DEMO = {
     44: { label: 'MÉTODO 2 · 3D REAL (.GLB)', sku: 'IM6969-451', model: 'assets/models/IM6969-451.glb' }
   },
 
+  pbr_new: {
+    0: { sku: 'IX6180-100', model: 'assets/models/pbr/IX6180-100.glb', b64Key: 'pbr_IX6180-100' },
+    1: { sku: 'IO2076-100', model: 'assets/models/pbr/IO2076-100.glb', b64Key: 'pbr_IO2076-100' },
+    13: { sku: 'CT3839-100', model: 'assets/models/pbr/CT3839-100.glb', b64Key: 'pbr_CT3839-100' }
+  },
+
   isSpinEnabled(pIndex) {
     return !this.method2_glb[pIndex];
   },
 
   getSortRank(pIndex) {
-    const order = [0, 14];
+    const order = [0, 1, 13];
     const pos = order.indexOf(Number(pIndex));
     return pos === -1 ? 999 : pos;
   },
 
   getCardBadge(pIndex) {
+    if (this.pbr_new[pIndex]) {
+      return '<span class="badge-3d-demo badge-3d-pbr">3D PBR NUEVO</span>';
+    }
     if (this.method2_glb[pIndex]) {
       return '<span class="badge-3d-demo badge-3d-glb">3D GLB</span>';
     }
@@ -91,9 +100,10 @@ window.STREETWAR_3D_DEMO = {
     document.head.appendChild(s);
   },
 
-  loadGlbUrlForProtocol(sku, modelPath) {
+  loadGlbUrlForProtocol(sku, modelPath, b64Key) {
+    const storeKey = b64Key || sku;
     if (location.protocol !== 'file:') {
-      return Promise.resolve(`${modelPath}?v=20261126-hy3d`);
+      return Promise.resolve(`${modelPath}?v=20261126-pbr`);
     }
     return new Promise((resolve, reject) => {
       const makeBlobUrl = b64 => {
@@ -102,15 +112,15 @@ window.STREETWAR_3D_DEMO = {
         for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
         return URL.createObjectURL(new Blob([bytes], { type: 'model/gltf-binary' }));
       };
-      if (window.__GLB_B64 && window.__GLB_B64[sku]) {
-        resolve(makeBlobUrl(window.__GLB_B64[sku]));
+      if (window.__GLB_B64 && window.__GLB_B64[storeKey]) {
+        resolve(makeBlobUrl(window.__GLB_B64[storeKey]));
         return;
       }
       const sc = document.createElement('script');
-      sc.src = `${modelPath}.js?v=20261126-hy3d`;
+      sc.src = `${modelPath}.js?v=20261126-pbr`;
       sc.onload = () => {
-        if (window.__GLB_B64 && window.__GLB_B64[sku]) {
-          resolve(makeBlobUrl(window.__GLB_B64[sku]));
+        if (window.__GLB_B64 && window.__GLB_B64[storeKey]) {
+          resolve(makeBlobUrl(window.__GLB_B64[storeKey]));
         } else {
           reject(new Error('No GLB data'));
         }
@@ -118,6 +128,86 @@ window.STREETWAR_3D_DEMO = {
       sc.onerror = () => reject(new Error('Failed loading GLB script'));
       document.head.appendChild(sc);
     });
+  },
+
+  _wireSingleViewer(stageEl, sku, modelPath, b64Key) {
+    const mv = stageEl.querySelector('model-viewer');
+    const statusEl = stageEl.querySelector('[data-glb-status]');
+    const btnAuto = stageEl.querySelector('[data-glb-autorotate]');
+    const btnReset = stageEl.querySelector('[data-glb-reset]');
+
+    mv?.addEventListener('load', () => {
+      statusEl?.classList.add('is-hidden');
+    });
+    mv?.addEventListener('error', () => {
+      if (statusEl) {
+        statusEl.textContent = 'No se pudo cargar el modelo .GLB';
+        statusEl.classList.remove('is-hidden');
+      }
+    });
+
+    this.loadGlbUrlForProtocol(sku, modelPath, b64Key)
+      .then(url => {
+        if (mv) mv.src = url;
+      })
+      .catch(() => {
+        if (statusEl) {
+          statusEl.textContent = 'Abre el sitio con servidor local o GitHub Pages para ver el .GLB';
+        }
+      });
+
+    btnAuto?.addEventListener('click', () => {
+      if (!mv) return;
+      const on = mv.hasAttribute('auto-rotate');
+      if (on) {
+        mv.removeAttribute('auto-rotate');
+        btnAuto.classList.remove('active');
+      } else {
+        mv.setAttribute('auto-rotate', '');
+        btnAuto.classList.add('active');
+      }
+    });
+    btnReset?.addEventListener('click', () => {
+      if (!mv) return;
+      mv.cameraOrbit = '35deg 75deg 110%';
+      mv.fieldOfView = 'auto';
+    });
+    return mv;
+  },
+
+  _buildViewerMarkup(titleBadge, badgeCls, productName, posterAttr, idAttr) {
+    return `
+      <div class="detail-glb-compare-card">
+        ${titleBadge ? `<div class="compare-card-head"><span class="compare-side-badge ${badgeCls}">${titleBadge}</span></div>` : ''}
+        <div class="detail-glb-stage">
+          <span class="glb-status" data-glb-status>Cargando modelo 3D...</span>
+          <model-viewer
+            ${idAttr ? `id="${idAttr}"` : ''}
+            alt="Modelo 3D interactivo de ${productName}"
+            ${posterAttr}
+            camera-controls
+            touch-action="none"
+            auto-rotate
+            auto-rotate-delay="200"
+            rotation-per-second="30deg"
+            shadow-intensity="0.95"
+            shadow-softness="0.8"
+            exposure="1.0"
+            interaction-prompt="auto"
+            camera-orbit="35deg 75deg 110%"
+            min-camera-orbit="auto auto 65%"
+            max-camera-orbit="auto auto 170%">
+          </model-viewer>
+          <div class="glb-toolbar">
+            <span class="glb-hint">Arrastra para rotar 360° · Zoom</span>
+            <div class="glb-actions">
+              <button type="button" class="glb-btn active" data-glb-autorotate>↻ Giro</button>
+              <button type="button" class="glb-btn" data-glb-reset>⌖ Centrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   },
 
   mountDetailExperience(detailRoot, id, product, gallery) {
@@ -134,6 +224,78 @@ window.STREETWAR_3D_DEMO = {
       galleryBox.classList.add('is-glb-only');
       mainBox.innerHTML = '';
 
+      const meta = this.method2_glb[id];
+      const pbrMeta = this.pbr_new[id];
+      this.ensureModelViewerScript();
+      const posterAttr = gallery?.[0] ? `poster="assets/${gallery[0]}?v=20261125-output-catalog"` : '';
+
+      if (pbrMeta) {
+        const modeBar = document.createElement('div');
+        modeBar.className = 'detail-mode-bar';
+        modeBar.innerHTML = `
+          <span class="detail-mode-pill is-pbr">⚖️ COMPARATIVA 3D: ANTERIOR vs NUEVO PBR</span>
+          <div class="detail-mode-tabs" role="tablist">
+            <button type="button" class="active" data-cmp-mode="both">⚖️ Lado a Lado</button>
+            <button type="button" data-cmp-mode="new">✨ Solo Nuevo PBR</button>
+            <button type="button" data-cmp-mode="old">◀️ Solo Anterior</button>
+          </div>
+        `;
+
+        const compareTools = document.createElement('div');
+        compareTools.className = 'detail-compare-subbar';
+        compareTools.innerHTML = `
+          <button type="button" class="glb-btn active" data-cmp-sync>🔗 Giro sincronizado</button>
+          <a class="glb-btn" href="comparador-3d.html">Ver los 3 modelos juntos →</a>
+        `;
+
+        const glbContainer = document.createElement('div');
+        glbContainer.className = 'detail-interactive-stage-wrap detail-glb-compare-grid';
+        glbContainer.innerHTML = `
+          <div data-cmp-slot="old">${this._buildViewerMarkup('◀ ANTERIOR · 1-Vista 512px', 'is-old', product.name, posterAttr, 'streetwar-model-viewer-old')}</div>
+          <div data-cmp-slot="new">${this._buildViewerMarkup('NUEVO 3D PBR · 2K Multi-Vista + Relieve ▶', 'is-new', product.name, posterAttr, 'streetwar-model-viewer')}</div>
+        `;
+
+        mainBox.appendChild(modeBar);
+        mainBox.appendChild(compareTools);
+        mainBox.appendChild(glbContainer);
+
+        const slotOld = glbContainer.querySelector('[data-cmp-slot="old"]');
+        const slotNew = glbContainer.querySelector('[data-cmp-slot="new"]');
+        const mvOld = this._wireSingleViewer(slotOld, meta.sku, meta.model, meta.sku);
+        const mvNew = this._wireSingleViewer(slotNew, pbrMeta.sku, pbrMeta.model, pbrMeta.b64Key);
+
+        let syncOn = true;
+        let syncing = false;
+        const btnSync = compareTools.querySelector('[data-cmp-sync]');
+        btnSync?.addEventListener('click', () => {
+          syncOn = !syncOn;
+          btnSync.classList.toggle('active', syncOn);
+        });
+
+        const linkOrbit = (src, dst) => {
+          src?.addEventListener('camera-change', e => {
+            if (!syncOn || syncing || e.detail?.source !== 'user-interaction') return;
+            syncing = true;
+            dst.cameraOrbit = src.getCameraOrbit().toString();
+            requestAnimationFrame(() => { syncing = false; });
+          });
+        };
+        linkOrbit(mvOld, mvNew);
+        linkOrbit(mvNew, mvOld);
+
+        const cmpBtns = modeBar.querySelectorAll('[data-cmp-mode]');
+        cmpBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const m = btn.dataset.cmpMode;
+            cmpBtns.forEach(b => b.classList.toggle('active', b === btn));
+            slotOld.style.display = m === 'new' ? 'none' : 'block';
+            slotNew.style.display = m === 'old' ? 'none' : 'block';
+            glbContainer.classList.toggle('is-single', m !== 'both');
+          });
+        });
+        return;
+      }
+
       const modeBar = document.createElement('div');
       modeBar.className = 'detail-mode-bar';
       modeBar.innerHTML = `<span class="detail-mode-pill is-glb">🧊 3D REAL (.GLB)</span>`;
@@ -142,84 +304,11 @@ window.STREETWAR_3D_DEMO = {
       glbContainer.className = 'detail-interactive-stage-wrap';
       glbContainer.style.width = '100%';
       glbContainer.style.display = 'block';
+      glbContainer.innerHTML = this._buildViewerMarkup('', '', product.name, posterAttr, 'streetwar-model-viewer');
 
       mainBox.appendChild(modeBar);
       mainBox.appendChild(glbContainer);
-
-      const meta = this.method2_glb[id];
-      this.ensureModelViewerScript();
-      const posterAttr = gallery?.[0] ? `poster="assets/${gallery[0]}?v=20261125-output-catalog"` : '';
-      glbContainer.innerHTML = `
-        <div class="detail-glb-stage">
-          <span class="glb-status" data-glb-status>Cargando modelo 3D...</span>
-          <model-viewer
-            id="streetwar-model-viewer"
-            alt="Modelo 3D interactivo de ${product.name}"
-            ${posterAttr}
-            camera-controls
-            touch-action="none"
-            auto-rotate
-            auto-rotate-delay="200"
-            rotation-per-second="30deg"
-            shadow-intensity="0.95"
-            shadow-softness="0.8"
-            exposure="1.0"
-            interaction-prompt="auto"
-            camera-orbit="35deg 75deg 110%"
-            min-camera-orbit="auto auto 65%"
-            max-camera-orbit="auto auto 170%">
-          </model-viewer>
-          <div class="glb-toolbar">
-            <span class="glb-hint">Arrastra para rotar 360° · Rueda para zoom</span>
-            <div class="glb-actions">
-              <button type="button" class="glb-btn active" data-glb-autorotate>↻ Auto-giro</button>
-              <button type="button" class="glb-btn" data-glb-reset>⌖ Centrar</button>
-            </div>
-          </div>
-        </div>
-      `;
-
-      const mv = glbContainer.querySelector('model-viewer');
-      const statusEl = glbContainer.querySelector('[data-glb-status]');
-      const btnAuto = glbContainer.querySelector('[data-glb-autorotate]');
-      const btnReset = glbContainer.querySelector('[data-glb-reset]');
-
-      mv?.addEventListener('load', () => {
-        statusEl?.classList.add('is-hidden');
-      });
-      mv?.addEventListener('error', () => {
-        if (statusEl) {
-          statusEl.textContent = 'No se pudo cargar el modelo .GLB';
-          statusEl.classList.remove('is-hidden');
-        }
-      });
-
-      this.loadGlbUrlForProtocol(meta.sku, meta.model)
-        .then(url => {
-          if (mv) mv.src = url;
-        })
-        .catch(() => {
-          if (statusEl) {
-            statusEl.textContent = 'Abre el sitio con servidor local o GitHub Pages para ver el .GLB';
-          }
-        });
-
-      btnAuto?.addEventListener('click', () => {
-        if (!mv) return;
-        const on = mv.hasAttribute('auto-rotate');
-        if (on) {
-          mv.removeAttribute('auto-rotate');
-          btnAuto.classList.remove('active');
-        } else {
-          mv.setAttribute('auto-rotate', '');
-          btnAuto.classList.add('active');
-        }
-      });
-      btnReset?.addEventListener('click', () => {
-        if (!mv) return;
-        mv.cameraOrbit = '35deg 75deg 110%';
-        mv.fieldOfView = 'auto';
-      });
+      this._wireSingleViewer(glbContainer, meta.sku, meta.model, meta.sku);
       return;
     }
 
